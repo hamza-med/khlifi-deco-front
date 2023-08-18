@@ -1,0 +1,36 @@
+:root {
+  font-family: $font-family-base;
+  font-size: $fs-base;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  min-height: 100% !important;
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: $content-layout-background;
+  color: $black-color;
+  font-weight: $fw-normal;
+}
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
