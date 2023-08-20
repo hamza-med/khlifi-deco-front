@@ -1,8 +1,7 @@
 :root {
-  font-family: $font-family-base;
+  font-family: $font-family-base !important;
   font-size: $fs-base;
 }
-
 *,
 *::before,
 *::after {
@@ -20,9 +19,9 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: $content-layout-background;
-  color: $black-color;
-  font-weight: $fw-normal;
+  background-color: $content-layout-background !important;
+  color: $black-color !important;
+  font-weight: $fw-normal !important;
 }
 ul[role="list"],
 ol[role="list"] {
@@ -33,4 +32,8 @@ ul,
 dl {
   margin-top: 0;
   margin-bottom: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }

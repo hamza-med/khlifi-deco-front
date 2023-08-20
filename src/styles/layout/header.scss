@@ -1,0 +1,21 @@
+.mini-navbar {
+  background-color: $black-color;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  text-align: center;
+  padding: 0.875rem;
+}
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px;
+  background-color: white;
+  border-bottom: 1px solid #fcfcfc;
+  .logo {
+    width: 240px;
+    height: 60px;
+  }
+}

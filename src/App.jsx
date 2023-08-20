@@ -1,6 +1,31 @@
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Header from "@/components/Header";
+import Home from "@/pages/Home";
+
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
+};
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
 const App = () => (
   <>
-    <h1>App works </h1>
+    <RouterProvider router={router} />
   </>
 );
 
