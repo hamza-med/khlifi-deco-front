@@ -9,13 +9,19 @@
   align-items: $items;
 }
 
-@mixin desktop {
-  @media (min-width: 992px) {
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: ($size / 16px) * 1rem;
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
     @content;
   }
 }
 
-@mixin font-size($size) {
-  font-size: $size;
-  font-size: ($size / 16px) * 1rem;
+@mixin mobile {
+  @media screen and (max-width: 280px) {
+    @content;
+  }
 }

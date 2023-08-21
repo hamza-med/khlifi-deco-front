@@ -1,0 +1,14 @@
+.mini-navbar {
+  background-color: $black-color;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  text-align: center;
+  height: $mini-header-height;
+  @include flex();
+  @include tablet {
+    font-size: 12px;
+  }
+}

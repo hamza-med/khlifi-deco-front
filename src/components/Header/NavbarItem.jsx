@@ -13,28 +13,26 @@ export default function MenuItem({ item, key }) {
   }, [item.title]);
 
   return (
-    <Menu isOpen={isOpen}>
-      <li
-        className="menu-item"
-        key={key}
-        onMouseEnter={onOpen}
-        onMouseLeave={onClose}
-      >
-        <Link to={item?.url} className={specialItem ? "link new-item" : "link"}>
-          {item?.title}
-          {!isOpen ? (
-            <RiArrowDropDownLine
-              className={specialItem ? "new-item-svg" : ""}
-            />
-          ) : (
-            <RiArrowDropUpLine className={specialItem ? "new-item-svg" : ""} />
-          )}
-        </Link>
-        {item?.submenu && (
-          <DropDown list={item?.submenu} show={onOpen} close={onClose} />
+    <li
+      className="menu-item"
+      key={key}
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
+    >
+      <Link to={item?.url} className={specialItem ? "link new-item" : "link"}>
+        {item?.title}
+        {!isOpen ? (
+          <RiArrowDropDownLine className={specialItem ? "new-item-svg" : ""} />
+        ) : (
+          <RiArrowDropUpLine className={specialItem ? "new-item-svg" : ""} />
         )}
-        {specialItem && <span className="badge">New</span>}
-      </li>
-    </Menu>
+      </Link>
+      {item?.submenu && (
+        <Menu isOpen={isOpen}>
+          <DropDown list={item?.submenu} show={onOpen} close={onClose} />
+        </Menu>
+      )}
+      {specialItem && <span className="badge">New</span>}
+    </li>
   );
 }

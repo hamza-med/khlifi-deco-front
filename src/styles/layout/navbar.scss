@@ -1,9 +1,9 @@
 .navbar {
-  width: 60%;
-  margin-left: 10%;
+  width: 61%;
   .menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(row, space-between, center);
+  }
+  @include tablet {
+    display: none;
   }
 }

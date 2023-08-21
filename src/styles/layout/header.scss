@@ -1,21 +1,46 @@
-.mini-navbar {
-  background-color: $black-color;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
-  text-align: center;
-  padding: 0.875rem;
-}
 .header {
-  display: flex;
-  align-items: center;
-  padding: 20px 20px;
+  width: 100%;
+  @include flex(row, space-between, center);
+  padding-inline: 20px;
+  @include tablet {
+    padding-inline: 10px;
+  }
+  height: $header-height;
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
   .logo {
-    width: 240px;
+    width: 246px;
     height: 60px;
+    @include tablet {
+      width: 210px;
+      height: 55px;
+    }
+  }
+  .hamburger {
+    font-size: 2.4rem;
+    svg {
+      color: $primary-color-20;
+    }
+    cursor: pointer;
+    color: $primary-color-30;
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  .header-button {
+    text-transform: capitalize;
+    color: $primary-color-40;
+    font-weight: $fw-semi-bold;
+    border: 2px solid $primary-color-40;
+    padding: 9px 18px;
+    &:hover {
+      color: white;
+      background-color: $primary-color-40;
+      transition: background-color 0.4s ease-in-out;
+    }
+    @include tablet {
+      display: none;
+    }
   }
 }
