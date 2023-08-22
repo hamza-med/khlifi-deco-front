@@ -1,11 +1,24 @@
+%button-header {
+  text-transform: capitalize;
+  color: $primary-color-40;
+  font-weight: $fw-semi-bold;
+  border: 2px solid $primary-color-40;
+  padding: 9px 18px;
+  &:hover {
+    color: white;
+    background-color: $primary-color-40;
+    transition: background-color 0.4s ease-in-out;
+  }
+}
 .header {
   width: 100%;
+  z-index: 1;
   @include flex(row, space-between, center);
   padding-inline: 20px;
   @include tablet {
     padding-inline: 10px;
   }
-  height: $header-height;
+  height: $main-header-height;
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
   .logo {
@@ -29,15 +42,10 @@
     }
   }
   .header-button {
-    text-transform: capitalize;
-    color: $primary-color-40;
-    font-weight: $fw-semi-bold;
-    border: 2px solid $primary-color-40;
-    padding: 9px 18px;
-    &:hover {
-      color: white;
-      background-color: $primary-color-40;
-      transition: background-color 0.4s ease-in-out;
+    @extend %button-header;
+    &-drawer {
+      display: block;
+      @extend %button-header;
     }
     @include tablet {
       display: none;

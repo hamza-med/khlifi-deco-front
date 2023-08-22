@@ -1,0 +1,48 @@
+.nav-drawer {
+  padding-top: 30px;
+  width: 100%;
+  border-top: 2px solid $primary-color-10;
+  height: calc(100vh - $header-height);
+  z-index: 999;
+  position: fixed;
+  @include flex(column, space-between, center);
+  left: 0;
+  top: $header-height;
+  background-color: $primary-color-lighter;
+  transform: translateX(100%);
+  transition: transform 0.3s linear;
+  &.active {
+    transform: translateX(0);
+  }
+  &-content {
+    @include flex(column, center, center);
+    margin: auto 3px;
+  }
+  &-footer {
+    padding-inline: 1rem;
+    width: 100%;
+    background-color: $black-color-3;
+    height: 80px;
+    @include flex(row, space-between);
+    .nav-drawer-contact {
+      @include flex();
+      gap: 2px;
+      .drawer-phoneIcon {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+      p {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+    .nav-social {
+      svg {
+        cursor: pointer;
+      }
+      @include flex();
+      gap: 15px;
+      font-size: 1.6rem;
+    }
+  }
+}

@@ -16,6 +16,7 @@ const DropDown = ({ list, show, close }) => {
           <MenuItem
             key={index}
             color="#5E4B2F"
+            fontWeight="500"
             _hover={{ bgColor: "white", color: "" }}
           >
             <Link to={item.url}>{item.title}</Link>

@@ -4,7 +4,8 @@ import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
 import { useDisclosure, Menu } from "@chakra-ui/react";
-export default function MenuItem({ item, key }) {
+
+export default function NavbarItem({ item, key }) {
   const [specialItem, setIsSpecial] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -18,14 +19,19 @@ export default function MenuItem({ item, key }) {
       key={key}
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
+      onClick={!onOpen}
     >
       <Link to={item?.url} className={specialItem ? "link new-item" : "link"}>
         {item?.title}
-        {!isOpen ? (
-          <RiArrowDropDownLine className={specialItem ? "new-item-svg" : ""} />
-        ) : (
-          <RiArrowDropUpLine className={specialItem ? "new-item-svg" : ""} />
-        )}
+        {item?.submenu ? (
+          !isOpen ? (
+            <RiArrowDropDownLine
+              className={specialItem ? "new-item-svg" : ""}
+            />
+          ) : (
+            <RiArrowDropUpLine className={specialItem ? "new-item-svg" : ""} />
+          )
+        ) : null}
       </Link>
       {item?.submenu && (
         <Menu isOpen={isOpen}>

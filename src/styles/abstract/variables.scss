@@ -1,2 +1,3 @@
-$header-height: 100px;
+$main-header-height: 100px;
 $mini-header-height: 50px;
+$header-height: $main-header-height + $mini-header-height;
