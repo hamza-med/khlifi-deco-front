@@ -1,11 +1,12 @@
 .home-categories {
+  color: $title-color;
   text-align: center;
   margin: 20px auto;
   &__title {
     font-weight: $fw-bolder;
     text-transform: capitalize;
     margin-top: 8px;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     @include tablet {
       font-size: 1.4rem;
     }
@@ -22,11 +23,23 @@
       @include flex(column, center, center);
     }
     &--item {
+      @include desktop {
+        overflow: hidden;
+      }
       img {
         width: 400px;
-        height: 400px;
+        height: 460px;
         object-fit: cover;
         border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+        @include desktop {
+          &:hover {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            cursor: pointer;
+          }
+        }
         @include tablet {
           @include flex();
           width: 280px;
@@ -34,6 +47,7 @@
         }
       }
       h2 {
+        color: #333333;
         text-align: center;
         font-weight: $fw-semi-bold;
         margin-top: 20px;

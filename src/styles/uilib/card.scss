@@ -1,0 +1,77 @@
+.card_container {
+  width: 230px;
+  height: 390px;
+  background-color: #f4f5f7;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  @include tablet {
+    margin: 20px auto;
+  }
+  &__img {
+    display: block;
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+  }
+  @include desktop {
+  }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    @include transition(opacity, 0.5s);
+    &:hover {
+      opacity: 1;
+    }
+    @include flex(column, center, center);
+    &__button {
+      background: white;
+      color: $primary-color;
+      padding: 9px 30px;
+      font-weight: 500;
+    }
+  }
+  &__badge {
+    @include flex();
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: lighten(red, 20);
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    font-size: 12px;
+  }
+  &__title {
+    margin: 5px 0px;
+    color: $title-color;
+    font-size: 1.2rem;
+    font-weight: $fw-bold;
+  }
+  &__description {
+    color: #898989;
+    font-size: $fs-sm;
+    font-weight: $fw-semi-bold;
+  }
+  &__prices {
+    @include flex(row, null, start);
+    &--1 {
+      color: $title-color;
+      font-size: 1.2rem;
+      font-weight: $fw-bold;
+    }
+    &--2 {
+      margin-left: auto;
+      color: #b0b0b0;
+      font-size: 1.1rem;
+      font-weight: normal;
+      text-decoration: line-through;
+    }
+  }
+}

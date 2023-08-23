@@ -1,0 +1,24 @@
+.home-products {
+  color: $title-color;
+  text-align: center;
+  margin-top: 60px;
+  &__title {
+    margin-bottom: 20px;
+    font-weight: $fw-bolder;
+    text-transform: capitalize;
+    font-size: 1.9rem;
+    @include tablet {
+      font-size: 1.7rem;
+    }
+  }
+  &__products {
+    @include desktop {
+      @include flex();
+      flex-wrap: wrap;
+      gap: 70px;
+    }
+    @include tablet {
+      @include flex(column, center, center);
+    }
+  }
+}
