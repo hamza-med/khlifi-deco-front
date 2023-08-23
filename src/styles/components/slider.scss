@@ -5,6 +5,9 @@
   top: 0;
   @include flex();
   width: 40px;
+  @include tablet {
+    opacity: 1;
+  }
   height: 40px;
   border: 1px solid $primary-color-10;
   background-color: rgba($color: white, $alpha: 0.8);
@@ -31,7 +34,7 @@
     height: 100%;
     transition: all 1s ease;
     img {
-      opacity: 65%;
+      opacity: 85%;
       width: 100vw;
       height: 100%;
       object-fit: cover;
@@ -98,6 +101,9 @@
         transition: 0.1s ease-in;
         &:hover {
           transform: translateX(40%);
+          @include tablet {
+            transform: translateX(0%);
+          }
         }
       }
     }
@@ -108,6 +114,9 @@
         transition: 0.1s ease-in;
         &:hover {
           transform: translateX(-40%);
+          @include tablet {
+            transform: translateX(0%);
+          }
         }
       }
     }

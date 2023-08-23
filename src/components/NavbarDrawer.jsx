@@ -1,6 +1,6 @@
 import NavButton from "@/uilib/NavButton";
 import { menuItems } from "./data/menuItems";
-import NavbarItem from "./Header/NavbarItem";
+import NavbarItem from "./Layout/Header/NavbarItem";
 import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";

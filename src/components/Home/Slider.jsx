@@ -1,6 +1,7 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
+import useToggle from "@/hooks/useToggle";
 const data = [
   "src/assets/wedding1.jpg",
   "src/assets/wedding2.jpg",
@@ -9,7 +10,7 @@ const data = [
 const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [buttonVisible, setButtonVisible] = useState(true);
-  const [iconsVisible, setIconsVisible] = useState(false);
+  const [iconsVisible, onShow, onHide] = useToggle(false);
 
   useEffect(() => {
     function handleScrolling() {
@@ -44,8 +45,8 @@ const Slider = ({ productsRef }) => {
   return (
     <div className="slider">
       <div
-        onMouseEnter={() => setIconsVisible(true)}
-        onMouseLeave={() => setIconsVisible(false)}
+        onMouseEnter={onShow}
+        onMouseLeave={onHide}
         className="slider__container"
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
@@ -55,19 +56,23 @@ const Slider = ({ productsRef }) => {
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>
         <p>{/* <span>pure</span> and natural honey */}</p>
-        <button onClick={handleScroll}>voir article</button>
+        <button onClick={handleScroll}>voir articles</button>
       </div>
 
       <div className={`slider__icons  `}>
         <div
           className={`icon-left ${iconsVisible ? "iconsVisible" : ""}`}
           onClick={prevSlide}
+          onMouseEnter={onShow}
+          onMouseLeave={onHide}
         >
           <AiOutlineArrowLeft className="arrow-left" />
         </div>
         <div
           className={`icon-right ${iconsVisible ? "iconsVisible" : ""}`}
           onClick={nextSlide}
+          onMouseEnter={onShow}
+          onMouseLeave={onHide}
         >
           <AiOutlineArrowRight className="arrow-right" />
         </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import MiniHeader from "../MiniHeader";
-import NavbarDrawer from "../NavbarDrawer";
+import MiniHeader from "../../MiniHeader";
+import NavbarDrawer from "../../NavbarDrawer";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import ToggleMenu from "./ToggleMenu";

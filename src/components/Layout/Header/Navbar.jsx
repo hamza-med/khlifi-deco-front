@@ -1,5 +1,5 @@
-import { menuItems } from "../data/menuItems";
-import NavbarItem from "@/components/Header/NavbarItem";
+import { menuItems } from "../../data/menuItems";
+import NavbarItem from "@/components/Layout/Header/NavbarItem";
 
 const Navbar = () => {
   return (

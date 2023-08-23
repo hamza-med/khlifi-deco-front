@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import DropDown from "../DropDown";
+import DropDown from "../../DropDown";
 import { useDisclosure, Menu } from "@chakra-ui/react";
 
 export default function NavbarItem({ item, key }) {
