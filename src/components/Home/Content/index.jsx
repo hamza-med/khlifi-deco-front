@@ -2,7 +2,7 @@ import Categories from "./Categories";
 
 const Content = () => {
   return (
-    <div>
+    <div className="home-container">
       <Categories />
     </div>
   );
