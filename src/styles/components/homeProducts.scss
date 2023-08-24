@@ -1,7 +1,7 @@
 .home-products {
   color: $title-color;
   text-align: center;
-  margin-top: 60px;
+  margin: 60px auto;
   &__title {
     margin-bottom: 20px;
     font-weight: $fw-bolder;
@@ -19,6 +19,17 @@
     }
     @include tablet {
       @include flex(column, center, center);
+    }
+  }
+  &__button {
+    text-transform: capitalize;
+    padding: 9px 40px;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    margin-top: 20px;
+    &:hover {
+      color: $primary-color-10;
+      border: 1px solid $primary-color-10;
     }
   }
 }

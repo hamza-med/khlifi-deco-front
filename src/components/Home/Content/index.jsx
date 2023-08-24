@@ -6,6 +6,7 @@ const Content = () => {
     <div className="home-container">
       <Categories />
       <Products />
+      fffffffffffffff   
     </div>
   );
 };

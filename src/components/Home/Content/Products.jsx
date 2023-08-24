@@ -14,7 +14,7 @@ const Products = () => {
         <ProductCard />
         <ProductCard />
       </div>
-      <button className="home-products__button">Show More</button>
+      <button className="home-products__button">afficher plus</button>
     </div>
   );
 };
