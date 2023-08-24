@@ -2,12 +2,11 @@ import Slider from "react-slick";
 import SliderContent from "./SliderContent";
 
 const settings = {
-  className: "center",
-  centerMode: true,
+  dots: true,
   infinite: true,
-  centerPadding: "60px",
-  slidesToShow: 3,
   speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
 };
 const ExploreSlider = () => {
   return (
