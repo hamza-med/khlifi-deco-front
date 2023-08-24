@@ -4,11 +4,13 @@ import Products from "./Products";
 
 const Content = () => {
   return (
-    <div className="home-container">
-      <Categories />
-      <Products />
+    <>
+      <div className="home-container">
+        <Categories />
+        <Products />
+      </div>
       <ExploreSection />
-    </div>
+    </>
   );
 };
 

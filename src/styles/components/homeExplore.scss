@@ -1,4 +1,6 @@
 .explore-container {
-  padding: 200px 20px;
+  height: 450px;
   background: #fcf8f3;
+  // background: blanchedalmond;
+  @include flex();
 }
