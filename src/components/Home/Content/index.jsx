@@ -1,4 +1,5 @@
 import Categories from "./Categories";
+import ExploreSection from "./ExploreSection";
 import Products from "./Products";
 
 const Content = () => {
@@ -6,7 +7,7 @@ const Content = () => {
     <div className="home-container">
       <Categories />
       <Products />
-      fffffffffffffff   
+      <ExploreSection />
     </div>
   );
 };

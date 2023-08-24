@@ -9,12 +9,15 @@ $primary-color-60: darken($primary-color, 60);
 $secondary-color: #755a00;
 
 $primary-color-light: lighten($primary-color, 10);
+$primary-color-light-20: lighten($primary-color, 20);
+$primary-color-light-30: lighten($primary-color, 30);
+$primary-color-light-40: lighten($primary-color, 40);
 $primary-color-lighter: lighten($primary-color, 43);
 $primary-color-dark: darken($primary-color, 80);
 
 $content-layout-background: #fafafa;
 
-$title-color:#3A3A3A;
+$title-color: #3a3a3a;
 
 $black-color: #282725;
 $black-color-75: rgba(40, 39, 37, 0.75);
