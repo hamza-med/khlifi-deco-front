@@ -4,9 +4,12 @@ import SliderContent from "./SliderContent";
 const settings = {
   dots: true,
   infinite: true,
-  speed: 500,
+  lazyLoad: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  speed: 1000,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
 };
 const ExploreSlider = () => {
   return (

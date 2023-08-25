@@ -1,7 +1,7 @@
 import Categories from "./Categories";
-// import ExploreSection from "./ExploreSection";
+import ExploreSection from "./ExploreSection";
 import Products from "./Products";
-import ExploreSlider from "@/components/ExploreSlider";
+
 const Content = () => {
   return (
     <>
@@ -9,8 +9,7 @@ const Content = () => {
         <Categories />
         <Products />
       </div>
-      <ExploreSlider/>
-      {/* <ExploreSection /> */}
+      <ExploreSection />
     </>
   );
 };

@@ -16,7 +16,7 @@ const SliderContent = () => {
       </div>
       <div className="slider-content__right">
         <img src="https://images.pexels.com/photos/17947890/pexels-photo-17947890/free-photo-of-cozy-living-room-furniture-under-stairs.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
-        <img src="https://images.pexels.com/photos/17948130/pexels-photo-17948130/free-photo-of-furniture-in-living-room.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+        <img src="https://images.pexels.com/photos/17948130/pexels-photo-17948130/free-photo-of-furniture-in-living-room.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""  />
       </div>
     </div>
   );

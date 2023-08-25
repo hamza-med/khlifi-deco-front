@@ -1,27 +1,33 @@
 .slider-content {
   @include flex(row, center, center);
-  width: 60%;
-  height: 90%;
-  // background: rgb(231, 229, 229);
   &__left {
     margin-right: 40px;
-    height: 100%;
+    @include tablet {
+      margin-right: 20px;
+    }
     position: relative;
     img {
-      height: 100%;
       object-fit: cover;
-      width: 350px;
+      height: 500px;
+      width: 450px;
+      @include tablet {
+        height: 250px;
+        width: 500px;
+      }
     }
     &--layer {
       @include overlay(0.1, 1);
       padding: 8px;
       &--content {
-        border-left: 3px solid black;
+        border-left: 4px solid rgb(49, 47, 47);
         padding: 10px;
         background-color: rgba(255, 255, 255, 0.5);
         text-align: left;
         text-transform: capitalize;
         font-size: 1.5rem;
+        @include tablet {
+          font-size: 1rem;
+        }
         span {
           font-weight: 700;
         }
@@ -29,12 +35,21 @@
     }
   }
   &__right {
-    height: 100%;
-    @include flex(column, center, center);
-    gap: 10px;
+    height: 500px;
+    @include tablet {
+      height: 250px;
+    }
+    & > img {
+      margin-bottom: 20px;
+    }
     img {
-      height: 200px;
-      width: 200px;
+      object-fit: cover;
+      height: 240px;
+      width: 250px;
+      @include tablet {
+        height: 115px;
+        width: 280px;
+      }
     }
   }
 }

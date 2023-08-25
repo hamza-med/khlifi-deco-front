@@ -1,6 +1,9 @@
 .explore-container {
-  height: 450px;
+  height: 400px;
+  margin: 0 auto;
+  @include tablet {
+    padding: 10px;
+  }
+  padding: 40px;
   background: #fcf8f3;
-  // background: blanchedalmond;
-  @include flex();
 }
