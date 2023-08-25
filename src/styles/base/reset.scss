@@ -37,3 +37,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+/*Change default slick arrows*/
+.slick-prev:before,
+.slick-next:before {
+  color: $primary-color-light-20;
+  @include tablet {
+    display: none;
+  }
+}
