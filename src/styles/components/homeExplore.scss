@@ -1,8 +1,10 @@
 .explore-container {
   height: 100%;
   margin: 0 auto;
+  border-top: 1px solid $primary-color-light-50;
+  // border-bottom: 1px solid $primary-color-light-50;
   @include tablet {
-    padding: 10px;
+    padding: 25px 10px;
   }
   padding: 40px;
   background: #fcf8f3;

@@ -3,7 +3,7 @@
   &__left {
     margin-right: 40px;
     @include tablet {
-      margin-right: 20px;
+      margin-right: 0px;
     }
     position: relative;
     img {
@@ -11,8 +11,8 @@
       height: 500px;
       width: 450px;
       @include tablet {
-        height: 250px;
-        width: 500px;
+        height: 450px;
+        // width: 600px;
       }
     }
     &--layer {
@@ -37,7 +37,7 @@
   &__right {
     height: 500px;
     @include tablet {
-      height: 250px;
+      display: none;
     }
     & > img {
       margin-bottom: 20px;
