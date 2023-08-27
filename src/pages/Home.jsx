@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <Slider productsRef={productsRef} />
-      <Content />
+      <Content productsRef={productsRef} />
     </>
   );
 };

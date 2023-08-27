@@ -2,12 +2,12 @@ import Categories from "./Categories";
 import ExploreSection from "./ExploreSection";
 import Products from "./Products";
 
-const Content = () => {
+const Content = ({productsRef}) => {
   return (
     <>
       <div className="home-container">
         <Categories />
-        <Products />
+        <Products ref={productsRef} />
       </div>
       <ExploreSection />
     </>

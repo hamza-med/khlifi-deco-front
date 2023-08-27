@@ -1,8 +1,9 @@
 import ProductCard from "@/uilib/ProductCard";
+import { forwardRef } from "react";
 
-const Products = () => {
+const Products = forwardRef((props, ref) => {
   return (
-    <div className="home-products">
+    <div className="home-products" ref={ref}>
       <h1 className="home-products__title">Nos Produits</h1>
       <div className="home-products__products">
         <ProductCard />
@@ -17,6 +18,6 @@ const Products = () => {
       <button className="home-products__button">afficher plus</button>
     </div>
   );
-};
+});
 
 export default Products;

@@ -1,4 +1,5 @@
-import { GrFacebook, GrInstagram } from "react-icons/gr";
+import { GrFacebook, GrInstagram, GrYoutube } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,16 +8,32 @@ const Footer = () => {
         <div className="footer__top--item">
           <img src="src/assets/logo1.png" alt="footer-logo" />
           <div className="footer__top--logo">
-            <GrFacebook />
-            <GrInstagram />
+            <Link>
+              <GrFacebook className="footer__top--logo--1" />
+            </Link>
+            <Link>
+              <GrInstagram className="footer__top--logo--2" />
+            </Link>
+            <Link>
+              <GrYoutube className="footer__top--logo--3" />
+            </Link>
           </div>
-          <span>16 rue toborsok , bardo</span>
+          <span>
+            <span className="contact-info">Addresse: </span>16 rue toborsok ,
+            bardo
+          </span>
         </div>
         <div className="footer__top--item">
           <h1>Liens</h1>
-          <span>Home</span>
-          <span>Shop Now</span>
-          <span>Contact</span>
+          <Link>
+            <span>Home</span>
+          </Link>
+          <Link>
+            <span>Shop Now</span>
+          </Link>
+          <Link>
+            <span>Contact</span>
+          </Link>
         </div>
         <div className="footer__top--item">
           <h1>à propos de nous</h1>
@@ -30,7 +47,7 @@ const Footer = () => {
           <h1>Contact</h1>
           <ul role="list">
             <li>
-              <span className="contact-info">Phone & Whatsapp : </span>
+              <span className="contact-info">Whatsapp : </span>
               <span>(+216) 50 577 433</span>
             </li>
             <li>

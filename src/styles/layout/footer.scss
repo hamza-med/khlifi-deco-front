@@ -10,6 +10,28 @@
     padding: 2em;
   }
   &__top {
+    &--logo {
+      width: 160px;
+      margin-left: 5px;
+      @include tablet {
+        margin-top: -35px;
+        width: 220px;
+        margin-inline: auto;
+        gap: 30px;
+      }
+      @include flex(row, center, center);
+      gap: 22px;
+      color: $primary-color-20;
+      &--1 {
+        font-size: 28px;
+      }
+      &--2 {
+        font-size: 30px;
+      }
+      &--3 {
+        font-size: 37px;
+      }
+    }
     @include flex(row, space-between, start);
     @include tablet {
       display: block;
@@ -29,14 +51,14 @@
         @include tablet {
           width: 220px;
           height: 200px;
-          margin-bottom: -50px;
+          margin-bottom: -90px;
           margin: 0 auto;
         }
         margin-top: -30px;
+        margin-bottom: -30px;
         width: 170px;
         height: 155px;
       }
-
       li {
         margin-bottom: 12px;
         @include tablet {
@@ -50,7 +72,7 @@
         }
         color: lighten($title-color, 10);
         font-weight: $fw-bold;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         margin-bottom: 16px;
         text-transform: capitalize;
       }
@@ -58,8 +80,7 @@
         @include tablet {
           font-size: 1rem;
         }
-        color: lighten($black-color, 39);
-        font-size: 0.875rem;
+        color: lighten($black-color, 30);
       }
     }
   }
