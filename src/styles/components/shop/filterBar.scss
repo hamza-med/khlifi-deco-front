@@ -1,0 +1,77 @@
+.filter-bar__container {
+  font-weight: 500;
+  height: 100px;
+  padding: 10px 90px;
+  background: #f9f1e7;
+  @include flex(row, start, center);
+  @include tablet {
+    padding: 15px 20px;
+    @include flex(column, center, center);
+    gap: 10px;
+  }
+  &__content {
+    @include flex();
+    &--display {
+      @include tablet {
+        display: none;
+      }
+      @include flex();
+      font-size: 23px;
+      gap: 15px;
+      cursor: pointer;
+    }
+    &--divider {
+      border-left: 1px solid rgb(0, 0, 0);
+      height: 30px;
+      margin-inline: 20px;
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+  &__inputs {
+    @include desktop {
+      margin-left: auto;
+    }
+    @include flex();
+    .show_input {
+      span {
+        font-size: 1.2rem;
+        @include tablet {
+          font-size: 1rem;
+        }
+      }
+      input {
+        width: 45px;
+        height: 45px;
+        margin-left: 12px;
+        text-align: center;
+        @include tablet {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+    .filter_input {
+      span {
+        font-size: 1.2rem;
+        @include tablet {
+          font-size: 1rem;
+        }
+      }
+      margin-left: 20px;
+      select {
+        cursor: pointer;
+        padding-inline: 5px;
+        width: 220px;
+        height: 45px;
+        margin-left: 12px;
+        text-align: center;
+        @include tablet {
+          width: 130px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}

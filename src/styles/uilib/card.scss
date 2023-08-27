@@ -1,4 +1,18 @@
 .card_container {
+  &.list {
+    width: 70%;
+    height: 300px;
+    display: flex;
+    img {
+      height: 100%;
+      width: 40%;
+      justify-self: start;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.9rem;
+    }
+  }
   width: 250px;
   height: 390px;
   background-color: #f4f5f7;
@@ -7,7 +21,7 @@
   cursor: pointer;
   @include tablet {
     margin: 20px auto;
-    width:90%;
+    width: 90%;
   }
   &__img {
     display: block;

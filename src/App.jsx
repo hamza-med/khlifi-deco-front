@@ -4,12 +4,13 @@ import Home from "@/pages/Home";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "./components/Layout/Footer";
+import Shop from "./pages/Shop";
 const Layout = () => {
   return (
     <>
       <Header />
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 };
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
       },
     ],
   },
