@@ -1,6 +1,6 @@
 .card_container {
   &.list {
-    width: 70%;
+    width: 80%;
     height: 300px;
     display: flex;
     img {
@@ -9,8 +9,11 @@
       justify-self: start;
     }
     h1 {
-      text-align: center;
       font-size: 1.9rem;
+    }
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1em;
     }
   }
   width: 250px;

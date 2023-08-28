@@ -30,12 +30,14 @@
     }
   }
   &__inputs {
+    @include flex();
+    gap: 20px;
     @include desktop {
       margin-left: auto;
     }
     @include flex();
     .show_input {
-      span {
+      label {
         font-size: 1.2rem;
         @include tablet {
           font-size: 1rem;
@@ -53,24 +55,22 @@
       }
     }
     .filter_input {
-      span {
+      @include flex();
+      label {
+        width: 100px;
         font-size: 1.2rem;
         @include tablet {
           font-size: 1rem;
         }
       }
-      margin-left: 20px;
       select {
         cursor: pointer;
-        padding-inline: 5px;
-        width: 220px;
         height: 45px;
         margin-left: 12px;
         text-align: center;
-        @include tablet {
-          width: 130px;
-          height: 40px;
-        }
+        background-color: white;
+        border-radius: 0px;
+        border-color: white;
       }
     }
   }

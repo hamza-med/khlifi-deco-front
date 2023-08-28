@@ -7,6 +7,7 @@
     flex: 1;
     .title {
       margin-top: -15px;
+      margin-bottom: 0.9em;
       color: $title-color;
       text-transform: capitalize;
       font-weight: 500;
@@ -17,6 +18,16 @@
     }
     .content {
       @include flex(column, start, start);
+      gap: 1.1em;
+      &__input {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: lighten(black, 25);
+        line-height: 1.1;
+        display: grid;
+        grid-template-columns: 1em auto;
+        gap: 0.5em;
+      }
     }
     @include tablet {
       @include flex();
