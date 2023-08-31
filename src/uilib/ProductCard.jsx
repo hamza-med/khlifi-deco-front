@@ -17,10 +17,10 @@ const ProductCard = ({ product, display }) => {
           {/* <p className="card_container__overlay__desc">share</p> */}
         </div>
 
-        {product?.discount !== null ? (
-          <span className="card_container__badge">-{product?.discount}</span>
-        ) : product?.isNew !== null ? (
-          <span className="card_container__badge">-{product?.isNew}</span>
+        {product?.discount ? (
+          <span className="card_container__badge">-{product?.discount}%</span>
+        ) : product?.isNew ? (
+          <span className="card_container__badge new">New</span>
         ) : null}
         <h1 className="card_container__title">{product?.title}</h1>
         <h3 className="card_container__description">

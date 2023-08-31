@@ -3,7 +3,7 @@ import { Input, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsGridFill, BsViewList } from "react-icons/bs";
 
-const FilterBar = ({ setDisplay, setPageSize, itemsIndex }) => {
+const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
   const [inputValue, setInputValue] = useState();
 
   useDebounce(inputValue, setPageSize, 1000);
@@ -31,10 +31,13 @@ const FilterBar = ({ setDisplay, setPageSize, itemsIndex }) => {
         </div>
         <div className="filter_input">
           <label htmlFor="standard-select">Trier par</label>
-          <Select htmlFor="standard-select">
-            <option value="">Nom</option>
-            <option value="">Prix, croissant</option>
-            <option value="">Prix, décroissant</option>
+          <Select
+            defaultValue={"asc"}
+            htmlFor="standard-select"
+            onChange={(e) => setSortItem(e.target.value)}
+          >
+            <option value="desc">Prix, décroissant</option>
+            <option value="asc">Prix, croissant</option>
           </Select>
         </div>
       </div>

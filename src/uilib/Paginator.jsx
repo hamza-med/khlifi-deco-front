@@ -1,4 +1,4 @@
-const Paginator = ({ pages, page, setPage, isPreviousData, pageCount }) => {
+const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount }) => {
   return (
     <div className="paginator__wrapper">
       <button
@@ -23,9 +23,7 @@ const Paginator = ({ pages, page, setPage, isPreviousData, pageCount }) => {
       <button
         className="next_button"
         disabled={page === pageCount}
-        onClick={() =>
-          setPage((prev) => (prev !== pageCount ? prev + 1 : prev))
-        }
+        onClick={() => setPage((prev) => prev + 1)}
       >
         Next
       </button>

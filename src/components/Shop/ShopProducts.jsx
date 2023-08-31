@@ -3,17 +3,20 @@ import Paginator from "@/uilib/Paginator";
 import ProductCard from "@/uilib/ProductCard";
 import { calculateIndexes } from "@/utils/calculateIndex";
 import { useEffect, useState } from "react";
+import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
 
 const ShopProducts = ({
+  sortItem = "asc",
   display,
   categoryName,
   subCategories,
-  pageSize,
+  pageSize = 12,
   setItemIndex,
 }) => {
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState(1);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
+  const [filteredPrice, setFilteredPrice] = useState(50);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -24,11 +27,11 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
-console.log(selectedSubCats);
+  
   const { data: products, meta } = useFetch(
     `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${selectedSubCats.map(
       (item) => `&[filters][sub_categories][id][$eq]=${item}`
-    )}&populate=*`,
+    )}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`,
     page
   );
   useEffect(() => {
@@ -60,6 +63,7 @@ console.log(selectedSubCats);
               name={item?.attributes?.title}
             />
           ))}
+          <PriceFilter setFilteredPrice={setFilteredPrice} />
         </div>
       </div>
       <div className={`showProducts_container__right `}>

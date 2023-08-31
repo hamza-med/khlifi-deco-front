@@ -10,6 +10,7 @@
     }
     h1 {
       font-size: 1.5rem;
+      text-transform: capitalize;
     }
     h3 {
       font-size: 1.3rem;
@@ -46,21 +47,27 @@
   }
   &__badge {
     @include flex();
-    height: 30px;
-    width: 30px;
+    height: 38px;
+    width: 38px;
+    padding: 10px;
     border-radius: 50%;
-    background: lighten(red, 20);
+    background: #e97171;
     color: white;
     position: absolute;
     right: 10px;
     top: 15px;
     font-size: 12px;
+    font-weight: 500;
+    &.new {
+      background: #2ec1ac;
+    }
   }
   &__title {
     margin: 5px 0px;
     color: $title-color;
     font-size: 1.2rem;
     font-weight: $fw-bold;
+    text-transform: capitalize;
   }
   &__description {
     color: #898989;

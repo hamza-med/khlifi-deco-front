@@ -9,13 +9,21 @@ const Shop = () => {
   let { id } = useParams();
   const [display, setDisplay] = useState("grid");
   const { data } = useFetch(`/categories/${id}?populate=*`);
-  const [pageSize, setPageSize] = useState("12");
+  const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
+  const [sortItem, setSortItem] = useState();
+ 
   return (
     <>
       <ShopBreadCrumbs title={data?.attributes?.title} />
-      <FilterBar setDisplay={setDisplay} setPageSize={setPageSize} itemsIndex={itemsIndex} />
+      <FilterBar
+        setDisplay={setDisplay}
+        setPageSize={setPageSize}
+        itemsIndex={itemsIndex}
+        setSortItem={setSortItem}
+      />
       <ShopProducts
+        sortItem={sortItem}
         pageSize={pageSize}
         display={display}
         categoryName={data?.attributes?.title}
