@@ -22,13 +22,15 @@ const ProductCard = ({ product, display }) => {
         ) : product?.isNew ? (
           <span className="card_container__badge new">New</span>
         ) : null}
-        <h1 className="card_container__title">{product?.title}</h1>
-        <h3 className="card_container__description">
-          {product?.description.substring(0, 30)}
-        </h3>
-        <div className="card_container__prices">
-          <p className="card_container__prices--1">{product?.price}</p>
-          <p className="card_container__prices--2">{product?.price - 10}</p>
+        <div className="card_container__content">
+          <h1 className="card_container__content__title">{product?.title}</h1>
+          <h3 className="card_container__content__description">
+            {product?.description.substring(0, 30)}
+          </h3>
+          <div className="card_container__content__prices">
+            <p className="card_container__content__prices--1">{product?.price}</p>
+            <p className="card_container__content__prices--2">{product?.price - 10}</p>
+          </div>
         </div>
       </div>
     </div>

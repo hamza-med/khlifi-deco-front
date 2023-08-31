@@ -1,4 +1,5 @@
 .card_container {
+  height: 100%;
   &.list {
     width: 90%;
     height: 300px;
@@ -17,6 +18,7 @@
       margin-bottom: 1em;
     }
   }
+
   width: 250px;
   height: 390px;
   background-color: #f4f5f7;
@@ -62,31 +64,38 @@
       background: #2ec1ac;
     }
   }
-  &__title {
-    margin: 5px 0px;
-    color: $title-color;
-    font-size: 1.2rem;
-    font-weight: $fw-bold;
-    text-transform: capitalize;
-  }
-  &__description {
-    color: #898989;
-    font-size: $fs-sm;
-    font-weight: $fw-semi-bold;
-  }
-  &__prices {
-    @include flex(row, null, start);
-    &--1 {
+  &__content {
+    height: 110px;
+
+    @include flex(column, space-between, start);
+    &__title {
+      margin: 5px 0px;
       color: $title-color;
-      font-size: 1.2rem;
-      font-weight: $fw-bold;
-    }
-    &--2 {
-      margin-left: auto;
-      color: #b0b0b0;
       font-size: 1.1rem;
-      font-weight: normal;
-      text-decoration: line-through;
+      font-weight: $fw-bold;
+      text-transform: capitalize;
+    }
+    &__description {
+      color: #898989;
+      font-size: $fs-sm;
+      font-weight: $fw-semi-bold;
+    }
+    &__prices {
+      margin-top: auto;
+      width:100%;
+      @include flex(row, space-between, center);
+      &--1 {
+        color: $title-color;
+        font-size: 1.2rem;
+        font-weight: $fw-bold;
+      }
+      &--2 {
+        margin-left: auto;
+        color: #b0b0b0;
+        font-size: 1.1rem;
+        font-weight: normal;
+        text-decoration: line-through;
+      }
     }
   }
 }

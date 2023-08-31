@@ -16,7 +16,7 @@
     @include desktop {
       display: grid;
       grid-template-columns: auto auto auto auto;
-      gap: 60px;
+      gap: 50px;
     }
     @include tablet {
       @include flex(column, center, center);
