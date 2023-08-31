@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "@/api/makeRequest";
 
-const useFetch = (url,page) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -20,7 +20,7 @@ const useFetch = (url,page) => {
       setLoading(false);
     };
     fetchData();
-  }, [url,page]);
+  }, [url]);
 
   return { data, meta, loading, error };
 };

@@ -31,8 +31,7 @@ const ShopProducts = ({
   const { data: products, meta } = useFetch(
     `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${selectedSubCats.map(
       (item) => `&[filters][sub_categories][id][$eq]=${item}`
-    )}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`,
-    page
+    )}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`
   );
   useEffect(() => {
     const indexes = calculateIndexes(

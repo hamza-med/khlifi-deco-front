@@ -1,5 +1,6 @@
 .home-products {
   color: $title-color;
+  @include flex(column,null,center);
   text-align: center;
   margin: 60px auto;
   &__title {
@@ -13,9 +14,9 @@
   }
   &__products {
     @include desktop {
-      @include flex();
-      flex-wrap: wrap;
-      gap: 70px;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      gap: 60px;
     }
     @include tablet {
       @include flex(column, center, center);
