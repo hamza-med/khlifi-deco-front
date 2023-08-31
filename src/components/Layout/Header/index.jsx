@@ -3,6 +3,7 @@ import MiniHeader from "../../MiniHeader";
 import NavbarDrawer from "../../NavbarDrawer";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
+import NavIcons from "./NavIcons";
 import ToggleMenu from "./ToggleMenu";
 
 const Header = () => {
@@ -14,6 +15,7 @@ const Header = () => {
       <div className="header">
         <Logo />
         <Navbar />
+        <NavIcons/>
         <NavbarDrawer isOpen={open} />
         <ToggleMenu showDrawer={setOpen} isOpen={open} />
         <button className="header-button">voir les plans</button>

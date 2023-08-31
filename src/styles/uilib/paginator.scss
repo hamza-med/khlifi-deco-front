@@ -1,0 +1,34 @@
+%active-button-style {
+  color: white;
+  background-color: $primary-color;
+}
+%button-style {
+  background-color: #f9f1e7;
+  border-radius: 4px;
+  &:active,
+  &:hover {
+    @extend %active-button-style;
+  }
+}
+.paginator__wrapper {
+  display: flex;
+  gap: 1.5em;
+  .previous_button,
+  .next_button {
+    @extend %button-style;
+    height: 40px;
+    min-width: 80px;
+    &:disabled {
+      background-color: #e3e3e3;
+      color: #7a7a7a;
+      cursor: not-allowed;
+    }
+  }
+  .page_button {
+    @extend %button-style;
+    padding: 8px 15px;
+    &.active {
+      @extend %active-button-style;
+    }
+  }
+}

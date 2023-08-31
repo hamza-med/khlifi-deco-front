@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const ShopBreadCrumbs = () => {
+const ShopBreadCrumbs = ({ title }) => {
   return (
     <div className="shop_header">
       <img
@@ -21,7 +21,7 @@ const ShopBreadCrumbs = () => {
               <Link to="/">Home</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link>Mobilier</Link>
+              <Link>{title}</Link>
             </BreadcrumbItem>
           </Breadcrumb>
         </div>

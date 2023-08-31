@@ -1,11 +1,18 @@
 .filter-bar__container {
+  color: $title-color;
+  p {
+    @include tablet {
+      display: none;
+      font-size: $fs-sm;
+    }
+  }
   font-weight: 500;
   height: 100px;
   padding: 10px 90px;
   background: #f9f1e7;
   @include flex(row, start, center);
   @include tablet {
-    padding: 15px 20px;
+    padding: 30px 20px;
     @include flex(column, center, center);
     gap: 10px;
   }
@@ -37,17 +44,22 @@
     }
     @include flex();
     .show_input {
+      @include flex();
       label {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         @include tablet {
           font-size: 1rem;
         }
       }
       input {
-        width: 45px;
+        width: 51px;
         height: 45px;
-        margin-left: 12px;
+        margin-left: 8px;
         text-align: center;
+        background-color: white;
+        border-color: white;
+
+        border-radius: 0px;
         @include tablet {
           width: 35px;
           height: 35px;
@@ -58,7 +70,7 @@
       @include flex();
       label {
         width: 100px;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         @include tablet {
           font-size: 1rem;
         }
@@ -66,11 +78,14 @@
       select {
         cursor: pointer;
         height: 45px;
-        margin-left: 12px;
+        margin-left: 2px;
         text-align: center;
         background-color: white;
         border-radius: 0px;
         border-color: white;
+        // &:focus,&:active,&:visited{
+        //   border:1px solid black;
+        // }
       }
     }
   }

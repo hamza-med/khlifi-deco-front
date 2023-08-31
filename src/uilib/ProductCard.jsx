@@ -1,16 +1,12 @@
-const ProductCard = ({
-  display,
-  title = "Card title",
-  desc = "This is description",
-  price = "20DT",
-  oldPrice = "10DT",
-  discount = "30%",
-}) => {
+const ProductCard = ({ product, display }) => {
   return (
     <div className={`card_container ${display}`}>
       <img
         className="card_container__img"
-        src="https://images.pexels.com/photos/7512030/pexels-photo-7512030.jpeg?auto=compress&cs=tinysrgb&w=600"
+        src={
+          import.meta.env.VITE_APP_UPLOAD_URL +
+          product?.img?.data?.attributes?.url
+        }
         alt=""
       />
       <div style={{ padding: "0px 15px" }}>
@@ -20,12 +16,19 @@ const ProductCard = ({
           </button>
           {/* <p className="card_container__overlay__desc">share</p> */}
         </div>
-        <span className="card_container__badge">-{discount}</span>
-        <h1 className="card_container__title">{title}</h1>
-        <h3 className="card_container__description">{desc}</h3>
+
+        {product?.discount !== null ? (
+          <span className="card_container__badge">-{product?.discount}</span>
+        ) : product?.isNew !== null ? (
+          <span className="card_container__badge">-{product?.isNew}</span>
+        ) : null}
+        <h1 className="card_container__title">{product?.title}</h1>
+        <h3 className="card_container__description">
+          {product?.description.substring(0, 30)}
+        </h3>
         <div className="card_container__prices">
-          <p className="card_container__prices--1">{price}</p>
-          <p className="card_container__prices--2">{oldPrice}</p>
+          <p className="card_container__prices--1">{product?.price}</p>
+          <p className="card_container__prices--2">{product?.price - 10}</p>
         </div>
       </div>
     </div>

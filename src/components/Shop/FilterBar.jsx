@@ -1,7 +1,13 @@
-import { Select } from "@chakra-ui/react";
+import { useDebounce } from "@/hooks/useDebounce";
+import { Input, Select } from "@chakra-ui/react";
+import { useState } from "react";
 import { BsGridFill, BsViewList } from "react-icons/bs";
 
-const FilterBar = ({ setDisplay }) => {
+const FilterBar = ({ setDisplay, setPageSize, itemsIndex }) => {
+  const [inputValue, setInputValue] = useState();
+
+  useDebounce(inputValue, setPageSize, 1000);
+
   return (
     <div className="filter-bar__container">
       <div className="filter-bar__container__content">
@@ -10,20 +16,25 @@ const FilterBar = ({ setDisplay }) => {
           <BsViewList onClick={() => setDisplay("list")} />
         </div>
         <span className="filter-bar__container__content--divider" />
-        <p>Montrer 1-16 de 32 éléments</p>
+        <p>{`Montrer ${itemsIndex?.firstIndex}- ${itemsIndex?.lastIndex} de ${itemsIndex?.totalItems} éléments`}</p>
       </div>
 
       <div className=" filter-bar__container__inputs">
         <div className="show_input">
           <label htmlFor="number-input">Montrer</label>
-          <input type="number" placeholder="16" id="number-input" />
+          <Input
+            type="number"
+            defaultValue={12}
+            id="number-input"
+            onChange={() => setInputValue(event.target.value)}
+          />
         </div>
         <div className="filter_input">
           <label htmlFor="standard-select">Trier par</label>
           <Select htmlFor="standard-select">
             <option value="">Nom</option>
             <option value="">Prix, croissant</option>
-            <option value="">Prix, décroissant</option>          
+            <option value="">Prix, décroissant</option>
           </Select>
         </div>
       </div>
