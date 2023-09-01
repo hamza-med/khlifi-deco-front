@@ -1,0 +1,26 @@
+.description__wrapper {
+  height: 200px;
+  background: #faf3ea;
+  padding: 80px;
+  @include flex(row, space-between, center);
+
+  &--item {
+    @include flex();
+    gap: 10px;
+    svg {
+      color: #242424;
+    }
+    &--content {
+      h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: #242424;
+      }
+      p {
+        color: #898989;
+        font-weight: 600;
+      }
+    }
+  }
+}

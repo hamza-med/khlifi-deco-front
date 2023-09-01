@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import DropDown from "../../DropDown";
 import { useDisclosure, Menu } from "@chakra-ui/react";
 
-export default function NavbarItem({ item, key }) {
+export default function NavbarItem({ item, key, id }) {
   const [specialItem, setIsSpecial] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -21,9 +21,12 @@ export default function NavbarItem({ item, key }) {
       onMouseLeave={onClose}
       onClick={!onOpen}
     >
-      <Link to={item?.url} className={specialItem ? "link new-item" : "link"}>
+      <Link
+        to={`shop/${id}`}
+        className={specialItem ? "link new-item" : "link"}
+      >
         {item?.title}
-        {item?.submenu ? (
+        {item?.sub_categories?.data?.length !== 0 ? (
           !isOpen ? (
             <RiArrowDropDownLine
               className={specialItem ? "new-item-svg" : ""}
@@ -33,9 +36,13 @@ export default function NavbarItem({ item, key }) {
           )
         ) : null}
       </Link>
-      {item?.submenu && (
+      {item?.sub_categories && (
         <Menu isOpen={isOpen}>
-          <DropDown list={item?.submenu} show={onOpen} close={onClose} />
+          <DropDown
+            list={item?.sub_categories?.data}
+            show={onOpen}
+            close={onClose}
+          />
         </Menu>
       )}
       {specialItem && <span className="badge">New</span>}

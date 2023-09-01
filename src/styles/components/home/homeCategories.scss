@@ -20,6 +20,7 @@
   &__images {
     width: 100%;
     @include flex(row, center, center);
+    flex-wrap: wrap;
     gap: 20px;
     @include tablet {
       @include flex(column, center, center);

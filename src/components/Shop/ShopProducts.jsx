@@ -27,7 +27,6 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
-  
   const { data: products, meta } = useFetch(
     `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${selectedSubCats.map(
       (item) => `&[filters][sub_categories][id][$eq]=${item}`
@@ -49,6 +48,8 @@ const ShopProducts = ({
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
     .map((_, index) => index + 1);
+  console.log(pagesArray);
+
   return (
     <div className={`showProducts_container ${display}`}>
       <div className="showProducts_container__left">
@@ -77,12 +78,14 @@ const ShopProducts = ({
             );
           })}
         </div>
-        <Paginator
-          page={page}
-          pages={pagesArray}
-          setPage={setPage}
-          pageCount={meta?.pagination.pageCount}
-        />
+        {pagesArray.length !== 1 && (
+          <Paginator
+            page={page}
+            pages={pagesArray}
+            setPage={setPage}
+            pageCount={meta?.pagination.pageCount}
+          />
+        )}
       </div>
     </div>
   );

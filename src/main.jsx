@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "@/styles/globals.scss";
 import { ChakraProvider } from "@chakra-ui/react";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
+import { ShoppingCartProvider } from "./context/ShoppingCartContext.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
-      <QueryClientProvider client={queryClient}>
+      <ShoppingCartProvider>
         <App />
-      </QueryClientProvider>
+      </ShoppingCartProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

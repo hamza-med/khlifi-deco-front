@@ -45,6 +45,11 @@
       color: $primary-color;
       padding: 9px 30px;
       font-weight: 500;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        color: white;
+        background: $primary-color;
+      }
     }
   }
   &__badge {
@@ -82,7 +87,7 @@
     }
     &__prices {
       margin-top: auto;
-      width:100%;
+      width: 100%;
       @include flex(row, space-between, center);
       &--1 {
         color: $title-color;

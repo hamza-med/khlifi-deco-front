@@ -12,7 +12,7 @@ const ProductCard = ({ product, display }) => {
       <div style={{ padding: "0px 15px" }}>
         <div className="card_container__overlay">
           <button className="card_container__overlay__button">
-            Add to Cart
+            Ajouter au panier
           </button>
           {/* <p className="card_container__overlay__desc">share</p> */}
         </div>

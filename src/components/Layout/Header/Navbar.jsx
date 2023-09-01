@@ -1,12 +1,17 @@
-import { menuItems } from "../../data/menuItems";
+
 import NavbarItem from "@/components/Layout/Header/NavbarItem";
+import useFetch from "@/hooks/useFetch";
 
 const Navbar = () => {
+  const { data: categories } = useFetch(
+    `/categories?populate=*`
+  );
+  
   return (
     <nav className="navbar">
       <ul className="menu" role="list">
-        {menuItems.map((menu, index) => {
-          return <NavbarItem item={menu} key={index} />;
+        {categories?.map((item) => {
+          return <NavbarItem item={item?.attributes} key={item?.id} id={item?.id} />;
         })}
       </ul>
     </nav>

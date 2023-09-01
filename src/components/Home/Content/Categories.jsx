@@ -12,9 +12,13 @@ const Categories = () => {
         omnis et dignissimos neque delectus odit, quo laboriosam vitae facilis?
       </p>
       <div className="home-categories__images">
-        {data?.map((item) => {
-          return <CategoryCard item={item} id={item?.id} key={item?.id} />;
-        })}
+        {data
+          ?.filter(
+            (item) => item?.attributes?.title !== "collections et tendances"
+          )
+          .map((item) => {
+            return <CategoryCard item={item} id={item?.id} key={item?.id} />;
+          })}
       </div>
     </div>
   );

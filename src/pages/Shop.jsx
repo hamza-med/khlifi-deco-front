@@ -1,3 +1,4 @@
+import DescriptionSection from "@/components/Shop/DescriptionSection";
 import FilterBar from "@/components/Shop/FilterBar";
 import ShopBreadCrumbs from "@/components/Shop/ShopBreadCrumbs";
 import ShopProducts from "@/components/Shop/ShopProducts";
@@ -30,6 +31,7 @@ const Shop = () => {
         subCategories={data?.attributes?.sub_categories?.data}
         setItemIndex={setItemIndex}
       />
+      <DescriptionSection/>
     </>
   );
 };
