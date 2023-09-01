@@ -15,12 +15,12 @@
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
+    "focus-visible": "^5.2.0",
     "framer-motion": "^10.16.0",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
-    "react-query": "^3.39.3",
     "react-router-dom": "^6.15.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"

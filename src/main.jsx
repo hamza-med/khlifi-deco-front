@@ -4,10 +4,14 @@ import App from "./App.jsx";
 import "@/styles/globals.scss";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext.jsx";
+import theme from "./theme/index.js";
+import { Global } from "@emotion/react";
+import GlobalStyles from "./theme/globalStyles.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+    <Global styles={GlobalStyles} />
       <ShoppingCartProvider>
         <App />
       </ShoppingCartProvider>

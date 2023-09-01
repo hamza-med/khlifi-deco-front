@@ -14,7 +14,7 @@ const Categories = () => {
       <div className="home-categories__images">
         {data
           ?.filter(
-            (item) => item?.attributes?.title !== "collections et tendances"
+            (item) => item?.attributes?.title !== "Collections et Tendances"
           )
           .map((item) => {
             return <CategoryCard item={item} id={item?.id} key={item?.id} />;

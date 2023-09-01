@@ -69,7 +69,7 @@ export function ShoppingCartProvider({ children }) {
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} />
+      <ShoppingCart isOpen={isOpen} onClose={closeCart} onOpen={openCart} />
     </ShoppingCartContext.Provider>
   );
 }
