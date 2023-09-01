@@ -21,30 +21,42 @@ const ShoppingCart = ({ isOpen, onClose }) => {
       variant="secondary"
     >
       <DrawerOverlay />
-      <DrawerContent height="600px" maxW="350px">
+      <DrawerContent height="600px" maxW="380px">
         <DrawerHeader>
           <HStack justifyContent="space-between">
             <Heading fontSize="1.3rem">Shopping Cart</Heading>
             <BsCartX
-              fontSize="1.8rem"
+              fontSize="1.6rem"
+              color="#9F9F9F"
               cursor="pointer"
               onClick={() => onClose()}
             />
           </HStack>
         </DrawerHeader>
-
         <DrawerBody>
           <div>Content...</div>
         </DrawerBody>
-
         <Divider border="1px solid #D9D9D9" />
         <DrawerFooter>
-          <Button variant="outline" mr={3} borderRadius="50px">
-            Cart
-          </Button>
-          <Button variant="outline" borderRadius="50px">
-            Checkout
-          </Button>
+          <HStack padding="8px">
+            <Button
+              variant="outline"
+              mr={4}
+              borderRadius="50px"
+              colorScheme="black"
+              padding="4px 40px"
+            >
+              Cart
+            </Button>
+            <Button
+              variant="outline"
+              colorScheme="black"
+              borderRadius="50px"
+              padding="4px 35px"
+            >
+              Checkout
+            </Button>
+          </HStack>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

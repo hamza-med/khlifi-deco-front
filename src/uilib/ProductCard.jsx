@@ -1,4 +1,7 @@
-const ProductCard = ({ product, display }) => {
+import { useShoppingCart } from "@/hooks/useShoppingCart";
+
+const ProductCard = ({ product, display, id }) => {
+  const { increaseCartQuantity } = useShoppingCart();
   return (
     <div className={`card_container ${display}`}>
       <img
@@ -11,7 +14,10 @@ const ProductCard = ({ product, display }) => {
       />
       <div style={{ padding: "0px 15px" }}>
         <div className="card_container__overlay">
-          <button className="card_container__overlay__button">
+          <button
+            className="card_container__overlay__button"
+            onClick={() => increaseCartQuantity(id)}
+          >
             Ajouter au panier
           </button>
           {/* <p className="card_container__overlay__desc">share</p> */}
@@ -28,8 +34,12 @@ const ProductCard = ({ product, display }) => {
             {product?.description.substring(0, 30)}
           </h3>
           <div className="card_container__content__prices">
-            <p className="card_container__content__prices--1">{product?.price}</p>
-            <p className="card_container__content__prices--2">{product?.price - 10}</p>
+            <p className="card_container__content__prices--1">
+              {product?.price}
+            </p>
+            <p className="card_container__content__prices--2">
+              {product?.price - 10}
+            </p>
           </div>
         </div>
       </div>

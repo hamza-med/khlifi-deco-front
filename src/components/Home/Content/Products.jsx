@@ -21,7 +21,11 @@ const Products = forwardRef((props, ref) => {
       <div className="home-products__products">
         {products?.map((product) => {
           return (
-            <ProductCard product={product?.attributes} key={product?.id} />
+            <ProductCard
+              product={product?.attributes}
+              key={product?.id}
+              id={product?.id}
+            />
           );
         })}
       </div>

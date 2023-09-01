@@ -1,4 +1,4 @@
-import ShoppingCart from "@/components/ShoppingCart";
+import ShoppingCart from "@/components/Shop/Cart/ShoppingCart";
 import { createContext, useState } from "react";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";

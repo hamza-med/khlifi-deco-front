@@ -1,4 +1,4 @@
-import ShoppingCart from "@/components/ShoppingCart";
+import ShoppingCart from "@/components/Shop/Cart/ShoppingCart";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import {
   AiOutlineSearch,
