@@ -6,4 +6,21 @@
   svg {
     cursor: pointer;
   }
+  .cart-icon {
+    position: relative;
+  }
+  .cartBadge {
+    @include flex(row,center,center);
+    position: absolute;
+    bottom: 0;
+    right: 12px;
+    left: 21px;
+    top: -10px;
+    border-radius: 50px;
+    width: 21px;
+    height: 21px;
+    font-size: $fs-sm;
+    background-color: $primary-color-10;
+    color: white;
+  }
 }

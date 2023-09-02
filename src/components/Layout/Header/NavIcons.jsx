@@ -7,13 +7,16 @@ import {
 } from "react-icons/ai";
 
 const NavIcons = () => {
-  const { openCart } = useShoppingCart();
+  const { openCart, cartItems } = useShoppingCart();
 
   return (
     <div className="nav_icons">
       <AiOutlineUser />
       <AiOutlineSearch />
-      <AiOutlineShoppingCart onClick={openCart} />
+      <div className="cart-icon">
+        <AiOutlineShoppingCart onClick={openCart}  />
+        <span className="cartBadge">{cartItems.length}</span>
+      </div>
       <ShoppingCart />
     </div>
   );

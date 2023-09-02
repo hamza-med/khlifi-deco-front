@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Josefin+Sans&family=Lato&family=Montserrat:wght@300;400&family=Open+Sans:wght@400;500;600;700&display=swap");
-$font-family-sans-serif: "Open sans", -apple-system, "Segoe UI", roboto,
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+$font-family-sans-serif: "Poppins", -apple-system, "Segoe UI", roboto,
   "Helvetica Neue", arial, "Noto Sans", "Liberation Sans", sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-family-base: $font-family-sans-serif;

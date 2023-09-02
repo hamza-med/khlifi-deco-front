@@ -1,7 +1,6 @@
 import {
   Drawer,
   DrawerBody,
-  Heading,
   DrawerContent,
   DrawerFooter,
   DrawerHeader,
@@ -9,8 +8,10 @@ import {
   Button,
   HStack,
   Divider,
+  Text,
 } from "@chakra-ui/react";
 import { BsCartX } from "react-icons/bs";
+import CartContent from "./CartContent";
 
 const ShoppingCart = ({ isOpen, onClose }) => {
   return (
@@ -24,7 +25,13 @@ const ShoppingCart = ({ isOpen, onClose }) => {
       <DrawerContent height="600px" maxW="380px">
         <DrawerHeader>
           <HStack justifyContent="space-between">
-            <Heading fontSize="1.3rem">Shopping Cart</Heading>
+            <Text
+              fontWeight="600"
+              fontSize="1.3rem"
+              fontFamily="'Poppins', sans-serif;"
+            >
+              Shopping Cart
+            </Text>
             <BsCartX
               fontSize="1.6rem"
               color="#9F9F9F"
@@ -33,8 +40,10 @@ const ShoppingCart = ({ isOpen, onClose }) => {
             />
           </HStack>
         </DrawerHeader>
+        <Divider border="1px solid #D9D9D9" width="80%" margin="10px auto" />
+
         <DrawerBody>
-          <div>Content...</div>
+          <CartContent />
         </DrawerBody>
         <Divider border="1px solid #D9D9D9" />
         <DrawerFooter>

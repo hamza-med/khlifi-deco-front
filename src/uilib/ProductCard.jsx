@@ -16,7 +16,15 @@ const ProductCard = ({ product, display, id }) => {
         <div className="card_container__overlay">
           <button
             className="card_container__overlay__button"
-            onClick={() => increaseCartQuantity(id)}
+            onClick={() =>
+              increaseCartQuantity(
+                id,
+                product?.title,
+                product?.price,
+                import.meta.env.VITE_APP_UPLOAD_URL +
+                  product?.img?.data?.attributes?.url
+              )
+            }
           >
             Ajouter au panier
           </button>
