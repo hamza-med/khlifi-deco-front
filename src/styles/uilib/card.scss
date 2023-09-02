@@ -4,9 +4,8 @@
     min-width: 290px;
     min-height: 420px;
   }
-  min-height: 100%;
   width: 250px;
-  height: 390px;
+  height: 400px;
   background-color: #f4f5f7;
   text-align: left;
   position: relative;
@@ -14,7 +13,7 @@
   &__img {
     display: block;
     width: 100%;
-    height: 70%;
+    height: 65%;
     object-fit: cover;
   }
   &__overlay {
@@ -50,15 +49,16 @@
     }
   }
   &__content {
-    min-height: 110px;
+    height: 135px;
     @include flex(column, space-between, start);
     &__title {
       @include tablet {
         font-size: 1.2rem;
       }
-      margin: 5px 0px;
+      margin-top: 8px;
+      margin-bottom: 7px;
       color: $title-color;
-      font-size: 1.1rem;
+      font-size: 1.09rem;
       font-weight: $fw-bold;
       text-transform: capitalize;
     }
