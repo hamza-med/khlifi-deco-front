@@ -18,10 +18,10 @@ const Footer = () => {
               <GrYoutube className="footer__top--logo--3" />
             </Link>
           </div>
-          <span>
+          <div>
             <span className="contact-info">Addresse: </span>16 rue toborsok ,
             bardo
-          </span>
+          </div>
         </div>
         <div className="footer__top--item">
           <h1>Liens</h1>

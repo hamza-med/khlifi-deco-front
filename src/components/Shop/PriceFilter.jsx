@@ -25,7 +25,7 @@ const PriceFilter = ({ setFilteredPrice }) => {
         <h1 className="title">Filtrer par prix</h1>
         <Slider         
           aria-label="slider-ex-6"
-          mt={"10px"}
+          mt="1.1em"
           onChange={(val) => setSliderValue(val)}
           max={200}
           min={10}

@@ -74,6 +74,7 @@ const ShopProducts = ({
                 display={display}
                 product={product?.attributes}
                 key={product?.id}
+                id={product?.id}
               />
             );
           })}

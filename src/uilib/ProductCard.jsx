@@ -1,7 +1,23 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import customToast from "@/utils/toast";
 
 const ProductCard = ({ product, display, id }) => {
-  const { increaseCartQuantity } = useShoppingCart();
+  const { increaseCartQuantity, cartItems } = useShoppingCart();
+
+  const handleClick = () => {
+    let title =
+      cartItems.find((item) => item.id === id) == null
+        ? "Product added successfully"
+        : "Product updated successfully";
+    customToast(title);
+    increaseCartQuantity(
+      id,
+      product?.title,
+      product?.price,
+      import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url
+    );
+  };
+
   return (
     <div className={`card_container ${display}`}>
       <img
@@ -16,15 +32,7 @@ const ProductCard = ({ product, display, id }) => {
         <div className="card_container__overlay">
           <button
             className="card_container__overlay__button"
-            onClick={() =>
-              increaseCartQuantity(
-                id,
-                product?.title,
-                product?.price,
-                import.meta.env.VITE_APP_UPLOAD_URL +
-                  product?.img?.data?.attributes?.url
-              )
-            }
+            onClick={handleClick}
           >
             Ajouter au panier
           </button>

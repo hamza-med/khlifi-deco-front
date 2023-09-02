@@ -2,9 +2,9 @@ const Alert = {
   variants: {
     primary: {
       container: {
-        bg: "#2e302e",
+        bg: "#856c49",
         color: "white",
-        borderLeft: "4px solid ",
+        borderLeft: "4px solid white",
       },
     },
     secondary: {

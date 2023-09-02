@@ -7,9 +7,9 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {
-  let { id } = useParams();
+  let { catId } = useParams();
   const [display, setDisplay] = useState("grid");
-  const { data } = useFetch(`/categories/${id}?populate=*`);
+  const { data } = useFetch(`/categories/${catId}?populate=*`);
   const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();

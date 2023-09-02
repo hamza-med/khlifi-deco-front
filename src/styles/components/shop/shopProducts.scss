@@ -8,10 +8,10 @@
   &__left {
     .title {
       margin-top: -15px;
-      margin-bottom: 0.9em;
+      margin-bottom: 1.1em;
       color: $title-color;
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       @include tablet {
         display: none;
       }
@@ -23,7 +23,7 @@
         @include tablet {
           font-size: 1rem;
         }
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 400;
         color: lighten(black, 25);
         line-height: 1.1;

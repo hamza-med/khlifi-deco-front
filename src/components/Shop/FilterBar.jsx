@@ -32,12 +32,17 @@ const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
         <div className="filter_input">
           <label htmlFor="standard-select">Trier par</label>
           <Select
-            defaultValue={"asc"}
+            h="45px"
+            ml="2px"
+            bgColor="white"
+            borderColor="white"
+            borderRadius="0px"
+            defaultValue="asc"
             htmlFor="standard-select"
             onChange={(e) => setSortItem(e.target.value)}
           >
-            <option value="desc">Prix, décroissant</option>
-            <option value="asc">Prix, croissant</option>
+            <option value="desc">Prix , décroissant</option>
+            <option value="asc">Prix , croissant</option>
           </Select>
         </div>
       </div>

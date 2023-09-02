@@ -1,5 +1,5 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { IoCloseCircleSharp } from "react-icons/io5";
 const CartItem = ({ item }) => {
   const { removeFromCart } = useShoppingCart();
   return (
@@ -13,11 +13,12 @@ const CartItem = ({ item }) => {
           <span className="span-3">{item?.price} DT</span>
         </div>
       </div>
-      <AiFillCloseCircle
-        color="grey"
-        fontSize="1.5rem"
-        onClick={() => removeFromCart(item?.id)}
-      />
+      <div className="icon">
+        <IoCloseCircleSharp
+          color="grey"
+          onClick={() => removeFromCart(item?.id)}
+        />
+      </div>
     </div>
   );
 };

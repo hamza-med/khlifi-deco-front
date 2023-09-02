@@ -1,5 +1,5 @@
 .cart__wrapper {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   @include flex(row, space-between, center);
   width: 100%;
   gap: 20px;
@@ -13,18 +13,22 @@
     @include flex(column, center, start);
     gap: 10px;
     &--title {
+      font-size: 0.95rem;
       font-weight: 500;
     }
     &--price {
       @include flex();
-      gap:10px;
-      .span-3{
-        color:$primary-color;
+      gap: 10px;
+      .span-3 {
+        color: $primary-color;
       }
     }
   }
-  svg {
+  .icon {
     margin-left: auto;
     cursor: pointer;
+    svg {
+      font-size: 22px;
+    }
   }
 }
