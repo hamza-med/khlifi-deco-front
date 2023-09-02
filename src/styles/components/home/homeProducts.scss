@@ -1,6 +1,6 @@
 .home-products {
   color: $title-color;
-  @include flex(column,null,center);
+  @include flex(column, null, center);
   text-align: center;
   margin: 60px auto;
   &__title {
@@ -19,7 +19,9 @@
       gap: 50px;
     }
     @include tablet {
-      @include flex(column, center, center);
+      @include flex(row, center, center);
+      gap: 8px;
+      flex-wrap: wrap;
     }
   }
   &__button {

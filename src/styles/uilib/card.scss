@@ -1,41 +1,21 @@
 .card_container {
-  height: 100%;
-  &.list {
-    width: 90%;
-    height: 300px;
-    display: flex;
-    img {
-      height: 100%;
-      width: 40%;
-      justify-self: start;
-    }
-    h1 {
-      font-size: 1.5rem;
-      text-transform: capitalize;
-    }
-    h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1em;
-    }
+  @include tablet {
+    margin: 20px auto;
+    min-width: 290px;
+    min-height: 420px;
   }
-
+  min-height: 100%;
   width: 250px;
   height: 390px;
   background-color: #f4f5f7;
   text-align: left;
   position: relative;
   cursor: pointer;
-  @include tablet {
-    margin: 20px auto;
-    width: 90%;
-  }
   &__img {
     display: block;
     width: 100%;
     height: 70%;
     object-fit: cover;
-  }
-  @include desktop {
   }
   &__overlay {
     @include overlay();
@@ -70,10 +50,12 @@
     }
   }
   &__content {
-    height: 110px;
-
+    min-height: 110px;
     @include flex(column, space-between, start);
     &__title {
+      @include tablet {
+        font-size: 1.2rem;
+      }
       margin: 5px 0px;
       color: $title-color;
       font-size: 1.1rem;
@@ -81,6 +63,9 @@
       text-transform: capitalize;
     }
     &__description {
+      @include tablet {
+        font-size: 1rem;
+      }
       color: #898989;
       font-size: $fs-sm;
       font-weight: $fw-semi-bold;
@@ -101,6 +86,24 @@
         font-weight: normal;
         text-decoration: line-through;
       }
+    }
+  }
+  &.list {
+    width: 90%;
+    height: 300px;
+    display: flex;
+    img {
+      height: 100%;
+      width: 40%;
+      justify-self: start;
+    }
+    h1 {
+      font-size: 1.5rem;
+      text-transform: capitalize;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1em;
     }
   }
 }

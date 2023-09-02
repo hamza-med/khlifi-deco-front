@@ -14,7 +14,7 @@ const NavIcons = () => {
       <AiOutlineUser />
       <AiOutlineSearch />
       <div className="cart-icon">
-        <AiOutlineShoppingCart onClick={openCart}  />
+        <AiOutlineShoppingCart onClick={openCart} />
         <span className="cartBadge">{cartItems.length}</span>
       </div>
       <ShoppingCart />

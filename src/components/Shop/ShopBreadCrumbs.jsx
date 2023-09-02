@@ -18,10 +18,14 @@ const ShopBreadCrumbs = ({ title }) => {
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
           >
             <BreadcrumbItem fontWeight="600">
-              <Link to="/">Home</Link>
+              <Link to="/">
+                <p>Home</p>
+              </Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link>{title}</Link>
+              <Link>
+                <p>{title}</p>
+              </Link>
             </BreadcrumbItem>
           </Breadcrumb>
         </div>

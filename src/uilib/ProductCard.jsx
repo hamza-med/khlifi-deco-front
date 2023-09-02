@@ -19,7 +19,7 @@ const ProductCard = ({ product, display, id }) => {
   };
 
   return (
-    <div className={`card_container ${display}`}>
+    <div className={`card_container ${display} `}>
       <img
         className="card_container__img"
         src={

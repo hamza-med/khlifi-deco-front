@@ -51,8 +51,8 @@ const ShopProducts = ({
   console.log(pagesArray);
 
   return (
-    <div className={`showProducts_container ${display}`}>
-      <div className="showProducts_container__left">
+    <div className={`shopProducts_container ${display}`}>
+      <div className="shopProducts_container__left">
         <p className="title">Categories de {categoryName}</p>
         <div className="content">
           {subCategories?.map((item) => (
@@ -66,8 +66,8 @@ const ShopProducts = ({
           <PriceFilter setFilteredPrice={setFilteredPrice} />
         </div>
       </div>
-      <div className={`showProducts_container__right `}>
-        <div className={`showProducts_container__right--products ${display}`}>
+      <div className={`shopProducts_container__right `}>
+        <div className={`shopProducts_container__right--products ${display}`}>
           {products?.map((product) => {
             return (
               <ProductCard

@@ -1,5 +1,10 @@
 .description__wrapper {
-  height: 200px;
+  @include tablet {
+    @include flex(column, space-between, start);
+    padding: 60px 40px;
+    height: 500px;
+  }
+  min-height: 200px;
   background: #faf3ea;
   padding: 80px;
   @include flex(row, space-between, center);
