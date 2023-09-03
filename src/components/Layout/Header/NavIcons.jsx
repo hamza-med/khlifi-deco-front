@@ -6,13 +6,13 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 
-const NavIcons = () => {
+const NavIcons = ({ onOpen }) => {
   const { openCart, cartItems } = useShoppingCart();
 
   return (
     <div className="nav_icons">
       <AiOutlineUser />
-      <AiOutlineSearch />
+      <AiOutlineSearch onClick={onOpen} />
       <div className="cart-icon">
         <AiOutlineShoppingCart onClick={openCart} />
         <span className="cartBadge">{cartItems.length}</span>

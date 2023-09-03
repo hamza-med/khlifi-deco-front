@@ -2,7 +2,7 @@ import { MenuList, MenuItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const DropDown = ({ list, show, close, catId }) => {
-  console.log("list", list);
+ 
   return (
     <div onMouseEnter={show} onMouseLeave={close}>
       <MenuList

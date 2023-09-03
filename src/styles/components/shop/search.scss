@@ -1,0 +1,18 @@
+.search__wrapper {
+  max-height: 500px;
+  overflow-y: scroll;
+  margin-top: 20px;
+  @include flex(column, space-between, start);
+  gap: 10px;
+  p {
+    background: lighten(lightgray, 13);
+    width: 90%;
+    padding: 15px 10px;
+    border-radius: 4px;
+    &:hover {
+      background: $primary-color-10;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
