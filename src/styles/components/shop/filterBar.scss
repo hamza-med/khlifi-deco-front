@@ -10,9 +10,9 @@
   }
   color: $title-color;
   font-weight: 500;
-  height: 100px;
-  padding: 10px 90px;
+  height: 80px;
   background: #f9f1e7;
+  padding: 10px 90px;
   @include flex(row, start, center);
   &__content {
     @include flex();

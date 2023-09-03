@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, onClose }) => {
   const [data, setData] = useState();
-
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    navigate(`/shop/product/${id}`);
+    onClose();
+  };
   useEffect(() => setData(results), [results]);
 
   return (
     <div className="search__wrapper">
       {data?.map((item) => {
         return (
-          <p key={item?.id}>
-            <Link>{item?.attributes?.title}</Link>
+          <p key={item?.id} onClick={() => handleClick(item?.id)}>
+            {item?.attributes?.title}
           </p>
         );
       })}

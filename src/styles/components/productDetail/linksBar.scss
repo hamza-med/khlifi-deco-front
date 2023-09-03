@@ -1,0 +1,31 @@
+.linksBar__wrapper {
+  @include tablet {
+    padding-left: 10px;
+  }
+  @include flex(row, start, center);
+  padding-left: 40px;
+  height: 80px;
+  background: #f9f1e7;
+  &--link {
+    @include tablet {
+      font-size: $fs-sm;
+    }
+    color: #9f9f9f;
+    &:hover {
+      color: inherit;
+    }
+  }
+  .prodName {
+    @include tablet {
+      font-size: $fs-sm;
+    }
+  }
+  .divider {
+    @include tablet {
+      margin-inline: 10px;
+    }
+    border-left: 2px solid rgb(194, 194, 194);
+    height: 30px;
+    margin-inline: 20px;
+  }
+}

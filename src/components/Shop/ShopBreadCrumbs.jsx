@@ -14,7 +14,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
         <div className="shop_header__text--content">
           <h1>Magasin</h1>
           <Breadcrumb
-            spacing="5px"
+            spacing="2px"
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
           >
             <BreadcrumbItem fontWeight="600">
@@ -29,9 +29,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
             </BreadcrumbItem>
             {subTitle && (
               <BreadcrumbItem>
-                <Link>
-                  <p>{subTitle}</p>
-                </Link>
+                <p>{subTitle}</p>
               </BreadcrumbItem>
             )}
           </Breadcrumb>

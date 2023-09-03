@@ -20,11 +20,14 @@ const SearchModal = ({ isOpen, onClose }) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent minW="600px" minH="68px">
+        <ModalContent
+          minW={["100%", "100%", "600px"]}
+          minH={["60%", "90%", "68px"]}
+        >
           <ModalBody display="flex" flexDir="column" justifyContent="center">
             <Input onChange={setValue} />
             <Divider />
-            <SearchResults results={products} />
+            <SearchResults results={products} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

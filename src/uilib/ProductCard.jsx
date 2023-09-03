@@ -1,9 +1,10 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import customToast from "@/utils/toast";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, display, id }) => {
   const { increaseCartQuantity, cartItems } = useShoppingCart();
-
+  const navigate = useNavigate();
   const handleClick = () => {
     let title =
       cartItems.find((item) => item.id === id) == null
@@ -19,7 +20,10 @@ const ProductCard = ({ product, display, id }) => {
   };
 
   return (
-    <div className={`card_container ${display} `}>
+    <div
+      className={`card_container ${display} `}
+      onClick={() => navigate(`/shop/product/${id}`)}
+    >
       <img
         className="card_container__img"
         src={
