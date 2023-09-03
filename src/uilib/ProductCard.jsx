@@ -28,7 +28,7 @@ const ProductCard = ({ product, display, id }) => {
         }
         alt=""
       />
-      <div style={{ padding: "0px 15px" }}>
+      <div style={{ padding: "0px 13px" }}>
         <div className="card_container__overlay">
           <button
             className="card_container__overlay__button"
@@ -47,7 +47,7 @@ const ProductCard = ({ product, display, id }) => {
         <div className="card_container__content">
           <h1 className="card_container__content__title">{product?.title}</h1>
           <h3 className="card_container__content__description">
-            {product?.description.substring(0, 49)}...
+            {product?.description.substring(0, 25)}...
           </h3>
           <div className="card_container__content__prices">
             <p className="card_container__content__prices--1">
