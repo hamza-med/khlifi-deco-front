@@ -1,7 +1,8 @@
 import { MenuList, MenuItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const DropDown = ({ list, show, close }) => {
+const DropDown = ({ list, show, close, catId }) => {
+  console.log("list", list);
   return (
     <div onMouseEnter={show} onMouseLeave={close}>
       <MenuList
@@ -19,7 +20,9 @@ const DropDown = ({ list, show, close }) => {
             fontWeight="500"
             _hover={{ bgColor: "white", color: "" }}
           >
-            <Link>{item?.attributes?.title}</Link>
+            <Link to={`shop/${catId}/sub/${item?.id}`}>
+              {item?.attributes?.title}
+            </Link>
           </MenuItem>
         ))}
       </MenuList>

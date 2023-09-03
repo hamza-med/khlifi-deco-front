@@ -13,7 +13,7 @@ const Shop = () => {
   const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
- 
+
   return (
     <>
       <ShopBreadCrumbs title={data?.attributes?.title} />
@@ -31,7 +31,7 @@ const Shop = () => {
         subCategories={data?.attributes?.sub_categories?.data}
         setItemIndex={setItemIndex}
       />
-      <DescriptionSection/>
+      <DescriptionSection />
     </>
   );
 };

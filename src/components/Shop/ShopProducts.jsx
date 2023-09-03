@@ -3,6 +3,7 @@ import Paginator from "@/uilib/Paginator";
 import ProductCard from "@/uilib/ProductCard";
 import { calculateIndexes } from "@/utils/calculateIndex";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
 
@@ -15,9 +16,13 @@ const ShopProducts = ({
   setItemIndex,
 }) => {
   const [page, setPage] = useState(1);
-  const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState(50);
+  let { subId } = useParams();
 
+  const [selectedSubCats, setSelectedSubCats] = useState([subId]);
+  const [filteredPrice, setFilteredPrice] = useState(110);
+  useEffect(() => {
+    setSelectedSubCats([subId]);
+  }, [subId]);
   const handleChange = (e) => {
     const value = e.target.value;
     const isChecked = e.target.checked;
@@ -48,7 +53,6 @@ const ShopProducts = ({
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
     .map((_, index) => index + 1);
-  console.log(pagesArray);
 
   return (
     <div className={`shopProducts_container ${display}`}>
@@ -57,6 +61,7 @@ const ShopProducts = ({
         <div className="content">
           {subCategories?.map((item) => (
             <SubCategory
+              subId={subId}
               handleChange={handleChange}
               key={item?.id}
               id={item?.id}

@@ -42,6 +42,7 @@ export default function NavbarItem({ item, key, id }) {
             list={item?.sub_categories?.data}
             show={onOpen}
             close={onClose}
+            catId={id}
           />
         </Menu>
       )}

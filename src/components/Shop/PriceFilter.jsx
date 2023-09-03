@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 
 const PriceFilter = ({ setFilteredPrice }) => {
-  const [sliderValue, setSliderValue] = useState(50);
+  const [sliderValue, setSliderValue] = useState(110);
   useDebounce(sliderValue, setFilteredPrice, 1000);
   const labelStyles = {
     mt: "1",
