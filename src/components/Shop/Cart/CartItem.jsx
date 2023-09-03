@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
         <div className="cart__wrapper--details--price">
           <span className="span-1">{item?.quantity}</span>
           <span className="span-2">&#215;</span>
-          <span className="span-3">{item?.price} DT</span>
+          <span className="span-3">{item?.price} TND</span>
         </div>
       </div>
       <div className="icon">

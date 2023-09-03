@@ -12,7 +12,7 @@ const CartContent = () => {
       ))}
       <HStack marginTop="auto" justify="space-between" width="90%">
         <Text>Subtotal</Text>
-        <Text color="#ac8f67">{subtotal} DT</Text>
+        <Text color="#ac8f67">{subtotal} TND</Text>
       </HStack>
     </VStack>
   );

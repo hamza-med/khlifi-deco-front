@@ -18,10 +18,10 @@ const ShopProducts = ({
   const [page, setPage] = useState(1);
   let { subId } = useParams();
 
-  const [selectedSubCats, setSelectedSubCats] = useState([subId]);
+  const [selectedSubCats, setSelectedSubCats] = useState([]);
   const [filteredPrice, setFilteredPrice] = useState(110);
   useEffect(() => {
-    setSelectedSubCats([subId]);
+    subId && setSelectedSubCats([subId]);
   }, [subId]);
   const handleChange = (e) => {
     const value = e.target.value;

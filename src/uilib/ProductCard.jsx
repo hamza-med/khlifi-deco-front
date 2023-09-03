@@ -51,10 +51,10 @@ const ProductCard = ({ product, display, id }) => {
           </h3>
           <div className="card_container__content__prices">
             <p className="card_container__content__prices--1">
-              {product?.price}
+              {product?.price} TND
             </p>
             <p className="card_container__content__prices--2">
-              {product?.price - 10}
+              {product?.price - 10} TND
             </p>
           </div>
         </div>
