@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer__top">
         <div className="footer__top--item">
-          <img src="../../../assets/logo1.png" alt="footer-logo" />
+          <img src="/src/assets/logo1.png" alt="footer-logo" />
           <div className="footer__top--logo">
             <Link>
               <GrFacebook className="footer__top--logo--1" />

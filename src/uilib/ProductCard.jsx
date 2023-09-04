@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 const ProductCard = ({ product, display, id }) => {
   const { increaseCartQuantity, cartItems } = useShoppingCart();
   const navigate = useNavigate();
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     let title =
       cartItems.find((item) => item.id === id) == null
         ? "Product added successfully"

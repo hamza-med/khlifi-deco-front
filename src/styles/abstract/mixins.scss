@@ -2,13 +2,13 @@
   transition: $type $time ease-in-out;
 }
 
-@mixin overlay($opacity: 0.4, $show: 0) {
+@mixin overlay( $opacity: 0.4, $show: 0,$color: black) {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, $opacity);
+  background: rgba($color, $opacity);
   opacity: $show;
   cursor: pointer;
   @include transition(opacity, 0.5s);
