@@ -124,16 +124,24 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
       }
     }
     &--fiche {
+      margin-bottom: 1em;
       .size-1 {
         @extend %size;
         background-color: rgb(253, 253, 253);
-        color:lighten(black,30);
+        color: lighten(black, 30);
       }
       .size-2 {
         @extend %size;
         background-color: rgb(250, 250, 250);
-        color:lighten(black,30);
-
+        color: lighten(black, 30);
+      }
+    }
+    &--reservation {
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8em;
+        color: lighten(black, 30);
+        text-transform: capitalize;
       }
     }
   }

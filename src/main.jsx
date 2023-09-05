@@ -7,7 +7,7 @@ import { ShoppingCartProvider } from "./context/ShoppingCartContext.jsx";
 import theme from "./theme/index.js";
 import { Global } from "@emotion/react";
 import GlobalStyles from "./theme/globalStyles.js";
-
+import "react-datepicker/dist/react-datepicker.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>

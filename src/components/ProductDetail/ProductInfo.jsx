@@ -1,5 +1,6 @@
 import { useClickOutside } from "@/hooks/useClickOutside";
 import useToggle from "@/hooks/useToggle";
+import DatePicker from "@/uilib/DatePicker";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
@@ -62,6 +63,10 @@ const ProductInfo = ({ prodData }) => {
             <p>Largeur</p>
             <span>{prodData?.largeur}</span>
           </div>
+        </div>
+        <div className="prodInfo__wrapper--right--reservation">
+          <h2>Choisissez vos date de resevation</h2>
+          <DatePicker />
         </div>
       </div>
     </div>
