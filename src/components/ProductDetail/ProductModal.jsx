@@ -22,7 +22,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
       <ModalOverlay />
       <ModalContent
         borderRadius="0px"
-        minW={["100%", "100%", "67%"]}
+        minW={["100%", "100%", "65%"]}
         minH={["60%", "68px", "68px"]}
       >
         <ModalHeader
@@ -39,7 +39,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
           display="flex"
           p="1.5em"
           gap="9px"
-          justifyContent="center"
+          justifyContent="space-between"
           alignItems="start"
         >
           <div className="left">
@@ -52,8 +52,10 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
                 {item?.price}00 TND H.T
               </p>
               <p className="left--description--reservation">
-                <span className="title-bold ">Réservation :</span> du 28/09/2023
-                jusqu'au 29/09/2023
+                <span className="title-bold ">Réservation : </span>{" "}
+                <span>
+                  du {item?.start} jusqu&rsquo; au {item?.end}
+                </span>
               </p>
               <p className="left--description--quantity">
                 <span className="title-bold ">Quantité:</span> {item?.quantity}

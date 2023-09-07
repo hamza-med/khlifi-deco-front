@@ -17,7 +17,9 @@ const ProductCard = ({ product, display, id }) => {
       1,
       product?.title,
       product?.price,
-      import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url
+      import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url,
+      new Date(),
+      new Date()
     );
   };
 

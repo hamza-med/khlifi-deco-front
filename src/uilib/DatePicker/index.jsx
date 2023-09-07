@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import PickerInput from "./PickerInput";
 
-const DatePicker = () => {
+const DatePicker = ({ setDates }) => {
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(
-    new Date().setDate(new Date().getDate() + 1)
-  );
+  const [endDate, setEndDate] = useState(new Date());
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
   };
+
+  useEffect(() => {
+    setDates([
+      startDate?.toLocaleDateString("fr"),
+      endDate?.toLocaleDateString("fr"),
+    ]);
+  }, [endDate, setDates, startDate]);
+
   return (
     <>
       <ReactDatePicker
