@@ -1,0 +1,67 @@
+%button {
+  border: 1px solid $primary-color;
+  padding: 10px 20px;
+}
+.left {
+  background: white;
+  height: 100%;
+  @include flex(row, space-between, start);
+  gap: 0.6em;
+  &--img {
+    width: 200px;
+    height: 200px;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &--description {
+    @include flex(column, start, start);
+    gap: 0.6em;
+    height: 200px;
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin-bottom: 0.4em;
+    }
+    &--price {
+      font-size: 1.1rem;
+      margin-bottom: 0.7em;
+      font-weight: 500;
+      color: lighten(rgb(34, 30, 30), 20);
+    }
+    &--reservation {
+      font-size: 1rem;
+    }
+    &--quantity {
+      font-size: 1rem;
+    }
+  }
+}
+.right {
+  @include flex(column, start, space-between);
+  gap: 10px;
+  h1 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  &--total {
+    font-size: 1rem;
+  }
+  .continue-button {
+    @extend %button;
+    background: white;
+    color: $primary-color;
+  }
+  .confirm-button {
+    @extend %button;
+    color: white;
+    background-color: $primary-color;
+  }
+}
+.title-bold {
+  color: rgb(78, 78, 78);
+  font-weight: 500;
+}

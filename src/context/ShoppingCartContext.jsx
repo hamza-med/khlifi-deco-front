@@ -22,14 +22,14 @@ export function ShoppingCartProvider({ children }) {
   function getItemQuantity(id) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
-  function increaseCartQuantity(id, title, price, src) {
+  function increaseCartQuantity(id,quantity, title, price, src) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
         return [...currItems, { id, title, price, src, quantity: 1 }];
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
+            return { ...item, quantity: item.quantity + quantity };
           } else {
             return item;
           }

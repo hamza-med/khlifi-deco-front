@@ -1,18 +1,36 @@
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { useShoppingCart } from "@/hooks/useShoppingCart";
 import useToggle from "@/hooks/useToggle";
 import DatePicker from "@/uilib/DatePicker";
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
+import ProductModal from "./ProductModal";
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 
-const ProductInfo = ({ prodData }) => {
+const ProductInfo = ({ prodData, prodId }) => {
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
+  const {
+    isOpen: openModal,
+    onOpen: onOpenModal,
+    onClose: onCloseModal,
+  } = useDisclosure();
   const [isOpen, onOpen, onClose] = useToggle(false);
   const wrapperRef = useRef(null);
-  console.log("prod data", prodData);
+  const { increaseCartQuantity, cartItems } = useShoppingCart();
+  const [productQuantity, setProductQuantity] = useState(1);
+
+  useEffect(() => {
+    const item = cartItems.find((item) => item?.id === prodId);
+    item === undefined
+      ? setProductQuantity(1)
+      : setProductQuantity(item?.quantity);
+    console.log(item);
+  }, [prodId]);
+
   useEffect(() => {
     prodData &&
       setImages([
@@ -23,6 +41,18 @@ const ProductInfo = ({ prodData }) => {
   }, [prodData]);
 
   useClickOutside(wrapperRef, onClose);
+
+  const handleAddToCart = () => {
+    increaseCartQuantity(
+      prodId,
+      productQuantity,
+      prodData?.title,
+      prodData?.price,
+      images[0]
+    );
+    onOpenModal();
+  };
+
   return (
     <div className="prodInfo__wrapper">
       <div className="prodInfo__wrapper--left">
@@ -65,10 +95,36 @@ const ProductInfo = ({ prodData }) => {
           </div>
         </div>
         <div className="prodInfo__wrapper--right--reservation">
-          <h2>Choisissez vos date de resevation</h2>
+          <h2>Choisissez vos dates de resevation</h2>
           <DatePicker />
         </div>
+        <div className="prodInfo__wrapper--right--buttons">
+          <div className="button-group">
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                setProductQuantity((prev) => (prev !== 1 ? prev - 1 : prev))
+              }
+            >
+              &minus;
+            </span>
+            <span>{productQuantity}</span>
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => setProductQuantity((prev) => prev + 1)}
+            >
+              &#43;
+            </span>
+          </div>
+          <button
+            // disabled={}
+            onClick={handleAddToCart}
+          >
+            Ajouter au panier
+          </button>
+        </div>
       </div>
+      <ProductModal isOpen={openModal} onClose={onCloseModal} prodId={prodId} />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const ProductDetail = () => {
         catData={product?.attributes?.categories?.data[0]}
         subData={product?.attributes?.sub_categories?.data[0]}
       />
-      <ProductInfo prodData={product?.attributes} />
+      <ProductInfo prodData={product?.attributes} prodId={product?.id} />
     </div>
   );
 };

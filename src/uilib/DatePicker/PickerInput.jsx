@@ -16,7 +16,7 @@ const PickerInput = forwardRef(({ value, onClick }, ref) => {
         _hover={{ bgColor: "white" }}
         fontSize="1.1rem"
         fontWeight="normal"
-        border="1px solid grey"
+        border="1px solid lightgrey"
         color="#ac8f69"
         borderRadius="3px"
         variant="outline"

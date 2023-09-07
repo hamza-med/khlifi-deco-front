@@ -104,6 +104,8 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
     }
   }
   &--right {
+    @include flex(column, null, null);
+    height: $main-img-size;
     &--title {
       text-transform: capitalize;
       font-size: 2rem;
@@ -141,7 +143,38 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
         font-size: 1.3rem;
         margin-bottom: 0.8em;
         color: lighten(black, 30);
-        text-transform: capitalize;
+        // text-transform: capitalize;
+      }
+    }
+    &--buttons {
+      @include flex(row, start, null);
+      gap: 25px;
+      margin-top: auto;
+      .button-group {
+        @include flex(row, space-between, center);
+        gap: 15px;
+        border: 1px solid grey;
+        padding: 25px 30px;
+        min-width: fit-content;
+        width: 100px;
+        height: 20px;
+        border-radius: 10px;
+      }
+      button {
+        @include flex();
+        gap: 15px;
+        border: 1px solid black;
+        font-weight: 500;
+        padding: 25px 30px;
+        min-width: fit-content;
+        width: 200px;
+        height: 20px;
+        border-radius: 10px;
+        &:disabled {
+          background-color: #e3e3e3;
+          color: #7a7a7a;
+          cursor: not-allowed;
+        }
       }
     }
   }

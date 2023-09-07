@@ -4,7 +4,9 @@ import PickerInput from "./PickerInput";
 
 const DatePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+  const [endDate, setEndDate] = useState(
+    new Date().setDate(new Date().getDate() + 1)
+  );
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -13,6 +15,8 @@ const DatePicker = () => {
   return (
     <>
       <ReactDatePicker
+        dateFormat="dd/MM/yyyy"
+        minDate={new Date()}
         selected={startDate}
         onChange={onChange}
         startDate={startDate}
