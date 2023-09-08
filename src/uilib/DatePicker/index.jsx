@@ -4,8 +4,10 @@ import ReactDatePicker from "react-datepicker";
 import PickerInput from "./PickerInput";
 
 const DatePicker = ({ setDates, prodId }) => {
+  var date = new Date();
+  date.setDate(date.getDate() + 1);
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(date);
   const { cartItems } = useShoppingCart();
 
   const onChange = (dates) => {
@@ -26,8 +28,8 @@ const DatePicker = ({ setDates, prodId }) => {
 
   useEffect(() => {
     setDates([
-      startDate?.toLocaleDateString("fr"),
-      endDate?.toLocaleDateString("fr"),
+      startDate?.toLocaleDateString("fr-FR"),
+      endDate?.toLocaleDateString("fr-FR"),
     ]);
   }, [endDate, setDates, startDate]);
 

@@ -15,7 +15,7 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
   const [error, setError] = useState(false);
-  
+
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
@@ -112,12 +112,16 @@ const ProductInfo = ({ prodData, prodId }) => {
           {error && (
             <p
               style={{
-                margin: "3px 0px",
+                padding: "12px 10px",
+                width: "80%",
+                border: "1px solid #a94442",
+                backgroundColor: "#f2dede",
+                margin: "3px 0px 10px 0px",
                 fontSize: "14px",
-                color: "#c04000",
+                color: "#a94442",
               }}
             >
-              Merci de séléctionner une date
+              Merci de séléctionner deux dates différentes
             </p>
           )}
         </div>
@@ -148,5 +152,6 @@ const ProductInfo = ({ prodData, prodId }) => {
     </div>
   );
 };
-
 export default ProductInfo;
+
+

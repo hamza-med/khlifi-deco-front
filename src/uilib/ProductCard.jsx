@@ -1,25 +1,25 @@
+import ProductModal from "@/components/ProductDetail/ProductModal";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import customToast from "@/utils/toast";
+import { useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, display, id }) => {
-  const { increaseCartQuantity, cartItems } = useShoppingCart();
+  var date = new Date();
+  date.setDate(date.getDate() + 1);
+  const { increaseCartQuantity } = useShoppingCart();
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const handleClick = (e) => {
     e.stopPropagation();
-    let title =
-      cartItems.find((item) => item.id === id) == null
-        ? "Product added successfully"
-        : "Product updated successfully";
-    customToast(title);
+    onOpen();
     increaseCartQuantity(
       id,
       1,
       product?.title,
       product?.price,
       import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url,
-      new Date(),
-      new Date()
+      new Date()?.toLocaleDateString("fr-FR"),
+      date?.toLocaleDateString("fr-FR")
     );
   };
 
@@ -67,6 +67,7 @@ const ProductCard = ({ product, display, id }) => {
           </div>
         </div>
       </div>
+      <ProductModal isOpen={isOpen} onClose={onClose} prodId={id} />
     </div>
   );
 };
