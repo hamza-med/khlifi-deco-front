@@ -14,17 +14,19 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
+  const [error, setError] = useState(false);
 
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
     onClose: onCloseModal,
   } = useDisclosure();
+
   const [isOpen, onOpen, onClose] = useToggle(false);
   const wrapperRef = useRef(null);
   const { increaseCartQuantity, cartItems } = useShoppingCart();
   const [productQuantity, setProductQuantity] = useState(1);
-  /**Add error with useEffect */
+  
   useEffect(() => {
     const item = cartItems.find((item) => item?.id === prodId);
     item === undefined
@@ -40,6 +42,11 @@ const ProductInfo = ({ prodData, prodId }) => {
         IMG_URL + prodData?.img3?.data?.attributes?.url,
       ]);
   }, [prodData]);
+
+  /**Adding error with useEffect */
+  useEffect(() => {
+    setError(dates[0] === dates[1]) || dates[1] === null;
+  }, [dates]);
 
   useClickOutside(wrapperRef, onClose);
 
@@ -99,19 +106,18 @@ const ProductInfo = ({ prodData, prodId }) => {
         </div>
         <div className="prodInfo__wrapper--right--reservation">
           <h2>Choisissez vos dates de resevation</h2>
-          <DatePicker setDates={setDates} />
-          {dates[0] === dates[1] ||
-            (dates[1] == null && (
-              <p
-                style={{
-                  margin: "3px 0px",
-                  fontSize: "14px",
-                  color: "#c04000",
-                }}
-              >
-                Merci de séléctionner une date
-              </p>
-            ))}
+          <DatePicker setDates={setDates} prodId={prodId} />
+          {error && (
+            <p
+              style={{
+                margin: "3px 0px",
+                fontSize: "14px",
+                color: "#c04000",
+              }}
+            >
+              Merci de séléctionner une date
+            </p>
+          )}
         </div>
         <div className="prodInfo__wrapper--right--buttons">
           <div className="button-group">
@@ -132,7 +138,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             </span>
           </div>
           <button
-            disabled={dates[0] === dates[1] || dates[1] == null}
+            disabled={error}
             onClick={handleAddToCart}
           >
             Ajouter au panier

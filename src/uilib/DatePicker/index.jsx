@@ -1,15 +1,26 @@
+import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import PickerInput from "./PickerInput";
 
-const DatePicker = ({ setDates }) => {
+const DatePicker = ({ setDates, prodId }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const { cartItems } = useShoppingCart();
+
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
   };
+
+  useEffect(() => {
+    const item = cartItems.find((item) => item?.id === prodId);
+    if (item) {
+      setStartDate(new Date(Date.parse(item?.start)));
+      setEndDate(new Date(Date.parse(item?.end)));
+    }
+  }, [cartItems, prodId]);
 
   useEffect(() => {
     setDates([
