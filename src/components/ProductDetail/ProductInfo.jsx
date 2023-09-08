@@ -15,7 +15,7 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
   const [error, setError] = useState(false);
-
+  
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
@@ -26,7 +26,7 @@ const ProductInfo = ({ prodData, prodId }) => {
   const wrapperRef = useRef(null);
   const { increaseCartQuantity, cartItems } = useShoppingCart();
   const [productQuantity, setProductQuantity] = useState(1);
-  
+
   useEffect(() => {
     const item = cartItems.find((item) => item?.id === prodId);
     item === undefined
@@ -45,7 +45,9 @@ const ProductInfo = ({ prodData, prodId }) => {
 
   /**Adding error with useEffect */
   useEffect(() => {
-    setError(dates[0] === dates[1]) || dates[1] === null;
+    setError(dates[0] === dates[1]) ||
+      dates[1] === null ||
+      dates[1] === undefined;
   }, [dates]);
 
   useClickOutside(wrapperRef, onClose);
@@ -137,10 +139,7 @@ const ProductInfo = ({ prodData, prodId }) => {
               &#43;
             </span>
           </div>
-          <button
-            disabled={error}
-            onClick={handleAddToCart}
-          >
+          <button disabled={error} onClick={handleAddToCart}>
             Ajouter au panier
           </button>
         </div>

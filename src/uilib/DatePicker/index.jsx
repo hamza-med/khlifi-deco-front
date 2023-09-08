@@ -17,8 +17,10 @@ const DatePicker = ({ setDates, prodId }) => {
   useEffect(() => {
     const item = cartItems.find((item) => item?.id === prodId);
     if (item) {
-      setStartDate(new Date(Date.parse(item?.start)));
-      setEndDate(new Date(Date.parse(item?.end)));
+      const [day, month, year] = item.start.split("/");
+      const [dayEnd, monthEnd, yearEnd] = item.end.split("/");
+      setStartDate(new Date(year, month - 1, day));
+      setEndDate(new Date(yearEnd, monthEnd - 1, dayEnd));
     }
   }, [cartItems, prodId]);
 
