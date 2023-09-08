@@ -15,7 +15,7 @@ const Shop = () => {
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
   const [subCat, setSubCat] = useState();
-  console.log(subCat);
+  
   useEffect(() => {
     let subCat = category?.attributes?.sub_categories?.data.find((item) => {
       return item?.id == subId;

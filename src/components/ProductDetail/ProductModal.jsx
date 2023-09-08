@@ -69,7 +69,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               <span>{subtotal} TND</span>
             </span>
 
-            <button className="continue-button">
+            <button className="continue-button" onClick={() => onClose()}>
               Continuer mes réservations
             </button>
             <button className="confirm-button">Confirmer ma réservation</button>

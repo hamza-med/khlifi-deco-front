@@ -36,7 +36,7 @@ const RelatedProducts = (props) => {
           afficher plus
         </button>
       )}
-      {pageSize > meta?.pagination.total && (
+      {pageSize > meta?.pagination.total > 4 && (
         <button className="home-products__button" onClick={handleClick2}>
           afficher moins
         </button>
