@@ -1,4 +1,8 @@
 .home-products {
+  &.product-detail {
+    border-top: 2px solid $primary-color-light-40;
+    padding-top: 40px;
+  }
   color: $title-color;
   @include flex(column, null, center);
   text-align: center;
@@ -10,6 +14,10 @@
     font-size: 1.9rem;
     @include tablet {
       font-size: 1.7rem;
+    }
+    &.product-detail-title {
+      font-weight: 500;
+      color: black;
     }
   }
   &__products {
