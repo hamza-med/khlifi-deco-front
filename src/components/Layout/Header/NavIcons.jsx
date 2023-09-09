@@ -1,4 +1,4 @@
-import ShoppingCart from "@/components/Shop/Cart/ShoppingCart";
+import ShoppingCart from "@/components/Layout/Header/Cart/ShoppingCart";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import {
   AiOutlineSearch,
@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 
 const NavIcons = ({ onOpen }) => {
-  const { openCart, cartItems } = useShoppingCart();
+  const { openCart, cartItems, isOpen, closeCart } = useShoppingCart();
 
   return (
     <div className="nav_icons">
@@ -17,7 +17,7 @@ const NavIcons = ({ onOpen }) => {
         <AiOutlineShoppingCart onClick={openCart} />
         <span className="cartBadge">{cartItems.length}</span>
       </div>
-      <ShoppingCart />
+      <ShoppingCart isOpen={isOpen} onClose={closeCart} />
     </div>
   );
 };

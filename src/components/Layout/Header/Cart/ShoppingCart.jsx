@@ -11,9 +11,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsCartX } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import CartContent from "./CartContent";
 
 const ShoppingCart = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   return (
     <Drawer
       isOpen={isOpen}
@@ -41,7 +43,6 @@ const ShoppingCart = ({ isOpen, onClose }) => {
           </HStack>
         </DrawerHeader>
         <Divider border="1px solid #D9D9D9" width="80%" margin="10px auto" />
-
         <DrawerBody>
           <CartContent />
         </DrawerBody>
@@ -54,6 +55,10 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               borderRadius="50px"
               colorScheme="black"
               padding="4px 40px"
+              onClick={() => {
+                navigate("/cart");
+                onClose();
+              }}
             >
               Cart
             </Button>

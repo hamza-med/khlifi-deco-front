@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Footer from "./components/Layout/Footer";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 const Layout = () => {
   return (
     <>
@@ -15,7 +16,8 @@ const Layout = () => {
     </>
   );
 };
-const router = createBrowserRouter([
+
+const routes = [
   {
     path: "/",
     element: <Layout />,
@@ -33,9 +35,14 @@ const router = createBrowserRouter([
         path: "shop/product/:productId",
         element: <ProductDetail />,
       },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
     ],
   },
-]);
+];
+const router = createBrowserRouter(routes);
 
 const App = () => (
   <>

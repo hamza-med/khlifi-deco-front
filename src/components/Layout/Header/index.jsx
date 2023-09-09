@@ -5,6 +5,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import MiniHeader from "../../MiniHeader";
 import NavbarDrawer from "../../NavbarDrawer";
+import ShoppingCart from "./Cart/ShoppingCart";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import NavIcons from "./NavIcons";
@@ -26,6 +27,7 @@ const Header = () => {
         <NavbarDrawer isOpen={open} categories={categories} />
         <ToggleMenu showDrawer={setOpen} isOpen={open} />
         <SearchModal isOpen={isOpen} onClose={onClose} />
+        <ShoppingCart  />
 
         {/* <button className="header-button">voir les plans</button> */}
       </div>

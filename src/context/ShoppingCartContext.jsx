@@ -1,4 +1,3 @@
-import ShoppingCart from "@/components/Shop/Cart/ShoppingCart";
 import { createContext, useState } from "react";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
@@ -67,13 +66,14 @@ export function ShoppingCartProvider({ children }) {
         removeFromCart,
         openCart,
         closeCart,
+        isOpen,
         subtotal,
         cartItems,
         cartQuantity,
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} onClose={closeCart} onOpen={openCart} />
+      {/* <ShoppingCart isOpen={isOpen} onClose={closeCart} onOpen={openCart} /> */}
     </ShoppingCartContext.Provider>
   );
 }

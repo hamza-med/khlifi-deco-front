@@ -1,4 +1,5 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import toast from "@/utils/toast";
 import { IoCloseCircleSharp } from "react-icons/io5";
 const CartItem = ({ item }) => {
   const { removeFromCart } = useShoppingCart();
@@ -16,7 +17,7 @@ const CartItem = ({ item }) => {
       <div className="icon">
         <IoCloseCircleSharp
           color="grey"
-          onClick={() => removeFromCart(item?.id)}
+          onClick={() => {removeFromCart(item?.id);toast("Produit retiré")}}
         />
       </div>
     </div>

@@ -12,7 +12,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
       />
       <div className="shop_header__text">
         <div className="shop_header__text--content">
-          <h1>Magasin</h1>
+          {catTitle ? <h1>Magasin</h1> : <h1>Panier</h1>}
           <Breadcrumb
             spacing="2px"
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
@@ -22,11 +22,17 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
                 <p>Home</p>
               </Link>
             </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Link to={`/shop/${catId}`}>
-                <p>{catTitle}</p>
-              </Link>
-            </BreadcrumbItem>
+            {catTitle ? (
+              <BreadcrumbItem>
+                <Link to={`/shop/${catId}`}>
+                  <p>{catTitle}</p>
+                </Link>
+              </BreadcrumbItem>
+            ) : (
+              <BreadcrumbItem>
+                <p>panier</p>
+              </BreadcrumbItem>
+            )}
             {subTitle && (
               <BreadcrumbItem>
                 <p>{subTitle}</p>

@@ -3,7 +3,7 @@ import { createStandaloneToast } from "@chakra-ui/react";
 const { toast } = createStandaloneToast({ theme: theme });
 const customToast = (
   title = "Product added successfully",
-  description = "Product added successfully",
+  description = "Product retiré avec succées",
   status = "success",
   position = "top"
 ) => {
