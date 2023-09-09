@@ -36,7 +36,8 @@
   }
   &__inputs {
     @include tablet {
-      gap: 10px;
+      gap: 0px;
+      width: 100%;
     }
     @include flex();
     gap: 20px;
@@ -47,9 +48,10 @@
     .show_input {
       @include flex();
       label {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         @include tablet {
           font-size: 1rem;
+          display: none;
         }
       }
       input {
@@ -61,25 +63,26 @@
         border-color: white;
         border-radius: 0px;
         @include tablet {
+          display: none;
           width: 35px;
           height: 35px;
         }
       }
     }
     .filter_input {
+      width: 100%;
       @include flex();
       label {
         width: 110px;
         font-size: 1.1rem;
         @include tablet {
-          font-size: 1rem;
+          font-size: 1.1rem;
+          @include flex(row, space-between, null);
         }
       }
       select {
         cursor: pointer;
-        @include tablet {
-          font-size: $fs-sm;
-        }
+        border:none;    
       }
     }
   }

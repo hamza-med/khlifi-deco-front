@@ -5,7 +5,6 @@ import { BsGridFill, BsViewList } from "react-icons/bs";
 
 const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
   const [inputValue, setInputValue] = useState();
-
   useDebounce(inputValue, setPageSize, 1000);
 
   return (

@@ -18,12 +18,12 @@ const PriceFilter = ({ setFilteredPrice }) => {
     fontSize: "md",
     width: "100px",
   };
-  
+
   return (
     <>
-      <Box pt={10} pb={1} width="100%">
+      <Box pt={[4, 4, 10]} pb={1} width={["95%","95%","100%"]}>
         <h1 className="title">Filtrer par prix</h1>
-        <Slider         
+        <Slider
           aria-label="slider-ex-6"
           mt="1.1em"
           onChange={(val) => setSliderValue(val)}
@@ -49,7 +49,7 @@ const PriceFilter = ({ setFilteredPrice }) => {
           </SliderMark>
 
           <SliderTrack>
-            <SliderFilledTrack bg="#ac8f67"/>
+            <SliderFilledTrack bg="#ac8f67" />
           </SliderTrack>
           <SliderThumb />
         </Slider>

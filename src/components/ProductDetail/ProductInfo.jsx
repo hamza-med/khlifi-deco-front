@@ -45,9 +45,9 @@ const ProductInfo = ({ prodData, prodId }) => {
 
   /**Adding error with useEffect */
   useEffect(() => {
-    setError(dates[0] === dates[1]) ||
-      dates[1] === null ||
-      dates[1] === undefined;
+    setError(
+      dates[0] === dates[1] || dates[1] === null || dates[1] === undefined
+    );
   }, [dates]);
 
   useClickOutside(wrapperRef, onClose);
@@ -69,11 +69,14 @@ const ProductInfo = ({ prodData, prodId }) => {
     <div className="prodInfo__wrapper">
       <div className="prodInfo__wrapper--left">
         <div className="prodInfo__wrapper--left--images">
-          {images.map((el, index) => (
-            <div key={index} className="mini-img">
-              <img src={el} onClick={() => setImgIndex(index)} />
-            </div>
-          ))}
+          {images.map(
+            (el, index) =>
+              el !== IMG_URL + "undefined" && (
+                <div key={index} className="mini-img">
+                  <img src={el} onClick={() => setImgIndex(index)} />
+                </div>
+              )
+          )}
         </div>
         <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
           <img src={images[imgIndex]} />
@@ -153,5 +156,3 @@ const ProductInfo = ({ prodData, prodId }) => {
   );
 };
 export default ProductInfo;
-
-

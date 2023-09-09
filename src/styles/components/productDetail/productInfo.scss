@@ -20,7 +20,9 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
 }
 .prodInfo__wrapper {
   @include tablet {
-    @include flex(column, center, center);
+    @include flex(column, space-between, center);
+    padding: 1em 0.8em;
+    gap: 1em;
   }
   @include flex(row, null, start);
   gap: 3em;
@@ -29,9 +31,14 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
   height: fit-content;
   &--left {
     @include flex(row, null, start);
+    @include tablet {
+      gap: 0.7em;
+    }
     gap: $img-gap;
     &--images {
       @include flex(column, center, start);
+      @include tablet {
+      }
       gap: $img-gap;
       .mini-img {
         width: $mini-img-size;
@@ -46,8 +53,8 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
     }
     &--main {
       @include tablet {
-        width: 350px;
-        height: 350px;
+        width: 93%;
+        height: 70%;
       }
       position: relative;
       border-radius: 5px;
@@ -99,6 +106,7 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
         object-fit: cover;
         @include tablet {
           width: 95%;
+          height: 80%;
         }
       }
     }
@@ -107,6 +115,9 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
     @include flex(column, null, null);
     height: $main-img-size;
     &--title {
+      @include tablet {
+        font-size: 1.8rem;
+      }
       text-transform: capitalize;
       font-size: 2rem;
       font-weight: 500;
@@ -140,10 +151,12 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
     }
     &--reservation {
       h2 {
+        @include tablet {
+          font-size: 1.2rem;
+        }
         font-size: 1.3rem;
         margin-bottom: 0.8em;
         color: lighten(black, 30);
-        // text-transform: capitalize;
       }
     }
     &--buttons {
@@ -151,6 +164,11 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
       gap: 25px;
       margin-top: auto;
       .button-group {
+        @include tablet {
+          width: 30%;
+          padding: 1.5em;
+          font-size: 1.1rem;
+        }
         @include flex(row, space-between, center);
         gap: 15px;
         border: 1px solid grey;
@@ -161,6 +179,10 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
         border-radius: 10px;
       }
       button {
+        @include tablet {
+          width: 20%;
+          padding: 1.5em;
+        }
         @include flex();
         gap: 15px;
         border: 1px solid black;

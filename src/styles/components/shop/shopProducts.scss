@@ -2,7 +2,7 @@
   @include tablet {
     margin-top: 10px;
     display: block;
-    padding: 20px 10px;
+    padding: 5px 10px;
   }
   padding: 30px 40px;
   @include flex(row, space-between, start);
@@ -20,14 +20,14 @@
     }
     .content {
       @include tablet {
-        @include flex();
+        @include flex(row, start, center);
         flex-wrap: wrap;
       }
       @include flex(column, start, start);
       gap: 1.1em;
       &__input {
         @include tablet {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           gap: 0.3em;
         }
         font-size: 1.1rem;

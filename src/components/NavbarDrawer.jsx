@@ -1,18 +1,18 @@
-import NavButton from "@/uilib/NavButton";
-import { menuItems } from "./data/menuItems";
 import NavbarItem from "./Layout/Header/NavbarItem";
 import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";
 
-const NavbarDrawer = ({ isOpen }) => {
+const NavbarDrawer = ({ isOpen, categories }) => {
   return (
     <div className={isOpen ? `nav-drawer active` : `nav-drawer`}>
       <div className="nav-drawer-content">
-        {menuItems.map((menu, index) => {
-          return <NavbarItem item={menu} key={index} />;
+        {categories?.map((item) => {
+          return (
+            <NavbarItem item={item?.attributes} key={item?.id} id={item?.id} />
+          );
         })}
-        <NavButton drawerOpened={isOpen}>voir les plans</NavButton>
+        {/* <NavButton drawerOpened={isOpen}>voir les plans</NavButton> */}
       </div>
       <div className="nav-drawer-footer">
         <div className="nav-drawer-contact">

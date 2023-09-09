@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 
-const Logo = () => {
+const Logo = ({ isMobile }) => {
   return (
     <div className="logo">
       <Link to="/">
-        <img src="/src/assets/deco.jpg" alt="logo" className="logo" />
+        {isMobile ? (
+          <img src="/src/assets/logo1.png" alt="logo" className="logo--mobile" />
+        ) : (
+          <img src="/src/assets/deco.jpg" alt="logo" className="logo" />
+        )}
       </Link>
     </div>
   );

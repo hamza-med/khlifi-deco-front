@@ -7,6 +7,9 @@
   @include flex(column, null, center);
   text-align: center;
   margin: 60px auto;
+  @include tablet {
+    margin: 20px auto;
+  }
   &__title {
     margin-bottom: 20px;
     font-weight: $fw-bolder;
