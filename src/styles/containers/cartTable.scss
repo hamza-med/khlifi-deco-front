@@ -1,0 +1,35 @@
+.table__wrapper {
+  padding: 3em;
+}
+.tb__header {
+  color: black !important;
+  text-transform: capitalize !important;
+  font-size: 1rem !important;
+  font-family: $font-family-base !important;
+  font-weight: 600 !important;
+  border: none !important;
+  padding: 1.1em !important;
+}
+.td__img {
+  width: 120px;
+  height: 90px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.td__icon {
+  font-size: 1.5rem;
+  color: $primary-color;
+  cursor: pointer;
+}
+.td__reservation{
+  width: 230px;
+  font-size: 0.98rem !important;
+  padding: 1.5em  !important;
+  gap:0px !important;
+  svg{
+    font-size: 1.3rem;
+  }
+
+}

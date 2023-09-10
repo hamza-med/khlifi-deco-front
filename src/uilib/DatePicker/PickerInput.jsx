@@ -1,11 +1,11 @@
 import { Button } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { VscCalendar } from "react-icons/vsc";
-
-const PickerInput = forwardRef(({ value, onClick }, ref) => {
+const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => {
   return (
     <div>
       <Button
+        {...props}
         display="flex"
         justifyContent="center"
         alignItems="center"

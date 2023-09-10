@@ -47,11 +47,11 @@ const ShoppingCart = ({ isOpen, onClose }) => {
           <CartContent />
         </DrawerBody>
         <Divider border="1px solid #D9D9D9" />
-        <DrawerFooter>
+        <DrawerFooter display="flex" justifyContent="center">
           <HStack padding="8px">
             <Button
               variant="outline"
-              mr={4}
+              mr={2}
               borderRadius="50px"
               colorScheme="black"
               padding="4px 40px"
@@ -60,15 +60,15 @@ const ShoppingCart = ({ isOpen, onClose }) => {
                 onClose();
               }}
             >
-              Cart
+              Panier
             </Button>
             <Button
               variant="outline"
               colorScheme="black"
               borderRadius="50px"
-              padding="4px 35px"
+              padding="4px 20px"
             >
-              Checkout
+              Confirmer reservation
             </Button>
           </HStack>
         </DrawerFooter>
