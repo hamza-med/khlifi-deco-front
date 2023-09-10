@@ -54,7 +54,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               mr={2}
               borderRadius="50px"
               colorScheme="black"
-              padding="4px 40px"
+              padding="4px 30px"
               onClick={() => {
                 navigate("/cart");
                 onClose();
@@ -66,7 +66,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               variant="outline"
               colorScheme="black"
               borderRadius="50px"
-              padding="4px 20px"
+              padding="4px 18px"
             >
               Confirmer reservation
             </Button>

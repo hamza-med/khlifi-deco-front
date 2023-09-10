@@ -11,7 +11,7 @@ const LinksBar = ({ prodName, catData, subData }) => {
       >
         <BreadcrumbItem>
           <Link to="/">
-            <p className="linksBar__wrapper--link">Home</p>
+            <p className="linksBar__wrapper--link">Accueil</p>
           </Link>
         </BreadcrumbItem>
         <BreadcrumbItem>

@@ -1,6 +1,8 @@
 $img-gap: 25px;
 $mini-img-size: 80px;
+$mini-img-size-lg: 110px;
 $main-img-size: $mini-img-size * 6 + $img-gap * 2;
+$main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
 %img {
   width: 100%;
   height: 100%;
@@ -41,8 +43,8 @@ $main-img-size: $mini-img-size * 6 + $img-gap * 2;
       }
       gap: $img-gap;
       .mini-img {
-        width: $mini-img-size;
-        height: $mini-img-size;
+        width: $mini-img-size-lg;
+        height: $mini-img-size-lg;
         overflow: hidden;
         border-radius: 5px;
         cursor: pointer;

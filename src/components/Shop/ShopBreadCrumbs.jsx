@@ -19,7 +19,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
           >
             <BreadcrumbItem fontWeight="600">
               <Link to="/">
-                <p>Home</p>
+                <p>Accueil</p>
               </Link>
             </BreadcrumbItem>
             {catTitle ? (

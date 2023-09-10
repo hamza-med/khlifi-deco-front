@@ -36,6 +36,29 @@ export function ShoppingCartProvider({ children }) {
       }
     });
   }
+  function defineQuantity(id, quantity) {
+    setCartItems((currItems) => {
+      return currItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity };
+        } else {
+          return item;
+        }
+      });
+    });
+  }
+  function defineReservation(id, start, end) {
+    setCartItems((currItems) => {
+      return currItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, start,end };
+        } else {
+          return item;
+        }
+      });
+    });
+  }
+
   function decreaseCartQuantity(id) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {
@@ -63,6 +86,8 @@ export function ShoppingCartProvider({ children }) {
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
+        defineQuantity,
+        defineReservation,
         removeFromCart,
         openCart,
         closeCart,

@@ -18,7 +18,7 @@ const ProductCard = ({ product, display, id }) => {
       product?.title,
       product?.price,
       import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url,
-      new Date()?.toLocaleDateString("fr-FR"),
+      date?.toLocaleDateString("fr-FR"),
       date?.toLocaleDateString("fr-FR")
     );
   };

@@ -1,3 +1,4 @@
+$input-size: 40px;
 .table__wrapper {
   padding: 3em;
 }
@@ -23,13 +24,19 @@
   color: $primary-color;
   cursor: pointer;
 }
-.td__reservation{
+.td__reservation {
   width: 230px;
   font-size: 0.98rem !important;
-  padding: 1.5em  !important;
-  gap:0px !important;
-  svg{
+  padding: 1.5em !important;
+  gap: 0px !important;
+  svg {
     font-size: 1.3rem;
   }
-
+}
+.td__input {
+  width: $input-size;
+  height: $input-size;
+  border: 1px solid #9f9f9f;
+  border-radius: 5px;
+  text-align: center;
 }

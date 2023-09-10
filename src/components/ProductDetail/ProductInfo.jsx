@@ -45,9 +45,7 @@ const ProductInfo = ({ prodData, prodId }) => {
 
   /**Adding error with useEffect */
   useEffect(() => {
-    setError(
-      dates[0] === dates[1] || dates[1] === null || dates[1] === undefined
-    );
+    setError(dates[1] === null || dates[1] === undefined);
   }, [dates]);
 
   useClickOutside(wrapperRef, onClose);
@@ -124,7 +122,7 @@ const ProductInfo = ({ prodData, prodId }) => {
                 color: "#a94442",
               }}
             >
-              Merci de séléctionner deux dates différentes
+              Merci de séléctionner la date de fin
             </p>
           )}
         </div>

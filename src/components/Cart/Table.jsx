@@ -12,21 +12,31 @@ import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { AiFillDelete } from "react-icons/ai";
 import PickerInput from "@/uilib/DatePicker/PickerInput";
+import toast from "@/utils/toast";
 
-const Reservation = ({ start, end }) => {
+const Reservation = ({ start, end, id }) => {
+  const { defineReservation } = useShoppingCart();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
   useEffect(() => {
     const [day, month, year] = start.split("/");
     const [dayEnd, monthEnd, yearEnd] = end.split("/");
     setStartDate(new Date(year, month - 1, day));
     setEndDate(new Date(yearEnd, monthEnd - 1, dayEnd));
-  }, [end, start]);
+  }, []);
 
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+
+
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    defineReservation(
+      id,
+      start?.toLocaleDateString("fr-FR"),
+      end?.toLocaleDateString("fr-FR")
+    );
   };
   return (
     <>
@@ -39,13 +49,22 @@ const Reservation = ({ start, end }) => {
         endDate={endDate}
         selectsRange
         showPopperArrow={false}
-        customInput={<PickerInput className="td__reservation"/>}
+        customInput={<PickerInput className="td__reservation" />}
       />
     </>
   );
 };
 
 const TableItem = ({ item }) => {
+  const { defineQuantity, removeFromCart } = useShoppingCart();
+  const handleChange = (e) => {
+    defineQuantity(item?.id, +e.target.value);
+  };
+  const handleRemove = () => {
+    removeFromCart(item?.id);
+    toast("Produit retiré");
+  };
+
   return (
     <Tr>
       <Td>
@@ -56,12 +75,19 @@ const TableItem = ({ item }) => {
       <Td color="#9F9F9F">{item?.title}</Td>
       <Td color="#9F9F9F">{item?.price} TND</Td>
       <Td>
-        <Reservation start={item?.start} end={item?.end} />
+        <Reservation start={item?.start} end={item?.end} id={item?.id} />
       </Td>
-      <Td>{item?.quantity}</Td>
+      <Td>
+        <input
+          className="td__input"
+          type="number"
+          defaultValue={item?.quantity}
+          onChange={handleChange}
+        />
+      </Td>
       <Td isNumeric>{item?.quantity * item?.price} TND</Td>
       <Td className="td__icon">
-        <AiFillDelete />
+        <AiFillDelete onClick={handleRemove} />
       </Td>
     </Tr>
   );

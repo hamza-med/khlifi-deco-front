@@ -6,7 +6,7 @@ import PickerInput from "./PickerInput";
 const DatePicker = ({ setDates, prodId }) => {
   var date = new Date();
   date.setDate(date.getDate() + 1);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(date);
   const [endDate, setEndDate] = useState(date);
   const { cartItems } = useShoppingCart();
 
