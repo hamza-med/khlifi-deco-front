@@ -26,8 +26,6 @@ const Reservation = ({ start, end, id }) => {
     setEndDate(new Date(yearEnd, monthEnd - 1, dayEnd));
   }, []);
 
-
-
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -97,7 +95,7 @@ const Table = () => {
   const { cartItems } = useShoppingCart(true);
   return (
     <div>
-      <TableContainer w="fit-content">
+      <TableContainer>
         <Tb variant="simple">
           <Thead bgColor="#F9F1E7">
             <Tr p="1em">

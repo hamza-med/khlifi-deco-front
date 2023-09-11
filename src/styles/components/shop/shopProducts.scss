@@ -7,12 +7,16 @@
   padding: 30px 40px;
   @include flex(row, space-between, start);
   &__left {
+    width: 19%;
+    @include tablet {
+      width: 100%;
+    }
     .title {
       @include tablet {
         margin-top: 0px;
         font-size: 1.2rem;
       }
-      margin-top: -15px;
+      margin-top: -0.2em;
       margin-bottom: 1.1em;
       color: $title-color;
       font-weight: 500;
@@ -41,17 +45,17 @@
     }
   }
   &__right {
+    width: 80%;
     @include tablet {
       margin-top: 30px;
     }
     @include flex(column, space-between, center);
     gap: 30px;
-    flex: 4;
     &--products {
       &.grid {
         display: grid;
         grid-template-columns: auto auto auto auto;
-        gap: 30px;
+        gap: 2.5em;
         @include tablet {
           gap: 5px;
           @include flex(column, space-between, center);
