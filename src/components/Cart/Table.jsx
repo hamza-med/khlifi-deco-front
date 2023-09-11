@@ -65,7 +65,7 @@ const TableItem = ({ item }) => {
 
   return (
     <Tr>
-      <Td>
+      <Td paddingLeft={0}>
         <div className="td__img">
           <img src={item?.src} alt="" />
         </div>
@@ -83,8 +83,10 @@ const TableItem = ({ item }) => {
           onChange={handleChange}
         />
       </Td>
-      <Td isNumeric>{item?.quantity * item?.price} TND</Td>
-      <Td className="td__icon">
+      <Td isNumeric paddingLeft={0} >
+        {item?.quantity * item?.price} TND
+      </Td>
+      <Td className="td__icon" paddingRight="0.8em">
         <AiFillDelete onClick={handleRemove} />
       </Td>
     </Tr>

@@ -7,6 +7,7 @@ import Footer from "./components/Layout/Footer";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 const Layout = () => {
   return (
     <>
@@ -38,6 +39,10 @@ const routes = [
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
     ],
   },
