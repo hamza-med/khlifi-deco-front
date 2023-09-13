@@ -13,6 +13,12 @@ $input-size: 40px;
   border: none !important;
   padding: 1.1em !important;
 }
+.td__title{
+  &:hover{
+    color:black;
+    cursor: pointer;
+  }
+}
 .td__img {
   width: 90px;
   height: 90px;

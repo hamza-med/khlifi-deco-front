@@ -13,6 +13,7 @@ import ReactDatePicker from "react-datepicker";
 import { AiFillDelete } from "react-icons/ai";
 import PickerInput from "@/uilib/DatePicker/PickerInput";
 import toast from "@/utils/toast";
+import { useNavigate } from "react-router-dom";
 
 const Reservation = ({ start, end, id }) => {
   const { defineReservation } = useShoppingCart();
@@ -54,6 +55,8 @@ const Reservation = ({ start, end, id }) => {
 };
 
 const TableItem = ({ item }) => {
+  const navigate = useNavigate();
+
   const { defineQuantity, removeFromCart } = useShoppingCart();
   const handleChange = (e) => {
     defineQuantity(item?.id, +e.target.value);
@@ -70,7 +73,13 @@ const TableItem = ({ item }) => {
           <img src={item?.src} alt="" />
         </div>
       </Td>
-      <Td color="#9F9F9F">{item?.title}</Td>
+      <Td
+        color="#9F9F9F"
+        className="td__title"
+        onClick={() => navigate(`/shop/product/${item?.id}`)}
+      >
+        {item?.title}
+      </Td>
       <Td color="#9F9F9F">{item?.price} TND</Td>
       <Td>
         <Reservation start={item?.start} end={item?.end} id={item?.id} />
@@ -83,7 +92,7 @@ const TableItem = ({ item }) => {
           onChange={handleChange}
         />
       </Td>
-      <Td isNumeric paddingLeft={0} >
+      <Td isNumeric paddingLeft={0}>
         {item?.quantity * item?.price} TND
       </Td>
       <Td className="td__icon" paddingRight="0.8em">
