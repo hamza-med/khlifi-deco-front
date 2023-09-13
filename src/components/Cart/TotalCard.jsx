@@ -14,7 +14,7 @@ const TotalCard = () => {
         <h2>Total</h2>
         <p style={{ color: "#ac8f67", fontWeight: "600",fontSize:"1.2rem" }}>{subtotal} TND</p>
       </HStack>
-      <button>Reserver </button>
+      <button>Confirmer Reservation </button>
     </div>
   );
 };

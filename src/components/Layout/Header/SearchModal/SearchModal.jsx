@@ -6,7 +6,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import Input from "../../../../uilib/Input";
+import Input from "../../../../uilib/SearchInput";
 import SearchResults from "./SearchResults";
 import useFetch from "@/hooks/useFetch";
 

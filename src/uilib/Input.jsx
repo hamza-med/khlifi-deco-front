@@ -1,25 +1,32 @@
-import { useDebounce } from "@/hooks/useDebounce";
-import { useEffect } from "react";
-import { useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input as ChInput,
+} from "@chakra-ui/react";
+import { Controller } from "react-hook-form";
 
-const Input = ({ onChange }) => {
-  const [input, setInput] = useState("");
-  const [value, setValue] = useState();
-
-  useDebounce(input, setValue, 1000);
-  useEffect(() => {
-    onChange(value);
-  }, [onChange, value]);
+const Input = ({ label, name, placeholder, control, required }) => {
   return (
-    <div className="input-wrapper">
-      <AiOutlineSearch id="search-icon" />
-      <input
-        className="search-input"
-        placeholder="Rechercher un produit"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
+    <div>
+      {name && (
+        <Controller
+          name={name}
+          id={name}
+          control={control}
+          render={({ field, fieldState: { error } }) => {
+            return (
+              <>
+                <FormControl isRequired={required} isInvalid={!!error?.message}>
+                  <FormLabel htmlFor="name">{label}</FormLabel>
+                  <ChInput placeholder={placeholder} {...field} />
+                  <FormErrorMessage>{error?.message}</FormErrorMessage>
+                </FormControl>
+              </>
+            );
+          }}
+        />
+      )}
     </div>
   );
 };

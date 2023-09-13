@@ -5,7 +5,7 @@ import ShopBreadCrumbs from "@/components/Shop/ShopBreadCrumbs";
 const Cart = () => {
   return (
     <>
-      <ShopBreadCrumbs />
+      <ShopBreadCrumbs type="panier"/>
       <CartTable />
       <DescriptionSection/>
     </>

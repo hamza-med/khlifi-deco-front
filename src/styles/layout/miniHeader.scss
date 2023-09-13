@@ -1,14 +1,37 @@
 .mini-navbar {
+  @include flex(row, space-between);
   background-color: $black-color;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: white;
-  text-align: center;
   height: $mini-header-height;
-  @include flex();
   @include tablet {
     font-size: 12px;
+  }
+  .contact {
+    @include tablet {
+      display: none;
+    }
+    @include flex();
+    gap: 8px;
+    margin-left: 4em;
+    justify-self: start;
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+  .contact-us {
+    @include tablet {
+      display: none;
+    }
+    @include flex();
+    cursor: pointer;
+    gap: 8px;
+    margin-right: 4em;
+    svg {
+      font-size: 1.4rem;
+    }
   }
 }

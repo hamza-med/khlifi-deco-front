@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
+const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   return (
     <div className="shop_header">
       <img
@@ -12,7 +12,13 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
       />
       <div className="shop_header__text">
         <div className="shop_header__text--content">
-          {catTitle ? <h1>Magasin</h1> : <h1>Panier</h1>}
+          {type === "panier" ? (
+            <h1>Panier</h1>
+          ) : type === "checkout" ? (
+            <h1>Checkout</h1>
+          ) : (
+            <h1>Magasin</h1>
+          )}
           <Breadcrumb
             spacing="2px"
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
@@ -30,7 +36,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId }) => {
               </BreadcrumbItem>
             ) : (
               <BreadcrumbItem>
-                <p>panier</p>
+                <p>{type}</p>
               </BreadcrumbItem>
             )}
             {subTitle && (
