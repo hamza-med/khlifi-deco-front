@@ -7,7 +7,7 @@ const TotalCard = () => {
     <div className="table__card">
       <h1>Cart totals</h1>
       <HStack justifyContent="start" width="100%" gap="4em">
-        <h2>Subtotal</h2>
+        <h2>Sous-total</h2>
         <p style={{ color: "#9F9F9F" }}>{subtotal} TND</p>
       </HStack>
       <HStack justifyContent="start" width="100%"  gap="4em">

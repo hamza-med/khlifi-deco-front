@@ -1,0 +1,26 @@
+.billingForm__wrapper {
+  width: 50%;
+  @include tablet {
+    width: 100%;
+  }
+  .billing__title {
+    @include tablet {
+      font-size: 1.6rem;
+    }
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+  .billing__input {
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .name__section {
+    @include tablet {
+      display: block;
+    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+  }
+}
