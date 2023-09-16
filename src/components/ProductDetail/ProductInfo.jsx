@@ -7,10 +7,12 @@ import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
+import { useMediaQuery } from "@chakra-ui/react";
 import ProductModal from "./ProductModal";
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 
 const ProductInfo = ({ prodData, prodId }) => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
@@ -66,24 +68,50 @@ const ProductInfo = ({ prodData, prodId }) => {
   return (
     <div className="prodInfo__wrapper">
       <div className="prodInfo__wrapper--left">
-        <div className="prodInfo__wrapper--left--images">
-          {images.map(
-            (el, index) =>
-              el !== IMG_URL + "undefined" && (
-                <div key={index} className="mini-img">
-                  <img src={el} onClick={() => setImgIndex(index)} />
-                </div>
-              )
-          )}
-        </div>
-        <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
-          <img src={images[imgIndex]} />
-          <div className="overlay">
-            <div className="overlay--svg">
-              <MdOutlineZoomIn />
+        {!isMobile ? (
+          <>
+            {" "}
+            <div className="prodInfo__wrapper--left--images">
+              {images.map(
+                (el, index) =>
+                  el !== IMG_URL + "undefined" && (
+                    <div key={index} className="mini-img">
+                      <img src={el} onClick={() => setImgIndex(index)} />
+                    </div>
+                  )
+              )}
             </div>
-          </div>
-        </div>
+            <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
+              <img src={images[imgIndex]} />
+              <div className="overlay">
+                <div className="overlay--svg">
+                  <MdOutlineZoomIn />
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
+              <img src={images[imgIndex]} />
+              <div className="overlay">
+                <div className="overlay--svg">
+                  <MdOutlineZoomIn />
+                </div>
+              </div>
+            </div>
+            <div className="prodInfo__wrapper--left--images">
+              {images.map(
+                (el, index) =>
+                  el !== IMG_URL + "undefined" && (
+                    <div key={index} className="mini-img">
+                      <img src={el} onClick={() => setImgIndex(index)} />
+                    </div>
+                  )
+              )}
+            </div>
+          </>
+        )}
         <div className={isOpen ? "popup-image open" : "popup-image"}>
           <span onClick={onClose}>&times;</span>
           <img src={images[imgIndex]} ref={wrapperRef} />

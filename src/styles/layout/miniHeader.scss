@@ -26,6 +26,8 @@
     @include tablet {
       display: none;
     }
+    letter-spacing: normal;
+
     @include flex();
     cursor: pointer;
     gap: 8px;

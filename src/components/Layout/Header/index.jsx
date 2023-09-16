@@ -1,6 +1,5 @@
 import useFetch from "@/hooks/useFetch";
-import { useMobile } from "@/hooks/useMobile";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 
 import { useState } from "react";
 import MiniHeader from "../../MiniHeader";
@@ -16,7 +15,8 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
   const { data: categories } = useFetch(`/categories?populate=*`);
-  const isMobile = useMobile();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <header>
       <MiniHeader />
@@ -27,7 +27,7 @@ const Header = () => {
         <NavbarDrawer isOpen={open} categories={categories} />
         <ToggleMenu showDrawer={setOpen} isOpen={open} />
         <SearchModal isOpen={isOpen} onClose={onClose} />
-        <ShoppingCart  />
+        <ShoppingCart />
 
         {/* <button className="header-button">voir les plans</button> */}
       </div>

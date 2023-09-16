@@ -2,6 +2,7 @@ import { useShoppingCart } from "@/hooks/useShoppingCart";
 import {
   Modal,
   ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
@@ -33,15 +34,10 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
           fontSize="1.2rem"
           fontWeight="500"
         >
-          &#x2713; Produit ajouté au panier avec succès
+          Produit ajouté au panier avec succès
         </ModalHeader>
-        <ModalBody
-          display="flex"
-          p="1.5em"
-          gap="9px"
-          justifyContent="space-between"
-          alignItems="start"
-        >
+          <ModalCloseButton color="darkgrey" />
+        <ModalBody className="product-modal__wrapper">
           <div className="left">
             <div className="left--img">
               <img src={item?.src} alt="" />

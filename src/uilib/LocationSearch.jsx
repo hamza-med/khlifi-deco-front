@@ -31,12 +31,16 @@ const LocationSearch = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [distance, setDistance] = useState();
   console.log(distance);
+  console.log(placeList);
   useDebounce(value, setSearchText, 700);
 
   useEffect(() => {
     const controller = new AbortController();
     const params = {
       city: searchText,
+      country: "Tunisia",
+      postalcode: 2000,
+      state:"Tunis",
       countrycodes: ["tn"],
       format: "json",
       addressdetails: 1,
@@ -101,7 +105,7 @@ const LocationSearch = ({
                       position="absolute"
                       top="75px"
                       minWidth="655.6px"
-                      maxWidth={["800px", "800px", "800px"]}
+                      maxW={["800px", "800px", "100%"]}
                       maxHeight={["300px", "300px", "300px"]}
                       overflowY="auto"
                     >

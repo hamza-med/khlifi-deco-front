@@ -22,7 +22,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
 }
 .prodInfo__wrapper {
   @include tablet {
-    @include flex(column, space-between, center);
+    display: block;
     padding: 1em 0.8em;
     gap: 1em;
   }
@@ -34,12 +34,16 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
   &--left {
     @include flex(row, null, start);
     @include tablet {
-      gap: 0.7em;
+      display: block;
+
+      margin: 5px auto;
     }
     gap: $img-gap;
     &--images {
       @include flex(column, center, start);
       @include tablet {
+        @include flex(row, space-between, center);
+        gap: 0px;
       }
       gap: $img-gap;
       .mini-img {
@@ -55,8 +59,9 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     }
     &--main {
       @include tablet {
-        width: 93%;
-        height: 70%;
+        max-width: 100%;
+        max-height: 400px;
+        margin-bottom: 0.8em;
       }
       position: relative;
       border-radius: 5px;
@@ -114,8 +119,14 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     }
   }
   &--right {
+    @include tablet {
+      display: block;
+      height: fit-content;
+    }
     @include flex(column, null, null);
+
     height: $main-img-size;
+
     &--title {
       @include tablet {
         font-size: 1.8rem;
@@ -167,8 +178,9 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       margin-top: auto;
       .button-group {
         @include tablet {
+          margin-top: 1em;
           width: 30%;
-          padding: 1.5em;
+          padding: 1.4em;
           font-size: 1.1rem;
         }
         @include flex(row, space-between, center);
@@ -184,6 +196,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
         @include tablet {
           width: 20%;
           padding: 1.5em;
+          margin-top: auto;
         }
         @include flex();
         gap: 15px;

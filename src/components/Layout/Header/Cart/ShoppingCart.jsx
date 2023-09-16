@@ -24,7 +24,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
       variant="secondary"
     >
       <DrawerOverlay />
-      <DrawerContent height="600px" maxW={["100%", "100%", "380px"]}>
+      <DrawerContent height={["600px","100%","100%"]} maxW={["100%", "100%", "380px"]}>
         <DrawerHeader>
           <HStack justifyContent="space-between">
             <Text
