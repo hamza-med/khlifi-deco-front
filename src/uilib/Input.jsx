@@ -18,8 +18,10 @@ const Input = ({ label, name, placeholder, control, required }) => {
             return (
               <div className="billing__input">
                 <FormControl isRequired={required} isInvalid={!!error?.message}>
-                  <FormLabel htmlFor="name">{label}</FormLabel>
+                  <FormLabel htmlFor={name}>{label}</FormLabel>
                   <ChInput
+                    type="text"
+                    id={name}
                     placeholder={placeholder}
                     {...field}
                     bgColor="white"

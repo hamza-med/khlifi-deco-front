@@ -6,7 +6,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import Input from "../../../../uilib/SearchInput";
+import SearchInput from "@/uilib/SearchInput";
 import SearchResults from "./SearchResults";
 import useFetch from "@/hooks/useFetch";
 
@@ -22,7 +22,7 @@ const SearchModal = ({ isOpen, onClose }) => {
         <ModalOverlay />
         <ModalContent w={["94%", "90%", "600px"]} minH={["60%", "90%", "68px"]}>
           <ModalBody display="flex" flexDir="column" justifyContent="center">
-            <Input onChange={setValue} />
+            <SearchInput onChange={setValue} />
             <Divider />
             <SearchResults results={products} onClose={onClose} />
           </ModalBody>
