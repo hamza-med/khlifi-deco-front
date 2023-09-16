@@ -24,7 +24,10 @@ const ShoppingCart = ({ isOpen, onClose }) => {
       variant="secondary"
     >
       <DrawerOverlay />
-      <DrawerContent height={["600px","100%","100%"]} maxW={["100%", "100%", "380px"]}>
+      <DrawerContent
+        height={["600px", "100%", "100%"]}
+        maxW={["100%", "100%", "380px"]}
+      >
         <DrawerHeader>
           <HStack justifyContent="space-between">
             <Text
@@ -67,6 +70,10 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               colorScheme="black"
               borderRadius="50px"
               padding="4px 18px"
+              onClick={() => {
+                navigate("/checkout");
+                onClose();
+              }}
             >
               Confirmer reservation
             </Button>

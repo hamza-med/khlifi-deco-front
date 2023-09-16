@@ -6,9 +6,11 @@
   @include tablet {
     display: block;
   }
-  @include flex();
-  padding: 1.5em !important;
-  gap: 9px;
+  @include flex(row, space-between, start);
+  gap: 0.6em;
+
+  padding: 1em !important;
+
   .left {
     @include tablet {
       display: block;

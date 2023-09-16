@@ -9,8 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductModal = ({ isOpen, onClose, prodId }) => {
+  const navigate = useNavigate();
+
   const { cartItems, subtotal } = useShoppingCart();
   const [item, setItem] = useState();
   useEffect(
@@ -23,7 +26,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
       <ModalOverlay />
       <ModalContent
         borderRadius="0px"
-        minW={["100%", "100%", "65%"]}
+        minW={["100%", "100%", "fit-content"]}
         minH={["60%", "68px", "68px"]}
       >
         <ModalHeader
@@ -36,7 +39,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
         >
           Produit ajouté au panier avec succès
         </ModalHeader>
-          <ModalCloseButton color="darkgrey" />
+        <ModalCloseButton color="rgba(0,0,0,0.4)" />
         <ModalBody className="product-modal__wrapper">
           <div className="left">
             <div className="left--img">
@@ -49,9 +52,13 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               </p>
               <p className="left--description--reservation">
                 <span className="title-bold ">Réservation : </span>{" "}
-                <span>
-                  du {item?.start} jusqu&rsquo; au {item?.end}
-                </span>
+                {item?.start !== item?.end ? (
+                  <span>
+                    du {item?.start} jusqu&rsquo; au {item?.end}
+                  </span>
+                ) : (
+                  <span>le {item?.start}</span>
+                )}
               </p>
               <p className="left--description--quantity">
                 <span className="title-bold ">Quantité:</span> {item?.quantity}
@@ -68,7 +75,15 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
             <button className="continue-button" onClick={() => onClose()}>
               Continuer mes réservations
             </button>
-            <button className="confirm-button">Confirmer ma réservation</button>
+            <button
+              className="confirm-button"
+              onClick={() => {
+                navigate("/checkout");
+                onClose();
+              }}
+            >
+              Confirmer ma réservation
+            </button>
           </div>
         </ModalBody>
       </ModalContent>
