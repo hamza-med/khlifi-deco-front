@@ -7,6 +7,7 @@ import {
   Th,
   Thead,
   Tr,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
@@ -55,8 +56,8 @@ const Reservation = ({ start, end, id }) => {
 };
 
 const TableItem = ({ item }) => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
-
   const { defineQuantity, removeFromCart } = useShoppingCart();
   const handleChange = (e) => {
     defineQuantity(item?.id, +e.target.value);
@@ -74,14 +75,17 @@ const TableItem = ({ item }) => {
         </div>
       </Td>
       <Td
+        paddingLeft="1em"
         color="#9F9F9F"
         className="td__title"
         onClick={() => navigate(`/shop/product/${item?.id}`)}
       >
         {item?.title}
       </Td>
-      <Td color="#9F9F9F">{item?.price} TND</Td>
-      <Td>
+      <Td color="#9F9F9F" paddingLeft="1.1em">
+        {item?.price} TND
+      </Td>
+      <Td paddingLeft="1.1em">
         <Reservation start={item?.start} end={item?.end} id={item?.id} />
       </Td>
       <Td>
@@ -92,9 +96,7 @@ const TableItem = ({ item }) => {
           onChange={handleChange}
         />
       </Td>
-      <Td isNumeric paddingLeft={0}>
-        {item?.quantity * item?.price} TND
-      </Td>
+      <Td textAlign="start">{item?.quantity * item?.price} TND</Td>
       <Td className="td__icon" paddingRight="0.8em">
         <AiFillDelete onClick={handleRemove} />
       </Td>
@@ -104,6 +106,8 @@ const TableItem = ({ item }) => {
 
 const Table = () => {
   const { cartItems } = useShoppingCart(true);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <div>
       <TableContainer>

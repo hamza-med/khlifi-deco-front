@@ -38,7 +38,7 @@ export default function NavbarItem({ item, key, id }) {
       </Link>
       {item?.sub_categories && (
         <Menu isOpen={isOpen}>
-          <DropDown
+            <DropDown
             list={item?.sub_categories?.data}
             show={onOpen}
             close={onClose}

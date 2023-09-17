@@ -1,8 +1,12 @@
 $input-size: 40px;
 .table__wrapper {
-  padding: 3em 3em;
+  @include tablet {
+    display: inline;
+    padding: 1em;
+  }
+  padding: 3em 4em;
   @include flex(row, space-between, start);
-  gap: 15px;
+  gap: 35px;
 }
 .tb__header {
   color: black !important;
@@ -13,13 +17,18 @@ $input-size: 40px;
   border: none !important;
   padding: 1.1em !important;
 }
-.td__title{
-  &:hover{
-    color:black;
+.td__title {
+  text-transform: capitalize;
+  &:hover {
+    color: black;
     cursor: pointer;
   }
 }
 .td__img {
+  @include tablet {
+    width: 45px;
+    height: 45px;
+  }
   width: 90px;
   height: 90px;
   img {
