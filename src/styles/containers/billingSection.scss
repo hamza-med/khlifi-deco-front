@@ -1,8 +1,11 @@
 .billing__wrapper {
   padding: 2.5rem 6.5rem;
-  @include flex(row, start, center);
+  @include flex(row, space-between, start);
+  gap: 8em;
   @include tablet {
+    gap: 3em;
+
     @include flex(column, start, center);
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem 1rem;
   }
 }

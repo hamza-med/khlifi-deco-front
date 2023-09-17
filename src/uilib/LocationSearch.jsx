@@ -40,7 +40,7 @@ const LocationSearch = ({
       city: searchText,
       country: "Tunisia",
       postalcode: 2000,
-      state:"Tunis",
+      state: "Tunis",
       countrycodes: ["tn"],
       format: "json",
       addressdetails: 1,
@@ -116,7 +116,9 @@ const LocationSearch = ({
                               width="100%"
                               onClick={() => {
                                 setValue(name, place?.display_name);
-                                setDistance(distanceCalc(place?.lat, place?.lon));
+                                setDistance(
+                                  distanceCalc(place?.lat, place?.lon)
+                                );
                               }}
                             >
                               {place?.display_name}

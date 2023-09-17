@@ -67,45 +67,76 @@ const TableItem = ({ item }) => {
     toast("Produit retiré");
   };
 
-  return (
-    <Tr>
-      <Td paddingLeft={0}>
-        <div className="td__img">
-          <img src={item?.src} alt="" />
-        </div>
-      </Td>
-      <Td
-        paddingLeft="1em"
-        color="#9F9F9F"
-        className="td__title"
-        onClick={() => navigate(`/shop/product/${item?.id}`)}
-      >
-        {item?.title}
-      </Td>
-      <Td color="#9F9F9F" paddingLeft="1.1em">
-        {item?.price} TND
-      </Td>
-      <Td paddingLeft="1.1em">
-        <Reservation start={item?.start} end={item?.end} id={item?.id} />
-      </Td>
-      <Td>
-        <input
-          className="td__input"
-          type="number"
-          defaultValue={item?.quantity}
-          onChange={handleChange}
-        />
-      </Td>
-      <Td textAlign="start">{item?.quantity * item?.price} TND</Td>
-      <Td className="td__icon" paddingRight="0.8em">
-        <AiFillDelete onClick={handleRemove} />
-      </Td>
-    </Tr>
+  return !isMobile ? (
+    <>
+      <Tr>
+        <Td paddingLeft={0}>
+          <div className="td__img">
+            <img src={item?.src} alt="" />
+          </div>
+        </Td>
+        <Td
+          paddingLeft="1em"
+          color="#9F9F9F"
+          className="td__title"
+          onClick={() => navigate(`/shop/product/${item?.id}`)}
+        >
+          {item?.title}
+        </Td>
+        <Td color="#9F9F9F" paddingLeft="1.1em">
+          {item?.price} TND
+        </Td>
+        <Td paddingLeft="1.1em">
+          <Reservation start={item?.start} end={item?.end} id={item?.id} />
+        </Td>
+        <Td>
+          <input
+            className="td__input"
+            type="number"
+            defaultValue={item?.quantity}
+            onChange={handleChange}
+          />
+        </Td>
+        <Td textAlign="start">{item?.quantity * item?.price} TND</Td>
+        <Td className="td__icon" paddingRight="0.8em">
+          <AiFillDelete onClick={handleRemove} />
+        </Td>
+      </Tr>
+    </>
+  ) : (
+    <>
+      <Tr>
+        <Td paddingLeft={0}>
+          <div className="td__img">
+            <img src={item?.src} alt="" />
+          </div>
+        </Td>
+        <Td
+          paddingLeft="0"
+          color="#9F9F9F"
+          className="td__title"
+          onClick={() => navigate(`/shop/product/${item?.id}`)}
+        >
+          {item?.title}
+        </Td>
+        <Td paddingLeft="0">
+          <input
+            className="td__input"
+            type="number"
+            defaultValue={item?.quantity}
+            onChange={handleChange}
+          />
+        </Td>
+        <Td className="td__icon" paddingRight="0em">
+          <AiFillDelete onClick={handleRemove} />
+        </Td>
+      </Tr>
+    </>
   );
 };
 
 const Table = () => {
-  const { cartItems } = useShoppingCart(true);
+  const { cartItems } = useShoppingCart();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
@@ -113,15 +144,28 @@ const Table = () => {
       <TableContainer>
         <Tb variant="simple">
           <Thead bgColor="#F9F1E7">
-            <Tr p="1em">
-              <Th></Th>
-              <Th className="tb__header">Produit</Th>
-              <Th className="tb__header">Prix</Th>
-              <Th className="tb__header">Réservation</Th>
-              <Th className="tb__header">Quantité</Th>
-              <Th className="tb__header">Sous-total</Th>
-              <Th className="tb__header"></Th>
-            </Tr>
+            {!isMobile ? (
+              <>
+                <Tr>
+                  <Th></Th>
+                  <Th className="tb__header">Produit</Th>
+                  <Th className="tb__header">Prix</Th>
+                  <Th className="tb__header">Réservation</Th>
+                  <Th className="tb__header">Quantité</Th>
+                  <Th className="tb__header">Sous-total</Th>
+                  <Th className="tb__header"></Th>
+                </Tr>
+              </>
+            ) : (
+              <>
+                <Tr>
+                  <Th></Th>
+                  <Th className="tb__header">Produit</Th>
+                  <Th className="tb__header">Quantité</Th>
+                  <Th className="tb__header"></Th>
+                </Tr>
+              </>
+            )}
           </Thead>
           <Tbody>
             {cartItems.map((el) => (

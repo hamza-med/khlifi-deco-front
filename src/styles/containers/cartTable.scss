@@ -9,6 +9,9 @@ $input-size: 40px;
   gap: 35px;
 }
 .tb__header {
+  @include tablet{
+    padding-left: 0 !important;
+  }
   color: black !important;
   text-transform: capitalize !important;
   font-size: 1rem !important;
@@ -18,7 +21,6 @@ $input-size: 40px;
   padding: 1.1em !important;
 }
 .td__title {
-  text-transform: capitalize;
   &:hover {
     color: black;
     cursor: pointer;
