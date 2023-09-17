@@ -1,5 +1,5 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { Divider, HStack } from "@chakra-ui/react";
+import { Button, Divider, HStack } from "@chakra-ui/react";
 
 const ProductItem = ({ item }) => (
   <HStack>
@@ -9,7 +9,7 @@ const ProductItem = ({ item }) => (
   </HStack>
 );
 
-const BillingInfo = () => {
+const BillingInfo = ({ isDisabled, isSubmitting }) => {
   const { cartItems, subtotal } = useShoppingCart();
 
   return (
@@ -41,7 +41,9 @@ const BillingInfo = () => {
           modalités de paiement.
         </span>
       </p>
-      <button>Passer commande</button>
+      <Button type="submit" isDisabled={isDisabled} isLoading={isSubmitting}>
+        Passer commande
+      </Button>
     </div>
   );
 };
