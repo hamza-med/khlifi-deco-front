@@ -5,7 +5,6 @@
   }
   padding: 1em 3em;
   width: 50%;
-
   .billingInfo__content {
     font-weight: 300;
     @include flex(row, space-between, space-between);
@@ -65,7 +64,6 @@
     margin: 1.6em auto;
     @include flex();
     background-color: white;
-
     border: 1px solid black;
     border-radius: 10px;
     padding: 1.5em 3em !important;

@@ -9,6 +9,7 @@
   height: $mini-header-height;
   @include tablet {
     font-size: 12px;
+    @include flex();
   }
   .contact {
     @include tablet {

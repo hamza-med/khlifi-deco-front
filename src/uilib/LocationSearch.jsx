@@ -64,7 +64,6 @@ const LocationSearch = ({
     getPlaces();
     return () => controller.abort();
   }, [searchText]);
-  console.log("places list", placeList);
 
   return (
     <div>
@@ -77,7 +76,6 @@ const LocationSearch = ({
             field: { onBlur, onChange, value, ref },
             fieldState: { error },
           }) => {
-            console.log(value);
             return (
               <div className="billing__input" style={{ position: "relative" }}>
                 <FormControl isRequired={required} isInvalid={!!error?.message}>

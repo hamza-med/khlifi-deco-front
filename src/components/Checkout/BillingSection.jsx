@@ -3,42 +3,72 @@ import BillingInfo from "./BillingInfo";
 import * as yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { createOrder, makeRequest } from "@/api/makeRequest";
+import { useShoppingCart } from "@/hooks/useShoppingCart";
+const defaultValues = {
+  firstname: "",
+  lastname: "",
+  phone: "",
+  email: "",
+  enterprise: "",
+  address: {
+    street: "",
+    city: "",
+    postal: "",
+  },
+};
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const BillingSection = () => {
+  const { cartItems, subtotal } = useShoppingCart();
+
   const schema = yup.object().shape({
-    name: yup.string().required("Veuillez saisir votre nom"),
-    lastName: yup.string().required("Veuillez saisir votre prénom"),
+    firstname: yup.string().required("Veuillez saisir votre nom"),
+    lastname: yup.string().required("Veuillez saisir votre prénom"),
+    phone: yup
+      .string()
+      .required("Veuillez saisir votre numéro")
+      .matches(phoneRegExp, "Le numéro de téléphone n'est pas valide"),
     email: yup
       .string()
-      .email()
+      .email("l'email doit être un email valide")
       .required("Veuillez saisir votre adresse e-mail"),
-    password: yup
-      .string()
-      .min(8, "le mot de passe doit comporter au moins 8 caractères")
-      .required(),
+    address: yup.object().shape({
+      street: yup.string().required("Ce champ est obligatoire"),
+      city: yup.string().required("Ce champ est obligatoire"),
+      postal: yup.string().required("Ce champ est obligatoire"),
+    }),
   });
   const {
     control,
-    getValues,
+    reset,
     handleSubmit,
-    formState: { isDirty, isSubmitting, errors },
+    formState: { isDirty, isSubmitting, errors, isSubmitSuccessful },
     ...methods
   } = useForm({
-    defaultValues: {
-      name: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      enterprise: "",
-      address: "",
-    },
+    defaultValues,
     resolver: yupResolver(schema),
     mode: "onBlur",
   });
-  const onSubmit = (data) => console.log("data", data);
+  const onSubmit = async (values) => {
+    try {
+      const order = await createOrder({
+        data: {
+          total: subtotal,
+          products: cartItems,
+          ...values,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  console.log("dirty", isDirty);
-  const values = getValues();
-  console.log(values);
+  useEffect(() => {
+    isSubmitSuccessful && reset(defaultValues);
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <FormProvider {...methods}>
@@ -48,7 +78,9 @@ const BillingSection = () => {
           errors={errors}
           control={control}
         />
-        <BillingInfo  isDisabled={!isDirty || Object.entries(errors).length !== 0} />
+        <BillingInfo
+          isDisabled={!isDirty || Object.entries(errors).length !== 0}
+        />
       </form>
     </FormProvider>
   );

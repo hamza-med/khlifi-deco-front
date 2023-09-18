@@ -8,43 +8,59 @@ const BillingForm = ({ control }) => {
       <h1 className="billing__title">Détails de facturation</h1>
       <div className="name__section">
         <Input
-          required={true}
+          required
           label="Prénom"
-          name="lastName"
+          name="lastname"
           placeholder=""
           control={control}
         />
         <Input
-          required={true}
+          required
           label="Nom"
-          name="name"
+          name="firstname"
           placeholder=""
           control={control}
         />
       </div>
       <Input
-        required={true}
+        required
         label="Téléphone"
         name="phone"
         placeholder=""
         control={control}
       />
       <Input
-        required={true}
+        required
         label="Email"
         name="email"
         placeholder="email"
         control={control}
       />
+
       <Input
-        label="Nom de l'entreprise (optionnel)"
-        name="enterprise"
+        required
+        label="Numéro et nom de rue"
+        name="address.street"
         placeholder=""
         control={control}
       />
       <LocationSearch
-        label="Addresse"
-        name="address"
+        required
+        label="Ville"
+        name="address.city"
+        placeholder=""
+        control={control}
+      />
+      <Input
+        required
+        label="Code postal "
+        name="address.postal"
+        placeholder=""
+        control={control}
+      />
+      <Input
+        label="Nom de l'entreprise (optionnel)"
+        name="enterprise"
         placeholder=""
         control={control}
       />
