@@ -9,7 +9,7 @@ const ProductItem = ({ item }) => (
   </HStack>
 );
 
-const BillingInfo = ({ isDisabled, isSubmitting }) => {
+const BillingInfo = ({ isDisabled, isLoading }) => {
   const { cartItems, subtotal } = useShoppingCart();
 
   return (
@@ -41,7 +41,7 @@ const BillingInfo = ({ isDisabled, isSubmitting }) => {
           modalités de paiement.
         </span>
       </p>
-      <Button type="submit" isDisabled={isDisabled} isLoading={isSubmitting}>
+      <Button type="submit" isDisabled={isDisabled} isLoading={isLoading}>
         Passer commande
       </Button>
     </div>

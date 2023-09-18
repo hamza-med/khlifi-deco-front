@@ -1,11 +1,12 @@
 import BillingForm from "./BillingForm";
 import BillingInfo from "./BillingInfo";
-import * as yup from "yup";
+
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
-import { createOrder, makeRequest } from "@/api/makeRequest";
+import { useEffect, useState } from "react";
+import { createOrder } from "@/api/makeRequest";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import { checkoutSchema } from "@/utils/schemas";
 const defaultValues = {
   firstname: "",
   lastname: "",
@@ -19,42 +20,26 @@ const defaultValues = {
   },
 };
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const BillingSection = () => {
   const { cartItems, subtotal } = useShoppingCart();
-
-  const schema = yup.object().shape({
-    firstname: yup.string().required("Veuillez saisir votre nom"),
-    lastname: yup.string().required("Veuillez saisir votre prénom"),
-    phone: yup
-      .string()
-      .required("Veuillez saisir votre numéro")
-      .matches(phoneRegExp, "Le numéro de téléphone n'est pas valide"),
-    email: yup
-      .string()
-      .email("l'email doit être un email valide")
-      .required("Veuillez saisir votre adresse e-mail"),
-    address: yup.object().shape({
-      street: yup.string().required("Ce champ est obligatoire"),
-      city: yup.string().required("Ce champ est obligatoire"),
-      postal: yup.string().required("Ce champ est obligatoire"),
-    }),
-  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const {
     control,
     reset,
     handleSubmit,
-    formState: { isDirty, isSubmitting, errors, isSubmitSuccessful },
+    formState: { isDirty, errors, isSubmitSuccessful },
     ...methods
   } = useForm({
     defaultValues,
-    resolver: yupResolver(schema),
+    resolver: yupResolver(checkoutSchema),
     mode: "onBlur",
   });
+
   const onSubmit = async (values) => {
     try {
-      const order = await createOrder({
+      setLoading(true);
+      await createOrder({
         data: {
           total: subtotal,
           products: cartItems,
@@ -62,8 +47,9 @@ const BillingSection = () => {
         },
       });
     } catch (e) {
-      console.log(e);
+      setError(true);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -73,13 +59,10 @@ const BillingSection = () => {
   return (
     <FormProvider {...methods}>
       <form className="billing__wrapper" onSubmit={handleSubmit(onSubmit)}>
-        <BillingForm
-          isSubmitting={isSubmitting}
-          errors={errors}
-          control={control}
-        />
+        <BillingForm errors={errors} control={control} />
         <BillingInfo
-          isDisabled={!isDirty || Object.entries(errors).length !== 0}
+          isDisabled={!isDirty || Object.entries(errors).length !== 0 || error}
+          isLoading={loading}
         />
       </form>
     </FormProvider>
