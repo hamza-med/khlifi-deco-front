@@ -5,13 +5,14 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const NavIcons = ({ onOpen }) => {
   const { openCart, cartItems, isOpen, closeCart } = useShoppingCart();
-
+  const navigate = useNavigate();
   return (
     <div className="nav_icons">
-      <AiOutlineUser />
+      <AiOutlineUser onClick={() => navigate("/login")} />
       <AiOutlineSearch onClick={onOpen} />
       <div className="cart-icon">
         <AiOutlineShoppingCart onClick={openCart} />

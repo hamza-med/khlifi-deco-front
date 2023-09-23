@@ -8,6 +8,8 @@ import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 const Layout = () => {
   return (
     <>
@@ -43,6 +45,14 @@ const routes = [
       {
         path: "checkout",
         element: <Checkout />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },
