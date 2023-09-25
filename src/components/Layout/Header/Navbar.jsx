@@ -6,7 +6,7 @@ const Navbar = ({ categories }) => {
       <ul className="menu" role="list">
         {categories?.map((item) => {
           return (
-            <NavbarItem item={item?.attributes} key={item?.id} id={item?.id} />
+            <NavbarItem item={item?.attributes} id={item?.id} key={item?.id} />
           );
         })}
       </ul>
