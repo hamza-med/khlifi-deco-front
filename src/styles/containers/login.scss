@@ -1,3 +1,21 @@
-.login__wrapper{
-  
+.login__wrapper {
+  padding: 2em;
+  text-align: center;
+  margin: 1em auto;
+  .login__title {
+    font-size: 2rem;
+    color: $title-color;
+    margin: 0.5em;
+  }
+  .login__form {
+    width: 35%;
+    margin: 1em auto;
+    .login__input {
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .login__footer {
+      @include flex(row, space-between, null);
+    }
+  }
 }

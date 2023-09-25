@@ -1,23 +1,50 @@
+import AccountWrapper from "@/components/AccountWrapper";
 import Input from "@/uilib/Input";
+import { loginSchema } from "@/utils/schemas";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
+const defaultValues = {
+  email: "",
+  password: "",
+};
 
 const Login = () => {
-  return <div className="login__wrapper">
-    <h1>Connectez-vous à votre compte</h1>
-    <Input
+  const {
+    control,
+    handleSubmit,
+    formState: { isDirty, errors },
+  } = useForm({
+    defaultValues,
+    resolver: yupResolver(loginSchema),
+    mode: "onBlur",
+  });
+
+  return (
+    <AccountWrapper
+      handleSubmit={handleSubmit}
+      isDirty={isDirty}
+      errors={errors}
+      title="Connectez vous à votre compte"
+      type="login"
+    >
+      <Input
         required
         label="Email"
         name="email"
-        placeholder="email"
-        // control={control}
+        placeholder=""
+        control={control}
+        className="login__input"
       />
-    <Input
+      <Input
         required
         label="Password"
         name="password"
-        placeholder="password"
-        // control={control}
+        placeholder=""
+        control={control}
+        className="login__input"
       />
-  </div>;
+    </AccountWrapper>
+  );
 };
-
 export default Login;
