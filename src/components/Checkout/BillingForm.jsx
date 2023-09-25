@@ -30,7 +30,6 @@ const BillingForm = ({ control }) => {
         control={control}
       />
       <Input
-        required
         label="Email"
         name="email"
         placeholder="email"
