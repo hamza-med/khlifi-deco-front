@@ -19,7 +19,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+
   const {
     control,
     handleSubmit,
@@ -36,15 +36,14 @@ const Register = () => {
       if (data?.error) {
         throw data?.error;
       } else {
-        setLocalStorageItem("token",(data?.jwt));
+        setLocalStorageItem("token", data?.jwt);
         setUser(data?.user);
         toast("Compte créé", "Votre compte est créé");
         navigate("/", { replace: true });
       }
     } catch (e) {
       console.error(e);
-      setError(e?.message ?? "Something went wrong!");
-      toast("Erreur", error, "error");
+      toast("Erreur", e?.response?.data?.error?.message, "error");
     } finally {
       setIsLoading(false);
     }

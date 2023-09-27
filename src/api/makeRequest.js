@@ -9,7 +9,6 @@ export const publicRequest = axios.create({
 export const privateRequest = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
   headers: {
-    // Authorization: "bearer " + import.meta.env.VITE_APP_API_TOKEN,
     "Content-Type": "application/json",
   },
 });
@@ -19,5 +18,9 @@ export const createOrder = async (order) => {
 };
 export const register = async (userData) => {
   const { data } = await publicRequest.post("/auth/local/register", userData);
+  return data;
+};
+export const login = async (userData) => {
+  const { data } = await publicRequest.post("/auth/local", userData);
   return data;
 };

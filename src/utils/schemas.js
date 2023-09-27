@@ -22,9 +22,7 @@ export const checkoutSchema = yup.object().shape({
 });
 
 export const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Ce champ est obligatoire"),
+  identifier: yup.string().required("Ce champ est obligatoire"),
   password: yup
     .string()
     .required("Aucun mot de passe n'est fourni")

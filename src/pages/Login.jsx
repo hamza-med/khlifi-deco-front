@@ -1,15 +1,26 @@
+import { login } from "@/api/makeRequest";
 import AccountWrapper from "@/components/AccountWrapper";
+import { useAuthContext } from "@/hooks/useAuthContext";
 import Input from "@/uilib/Input";
+import { setLocalStorageItem } from "@/utils/localStorage";
 import { loginSchema } from "@/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "@/utils/toast";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
-  email: "",
+  identifier: "",
   password: "",
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setUser } = useAuthContext();
+  const [isLoading, setIsLoading] = useState(false);
+ 
+
   const {
     control,
     handleSubmit,
@@ -19,12 +30,31 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
   });
-  const onSubmit = (data) => console.log(data);
-
+  const onSubmit = async (values) => {
+    console.log(values);
+    try {
+      setIsLoading(true);
+      const data = await login(values);
+      if (data?.error) {
+        throw data?.error;
+      } else {
+        setLocalStorageItem("token", data?.jwt);
+        setUser(data?.user);
+        toast("Vous êtes connecté", "Connecté avec succès");
+        navigate("/", { replace: true });
+      }
+    } catch (e) {
+      console.error(e);
+      toast("Erreur", e?.response?.data?.error?.message, "error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <AccountWrapper
       handleSubmit={handleSubmit}
       isDirty={isDirty}
+      loading={isLoading}
       errors={errors}
       title="Connectez vous à votre compte"
       onSubmit={onSubmit}
@@ -32,7 +62,7 @@ const Login = () => {
       <Input
         required
         label="Email ou Nom d'utilisateur"
-        name="email"
+        name="identifier"
         placeholder=""
         control={control}
         className="login__input"
