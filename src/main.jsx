@@ -8,12 +8,15 @@ import theme from "./theme/index.js";
 import { Global } from "@emotion/react";
 import GlobalStyles from "./theme/globalStyles.js";
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContextProvider } from "./context/AuthContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-    <Global styles={GlobalStyles} />
+      <Global styles={GlobalStyles} />
       <ShoppingCartProvider>
-        <App />
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
       </ShoppingCartProvider>
     </ChakraProvider>
   </React.StrictMode>

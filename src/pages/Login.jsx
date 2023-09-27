@@ -19,6 +19,7 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
   });
+  const onSubmit = (data) => console.log(data);
 
   return (
     <AccountWrapper
@@ -26,11 +27,11 @@ const Login = () => {
       isDirty={isDirty}
       errors={errors}
       title="Connectez vous à votre compte"
-      type="login"
+      onSubmit={onSubmit}
     >
       <Input
         required
-        label="Email"
+        label="Email ou Nom d'utilisateur"
         name="email"
         placeholder=""
         control={control}
@@ -38,7 +39,7 @@ const Login = () => {
       />
       <Input
         required
-        label="Password"
+        label="Mot de passe"
         name="password"
         placeholder=""
         control={control}

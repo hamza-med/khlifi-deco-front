@@ -27,7 +27,7 @@ const Input = ({
                 <FormControl isRequired={required} isInvalid={!!error?.message}>
                   <FormLabel htmlFor={name}>{label}</FormLabel>
                   <ChInput
-                    type="text"
+                    type={name === "password" ? "password" : "text"}
                     id={name}
                     placeholder={placeholder}
                     {...field}

@@ -24,11 +24,34 @@ export const checkoutSchema = yup.object().shape({
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
+    .required("Ce champ est obligatoire"),
+  password: yup
+    .string()
+    .required("Aucun mot de passe n'est fourni")
+    .min(
+      6,
+      "Le mot de passe est trop court - il devrait être composé de 6 caractères au minimum."
+    )
+    .matches(
+      /[a-zA-Z]/,
+      "Le mot de passe ne peut contenir que des lettres latines."
+    ),
+});
+export const registerSchema = yup.object().shape({
+  username: yup.string().required("Veuillez saisir votre nom d'utilisateur"),
+  email: yup
+    .string()
     .email("l'email doit être un email valide")
     .required("Veuillez saisir votre adresse e-mail"),
   password: yup
     .string()
     .required("Aucun mot de passe n'est fourni")
-    .min(6, "Le mot de passe est trop court - il devrait être composé de 6 caractères au minimum.")
-    .matches(/[a-zA-Z]/, "Le mot de passe ne peut contenir que des lettres latines."),
+    .min(
+      6,
+      "Le mot de passe est trop court - il devrait être composé de 6 caractères au minimum."
+    )
+    .matches(
+      /[a-zA-Z]/,
+      "Le mot de passe ne peut contenir que des lettres latines."
+    ),
 });

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { makeRequest } from "@/api/makeRequest";
+import { publicRequest } from "@/api/makeRequest";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -11,7 +11,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await makeRequest.get(url);
+        const res = await publicRequest.get(url);
         setData(res.data.data);
         setMeta(res.data.meta);
       } catch (err) {
