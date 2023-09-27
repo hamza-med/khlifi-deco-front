@@ -10,13 +10,14 @@ import Navbar from "./Navbar";
 import NavIcons from "./NavIcons";
 import SearchModal from "./SearchModal/SearchModal";
 import ToggleMenu from "./ToggleMenu";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
   const { data: categories } = useFetch(`/categories?populate=*`);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const { user } = useAuthContext();
   return (
     <header>
       <MiniHeader />
@@ -29,7 +30,7 @@ const Header = () => {
         <SearchModal isOpen={isOpen} onClose={onClose} />
         <ShoppingCart />
 
-        {/* <button className="header-button">voir les plans</button> */}
+        {user?.email==="utilisation13@gmail.com"&&<button className="header-button">Dashboard</button>}
       </div>
     </header>
   );
