@@ -19,7 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
- 
 
   const {
     control,
@@ -31,7 +30,6 @@ const Login = () => {
     mode: "onBlur",
   });
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       setIsLoading(true);
       const data = await login(values);

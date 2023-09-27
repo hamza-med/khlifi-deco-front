@@ -19,7 +19,7 @@ export default function NavbarItem({ item, id }) {
       key={id}
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
-      onClick={onOpen}
+      onClick={onClose}
     >
       <Link
         to={`shop/${id}`}
@@ -38,7 +38,7 @@ export default function NavbarItem({ item, id }) {
       </Link>
       {item?.sub_categories && (
         <Menu isOpen={isOpen}>
-            <DropDown
+          <DropDown
             list={item?.sub_categories?.data}
             show={onOpen}
             close={onClose}
