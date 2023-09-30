@@ -2,34 +2,37 @@ import AuthProfile from "@/components/AuthProfile";
 import ShoppingCart from "@/components/Layout/Header/Cart/ShoppingCart";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { Avatar, Menu, MenuButton } from "@chakra-ui/react";
+import { Avatar, HStack, Menu, MenuButton } from "@chakra-ui/react";
 import {
   AiOutlineSearch,
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const NavIcons = ({ onOpen }) => {
   const { openCart, cartItems, isOpen, closeCart } = useShoppingCart();
   const navigate = useNavigate();
   const { user } = useAuthContext();
-  console.log(user);
+  
   return (
     <div className="nav_icons">
       {user ? (
         <Menu placement="bottom-end">
           <MenuButton>
-            <Avatar
-              name={user?.username}
-              textColor="white"
-              bgColor="teal.500"
-              w="37px"
-              h="37px"
-              fontSize="0.9rem"
-              display="flex"
-            
-            />
+            <HStack gap="0">
+              <Avatar
+                name={user?.username}
+                textColor="white"
+                bgColor="teal.500"
+                w="37px"
+                h="37px"
+                fontSize="0.9rem"
+                display="flex"
+              />
+              <RiArrowDropDownLine fontSize="1.2rem" />
+            </HStack>
           </MenuButton>
           <AuthProfile />
         </Menu>

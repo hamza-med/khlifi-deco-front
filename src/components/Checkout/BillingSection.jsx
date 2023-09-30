@@ -35,15 +35,19 @@ const BillingSection = () => {
     resolver: yupResolver(checkoutSchema),
     mode: "onBlur",
   });
-
+ 
   const onSubmit = async (values) => {
+    var today = new Date();
+    var tzOffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(today - tzOffset)).toISOString().slice(0, -1).replace("T", " ");
+    
     try {
       setLoading(true);
       await createOrder({
         data: {
           total: subtotal,
           products: cartItems,
-          date: new Date(),
+          creationDate: localISOTime,
           ...values,
         },
       });

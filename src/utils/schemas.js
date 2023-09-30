@@ -12,8 +12,8 @@ export const checkoutSchema = yup.object().shape({
     .matches(phoneRegExp, "Le numéro de téléphone n'est pas valide"),
   email: yup
     .string()
-    .email("l'email doit être un email valide")
-    .required("Veuillez saisir votre adresse e-mail"),
+    .email("L'email doit être un email valide"),
+    // .required("Veuillez saisir votre adresse e-mail"),
   address: yup.object().shape({
     street: yup.string().required("Ce champ est obligatoire"),
     city: yup.string().required("Ce champ est obligatoire"),

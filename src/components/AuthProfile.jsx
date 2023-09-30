@@ -8,20 +8,25 @@ const AuthProfile = () => {
   const { user, setUser } = useAuthContext();
 
   return (
-    <MenuList borderColor="white" borderRadius="none" fontSize="1rem" className="authProfile">
+    <MenuList
+      borderColor="white"
+      borderRadius="none"
+      fontSize="0.98rem"
+      className="authProfile"
+    >
       <MenuItem
-        _hover={{ bgColor: "rgba(0,0,0,0.03)" }}
-        _focus={{ bgColor: "rgba(0,0,0,0.03)" }}
+        _hover={{ bgColor: "rgba(0,0,0,0.02)" }}
+        _focus={{ bgColor: "rgba(0,0,0,0.02)" }}
       >
-        <HStack fontWeight="500">
+        <HStack gap="1" fontWeight="500">
           <p>Logged in as</p>
           <p style={{ fontWeight: "600" }}>{user?.username}</p>
         </HStack>
       </MenuItem>
       <MenuItem
         fontWeight="500"
-        _hover={{ bgColor: "rgba(0,0,0,0.03)" }}
-        _focus={{ bgColor: "rgba(0,0,0,0.03)" }}
+        _hover={{ bgColor: "rgba(0,0,0,0.02)" }}
+        _focus={{ bgColor: "rgba(0,0,0,0.02)" }}
         onClick={() => {
           localStorage.removeItem("token");
           setUser(undefined);
@@ -29,8 +34,8 @@ const AuthProfile = () => {
         }}
       >
         <HStack justifyContent="space-between" gap="1em">
-          <p>Logout</p>
-          <MdLogout fontSize="1.3rem" />
+          <p>Quitter</p>
+          <MdLogout fontSize="1.2rem" fontWeight="600" />
         </HStack>
       </MenuItem>
     </MenuList>

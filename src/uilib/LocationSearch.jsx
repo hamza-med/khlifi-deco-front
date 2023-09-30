@@ -29,9 +29,8 @@ const LocationSearch = ({
   const [placeList, setPlaceList] = useState([]);
   const { setValue } = useFormContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [distance, setDistance] = useState();
-  console.log(distance);
-  console.log(placeList);
+  const [, setDistance] = useState();
+
   useDebounce(value, setSearchText, 700);
 
   useEffect(() => {
