@@ -43,6 +43,7 @@ const BillingSection = () => {
         data: {
           total: subtotal,
           products: cartItems,
+          date: new Date(),
           ...values,
         },
       });
