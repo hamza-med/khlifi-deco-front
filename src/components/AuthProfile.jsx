@@ -8,7 +8,7 @@ const AuthProfile = () => {
   const { user, setUser } = useAuthContext();
 
   return (
-    <MenuList borderColor="rgba(0,0,0,0.1)" borderRadius="none" fontSize="1rem">
+    <MenuList borderColor="rgba(0,0,0,0.1)" borderRadius="none" fontSize="1rem" className="authProfile">
       <MenuItem
         _hover={{ bgColor: "rgba(0,0,0,0.05)" }}
         _focus={{ bgColor: "rgba(0,0,0,0.06)" }}
