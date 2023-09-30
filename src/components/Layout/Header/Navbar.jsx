@@ -1,8 +1,10 @@
 import NavbarItem from "@/components/Layout/Header/NavbarItem";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ categories }) => {
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   return (
     <nav className="navbar">
@@ -13,7 +15,12 @@ const Navbar = ({ categories }) => {
           );
         })}
         {user?.email === "utilisation13@gmail.com" && (
-          <button className="header-button">Dashboard</button>
+          <button
+            className="header-button"
+            onClick={() => navigate("/dashboard")}
+          >
+            Dashboard
+          </button>
         )}
       </ul>
     </nav>

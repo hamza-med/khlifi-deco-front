@@ -24,3 +24,7 @@ export const login = async (userData) => {
   const { data } = await publicRequest.post("/auth/local", userData);
   return data;
 };
+
+export const getOrder = async () => {
+  privateRequest.get("/orders");
+};

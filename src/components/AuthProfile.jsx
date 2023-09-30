@@ -8,20 +8,20 @@ const AuthProfile = () => {
   const { user, setUser } = useAuthContext();
 
   return (
-    <MenuList borderColor="rgba(0,0,0,0.1)" borderRadius="none" fontSize="1rem" className="authProfile">
+    <MenuList borderColor="white" borderRadius="none" fontSize="1rem" className="authProfile">
       <MenuItem
-        _hover={{ bgColor: "rgba(0,0,0,0.05)" }}
-        _focus={{ bgColor: "rgba(0,0,0,0.06)" }}
+        _hover={{ bgColor: "rgba(0,0,0,0.03)" }}
+        _focus={{ bgColor: "rgba(0,0,0,0.03)" }}
       >
         <HStack fontWeight="500">
           <p>Logged in as</p>
-          <p style={{ fontWeight: "700" }}>{user?.username}</p>
+          <p style={{ fontWeight: "600" }}>{user?.username}</p>
         </HStack>
       </MenuItem>
       <MenuItem
         fontWeight="500"
-        _hover={{ bgColor: "rgba(0,0,0,0.06)" }}
-        _focus={{ bgColor: "rgba(0,0,0,0.06)" }}
+        _hover={{ bgColor: "rgba(0,0,0,0.03)" }}
+        _focus={{ bgColor: "rgba(0,0,0,0.03)" }}
         onClick={() => {
           localStorage.removeItem("token");
           setUser(undefined);
