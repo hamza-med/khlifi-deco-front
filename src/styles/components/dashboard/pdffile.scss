@@ -1,0 +1,27 @@
+.pdfFile__wrapper {
+  background-color: white;
+  padding: 1em 2em;
+  border-radius: 4px;
+  margin-top: 2em;
+  .pdfFile__header {
+    @include flex(null, space-between, start);
+    .header-left {
+      @include flex(column, flex-start, flex-start);
+      gap: 0.8em;
+      h1 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      p {
+        font-weight: 500;
+      }
+    }
+    .header-right {
+      h1 {
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

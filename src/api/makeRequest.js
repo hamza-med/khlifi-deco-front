@@ -1,3 +1,4 @@
+import { getLocalStorageItem } from "@/utils/localStorage";
 import axios from "axios";
 
 export const publicRequest = axios.create({
@@ -9,6 +10,7 @@ export const publicRequest = axios.create({
 export const privateRequest = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
   headers: {
+    Authorization: "Bearer " + getLocalStorageItem("token"),
     "Content-Type": "application/json",
   },
 });
