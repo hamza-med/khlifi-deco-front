@@ -11,11 +11,14 @@
       @include flex(column, flex-start, flex-start);
       gap: 0.8em;
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: 600;
         text-transform: uppercase;
       }
       p {
+        font-weight: 600;
+      }
+      span {
         font-weight: 500;
       }
     }
