@@ -58,7 +58,6 @@ const Header = ({ setPageSize, startDate, setStartDate, max }) => {
           "error"
         );
       } else {
-        console.log("HTML content does not cover entire PDF");
         pdf.save("devi.pdf");
       }
     });

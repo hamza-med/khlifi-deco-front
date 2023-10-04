@@ -83,7 +83,6 @@ const Order = ({ order }) => (
   </>
 );
 const OrdersTable = ({ orders }) => {
-  console.log(orders);
   return (
     <div>
       <TableContainer border="1px solid rgb(224, 224, 224);">
