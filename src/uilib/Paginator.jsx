@@ -1,6 +1,6 @@
-const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount }) => {
+const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount ,...props}) => {
   return (
-    <div className="paginator__wrapper">
+    <div className="paginator__wrapper" {...props}>
       <button
         className="previous_button"
         onClick={() => setPage((prev) => prev - 1)}

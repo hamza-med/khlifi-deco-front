@@ -5,6 +5,8 @@
   margin-top: 2em;
   .pdfFile__header {
     @include flex(null, space-between, start);
+    margin-bottom: 4em;
+
     .header-left {
       @include flex(column, flex-start, flex-start);
       gap: 0.8em;
