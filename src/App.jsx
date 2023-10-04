@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import RouteProtector from "./components/RouteProtector";
 const Layout = () => {
   return (
     <>
@@ -57,7 +58,11 @@ const routes = [
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <RouteProtector>
+            <Dashboard />
+          </RouteProtector>
+        ),
       },
       {
         path: "*",

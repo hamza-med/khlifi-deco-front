@@ -34,7 +34,7 @@ const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
   </>
 ));
 
-const Header = ({ setPageSize, startDate, setStartDate, max }) => {
+const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
   const [loading, setLoading] = useState();
   const [size, setSize] = useState(4);
   useDebounce(size, setPageSize, 1000);
@@ -95,7 +95,7 @@ const Header = ({ setPageSize, startDate, setStartDate, max }) => {
           gap="10px"
           isLoading={loading}
           onClick={handleExportToPDF}
-          disabled={loading}
+          isDisabled={loading || disabled}
           bgColor="white"
           color="black"
           leftIcon={<LuDownload fontSize="1.5rem" />}

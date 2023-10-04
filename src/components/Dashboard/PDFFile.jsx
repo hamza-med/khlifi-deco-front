@@ -1,10 +1,10 @@
 import { usePrivateFetch } from "@/hooks/useFetch";
 import OrdersTable from "./OrdersTable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Paginator from "@/uilib/Paginator";
 import PDFHeader from "./PDFHeader";
 
-const PDFFile = ({ date, pageSize, setMax }) => {
+const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
   const [page, setPage] = useState(1);
 
   const { data: orders, meta } = usePrivateFetch(
@@ -13,6 +13,7 @@ const PDFFile = ({ date, pageSize, setMax }) => {
       .slice(0, -1)
       .replace("T", " ")}`
   );
+  useEffect(() => setDisabled(orders?.length === 0), [orders, setDisabled]);
   setMax(meta?.pagination?.total);
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
