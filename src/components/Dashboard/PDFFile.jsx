@@ -28,6 +28,7 @@ const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
       </div>
       {pagesArray?.length > 1 && (
         <Paginator
+          style={{ width: "fit-content", margin: "10px auto" }}
           page={page}
           pages={pagesArray}
           setPage={setPage}
