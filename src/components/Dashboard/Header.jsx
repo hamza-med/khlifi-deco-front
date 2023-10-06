@@ -82,6 +82,7 @@ const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
             p="1.5em 2em"
             border="none"
             width="100px"
+            _invalid={{ borderColor: "black", color: "black" }}
           />
           <NumberInputStepper>
             <NumberIncrementStepper borderColor="white" color="black" />

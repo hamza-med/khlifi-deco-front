@@ -1,5 +1,6 @@
 import {
   HStack,
+  Heading,
   Table,
   TableContainer,
   Tbody,
@@ -58,7 +59,7 @@ const Order = ({ order }) => (
         fontWeight="500"
         fontSize="1.2rem"
       >
-        {order.address.street} {order.address.city} {order.address.postal}
+        {order.address.street}, {order.address.city} {order.address.postal}
       </Td>
       <Td
         paddingLeft="0"
@@ -67,8 +68,6 @@ const Order = ({ order }) => (
         fontSize="1.2rem"
       >
         <Product products={order.products} />
-        <Product products={order.products} />
-        {/* <Product products={order.products} /> */}
       </Td>
       <Td
         paddingRight="0"
@@ -83,6 +82,10 @@ const Order = ({ order }) => (
   </>
 );
 const OrdersTable = ({ orders }) => {
+  const total = orders?.reduce(
+    (total, item) => total + item.attributes.total,
+    0
+  );
   return (
     <div>
       <TableContainer border="1px solid rgb(224, 224, 224);">
@@ -98,6 +101,7 @@ const OrdersTable = ({ orders }) => {
                 textTransform="capitalize"
                 fontWeight="600"
                 color="black"
+                letterSpacing="0"
               >
                 Client
               </Th>
@@ -109,6 +113,7 @@ const OrdersTable = ({ orders }) => {
                 textTransform="capitalize"
                 fontWeight="600"
                 color="black"
+                letterSpacing="0"
               >
                 Numéro
               </Th>
@@ -120,6 +125,7 @@ const OrdersTable = ({ orders }) => {
                 textTransform="capitalize"
                 fontWeight="600"
                 color="black"
+                letterSpacing="0"
               >
                 Addresse
               </Th>
@@ -131,6 +137,7 @@ const OrdersTable = ({ orders }) => {
                 textTransform="capitalize"
                 fontWeight="600"
                 color="black"
+                letterSpacing="0"
               >
                 Désignations
               </Th>
@@ -142,6 +149,7 @@ const OrdersTable = ({ orders }) => {
                 textTransform="capitalize"
                 fontWeight="600"
                 color="black"
+                letterSpacing="0"
               >
                 Montant H.T
               </Th>
@@ -154,6 +162,17 @@ const OrdersTable = ({ orders }) => {
           </Tbody>
         </Table>
       </TableContainer>
+      <HStack>
+        <Heading
+          ml="auto"
+          mr="10px"
+          mt="10px"
+          fontSize="1.9rem"
+          width="fit-content"
+        >
+          Total H.T : <span style={{ color: "#755a00" }}>{total}</span>
+        </Heading>
+      </HStack>
     </div>
   );
 };

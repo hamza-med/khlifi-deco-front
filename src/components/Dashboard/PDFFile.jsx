@@ -3,6 +3,7 @@ import OrdersTable from "./OrdersTable";
 import { useEffect, useState } from "react";
 import Paginator from "@/uilib/Paginator";
 import PDFHeader from "./PDFHeader";
+import PDFFooter from "./PDFFooter";
 
 const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
   const [page, setPage] = useState(1);
@@ -22,7 +23,8 @@ const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
     <>
       <div id="file-to-export" className="pdfFile__wrapper">
         <PDFHeader />
-        <OrdersTable orders={orders} />
+        {orders?.length !== 0 && <OrdersTable orders={orders} />}
+        <PDFFooter />
       </div>
       {pagesArray?.length > 1 && (
         <Paginator
