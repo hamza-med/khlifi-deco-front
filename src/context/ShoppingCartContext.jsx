@@ -51,7 +51,7 @@ export function ShoppingCartProvider({ children }) {
     setCartItems((currItems) => {
       return currItems.map((item) => {
         if (item.id === id) {
-          return { ...item, start,end };
+          return { ...item, start, end };
         } else {
           return item;
         }
@@ -79,6 +79,9 @@ export function ShoppingCartProvider({ children }) {
       return currItems.filter((item) => item.id !== id);
     });
   }
+  function removeAll() {
+    setCartItems([]);
+  }
 
   return (
     <ShoppingCartContext.Provider
@@ -91,6 +94,7 @@ export function ShoppingCartProvider({ children }) {
         removeFromCart,
         openCart,
         closeCart,
+        removeAll,
         isOpen,
         subtotal,
         cartItems,
