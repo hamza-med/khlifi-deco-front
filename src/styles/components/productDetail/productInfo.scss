@@ -23,7 +23,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
 .prodInfo__wrapper {
   @include tablet {
     display: block;
-    padding: 1em 0.8em;
+    padding: 0.5em;
     gap: 1em;
   }
   @include flex(row, null, start);
@@ -35,18 +35,20 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     @include flex(row, null, start);
     @include tablet {
       display: block;
-
-      margin: 5px auto;
     }
     gap: $img-gap;
     &--images {
       @include flex(column, center, start);
       @include tablet {
-        @include flex(row, space-between, center);
-        gap: 0px;
+        @include flex(row, start, center);
+        gap: 10px;
       }
       gap: $img-gap;
       .mini-img {
+        @include tablet {
+          width: $mini-img-size;
+          height: $mini-img-size;
+        }
         width: $mini-img-size-lg;
         height: $mini-img-size-lg;
         overflow: hidden;
@@ -60,8 +62,8 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     &--main {
       @include tablet {
         max-width: 100%;
-        max-height: 400px;
-        margin-bottom: 0.8em;
+        max-height: 350px;
+        margin-bottom: 0.5em;
       }
       position: relative;
       border-radius: 5px;
@@ -124,12 +126,12 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       height: fit-content;
     }
     @include flex(column, null, null);
-
     height: $main-img-size;
-
     &--title {
       @include tablet {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-top: 0.5em;
+        margin-bottom: 0.2em;
       }
       text-transform: capitalize;
       font-size: 2rem;
@@ -138,6 +140,10 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     }
     &--description {
       h2 {
+        @include tablet {
+          font-size: 1.5rem;
+          margin-bottom: 0.175em;
+        }
         color: $primary-color-10;
         font-size: 1.7rem;
         margin-bottom: 0.175em;
@@ -145,6 +151,10 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
         margin-bottom: 0.5em;
       }
       p {
+        @include tablet {
+          font-size: 1.1rem;
+          margin-bottom: 0.5em;
+        }
         color: lighten($black-color, 15);
         margin-bottom: 1.6em;
       }
@@ -163,9 +173,14 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       }
     }
     &--reservation {
+      @include tablet {
+        // margin: 0 auto;
+        // width: fit-content;
+      }
       h2 {
         @include tablet {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
+          font-weight: 500;
         }
         font-size: 1.3rem;
         margin-bottom: 0.8em;

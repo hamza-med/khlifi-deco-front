@@ -2,6 +2,9 @@
   &.product-detail {
     border-top: 2px solid $primary-color-light-40;
     padding-top: 40px;
+    @include tablet{
+    padding-top: 20px;
+    }
   }
   color: $title-color;
   @include flex(column, null, center);

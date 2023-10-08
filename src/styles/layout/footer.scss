@@ -7,7 +7,7 @@
   @include tablet {
     height: 100%;
     display: block;
-    padding: 2em;
+    padding: 0px 1em;
   }
   &__top {
     &--logo {
@@ -89,7 +89,7 @@
       gap: 1px;
       width: 100%;
       font-size: 1rem;
-      margin-top: 20px;
+      margin: 20px auto;
     }
     @include flex(null, null, center);
     gap: 10px;
