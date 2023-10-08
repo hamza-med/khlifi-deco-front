@@ -44,7 +44,6 @@ const ProductCard = ({ product, display, id }) => {
           >
             Ajouter au panier
           </button>
-          {/* <p className="card_container__overlay__desc">share</p> */}
         </div>
 
         {product?.discount ? (
