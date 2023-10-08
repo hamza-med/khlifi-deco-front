@@ -70,6 +70,7 @@ const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
       </h1>
       <HStack>
         <NumberInput
+          isDisabled={loading || disabled}
           defaultValue={size}
           min={1}
           max={max}
