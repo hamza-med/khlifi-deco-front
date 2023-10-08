@@ -1,4 +1,9 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 import Header from "@/components/Layout/Header";
 import Home from "@/pages/Home";
 import "slick-carousel/slick/slick.css";
@@ -12,6 +17,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RouteProtector from "./components/RouteProtector";
+import { useAuthContext } from "./hooks/useAuthContext";
 const Layout = () => {
   return (
     <>
@@ -22,61 +28,29 @@ const Layout = () => {
   );
 };
 
-const routes = [
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "shop/:catId",
-        element: <Shop />,
-        children: [{ path: "sub/:subId", element: <Shop /> }],
-      },
-      {
-        path: "shop/product/:productId",
-        element: <ProductDetail />,
-      },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path: "checkout",
-        element: <Checkout />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "dashboard",
-        element: (
-          <RouteProtector>
-            <Dashboard />
-          </RouteProtector>
-        ),
-      },
-      {
-        path: "*",
-        element: <Home />,
-      },
-    ],
-  },
-];
-const router = createBrowserRouter(routes);
-
-const App = () => (
-  <>
-    <RouterProvider router={router} />
-  </>
-);
+const App = () => {
+  const { user } = useAuthContext();
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="shop/:catId" element={<Shop />}>
+            <Route path="sub/:subId" element={<Shop />} />
+          </Route>
+          <Route path="shop/product/:productId" element={<ProductDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="dashboard" element={<RouteProtector user={user} />}>
+            <Route path="" element={<Dashboard />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
