@@ -22,7 +22,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent
         borderRadius="0px"
@@ -34,7 +34,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
           p="0.8em"
           bgColor="#ac8f67"
           color="white"
-          fontSize="1.2rem"
+          fontSize={["1rem","1rem","1.2rem"]}
           fontWeight="500"
         >
           Produit ajouté au panier avec succès
