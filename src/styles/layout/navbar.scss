@@ -1,7 +1,8 @@
 .navbar {
+  width: 90%;
   .menu {
-    @include flex();
-    gap: 70px;
+    width: 100%;
+    @include flex(row, space-between, center);
   }
   @include tablet {
     display: none;

@@ -14,15 +14,16 @@
   width: 100%;
   z-index: 1;
   @include flex(row, space-between, center);
-  padding: 0px 2em;
+  padding: 0px 1.8em;
   @include tablet {
     padding-inline: 2px;
   }
+  gap: 6%;
   height: $main-header-height;
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
   .logo {
-    width: 246px;
+    width: 360px;
     height: 60px;
     @include tablet {
       width: 120px;

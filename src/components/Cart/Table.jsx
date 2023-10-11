@@ -106,20 +106,20 @@ const TableItem = ({ item }) => {
   ) : (
     <>
       <Tr>
-        <Td paddingLeft={0}>
+        <Td padding="10px 7px 10px 5px">
           <div className="td__img">
             <img src={item?.src} alt="" />
           </div>
         </Td>
         <Td
-          paddingLeft="0"
+          padding="0"
           color="#9F9F9F"
           className="td__title"
           onClick={() => navigate(`/shop/product/${item?.id}`)}
         >
           {item?.title}
         </Td>
-        <Td paddingLeft="0">
+        <Td padding="0">
           <input
             className="td__input"
             type="number"
@@ -127,7 +127,7 @@ const TableItem = ({ item }) => {
             onChange={handleChange}
           />
         </Td>
-        <Td className="td__icon" paddingRight="0em">
+        <Td className="td__icon" padding="0em">
           <AiFillDelete onClick={handleRemove} />
         </Td>
       </Tr>
@@ -161,8 +161,8 @@ const Table = () => {
                 <Tr>
                   <Th></Th>
                   <Th className="tb__header">Produit</Th>
-                  <Th className="tb__header">Quantité</Th>
-                  <Th className="tb__header"></Th>
+                  <Th className="tb__header">Qté</Th>
+                  {/* <Th className="tb__header"></Th> */}
                 </Tr>
               </>
             )}

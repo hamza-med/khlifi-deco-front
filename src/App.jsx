@@ -18,6 +18,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RouteProtector from "./components/RouteProtector";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { useEffect } from "react";
+import { useMediaQuery } from "@chakra-ui/react";
 const Layout = () => {
   return (
     <>
@@ -30,6 +32,14 @@ const Layout = () => {
 
 const App = () => {
   const { user } = useAuthContext();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const root = document.getElementById("root");
+  useEffect(() => {
+    if (isMobile) {
+      root.style.overflowX = "hidden";
+      document.body.style.overflowX = "hidden";
+    }
+  }, [isMobile, root.style]);
   return (
     <Router>
       <Routes>

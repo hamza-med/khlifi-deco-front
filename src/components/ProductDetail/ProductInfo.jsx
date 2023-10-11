@@ -142,7 +142,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             <p
               style={{
                 padding: "12px 10px",
-                width: "80%",
+                width: "100%",
                 border: "1px solid #a94442",
                 backgroundColor: "#f2dede",
                 margin: "3px 0px 10px 0px",
@@ -150,7 +150,8 @@ const ProductInfo = ({ prodData, prodId }) => {
                 color: "#a94442",
               }}
             >
-              Merci de séléctionner la date de fin
+              Merci de séléctionner la date de fin, cliquez deux fois si les
+              deux dates sont les mêmes
             </p>
           )}
         </div>

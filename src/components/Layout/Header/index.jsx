@@ -23,8 +23,8 @@ const Header = () => {
         <Logo isMobile={isMobile} />
         <Navbar categories={categories} />
         <NavIcons onOpen={onOpen} />
-        <NavbarDrawer isOpen={open} categories={categories} />
-        <ToggleMenu showDrawer={setOpen} isOpen={open} />
+        <NavbarDrawer isOpen={open} categories={categories} showDrawer={setOpen} />
+        <ToggleMenu showDrawer={setOpen} isOpen={open} isMobile={isMobile} />
         <SearchModal isOpen={isOpen} onClose={onClose} />
         <ShoppingCart />
       </div>

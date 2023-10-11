@@ -1,12 +1,19 @@
+import { HStack, useMediaQuery } from "@chakra-ui/react";
 import { GrFacebook, GrInstagram, GrYoutube } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <div className="footer">
       <div className="footer__top">
         <div className="footer__top--item">
-          <img src="/src/assets/logo1.png" alt="footer-logo" />
+          <img
+            src="/src/assets/logo1.png"
+            alt="footer-logo"
+            style={isMobile ? { width: "180px", height: "170px" } : null}
+          />
           <div className="footer__top--logo">
             <Link>
               <GrFacebook className="footer__top--logo--1" />
@@ -26,17 +33,17 @@ const Footer = () => {
         <div className="footer__top--item">
           <h1>Liens</h1>
           <Link>
-            <span>Home</span>
+            <span>Accueil</span>
           </Link>
           <Link>
-            <span>Shop Now</span>
+            <span>Boutique</span>
           </Link>
           <Link>
             <span>Contact</span>
           </Link>
         </div>
         <div className="footer__top--item">
-          <h1>à propos de nous</h1>
+          <h1>&#192; propos de nous</h1>
           <span>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque,
             illo hic quo vitae quae numquam autem laborum voluptate nulla enim
@@ -47,16 +54,22 @@ const Footer = () => {
           <h1>Contact</h1>
           <ul role="list">
             <li>
-              <span className="contact-info">Whatsapp : </span>
-              <span>(+216) 50 577 433</span>
+              <HStack>
+                <span className="contact-info">Whatsapp:</span>
+                <span>(+216) 50 577 433</span>
+              </HStack>
             </li>
             <li>
-              <span className="contact-info">Website : </span>{" "}
-              <span>www.khlifi-deco.com</span>
+              <HStack>
+                <span className="contact-info">Website:</span>
+                <span>www.khlifi-deco.com</span>
+              </HStack>
             </li>
             <li>
-              <span className="contact-info">Email : </span>
-              <span>Contact@khlifi-deco.com</span>
+              <HStack>
+                <span className="contact-info">Email: </span>
+                <span>Contact@khlifi-deco.com</span>
+              </HStack>
             </li>
           </ul>
         </div>

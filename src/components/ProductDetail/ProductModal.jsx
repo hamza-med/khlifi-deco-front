@@ -6,6 +6,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -13,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProductModal = ({ isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
-
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { cartItems, subtotal } = useShoppingCart();
   const [item, setItem] = useState();
   useEffect(
@@ -30,11 +31,11 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
         minH={["60%", "68px", "68px"]}
       >
         <ModalHeader
-          textAlign="center"
+          textAlign={isMobile ? "left" : "center"}
           p="0.8em"
           bgColor="#ac8f67"
           color="white"
-          fontSize={["1rem","1rem","1.2rem"]}
+          fontSize={["1rem", "1rem", "1.2rem"]}
           fontWeight="500"
         >
           Produit ajouté au panier avec succès

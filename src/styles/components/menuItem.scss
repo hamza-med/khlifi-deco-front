@@ -4,6 +4,13 @@
   font-weight: $fw-semi-bold;
   position: relative;
   .link {
+    @include tablet {
+      gap: 6px;
+      svg {
+        font-size: 1.8rem;
+        color: rgb(40, 39, 37);
+      }
+    }
     @include flex(row, center, center);
   }
   .new-item {
@@ -27,7 +34,6 @@
   }
   &:hover {
     color: $primary-color;
-    
   }
   svg {
     margin-left: 3px;

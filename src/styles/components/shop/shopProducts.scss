@@ -4,13 +4,12 @@
     display: block;
     padding: 5px 1px;
   }
-  padding: 30px 40px;
+  padding: 30px 25px;
   @include flex(row, space-between, start);
   &__left {
-    width: 19%;
     @include tablet {
-    padding: 0px 10px;
-    width: 100%;
+      padding: 0px 10px;
+      width: 100%;
     }
     .title {
       @include tablet {
@@ -46,7 +45,6 @@
     }
   }
   &__right {
-    width: 80%;
     @include tablet {
       margin-top: 30px;
       width: 100%;
@@ -57,7 +55,7 @@
       &.grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2.5em;
+        gap: 1.2em;
         @include tablet {
           display: grid;
           grid-template-columns: repeat(2, 1fr);

@@ -1,12 +1,13 @@
 import ProductModal from "@/components/ProductDetail/ProductModal";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { useDisclosure } from "@chakra-ui/react";
+import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, display, id }) => {
   var date = new Date();
   date.setDate(date.getDate() + 1);
   const { increaseCartQuantity } = useShoppingCart();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleClick = (e) => {
@@ -37,14 +38,16 @@ const ProductCard = ({ product, display, id }) => {
         alt=""
       />
       <div style={{ padding: "0px 13px" }}>
-        <div className="card_container__overlay">
-          <button
-            className="card_container__overlay__button"
-            onClick={handleClick}
-          >
-            Ajouter au panier
-          </button>
-        </div>
+        {!isMobile && (
+          <div className="card_container__overlay">
+            <button
+              className="card_container__overlay__button"
+              onClick={handleClick}
+            >
+              Ajouter au panier
+            </button>
+          </div>
+        )}
 
         {product?.discount ? (
           <span className="card_container__badge">-{product?.discount}%</span>

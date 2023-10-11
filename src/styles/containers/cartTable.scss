@@ -9,7 +9,7 @@ $input-size: 40px;
   gap: 35px;
 }
 .tb__header {
-  @include tablet{
+  @include tablet {
     padding-left: 0 !important;
   }
   color: black !important;
@@ -63,12 +63,20 @@ $input-size: 40px;
 }
 
 .table__card {
+  @include tablet {
+    padding: 1.1em;
+    margin-top: 1em;
+    gap: 0.2em;
+  }
   padding: 1.5em;
   width: 100%;
   background-color: #f9f1e7;
   @include flex(column, start, center);
   gap: 1em;
   h1 {
+    @include tablet {
+      font-size: 1.2em;
+    }
     font-size: 1.5rem;
     text-transform: capitalize;
     font-weight: 600;
@@ -78,6 +86,12 @@ $input-size: 40px;
     font-weight: 500;
   }
   button {
+    @include tablet {
+      text-align: center;
+      font-size: 1em;
+      display: block;
+      justify-self: center;
+    }
     border: 2px solid black;
     border-radius: 10px;
     padding: 0.8em 1.1em;

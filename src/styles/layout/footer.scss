@@ -36,7 +36,7 @@
     @include tablet {
       display: block;
     }
-    gap: 8%;
+    gap: 5%;
     &--item {
       @include tablet {
         margin-bottom: 20px;
@@ -74,7 +74,6 @@
         font-weight: $fw-bold;
         font-size: 1.3rem;
         margin-bottom: 16px;
-        text-transform: capitalize;
       }
       span {
         @include tablet {

@@ -17,19 +17,16 @@
     }
   }
   &__description {
-    @include tablet{
-    margin-bottom: 10px;
-
+    @include tablet {
+      margin-bottom: 10px;
     }
     opacity: 0.9;
     margin-bottom: 30px;
     text-align: justify;
   }
   &__images {
-    width: 100%;
-    @include flex(row, center, center);
+    @include flex(row, space-between, center);
     flex-wrap: wrap;
-    gap: 20px;
     @include tablet {
       display: block;
     }

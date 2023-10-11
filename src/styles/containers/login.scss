@@ -1,13 +1,22 @@
 .login__wrapper {
+  @include tablet {
+    padding: 0.5em;
+  }
   padding: 2em;
   text-align: center;
   margin: 1em auto;
   .login__title {
+    @include tablet {
+      font-size: 1.3rem;
+    }
     font-size: 2rem;
     color: $title-color;
     margin: 0.5em;
   }
   .login__form {
+    @include tablet {
+      width: 100%;
+    }
     width: 35%;
     margin: 1em auto;
     .login__input {
