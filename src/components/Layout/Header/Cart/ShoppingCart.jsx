@@ -1,3 +1,4 @@
+import { useShoppingCart } from "@/hooks/useShoppingCart";
 import {
   Drawer,
   DrawerBody,
@@ -16,6 +17,8 @@ import CartContent from "./CartContent";
 
 const ShoppingCart = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
+  const { cartItems } = useShoppingCart();
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -53,6 +56,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
         <DrawerFooter display="flex" justifyContent="center">
           <HStack padding="8px">
             <Button
+              isDisabled={cartItems?.length === 0}
               variant="outline"
               mr={2}
               borderRadius="50px"
@@ -66,6 +70,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               Panier
             </Button>
             <Button
+              isDisabled={cartItems?.length === 0}
               variant="outline"
               colorScheme="black"
               borderRadius="50px"

@@ -34,7 +34,7 @@ const Product = ({ products }) => {
   );
 };
 
-const Order = ({ order }) => (
+const Order = ({ order, setName }) => (
   <>
     <Tr borderColor="rgb(224, 224, 224);">
       <Td
@@ -42,6 +42,8 @@ const Order = ({ order }) => (
         borderColor="rgb(224, 224, 224);"
         fontWeight="500"
         fontSize="1.2rem"
+        cursor="pointer"
+        onClick={() => setName([order.firstname, order.lastname])}
       >
         {order.firstname} {order.lastname}
       </Td>
@@ -59,7 +61,7 @@ const Order = ({ order }) => (
         fontWeight="500"
         fontSize="1.2rem"
       >
-        {order.address.street}, {order.address.city} {order.address.postal}
+        {order.address.state}, {order.address.city} {order.address.postal}
       </Td>
       <Td
         paddingLeft="0"
@@ -81,7 +83,7 @@ const Order = ({ order }) => (
     </Tr>
   </>
 );
-const OrdersTable = ({ orders }) => {
+const OrdersTable = ({ orders, setName }) => {
   const total = orders?.reduce(
     (total, item) => total + item.attributes.total,
     0
@@ -97,9 +99,9 @@ const OrdersTable = ({ orders }) => {
                 padding="18px 0"
                 paddingLeft="15px"
                 fontFamily="inherit"
-                fontSize="1.4rem"
+                fontSize="1.3rem"
                 textTransform="capitalize"
-                fontWeight="600"
+                fontWeight="500"
                 color="black"
                 letterSpacing="0"
               >
@@ -109,9 +111,9 @@ const OrdersTable = ({ orders }) => {
                 borderColor="rgb(224, 224, 224);"
                 padding="18px 0"
                 fontFamily="inherit"
-                fontSize="1.4rem"
+                fontSize="1.3rem"
                 textTransform="capitalize"
-                fontWeight="600"
+                fontWeight="500"
                 color="black"
                 letterSpacing="0"
               >
@@ -121,9 +123,9 @@ const OrdersTable = ({ orders }) => {
                 borderColor="rgb(224, 224, 224);"
                 padding="18px 0"
                 fontFamily="inherit"
-                fontSize="1.4rem"
+                fontSize="1.3rem"
                 textTransform="capitalize"
-                fontWeight="600"
+                fontWeight="500"
                 color="black"
                 letterSpacing="0"
               >
@@ -133,9 +135,9 @@ const OrdersTable = ({ orders }) => {
                 borderColor="rgb(224, 224, 224);"
                 padding="18px 0"
                 fontFamily="inherit"
-                fontSize="1.4rem"
+                fontSize="1.3rem"
                 textTransform="capitalize"
-                fontWeight="600"
+                fontWeight="500"
                 color="black"
                 letterSpacing="0"
               >
@@ -145,9 +147,9 @@ const OrdersTable = ({ orders }) => {
                 borderColor="rgb(224, 224, 224);"
                 padding="18px 0"
                 fontFamily="inherit"
-                fontSize="1.4rem"
+                fontSize="1.3rem"
                 textTransform="capitalize"
-                fontWeight="600"
+                fontWeight="500"
                 color="black"
                 letterSpacing="0"
               >
@@ -157,7 +159,9 @@ const OrdersTable = ({ orders }) => {
           </Thead>
           <Tbody>
             {orders?.map((order, i) => {
-              return <Order key={i} order={order?.attributes} />;
+              return (
+                <Order key={i} order={order?.attributes} setName={setName} />
+              );
             })}
           </Tbody>
         </Table>

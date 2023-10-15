@@ -4,7 +4,7 @@ $input-size: 40px;
     display: inline;
     padding: 1em;
   }
-  padding: 3em 4em;
+  padding: 3em;
   @include flex(row, space-between, start);
   gap: 35px;
 }

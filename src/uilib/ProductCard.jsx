@@ -37,7 +37,7 @@ const ProductCard = ({ product, display, id }) => {
         }
         alt=""
       />
-      <div style={{ padding: "0px 13px" }}>
+      <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
         {!isMobile && (
           <div className="card_container__overlay">
             <button
@@ -59,14 +59,16 @@ const ProductCard = ({ product, display, id }) => {
           <h3 className="card_container__content__description">
             {product?.description.substring(0, 25)}...
           </h3>
-          <div className="card_container__content__prices">
-            <p className="card_container__content__prices--1">
-              {product?.price} TND
-            </p>
-            <p className="card_container__content__prices--2">
-              {product?.price - 10} TND
-            </p>
-          </div>
+          {product?.showPrice && (
+            <div className="card_container__content__prices">
+              <p className="card_container__content__prices--1">
+                {product?.price} TND
+              </p>
+              <p className="card_container__content__prices--2">
+                {product?.price - 10} TND
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <ProductModal isOpen={isOpen} onClose={onClose} prodId={id} />

@@ -7,14 +7,20 @@ import PDFFooter from "./PDFFooter";
 
 const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
   const [page, setPage] = useState(1);
-
+  const [name, setName] = useState([]);
   const { data: orders, meta } = usePrivateFetch(
-    `orders?pagination[page]=${page}&pagination[pageSize]=${pageSize}&[filters][creationDate][$eq]=${date
+    `orders?pagination[page]=${page}&${
+      pageSize && `pagination[pageSize]=${pageSize}`
+    }&${
+      name.length !== 0 &&
+      `filters[firstname][$eqi]=${name[0]}&filters[lastname][$eqi]=${name[0]}&filters[firstname][$eqi]=${name[1]}&filters[lastname][$eqi]=${name[1]}`
+    }&filters[creationDate][$eq]=${date
       .toISOString()
       .slice(0, -1)
       .replace("T", " ")}`
   );
   useEffect(() => setDisabled(orders?.length === 0), [orders, setDisabled]);
+  
   setMax(meta?.pagination?.total);
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
@@ -23,7 +29,9 @@ const PDFFile = ({ date, pageSize, setMax, setDisabled }) => {
     <>
       <div id="file-to-export" className="pdfFile__wrapper">
         <PDFHeader />
-        {orders?.length !== 0 && <OrdersTable orders={orders} />}
+        {orders?.length !== 0 && (
+          <OrdersTable orders={orders} setName={setName} />
+        )}
         <PDFFooter />
       </div>
       {pagesArray?.length > 1 && (

@@ -36,9 +36,8 @@ const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
 
 const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
   const [loading, setLoading] = useState();
-  const [size, setSize] = useState(4);
+  const [size, setSize] = useState(max);
   useDebounce(size, setPageSize, 1000);
-
   const handleExportToPDF = async () => {
     setLoading(true);
     const input = document.getElementById("file-to-export");
@@ -71,7 +70,7 @@ const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
       <HStack>
         <NumberInput
           isDisabled={loading || disabled}
-          defaultValue={size}
+          value={size}
           min={1}
           max={max}
           bgColor="white"

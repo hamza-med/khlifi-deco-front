@@ -14,14 +14,15 @@ const defaultValues = {
   email: "",
   enterprise: "",
   address: {
-    street: "",
+    state: "",
     city: "",
+    street: "",
     postal: "",
   },
 };
 
 const BillingSection = () => {
-  const { cartItems, subtotal,removeAll } = useShoppingCart();
+  const { cartItems, subtotal, removeAll } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const {
@@ -35,12 +36,15 @@ const BillingSection = () => {
     resolver: yupResolver(checkoutSchema),
     mode: "onBlur",
   });
- 
+
   const onSubmit = async (values) => {
     var today = new Date();
-    var tzOffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-    var localISOTime = (new Date(today - tzOffset)).toISOString().slice(0, -1).replace("T", " ");
-    
+    var tzOffset = new Date().getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = new Date(today - tzOffset)
+      .toISOString()
+      .slice(0, -1)
+      .replace("T", " ");
+
     try {
       setLoading(true);
       await createOrder({
@@ -67,7 +71,12 @@ const BillingSection = () => {
       <form className="billing__wrapper" onSubmit={handleSubmit(onSubmit)}>
         <BillingForm errors={errors} control={control} />
         <BillingInfo
-          isDisabled={!isDirty || Object.entries(errors).length !== 0 || error}
+          isDisabled={
+            !isDirty ||
+            Object.entries(errors).length !== 0 ||
+            error ||
+            cartItems.length === 0
+          }
           isLoading={loading}
         />
       </form>

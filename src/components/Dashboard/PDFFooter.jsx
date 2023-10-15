@@ -1,9 +1,9 @@
-import { Divider, HStack, VStack } from "@chakra-ui/react";
+import { Box, Divider, HStack, VStack } from "@chakra-ui/react";
 
 const PDFFooter = () => {
   return (
-    <div>
-      <VStack align="start" fontSize="1.2rem" fontWeight="500" gap="8px">
+    <Box mt="auto">
+      <VStack align="start" fontSize="1.2rem" fontWeight="500" gap="8px" >
         <p>Ce devis est arreté à la somme de...</p>
         <p>
           Nous restons à votre disposition pour toute information
@@ -31,7 +31,7 @@ const PDFFooter = () => {
         <p>Paiement par chéque ou en espéces</p>
         <p>40% à la commande</p>
       </VStack>
-    </div>
+    </Box>
   );
 };
 

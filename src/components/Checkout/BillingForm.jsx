@@ -1,8 +1,20 @@
 import Input from "@/uilib/Input";
-
-import LocationSearch from "@/uilib/LocationSearch";
+import citiesWithDelegations, { stateOptions } from "@/utils/data";
+import Select from "@/uilib/Select";
+import { useMemo } from "react";
+import { useWatch } from "react-hook-form";
 
 const BillingForm = ({ control }) => {
+  const state = useWatch({
+    control,
+    name: "address.state",
+  });
+  const citiesOptions = useMemo(() => {
+    return citiesWithDelegations
+      .filter((c) => c.stateName == state)[0]
+      ?.data.map((el) => ({ value: el, label: el }));
+  }, [state]);
+
   return (
     <div className="billingForm__wrapper">
       <h1 className="billing__title">Détails de facturation</h1>
@@ -29,27 +41,38 @@ const BillingForm = ({ control }) => {
         placeholder=""
         control={control}
       />
-      <Input
-        label="Email"
-        name="email"
-        placeholder="email"
+      <Input label="Email" name="email" placeholder="" control={control} />
+      <Select
+        required
+        defaultValue={1}
+        label="gouvernorats"
+        name="address.state"
+        options={stateOptions}
+        placeholder=""
         control={control}
       />
-
-      <Input
+      <Select
         required
+        isDisabled={!state}
+        label="délégations"
+        name="address.city"
+        options={citiesOptions}
+        placeholder=""
+        control={control}
+      />
+      <Input
         label="Numéro et nom de rue"
         name="address.street"
         placeholder=""
         control={control}
       />
-      <LocationSearch
+      {/* <LocationSearch
         required
         label="Ville"
         name="address.city"
         placeholder=""
         control={control}
-      />
+      /> */}
       <Input
         required
         label="Code postal "
