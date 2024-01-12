@@ -120,7 +120,7 @@ const ProductInfo = ({ prodData, prodId }) => {
       <div className="prodInfo__wrapper--right">
         <h1 className="prodInfo__wrapper--right--title">{prodData?.title}</h1>
         <div className="prodInfo__wrapper--right--description">
-          {prodData?.showPrice && <h2>{prodData?.price}00 TND HT / Jour</h2>}
+          {prodData?.showPrice!=false && <h2>{prodData?.price}00 TND HT / Jour</h2>}
           <p>{prodData?.description}</p>
         </div>
         <div className="prodInfo__wrapper--right--fiche">
