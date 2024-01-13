@@ -9,7 +9,7 @@ import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
 import { useMediaQuery } from "@chakra-ui/react";
 import ProductModal from "./ProductModal";
-const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
+
 
 const ProductInfo = ({ prodData, prodId }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
@@ -39,9 +39,9 @@ const ProductInfo = ({ prodData, prodId }) => {
   useEffect(() => {
     prodData &&
       setImages([
-        IMG_URL + prodData?.img?.data?.attributes?.url,
-        IMG_URL + prodData?.img2?.data?.attributes?.url,
-        IMG_URL + prodData?.img3?.data?.attributes?.url,
+        prodData?.img?.data?.attributes?.url,
+        prodData?.img2?.data?.attributes?.url,
+        prodData?.img3?.data?.attributes?.url,
       ]);
   }, [prodData]);
 
@@ -74,7 +74,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             <div className="prodInfo__wrapper--left--images">
               {images.map(
                 (el, index) =>
-                  el !== IMG_URL + "undefined" && (
+                  el !== "undefined" && (
                     <div key={index} className="mini-img">
                       <img src={el} onClick={() => setImgIndex(index)} />
                     </div>
@@ -103,7 +103,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             <div className="prodInfo__wrapper--left--images">
               {images.map(
                 (el, index) =>
-                  el !== IMG_URL + "undefined" && (
+                  el !==  "undefined" && (
                     <div key={index} className="mini-img">
                       <img src={el} onClick={() => setImgIndex(index)} />
                     </div>
