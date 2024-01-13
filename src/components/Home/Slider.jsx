@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
 const data = [
-  "src/assets/wedding1.jpg",
-  "src/assets/wedding2.jpg",
-  "src/assets/wedding3.jpg",
+  "assets/wedding1.jpg",
+  "assets/wedding2.jpg",
+  "assets/wedding3.jpg",
 ];
 const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
