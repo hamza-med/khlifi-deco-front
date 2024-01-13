@@ -5,9 +5,9 @@ const Logo = ({ isMobile }) => {
     <div className="logo">
       <Link to="/">
         {isMobile ? (
-          <img src="/src/assets/logo1.png" alt="logo" className="logo--mobile" />
+          <img src="assets/logo1.png" alt="logo" className="logo--mobile" />
         ) : (
-          <img src="/src/assets/deco.jpg" alt="logo" className="logo" />
+          <img src="assets/deco.jpg" alt="logo" className="logo" />
         )}
       </Link>
     </div>
