@@ -32,7 +32,6 @@ const ProductCard = ({ product, display, id }) => {
       <img
         className="card_container__img"
         src={
-          import.meta.env.VITE_APP_UPLOAD_URL +
           product?.img?.data?.attributes?.url
         }
         alt=""
