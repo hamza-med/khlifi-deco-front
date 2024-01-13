@@ -4,9 +4,9 @@
 @import "sliderContent.scss";
 @import "shopBreadCumbs.scss";
 @import "authProfile.scss";
-@import "shop";
-@import "home";
-@import "cart";
-@import "productDetail";
-@import "billing";
-@import "dashboard";
+@import "shop/index.scss";
+@import "home/index.scss";
+@import "cart/index.scss";
+@import "productDetail/index.scss";
+@import "billing/index.scss";
+@import "dashboard/index.scss";
