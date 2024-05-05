@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer__top">
         <div className="footer__top--item">
           <img
-            src="assets/logo1.png"
+            src="/assets/logo1.png"
             alt="footer-logo"
             style={isMobile ? { width: "180px", height: "170px" } : null}
           />
