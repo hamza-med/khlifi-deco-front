@@ -10,7 +10,7 @@ import { RxWidth, RxHeight } from "react-icons/rx";
 import { useMediaQuery } from "@chakra-ui/react";
 import ProductModal from "./ProductModal";
 
-
+const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 const ProductInfo = ({ prodData, prodId }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [images, setImages] = useState([]);
@@ -39,9 +39,9 @@ const ProductInfo = ({ prodData, prodId }) => {
   useEffect(() => {
     prodData &&
       setImages([
-        prodData?.img?.data?.attributes?.url,
-        prodData?.img2?.data?.attributes?.url,
-        prodData?.img3?.data?.attributes?.url,
+        IMG_URL + prodData?.img?.data?.attributes?.url,
+        IMG_URL + prodData?.img2?.data?.attributes?.url,
+        IMG_URL + prodData?.img3?.data?.attributes?.url,
       ]);
   }, [prodData]);
 
@@ -74,7 +74,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             <div className="prodInfo__wrapper--left--images">
               {images.map(
                 (el, index) =>
-                  el !== "undefined" && (
+                  el !== IMG_URL + "undefined" && (
                     <div key={index} className="mini-img">
                       <img src={el} onClick={() => setImgIndex(index)} />
                     </div>
@@ -103,7 +103,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             <div className="prodInfo__wrapper--left--images">
               {images.map(
                 (el, index) =>
-                  el !==  "undefined" && (
+                  el !== IMG_URL + "undefined" && (
                     <div key={index} className="mini-img">
                       <img src={el} onClick={() => setImgIndex(index)} />
                     </div>
@@ -120,7 +120,9 @@ const ProductInfo = ({ prodData, prodId }) => {
       <div className="prodInfo__wrapper--right">
         <h1 className="prodInfo__wrapper--right--title">{prodData?.title}</h1>
         <div className="prodInfo__wrapper--right--description">
-          {prodData?.showPrice!=false && <h2>{prodData?.price}00 TND HT / Jour</h2>}
+          {prodData?.showPrice != false && (
+            <h2>{prodData?.price}00 TND HT / Jour</h2>
+          )}
           <p>{prodData?.description}</p>
         </div>
         <div className="prodInfo__wrapper--right--fiche">

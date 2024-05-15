@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer__top">
         <div className="footer__top--item">
           <img
-            src="assets/logo1.png"
+            src="/assets/logo1.png"
             alt="footer-logo"
             style={isMobile ? { width: "180px", height: "170px" } : null}
           />
@@ -32,13 +32,13 @@ const Footer = () => {
         </div>
         <div className="footer__top--item">
           <h1>Liens</h1>
-          <Link>
+          <Link to="home">
             <span>Accueil</span>
           </Link>
           <Link>
             <span>Boutique</span>
           </Link>
-          <Link>
+          <Link to="contact">
             <span>Contact</span>
           </Link>
         </div>
