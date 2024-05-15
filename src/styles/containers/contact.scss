@@ -6,9 +6,11 @@
   margin: 1em auto;
   .contact_content {
     @include tablet {
-      @include flex(column, center, center);
+      padding: 0.5em;
+      @include flex(column, space-between, start);
     }
-    @include flex(row, center, center);
-    gap: 1em;
+    padding-inline: 10em;
+    @include flex(row, space-between, start);
+    gap: 4em;
   }
 }

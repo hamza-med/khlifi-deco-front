@@ -1,5 +1,8 @@
 .contact_form_wrapper {
-  width: 40%;
+  @include tablet {
+    width: 100%;
+  }
+  flex: 1;
   .contact_form_title {
     @include tablet {
       font-size: 1.3rem;
