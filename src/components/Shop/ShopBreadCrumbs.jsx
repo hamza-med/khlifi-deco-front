@@ -6,7 +6,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   return (
     <div className="shop_header">
       <img
-        src="https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg"
+        src="/assets/living-room.jpg"
         alt="shop-bg"
         className="shop_header__image"
       />

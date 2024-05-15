@@ -18,7 +18,7 @@ const ProductCard = ({ product, display, id }) => {
       1,
       product?.title,
       product?.price,
-      product?.img?.data?.attributes?.url,
+      import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url,
       date?.toLocaleDateString("fr-FR"),
       date?.toLocaleDateString("fr-FR")
     );
@@ -31,7 +31,7 @@ const ProductCard = ({ product, display, id }) => {
     >
       <img
         className="card_container__img"
-        src={product?.img?.data?.attributes?.url}
+        src={import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url}
         alt=""
       />
       <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
