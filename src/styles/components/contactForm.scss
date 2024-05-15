@@ -1,0 +1,14 @@
+.contact_form_wrapper {
+  width: 40%;
+  .contact_form_title {
+    @include tablet {
+      font-size: 1.3rem;
+    }
+    font-size: 2rem;
+    color: $title-color;
+    margin-bottom: 0.5em;
+  }
+  .contact_input {
+    margin-bottom: 1.2rem;
+  }
+}

@@ -1,0 +1,14 @@
+.contact_wrapper {
+  @include tablet {
+    padding: 0.5em;
+  }
+  padding: 2em;
+  margin: 1em auto;
+  .contact_content {
+    @include tablet {
+      @include flex(column, center, center);
+    }
+    @include flex(row, center, center);
+    gap: 1em;
+  }
+}
