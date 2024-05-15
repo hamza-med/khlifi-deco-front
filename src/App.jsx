@@ -20,6 +20,7 @@ import RouteProtector from "./components/RouteProtector";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { useEffect } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
+import Contact from "./pages/Contact";
 const Layout = () => {
   return (
     <>
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="checkout" element={<Checkout />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="dashboard" element={<RouteProtector user={user} />}>
             <Route path="" element={<Dashboard />} />
           </Route>

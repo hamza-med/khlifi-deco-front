@@ -32,13 +32,13 @@ const Footer = () => {
         </div>
         <div className="footer__top--item">
           <h1>Liens</h1>
-          <Link>
+          <Link to="home">
             <span>Accueil</span>
           </Link>
           <Link>
             <span>Boutique</span>
           </Link>
-          <Link>
+          <Link to="contact">
             <span>Contact</span>
           </Link>
         </div>
