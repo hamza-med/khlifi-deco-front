@@ -1,5 +1,6 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { BiPhoneCall } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const MiniHeader = () => {
   return (
@@ -12,10 +13,12 @@ const MiniHeader = () => {
         {" "}
         Meilleur organisateur d&apos; événements en tunisie{" "}
       </p>
-      <div className="contact-us">
-        <AiOutlineMail />
-        Contact
-      </div>
+      <Link to="contact">
+        <div className="contact-us">
+          <AiOutlineMail />
+          Contact
+        </div>
+      </Link>
     </div>
   );
 };

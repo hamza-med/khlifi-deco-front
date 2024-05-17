@@ -1,0 +1,16 @@
+.contact_wrapper {
+  @include tablet {
+    padding: 0.5em;
+  }
+  padding: 2em;
+  margin: 1em auto;
+  .contact_content {
+    @include tablet {
+      padding: 0.5em;
+      @include flex(column, space-between, start);
+    }
+    padding-inline: 10em;
+    @include flex(row, space-between, start);
+    gap: 4em;
+  }
+}
