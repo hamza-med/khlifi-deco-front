@@ -31,7 +31,7 @@ const ContactForm = () => {
     try {
       setLoading(true);
       await sendEmail({
-        from:values.email,
+        from: values.email,
         to: "utilisation13@gmail.com",
         subject: values.subject,
         html: `<p>${values.message}</p>`,
