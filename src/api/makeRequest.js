@@ -18,6 +18,12 @@ export const createOrder = async (order) => {
   const { data } = await publicRequest.post("/orders", order);
   return data;
 };
+
+export const sendEmail = async (emailBody) => {
+  const { data } = await publicRequest.post("/email", emailBody);
+  return data;
+};
+
 export const register = async (userData) => {
   const { data } = await publicRequest.post("/auth/local/register", userData);
   return data;

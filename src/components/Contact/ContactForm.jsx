@@ -1,8 +1,10 @@
+import { sendEmail } from "@/api/makeRequest";
 import Input from "@/uilib/Input";
 import Textarea from "@/uilib/Textarea";
 import { contactSchema } from "@/utils/schemas";
 import { Button } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const defaultValues = {
@@ -11,10 +13,14 @@ const defaultValues = {
   message: "",
 };
 const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   const {
     control,
+    reset,
     handleSubmit,
-    formState: { isDirty, errors },
+    formState: { isDirty, errors, isSubmitSuccessful },
   } = useForm({
     defaultValues,
     resolver: yupResolver(contactSchema),
@@ -22,8 +28,24 @@ const ContactForm = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log(values);
+    try {
+      setLoading(true);
+      await sendEmail({
+        from: values.email,
+        to: "utilisation13@gmail.com",
+        subject: values.subject,
+        html: `<p>${values.message}</p>`,
+      });
+    } catch (e) {
+      setError(true);
+    }
+    setLoading(false);
   };
+
+  useEffect(() => {
+    isSubmitSuccessful && reset(defaultValues);
+  }, [isSubmitSuccessful, reset]);
+
   return (
     <div className="contact_form_wrapper">
       <h1 className="contact_form_title">Contactez-Nous</h1>
@@ -51,8 +73,8 @@ const ContactForm = () => {
         />
         <Button
           type="submit"
-          isDisabled={!isDirty || Object.entries(errors).length !== 0}
-          isLoading={false}
+          isDisabled={!isDirty || error || Object.entries(errors).length !== 0}
+          isLoading={loading}
           bgColor="rgba(79, 64, 43)"
           _hover={{
             bgColor: "rgba(79, 64, 43,0.8)",
