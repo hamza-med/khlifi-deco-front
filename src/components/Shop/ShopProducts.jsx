@@ -36,10 +36,12 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
+  const subCategoriesQuery = selectedSubCats
+    .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
+    .join("");
+  
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${selectedSubCats.map(
-      (item) => `&[filters][sub_categories][id][$eq]=${item}`
-    )}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`
   );
   useEffect(() => {
     const indexes = calculateIndexes(
