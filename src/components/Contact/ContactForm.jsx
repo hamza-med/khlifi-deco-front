@@ -30,14 +30,13 @@ const ContactForm = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       setLoading(true);
       await sendEmail({
         from: values.email,
         to: "utilisation13@gmail.com",
-        subject: `${values.subject} from ${values.firstname} ${values.lastname}`,
-        html: `<p>${values.message}</p>`,
+        subject: values.subject,
+        html: `<h4>${values.firstname} ${values.lastname}</h4><p>${values.message}</p>`,
       });
     } catch (e) {
       setError(true);
