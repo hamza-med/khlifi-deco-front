@@ -52,7 +52,9 @@ export const registerSchema = yup.object().shape({
     ),
 });
 export const contactSchema = yup.object().shape({
-  subject: yup.string().required("Veuillez saisir le sujet"),
+  firstname: yup.string().required("Veuillez saisir votre nom"),
+  lastname: yup.string().required("Veuillez saisir votre prénom"),
+  subject: yup.string().required("Veuillez saisir le sujet").max(50),
   email: yup
     .string()
     .email("l'email doit être un email valide")
