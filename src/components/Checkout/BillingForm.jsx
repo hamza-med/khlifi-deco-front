@@ -8,10 +8,12 @@ const BillingForm = ({ control }) => {
   const state = useWatch({
     control,
     name: "address.state",
+    defaultValue: "Ariana",
   });
+  console.log(state);
   const citiesOptions = useMemo(() => {
     return citiesWithDelegations
-      .filter((c) => c.stateName == state)[0]
+      .find((c) => c.stateName == state)
       ?.data.map((el) => ({ value: el, label: el }));
   }, [state]);
 
@@ -44,7 +46,6 @@ const BillingForm = ({ control }) => {
       <Input label="Email" name="email" placeholder="" control={control} />
       <Select
         required
-        defaultValue={1}
         label="gouvernorats"
         name="address.state"
         options={stateOptions}
