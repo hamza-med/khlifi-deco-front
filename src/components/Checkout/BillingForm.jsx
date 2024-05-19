@@ -10,7 +10,7 @@ const BillingForm = ({ control }) => {
     name: "address.state",
     defaultValue: "Ariana",
   });
-  console.log(state);
+
   const citiesOptions = useMemo(() => {
     return citiesWithDelegations
       .find((c) => c.stateName == state)
