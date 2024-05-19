@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const defaultValues = {
+  firstname: "",
+  lastname: "",
   subject: "",
   email: "",
   message: "",
@@ -28,12 +30,13 @@ const ContactForm = () => {
   });
 
   const onSubmit = async (values) => {
+    console.log(values);
     try {
       setLoading(true);
       await sendEmail({
         from: values.email,
         to: "utilisation13@gmail.com",
-        subject: values.subject,
+        subject: `${values.subject} from ${values.firstname} ${values.lastname}`,
         html: `<p>${values.message}</p>`,
       });
     } catch (e) {
@@ -50,6 +53,22 @@ const ContactForm = () => {
     <div className="contact_form_wrapper">
       <h1 className="contact_form_title">Contactez-Nous</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="contact_form_name">
+          <Input
+            label="Nom"
+            name="firstname"
+            placeholder="votre nom"
+            control={control}
+            className="contact_input"
+          />
+          <Input
+            label="Prénom"
+            name="lastname"
+            placeholder="votre prénom"
+            control={control}
+            className="contact_input"
+          />
+        </div>
         <Input
           label="Sujet"
           name="subject"

@@ -11,6 +11,12 @@
     color: $title-color;
     margin-bottom: 0.5em;
   }
+  .contact_form_name {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-columns: 1fr;
+  }
   .contact_input {
     margin-bottom: 1.2rem;
   }
