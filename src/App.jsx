@@ -17,7 +17,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RouteProtector from "./components/RouteProtector";
-import { useAuthContext } from "./hooks/useAuthContext";
 import { useEffect } from "react";
 import { useMediaQuery } from "@chakra-ui/react";
 import Contact from "./pages/Contact";
@@ -32,7 +31,6 @@ const Layout = () => {
 };
 
 const App = () => {
-  const { user } = useAuthContext();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const root = document.getElementById("root");
   useEffect(() => {
@@ -55,7 +53,7 @@ const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="dashboard" element={<RouteProtector user={user} />}>
+          <Route path="dashboard" element={<RouteProtector />}>
             <Route path="" element={<Dashboard />} />
           </Route>
           <Route path="*" element={<Home />} />

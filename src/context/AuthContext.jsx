@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 import { useEffect } from "react";
 import { publicRequest } from "@/api/makeRequest";
-import { getLocalStorageItem } from "@/utils/localStorage";
+import { getLocalStorageItem, setLocalStorageItem } from "@/utils/localStorage";
 
 export const AuthContext = createContext({});
 
@@ -28,6 +28,7 @@ export function AuthContextProvider({ children }) {
 
   const handleUser = (user) => {
     setUserData(user);
+    setLocalStorageItem("user", user);
   };
 
   useEffect(() => {
