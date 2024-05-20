@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { createOrder } from "@/api/makeRequest";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { checkoutSchema } from "@/utils/schemas";
+import { useDisclosure } from "@chakra-ui/react";
+import CheckoutModal from "./CheckoutModal";
 const defaultValues = {
   firstname: "",
   lastname: "",
@@ -25,6 +27,7 @@ const BillingSection = () => {
   const { cartItems, subtotal, removeAll } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     control,
     reset,
@@ -71,6 +74,7 @@ const BillingSection = () => {
       <form className="billing__wrapper" onSubmit={handleSubmit(onSubmit)}>
         <BillingForm errors={errors} control={control} />
         <BillingInfo
+          onOpen={onOpen}
           isDisabled={
             !isDirty ||
             Object.entries(errors).length !== 0 ||
@@ -80,6 +84,7 @@ const BillingSection = () => {
           isLoading={loading}
         />
       </form>
+      <CheckoutModal isOpen={isOpen} onClose={onClose} />
     </FormProvider>
   );
 };

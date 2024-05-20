@@ -1,45 +1,48 @@
-import { HStack } from "@chakra-ui/react";
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaFacebookMessenger,
-  FaInstagram,
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaTiktok,
-  FaYoutube,
-} from "react-icons/fa";
+import { HStack, VStack } from "@chakra-ui/react";
+import { FaClock, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const infoData = [
-  { icon: <FaPhoneAlt />, text: "57 755 433" },
-  { icon: <FaFacebookMessenger />, text: "Messenger" },
-  { icon: <FaMapMarkerAlt />, text: "16 rue toborsok , bardo" },
-  { icon: <FaEnvelope />, text: "Email: contact@hamza.com" },
+  {
+    icon: <FaMapMarkerAlt />,
+    title: "Adresse",
+    text: "16 rue toborsok , bardo",
+  },
+  {
+    icon: <FaPhoneAlt />,
+    title: "Téléphone",
+    text: "Mobile 57 755 433",
+  },
+
+  {
+    icon: <FaClock />,
+    title: "Horaire de travail",
+    text: "Lundi-Vendredi: 9:00 - 19:00",
+    text1: "Samedi-Dimanche: 9:00 - 19:00",
+  },
 ];
 
 const ContactCard = () => {
   return (
     <div className="contact_card_wrapper">
-      <h1 className="contact_card_title">Besoin d&apos;aide ?</h1>
       <div className="contact_card_info">
         {infoData.map((info) => {
           return (
-            <HStack className="contact_card" key={info.text}>
-              <div style={{ fontSize: "22px", color: "rgba(79, 64, 43)" }}>
-                {info.icon}
-              </div>
-              <span style={{ fontSize: "1.2rem" }}>{info.text}</span>
+            <HStack
+              className="contact_card"
+              key={info.text}
+              align="start"
+              gap="1.5em"
+            >
+              <div style={{ fontSize: "27px" }}>{info.icon}</div>
+              <VStack align="start">
+                <h2>{info?.title}</h2>
+                <span>{info.text}</span>
+                <span>{info?.text1}</span>
+              </VStack>
             </HStack>
           );
         })}
       </div>
-      <h1 className="contact_card_title title2">Suivez-Nous</h1>
-      <HStack gap="0.8em" fontSize="28px"  color="rgba(79, 64, 43)">
-        <FaFacebook color="blue" />
-        <FaInstagram color="FaInstagram" />
-        <FaTiktok color="black" />
-        <FaYoutube color="red" />
-      </HStack>
     </div>
   );
 };

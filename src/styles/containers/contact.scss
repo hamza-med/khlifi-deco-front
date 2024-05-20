@@ -8,6 +8,7 @@
     @include tablet {
       padding: 0.5em;
       @include flex(column, space-between, start);
+      gap: 2em;
     }
     padding-inline: 10em;
     @include flex(row, space-between, start);

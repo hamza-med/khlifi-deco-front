@@ -9,7 +9,7 @@ const ProductItem = ({ item }) => (
   </HStack>
 );
 
-const BillingInfo = ({ isDisabled, isLoading }) => {
+const BillingInfo = ({ onOpen, isDisabled, isLoading }) => {
   const { cartItems, subtotal } = useShoppingCart();
 
   return (
@@ -36,7 +36,7 @@ const BillingInfo = ({ isDisabled, isLoading }) => {
       <p>
         La commande ne peut être confirmé qu &rsquo;avec une avance de 40% de la
         somme globale voir
-        <span style={{ cursor: "pointer", fontWeight: "600" }}>
+        <span style={{ cursor: "pointer", fontWeight: "600" }} onClick={onOpen}>
           {" "}
           modalités de paiement.
         </span>

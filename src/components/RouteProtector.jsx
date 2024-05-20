@@ -1,9 +1,10 @@
+import { getLocalStorageItem } from "@/utils/localStorage";
 import { Navigate, useLocation, Outlet } from "react-router-dom";
 
-const RouteProtector = ({ user }) => {
+const RouteProtector = () => {
   let location = useLocation();
-
-  return !user ? (
+  let user = getLocalStorageItem("user");
+  return !user?.id ? (
     <Navigate to="/login" state={{ from: location }} replace />
   ) : user?.email !== "utilisation13@gmail.com" ? (
     <Navigate to="/" state={{ from: location }} replace />
