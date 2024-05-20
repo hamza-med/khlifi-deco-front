@@ -2,7 +2,8 @@
   @include tablet {
     width: 100%;
   }
-  flex: 1;
+  width: 50%;
+
   .contact_form_title {
     @include tablet {
       font-size: 1.3rem;
