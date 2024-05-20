@@ -3,15 +3,6 @@
     width: 100%;
   }
   width: 50%;
-
-  .contact_form_title {
-    @include tablet {
-      font-size: 1.3rem;
-    }
-    font-size: 2rem;
-    color: $title-color;
-    margin-bottom: 0.5em;
-  }
   .contact_form_name {
     display: grid;
     grid-gap: 1rem;

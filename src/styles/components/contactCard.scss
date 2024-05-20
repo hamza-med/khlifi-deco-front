@@ -4,7 +4,7 @@
   }
   h2 {
     @include tablet {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
     font-size: 1.5rem;
     color: $title-color;
@@ -14,9 +14,14 @@
   border-radius: 10px;
   padding: 1em;
   width: 30%;
-
   .contact_card_info {
     @include flex(column, space-between, start);
     gap: 1.5em;
+    .icon {
+      @include tablet {
+        font-size: 25px;
+      }
+      font-size: 27px;
+    }
   }
 }

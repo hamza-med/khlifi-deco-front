@@ -50,7 +50,6 @@ const ContactForm = () => {
 
   return (
     <div className="contact_form_wrapper">
-      <h1 className="contact_form_title">Contactez-Nous</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="contact_form_name">
           <Input
