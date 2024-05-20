@@ -10,7 +10,7 @@ const infoData = [
   {
     icon: <FaPhoneAlt />,
     title: "Téléphone",
-    text: "Mobile 57 755 433",
+    text: "Mobile: 57 755 433",
   },
 
   {
@@ -33,7 +33,7 @@ const ContactCard = () => {
               align="start"
               gap="1.5em"
             >
-              <div style={{ fontSize: "27px" }}>{info.icon}</div>
+              <div className="icon" >{info.icon}</div>
               <VStack align="start">
                 <h2>{info?.title}</h2>
                 <span>{info.text}</span>
