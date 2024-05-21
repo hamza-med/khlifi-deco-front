@@ -3,13 +3,19 @@ import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";
 
-const NavbarDrawer = ({ isOpen, categories,showDrawer }) => {
+const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
   return (
     <div className={isOpen ? `nav-drawer active` : `nav-drawer`}>
       <div className="nav-drawer-content">
         {categories?.map((item) => {
           return (
-            <NavbarItem item={item?.attributes} key={item?.id} id={item?.id} showDrawer={showDrawer} />
+            <NavbarItem
+              item={item?.attributes}
+              key={item?.id}
+              id={item?.id}
+              showDrawer={showDrawer}
+              isDrawerOpen={isOpen}
+            />
           );
         })}
         {/* <NavButton drawerOpened={isOpen}>voir les plans</NavButton> */}
