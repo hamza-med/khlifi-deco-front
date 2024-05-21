@@ -1,6 +1,8 @@
-import PDFFile from "@/components/Dashboard/PDFFile";
-import Header from "@/components/Dashboard/Header";
-import { useState } from "react";
+import { Spinner } from "@chakra-ui/react";
+import { Suspense, lazy, useState } from "react";
+
+const PDFFile = lazy(() => import("@/components/Dashboard/PDFFile"));
+const Header = lazy(() => import("@/components/Dashboard/Header"));
 
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
@@ -10,8 +12,23 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Header startDate={date} setStartDate={setDate} setPageSize={setPageSize} max={max} disabled={disabled} />
-      <PDFFile date={date} pageSize={pageSize} setMax={setMax} setDisabled={setDisabled} />
+      <Suspense fallback={<Spinner />}>
+        <Header
+          startDate={date}
+          setStartDate={setDate}
+          setPageSize={setPageSize}
+          max={max}
+          disabled={disabled}
+        />
+      </Suspense>
+      <Suspense fallback={<Spinner />}>
+        <PDFFile
+          date={date}
+          pageSize={pageSize}
+          setMax={setMax}
+          setDisabled={setDisabled}
+        />
+      </Suspense>
     </div>
   );
 };
