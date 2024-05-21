@@ -31,7 +31,10 @@ const ProductCard = ({ product, display, id }) => {
     >
       <img
         className="card_container__img"
-        src={import.meta.env.VITE_APP_UPLOAD_URL + product?.img?.data?.attributes?.url}
+        src={
+          import.meta.env.VITE_APP_UPLOAD_URL +
+          product?.img?.data?.attributes?.url
+        }
         alt=""
       />
       <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
@@ -59,10 +62,10 @@ const ProductCard = ({ product, display, id }) => {
           {product?.showPrice != false && (
             <div className="card_container__content__prices">
               <p className="card_container__content__prices--1">
-                {product?.price} TND
+                {product?.price - 10} TND
               </p>
               <p className="card_container__content__prices--2">
-                {product?.price - 10} TND
+                {product?.price} TND
               </p>
             </div>
           )}
