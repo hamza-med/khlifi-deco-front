@@ -6,6 +6,7 @@ const CategoryCard = ({ item, id }) => {
       <div className="home-categories__images--container">
         <div className="home-categories__images--container--item">
           <img
+            loading="lazy"
             src={
               import.meta.env.VITE_APP_UPLOAD_URL +
               item?.attributes?.img?.data?.attributes?.url

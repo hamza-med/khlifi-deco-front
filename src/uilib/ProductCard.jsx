@@ -30,6 +30,7 @@ const ProductCard = ({ product, display, id }) => {
       onClick={() => navigate(`/shop/product/${id}`)}
     >
       <img
+        loading="lazy"
         className="card_container__img"
         src={
           import.meta.env.VITE_APP_UPLOAD_URL +
