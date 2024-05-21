@@ -2,6 +2,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
+import Image from "@/uilib/Image";
 const data = [
   "assets/wedding1.jpg",
   "assets/wedding2.jpg",
@@ -51,7 +52,7 @@ const Slider = ({ productsRef }) => {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((img, i) => (
-          <img src={img} alt={i} key={i} />
+          <Image src={img} alt={i} key={i} className="slider__container--img"/>
         ))}
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>
