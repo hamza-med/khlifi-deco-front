@@ -1,5 +1,8 @@
-import ContactCard from "@/components/Contact/ContactCard";
-import ContactForm from "@/components/Contact/ContactForm";
+import { Spinner } from "@chakra-ui/react";
+import { Suspense, lazy } from "react";
+
+const ContactCard = lazy(() => import("@/components/Contact/ContactCard"));
+const ContactForm = lazy(() => import("@/components/Contact/ContactForm"));
 
 const Contact = () => {
   return (
@@ -13,8 +16,12 @@ const Contact = () => {
         </p>
       </div>
       <div className="contact_content">
-        <ContactCard />
-        <ContactForm />
+        <Suspense fallback={<Spinner />}>
+          <ContactCard />
+        </Suspense>
+        <Suspense fallback={<Spinner />}>
+          <ContactForm />
+        </Suspense>
       </div>
     </div>
   );
