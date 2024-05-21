@@ -17,6 +17,7 @@
   &-content {
     @include flex(column, center, center);
     margin: auto 3px;
+    gap:1.1em;
   }
   &-footer {
     padding-inline: 1rem;

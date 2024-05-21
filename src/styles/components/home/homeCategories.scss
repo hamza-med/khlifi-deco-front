@@ -19,13 +19,15 @@
   &__description {
     @include tablet {
       margin-bottom: 10px;
+      width: 100%;
     }
+    width: 60%;
     opacity: 0.9;
-    margin-bottom: 30px;
-    text-align: justify;
+    margin: 3px auto 30px auto;
   }
   &__images {
-    @include flex(row, space-between, center);
+    @include flex(row, center, center);
+    gap: 3.4em;
     flex-wrap: wrap;
     @include tablet {
       display: block;
