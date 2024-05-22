@@ -16,7 +16,7 @@ const SearchResults = lazy(() => import("./SearchResults"));
 const SearchModal = ({ isOpen, onClose }) => {
   const [value, setValue] = useState();
   const { data: products } = useFetch(
-    `/products?&[filters][title][$contains]=${value}&populate=*`
+    `/products?&[filters][title][$containsi]=${value}&populate=*`
   );
 
   return (
