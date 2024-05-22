@@ -4,8 +4,9 @@
   }
   .contact_title {
     h1 {
+      font-size: 1.9rem;
       @include tablet {
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
       font-size: 2.5rem;
       font-weight: 600;

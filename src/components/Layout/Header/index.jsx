@@ -26,10 +26,10 @@ const Header = () => {
         <Suspense>
           <Navbar categories={categories} />
         </Suspense>
-        <Suspense >
+        <Suspense>
           <NavIcons onOpen={onOpen} />
         </Suspense>
-        <Suspense >
+        <Suspense>
           <NavbarDrawer
             isOpen={open}
             categories={categories}
