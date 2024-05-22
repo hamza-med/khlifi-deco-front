@@ -25,7 +25,7 @@ export default function NavbarItem({ item, id, showDrawer, isDrawerOpen }) {
         className={specialItem ? "link new-item" : "link"}
       >
         <span
-          style={isDrawerOpen ? { fontSize: "22px" } : null}
+          style={isDrawerOpen ? { fontSize: "18px" } : null}
           onClick={() => {
             showDrawer(false);
           }}
@@ -35,13 +35,13 @@ export default function NavbarItem({ item, id, showDrawer, isDrawerOpen }) {
         {item?.sub_categories?.data?.length !== 0 ? (
           !isOpen ? (
             <RiArrowDropDownLine
-              size={isDrawerOpen ? "50px" : "28px"}
+              size={isDrawerOpen ? "40px" : "28px"}
               onClick={onOpen}
               className={specialItem ? "new-item-svg" : ""}
             />
           ) : (
             <RiArrowDropUpLine
-              size={isDrawerOpen ? "50px" : "28px"}
+              size={isDrawerOpen ? "40px" : "28px"}
               className={specialItem ? "new-item-svg" : ""}
               onClick={onClose}
             />
