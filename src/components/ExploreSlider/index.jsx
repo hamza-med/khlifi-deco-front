@@ -13,7 +13,7 @@ const settings = {
 };
 const ExploreSlider = () => {
   return (
-    <div>
+    <div className="slider-container">
       <Slider {...settings}>
         <div>
           <SliderContent />
