@@ -39,16 +39,14 @@ const ProductCard = ({ product, display, id }) => {
         alt=""
       />
       <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
-        {!isMobile && (
-          <div className="card_container__overlay">
-            <button
-              className="card_container__overlay__button"
-              onClick={handleClick}
-            >
-              Ajouter au panier
-            </button>
-          </div>
-        )}
+        <div className="card_container__overlay">
+          <button
+            className="card_container__overlay__button"
+            onClick={handleClick}
+          >
+            Ajouter au panier
+          </button>
+        </div>
 
         {product?.discount ? (
           <span className="card_container__badge">-{product?.discount}%</span>
