@@ -1,11 +1,22 @@
 import { useDebounce } from "@/hooks/useDebounce";
-import { Input, Select } from "@chakra-ui/react";
+import NumberInput from "@/uilib/NumberInput";
+import { Button, Select, useMediaQuery } from "@chakra-ui/react";
+
 import { useState } from "react";
 import { BsGridFill, BsViewList } from "react-icons/bs";
 
-const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
+import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+
+const FilterBar = ({
+  onOpen,
+  setDisplay,
+  setPageSize,
+  itemsIndex,
+  setSortItem,
+}) => {
   const [inputValue, setInputValue] = useState();
   useDebounce(inputValue, setPageSize, 1000);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <div className="filter-bar__container">
@@ -19,13 +30,35 @@ const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
       </div>
 
       <div className=" filter-bar__container__inputs">
+        {isMobile ? (
+          <Button
+            mr="-20px"
+            color="#3a3a3a"
+            fontWeight="500"
+            height="45px"
+            bgColor="white"
+            padding="10px 30px"
+            borderColor="white"
+            borderRadius="none"
+            leftIcon={
+              <HiOutlineAdjustmentsHorizontal
+                style={{ color: "#3a3a3a", fontSize: "27px" }}
+              />
+            }
+            onClick={onOpen}
+          >
+            Filter
+          </Button>
+        ) : null}
         <div className="show_input">
           <label htmlFor="number-input">Montrer</label>
-          <Input
-            type="number"
+          <NumberInput
+            fontWeight="500"
+            onChange={(v) => setInputValue(v)}
+            step={1}
             defaultValue={12}
-            id="number-input"
-            onChange={() => setInputValue(event.target.value)}
+            min={10}
+            max={30}
           />
         </div>
         <div className="filter_input">
@@ -40,8 +73,8 @@ const FilterBar = ({ setDisplay, setPageSize, itemsIndex, setSortItem }) => {
             htmlFor="standard-select"
             onChange={(e) => setSortItem(e.target.value)}
           >
-            <option value="desc">Prix , décroissant</option>
-            <option value="asc">Prix , croissant</option>
+            <option value="desc">Prix décroissant</option>
+            <option value="asc">Prix croissant</option>
           </Select>
         </div>
       </div>
