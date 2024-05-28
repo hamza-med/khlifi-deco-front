@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const SubCategory = ({ name, id, handleChange, subId }) => {
+const SubCategory = ({ isChecked, name, id, handleChange }) => {
   const [checked, setChecked] = useState();
-  useEffect(() => setChecked(parseInt(subId) === id), [id, subId]);
+
+  useEffect(() => setChecked(isChecked), [isChecked]);
+
   return (
     <div className="content__input">
       <input
+        checked={checked}
         type="checkbox"
         id={id}
         value={id}
         onChange={handleChange}
-        defaultChecked={checked}
       />
       <label htmlFor={id}>{name}</label>
     </div>

@@ -1,5 +1,5 @@
 import useFetch from "@/hooks/useFetch";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, useDisclosure } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -19,7 +19,7 @@ const Shop = () => {
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
   const [subCat, setSubCat] = useState();
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   useEffect(() => {
     let subCat = category?.attributes?.sub_categories?.data.find((item) => {
       return item?.id == subId;
@@ -38,6 +38,7 @@ const Shop = () => {
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <FilterBar
+          onOpen={onOpen}
           setDisplay={setDisplay}
           setPageSize={setPageSize}
           itemsIndex={itemsIndex}
@@ -46,6 +47,8 @@ const Shop = () => {
       </Suspense>
       <Suspense fallback={<Spinner />}>
         <ShopProducts
+          isOpen={isOpen}
+          onClose={onClose}
           sortItem={sortItem}
           pageSize={pageSize}
           display={display}
