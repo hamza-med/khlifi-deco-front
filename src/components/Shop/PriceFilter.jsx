@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-const PriceFilter = ({ setFilteredPrice }) => {
+const PriceFilter = ({ setFilteredPrice, title = "Filtrer par prix" }) => {
   const [sliderValue, setSliderValue] = useState(110);
   useDebounce(sliderValue, setFilteredPrice, 1000);
   const labelStyles = {
@@ -21,8 +21,8 @@ const PriceFilter = ({ setFilteredPrice }) => {
 
   return (
     <>
-      <Box pt={[4, 4, 10]} pb={1} width={["95%","95%","100%"]}>
-        <h1 className="title">Filtrer par prix</h1>
+      <Box pt={[4, 4, 10]} pb={1} width={["100%", "95%", "100%"]}>
+        <h1 className="title">{title}</h1>
         <Slider
           aria-label="slider-ex-6"
           mt="1.1em"
