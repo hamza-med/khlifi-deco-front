@@ -23,13 +23,13 @@
         letter-spacing: 2px;
         text-align: center;
         @include tablet {
-          font-size: 2.5rem;
+          font-size: 2.4rem;
         }
         font-weight: $fw-semi-bold;
       }
       p {
         @include tablet {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
         font-size: 1rem;
         text-align: center;
