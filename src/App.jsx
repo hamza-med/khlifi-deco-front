@@ -8,7 +8,8 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Suspense, lazy, useEffect } from "react";
-import { Spinner, useMediaQuery } from "@chakra-ui/react";
+import { useMediaQuery } from "@chakra-ui/react";
+import Spinner from "@/uilib/Spinner";
 
 const Footer = lazy(() => import("@/components/Layout/Footer"));
 const Header = lazy(() => import("@/components/Layout/Header"));
@@ -32,6 +33,7 @@ const Layout = () => {
     </>
   );
 };
+
 const App = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const root = document.getElementById("root");

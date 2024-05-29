@@ -1,5 +1,5 @@
 import useFetch from "@/hooks/useFetch";
-import { Spinner, useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { Skeleton, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 
 import { Suspense, lazy, useState } from "react";
 
@@ -36,10 +36,10 @@ const Header = () => {
             showDrawer={setOpen}
           />
         </Suspense>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Skeleton />}>
           <ToggleMenu showDrawer={setOpen} isOpen={open} isMobile={isMobile} />
         </Suspense>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Skeleton />}>
           <SearchModal isOpen={isOpen} onClose={onClose} />
         </Suspense>
         <Suspense>
