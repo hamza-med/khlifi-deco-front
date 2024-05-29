@@ -38,7 +38,7 @@ const FilterDrawer = ({
       >
         <DrawerBody>
           <div className="shopProducts_container__left">
-            <p className="title">Categories de {catName}</p>
+            <p className="title">{catName}</p>
             <div className="content">
               {subCategories?.map((item) => {
                 return (

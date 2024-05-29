@@ -41,17 +41,16 @@ const PriceFilter = ({
           <RangeSliderMark value={10} {...labelStyles}>
             10
           </RangeSliderMark>
-          {sliderValue?.map((val) => {
+          {sliderValue?.map((val, i) => {
             return (
               <RangeSliderMark
                 key={val}
                 value={val}
-                textAlign="center"
                 bg="#ac8f67"
                 color="white"
                 mt="-10"
-                ml="-1"
-                w="7"
+                ml={i == 1 ? "-4" : "-1"}
+                p="1px"
               >
                 {val}
               </RangeSliderMark>
