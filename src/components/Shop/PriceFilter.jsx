@@ -34,7 +34,7 @@ const PriceFilter = ({
         <RangeSlider
           value={[...sliderValue]}
           aria-label={["min", "max"]}
-          mt="1.1em"
+          mt={["0.7em", "1.1em", "1.1em"]}
           onChange={(val) => setSliderValue(val)}
           max={200}
           min={10}
