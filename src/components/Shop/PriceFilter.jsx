@@ -64,8 +64,16 @@ const PriceFilter = ({
           <RangeSliderTrack>
             <RangeSliderFilledTrack bg="#ac8f67" />
           </RangeSliderTrack>
-          <RangeSliderThumb boxSize={[4, 6, 6]} index={0} />
-          <RangeSliderThumb boxSize={[4, 6, 6]} index={1} />
+          <RangeSliderThumb
+            borderColor="#ac8f67"
+            boxSize={[5, 6, 6]}
+            index={0}
+          />
+          <RangeSliderThumb
+            borderColor="#ac8f67"
+            boxSize={[5, 6, 6]}
+            index={1}
+          />
         </RangeSlider>
       </Box>
     </>

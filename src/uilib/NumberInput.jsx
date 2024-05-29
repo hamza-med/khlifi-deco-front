@@ -23,7 +23,11 @@ const NumberInput = ({
       min={min}
       max={max}
     >
-      <NumberInputField width={width} {...props} />
+      <NumberInputField
+        width={width}
+        {...props}
+        _focusVisible={{ border: "1px solid white" }}
+      />
       <NumberInputStepper>
         <NumberIncrementStepper
           border="none"

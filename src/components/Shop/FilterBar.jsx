@@ -40,6 +40,7 @@ const FilterBar = ({
             padding="10px 30px"
             borderColor="white"
             borderRadius="none"
+            _active={{ bgColor: "white" }}
             leftIcon={
               <HiOutlineAdjustmentsHorizontal
                 style={{ color: "#3a3a3a", fontSize: "27px" }}
@@ -68,6 +69,7 @@ const FilterBar = ({
             ml="2px"
             bgColor="white"
             borderColor="white"
+            color="#3a3a3a"
             borderRadius="0px"
             defaultValue="asc"
             htmlFor="standard-select"
