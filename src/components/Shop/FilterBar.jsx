@@ -69,6 +69,7 @@ const FilterBar = ({
             ml="2px"
             bgColor="white"
             borderColor="white"
+            fontWeight="500"
             color="#3a3a3a"
             borderRadius="0px"
             defaultValue="asc"
