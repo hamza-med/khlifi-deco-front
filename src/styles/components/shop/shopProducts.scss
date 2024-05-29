@@ -7,8 +7,7 @@
   @include flex(row, space-between, start);
   &__left {
     @include tablet {
-      padding: 0px;
-      width: 100%;
+      width: auto;
     }
     width: 25%;
     .title {
@@ -26,7 +25,7 @@
     }
     .content {
       @include tablet {
-       // @include flex(row, start, center);
+        // @include flex(row, start, center);
         //flex-wrap: wrap;
       }
       @include flex(column, start, start);

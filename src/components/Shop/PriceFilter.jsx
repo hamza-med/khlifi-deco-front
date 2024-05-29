@@ -25,11 +25,10 @@ const PriceFilter = ({
     mt: "2.5",
     ml: "-2.5",
     fontSize: "md",
-    width: "100px",
   };
   return (
     <>
-      <Box pt={[4, 4, 10]} pb={1} width={["100%", "95%", "100%"]}>
+      <Box pt={[0, 4, 10]} pb={1} width={["100%", "95%", "100%"]}>
         <h1 className="title">{title}</h1>
         <RangeSlider
           value={[...sliderValue]}
