@@ -15,6 +15,7 @@ const FilterDrawer = ({
   isOpen,
   onClose,
   handleChange,
+  filteredPrice,
   setFilteredPrice,
   subCategories,
   catName,
@@ -40,7 +41,6 @@ const FilterDrawer = ({
             <p className="title">Categories de {catName}</p>
             <div className="content">
               {subCategories?.map((item) => {
-                console.log("selected", selectedSubCats);
                 return (
                   <SubCategory
                     isChecked={selectedSubCats.includes(item?.id.toString())}
@@ -51,7 +51,11 @@ const FilterDrawer = ({
                   />
                 );
               })}
-              <PriceFilter setFilteredPrice={setFilteredPrice} title="Prix" />
+              <PriceFilter
+                filteredPrice={filteredPrice}
+                setFilteredPrice={setFilteredPrice}
+                title="Prix"
+              />
             </div>
           </div>
         </DrawerBody>

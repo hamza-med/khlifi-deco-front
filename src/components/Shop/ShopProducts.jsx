@@ -23,7 +23,7 @@ const ShopProducts = ({
   let { subId } = useParams();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState(110);
+  const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   useEffect(() => {
     if (subId !== undefined) {
       setSelectedSubCats([subId]);
@@ -46,7 +46,7 @@ const ShopProducts = ({
     .join("");
 
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate=*`
   );
   useEffect(() => {
     const indexes = calculateIndexes(
@@ -73,18 +73,22 @@ const ShopProducts = ({
           <div className="content">
             {subCategories?.map((item) => (
               <SubCategory
-                subId={subId}
+                isChecked={selectedSubCats.includes(item?.id.toString())}
                 handleChange={handleChange}
                 key={item?.id}
                 id={item?.id}
                 name={item?.attributes?.title}
               />
             ))}
-            <PriceFilter setFilteredPrice={setFilteredPrice} />
+            <PriceFilter
+              filteredPrice={filteredPrice}
+              setFilteredPrice={setFilteredPrice}
+            />
           </div>
         </div>
       ) : (
         <FilterDrawer
+          filteredPrice={filteredPrice}
           selectedSubCats={selectedSubCats}
           isOpen={isOpen}
           onClose={onClose}
