@@ -52,7 +52,7 @@ const Slider = ({ productsRef }) => {
       >
         {data.map((img, i) => (
           <img
-            loading="lazy"
+            loading="eager"
             src={img}
             alt={i}
             key={i}

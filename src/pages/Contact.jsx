@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
 
 const ContactCard = lazy(() => import("@/components/Contact/ContactCard"));
@@ -16,10 +16,10 @@ const Contact = () => {
         </p>
       </div>
       <div className="contact_content">
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Skeleton />}>
           <ContactCard />
         </Suspense>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Skeleton />}>
           <ContactForm />
         </Suspense>
       </div>

@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
 
 const PDFFile = lazy(() => import("@/components/Dashboard/PDFFile"));
@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <Header
           startDate={date}
           setStartDate={setDate}
@@ -21,7 +21,7 @@ const Dashboard = () => {
           disabled={disabled}
         />
       </Suspense>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <PDFFile
           date={date}
           pageSize={pageSize}

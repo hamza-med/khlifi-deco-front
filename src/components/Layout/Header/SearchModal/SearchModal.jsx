@@ -5,7 +5,6 @@ import {
   ModalContent,
   ModalOverlay,
   Skeleton,
-  Spinner,
 } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
 
@@ -30,7 +29,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               <SearchInput onChange={setValue} />
             </Suspense>
             <Divider />
-            <Suspense fallback={<Spinner />}>
+            <Suspense fallback={<Skeleton />}>
               <SearchResults results={products} onClose={onClose} />
             </Suspense>
           </ModalBody>

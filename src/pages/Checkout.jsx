@@ -1,4 +1,4 @@
-import { Skeleton, Spinner } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
 
 const BillingSection = lazy(() =>
@@ -11,7 +11,7 @@ const Checkout = () => {
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs type="checkout" />
       </Suspense>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <BillingSection />
       </Suspense>
     </>
