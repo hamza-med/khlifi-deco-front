@@ -1,5 +1,5 @@
 import useFetch from "@/hooks/useFetch";
-import { Spinner, useDisclosure } from "@chakra-ui/react";
+import { Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -29,14 +29,14 @@ const Shop = () => {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs
           catId={category?.id}
           catTitle={category?.attributes?.title}
           subTitle={subCat?.attributes?.title}
         />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Skeleton />}>
         <FilterBar
           onOpen={onOpen}
           setDisplay={setDisplay}
@@ -45,7 +45,7 @@ const Shop = () => {
           setSortItem={setSortItem}
         />
       </Suspense>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <ShopProducts
           isOpen={isOpen}
           onClose={onClose}

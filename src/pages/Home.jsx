@@ -1,4 +1,4 @@
-import { Spinner } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy, useRef } from "react";
 
 const Content = lazy(() => import("@/components/Home/Content"));
@@ -9,10 +9,10 @@ const Home = () => {
 
   return (
     <>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <Slider productsRef={productsRef} />
       </Suspense>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Skeleton />}>
         <Content productsRef={productsRef} />
       </Suspense>
     </>
