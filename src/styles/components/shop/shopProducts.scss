@@ -13,7 +13,7 @@
     width: 25%;
     .title {
       @include tablet {
-        font-weight: 600;
+        font-weight: 500;
         margin-top: 5px;
         font-size: 1.3rem;
         margin-bottom: 1em;
@@ -26,14 +26,14 @@
     }
     .content {
       @include tablet {
-        @include flex(row, start, center);
-        flex-wrap: wrap;
+       // @include flex(row, start, center);
+        //flex-wrap: wrap;
       }
       @include flex(column, start, start);
       gap: 1.1em;
       &__input {
         @include tablet {
-          font-size: 1.1rem;
+          font-size: 1rem;
           gap: 0.3em;
         }
         font-size: 1.1rem;
