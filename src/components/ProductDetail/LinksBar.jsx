@@ -27,7 +27,7 @@ const LinksBar = ({ prodName, catData, subData }) => {
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-          <Link to={`/shop/${catData?.id}/sub/${subData?.id}`}>
+          <Link to={`/shop/${catData?.id}?sub=${subData?.id}`}>
             <p className="linksBar__wrapper--link">
               {subData?.attributes?.title}
             </p>
