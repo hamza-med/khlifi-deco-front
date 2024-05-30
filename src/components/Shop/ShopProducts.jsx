@@ -3,7 +3,7 @@ import Paginator from "@/uilib/Paginator";
 import ProductCard from "@/uilib/ProductCard";
 import { calculateIndexes } from "@/utils/calculateIndex";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
 import { useMediaQuery } from "@chakra-ui/react";
@@ -20,12 +20,14 @@ const ShopProducts = ({
   setItemIndex,
 }) => {
   const [page, setPage] = useState(1);
-  let { subId } = useParams();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
   const [filteredPrice, setFilteredPrice] = useState([10, 200]);
+  const [searchParams] = useSearchParams();
+  const subId = searchParams.get("sub");
+
   useEffect(() => {
-    if (subId !== undefined) {
+    if (subId !== null) {
       setSelectedSubCats([subId]);
     } else {
       setSelectedSubCats([]);
