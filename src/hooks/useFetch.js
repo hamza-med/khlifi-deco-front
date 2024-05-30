@@ -32,6 +32,7 @@ const useFetch = (url) => {
   const [meta, setMeta] = useState();
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -44,6 +45,7 @@ const useFetch = (url) => {
       setLoading(false);
     };
     fetchData();
+    return () => controller.abort();
   }, [url]);
 
   return { data, meta, loading, error };

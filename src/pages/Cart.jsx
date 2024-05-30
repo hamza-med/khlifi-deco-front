@@ -1,13 +1,24 @@
-import CartTable from "@/components/Cart/CartTable";
-import DescriptionSection from "@/components/Shop/DescriptionSection";
-import ShopBreadCrumbs from "@/components/Shop/ShopBreadCrumbs";
+import { Skeleton } from "@chakra-ui/react";
+import { Suspense, lazy } from "react";
+
+const CartTable = lazy(() => import("@/components/Cart/CartTable"));
+const DescriptionSection = lazy(() =>
+  import("@/components/Shop/DescriptionSection")
+);
+const ShopBreadCrumbs = lazy(() => import("@/components/Shop/ShopBreadCrumbs"));
 
 const Cart = () => {
   return (
     <>
-      <ShopBreadCrumbs type="panier"/>
-      <CartTable />
-      <DescriptionSection/>
+      <Suspense fallback={<Skeleton />}>
+        <ShopBreadCrumbs type="panier" />
+      </Suspense>
+      <Suspense fallback={<Skeleton />}>
+        <CartTable />
+      </Suspense>
+      <Suspense fallback={<Skeleton />}>
+        <DescriptionSection />
+      </Suspense>
     </>
   );
 };

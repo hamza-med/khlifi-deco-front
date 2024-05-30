@@ -14,20 +14,39 @@
       height: 60%;
     }
     display: block;
+    aspect-ratio: 1/1;
     width: 100%;
     height: 65%;
     object-fit: cover;
+    object-position: center;
   }
   &__overlay {
+    @include tablet {
+      @include overlay(
+        $opacity: 0.8,
+        $show: 0,
+        $color: rgb(245, 245, 245),
+        $height: 60%
+      );
+    }
     @include overlay();
     @include flex(column, center, center);
     &__button {
+      @include tablet {
+        display: none;
+        color: white;
+        padding: 9px 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background: $primary-color;
+      }
       background: white;
       color: $primary-color;
       padding: 9px 30px;
       font-weight: 500;
       transition: background-color 0.2s ease-in-out;
       &:hover {
+        display: block;
         color: white;
         background: $primary-color;
       }

@@ -11,6 +11,9 @@
   }
 }
 .paginator__wrapper {
+  @include tablet {
+    margin-bottom: 20px;
+  }
   display: flex;
   gap: 1.5em;
   .previous_button,

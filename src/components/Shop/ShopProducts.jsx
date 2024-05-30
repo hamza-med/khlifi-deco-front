@@ -6,8 +6,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
+import { useMediaQuery } from "@chakra-ui/react";
+import FilterDrawer from "./FilterDrawer";
 
 const ShopProducts = ({
+  isOpen,
+  onClose,
   sortItem = "asc",
   display,
   categoryName,
@@ -17,9 +21,9 @@ const ShopProducts = ({
 }) => {
   const [page, setPage] = useState(1);
   let { subId } = useParams();
-
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState(110);
+  const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   useEffect(() => {
     if (subId !== undefined) {
       setSelectedSubCats([subId]);
@@ -36,12 +40,13 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
+
   const subCategoriesQuery = selectedSubCats
     .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
     .join("");
-  
+
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice}&sort=price:${sortItem}&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate=*`
   );
   useEffect(() => {
     const indexes = calculateIndexes(
@@ -62,21 +67,37 @@ const ShopProducts = ({
 
   return (
     <div className={`shopProducts_container ${display}`}>
-      <div className="shopProducts_container__left">
-        <p className="title">Categories de {categoryName}</p>
-        <div className="content">
-          {subCategories?.map((item) => (
-            <SubCategory
-              subId={subId}
-              handleChange={handleChange}
-              key={item?.id}
-              id={item?.id}
-              name={item?.attributes?.title}
+      {!isMobile ? (
+        <div className="shopProducts_container__left">
+          <p className="title">Categories de {categoryName}</p>
+          <div className="content">
+            {subCategories?.map((item) => (
+              <SubCategory
+                isChecked={selectedSubCats.includes(item?.id.toString())}
+                handleChange={handleChange}
+                key={item?.id}
+                id={item?.id}
+                name={item?.attributes?.title}
+              />
+            ))}
+            <PriceFilter
+              filteredPrice={filteredPrice}
+              setFilteredPrice={setFilteredPrice}
             />
-          ))}
-          <PriceFilter setFilteredPrice={setFilteredPrice} />
+          </div>
         </div>
-      </div>
+      ) : (
+        <FilterDrawer
+          filteredPrice={filteredPrice}
+          selectedSubCats={selectedSubCats}
+          isOpen={isOpen}
+          onClose={onClose}
+          subCategories={subCategories}
+          catName={categoryName}
+          setFilteredPrice={setFilteredPrice}
+          handleChange={handleChange}
+        />
+      )}
       <div className={`shopProducts_container__right `}>
         <div className={`shopProducts_container__right--products ${display}`}>
           {products?.map((product) => {

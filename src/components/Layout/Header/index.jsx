@@ -1,15 +1,17 @@
 import useFetch from "@/hooks/useFetch";
-import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { Skeleton, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 
-import { useState } from "react";
-import MiniHeader from "../../MiniHeader";
-import NavbarDrawer from "../../NavbarDrawer";
-import ShoppingCart from "./Cart/ShoppingCart";
+import { Suspense, lazy, useState } from "react";
+
 import Logo from "./Logo";
-import Navbar from "./Navbar";
-import NavIcons from "./NavIcons";
-import SearchModal from "./SearchModal/SearchModal";
-import ToggleMenu from "./ToggleMenu";
+
+const MiniHeader = lazy(() => import("../../MiniHeader"));
+const NavbarDrawer = lazy(() => import("../../NavbarDrawer"));
+const ShoppingCart = lazy(() => import("./Cart/ShoppingCart"));
+const Navbar = lazy(() => import("./Navbar"));
+const NavIcons = lazy(() => import("./NavIcons"));
+const SearchModal = lazy(() => import("./SearchModal/SearchModal"));
+const ToggleMenu = lazy(() => import("./ToggleMenu"));
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -21,12 +23,28 @@ const Header = () => {
       <MiniHeader />
       <div className="header">
         <Logo isMobile={isMobile} />
-        <Navbar categories={categories} />
-        <NavIcons onOpen={onOpen} />
-        <NavbarDrawer isOpen={open} categories={categories} showDrawer={setOpen} />
-        <ToggleMenu showDrawer={setOpen} isOpen={open} isMobile={isMobile} />
-        <SearchModal isOpen={isOpen} onClose={onClose} />
-        <ShoppingCart />
+        <Suspense>
+          <Navbar categories={categories} />
+        </Suspense>
+        <Suspense>
+          <NavIcons onOpen={onOpen} />
+        </Suspense>
+        <Suspense>
+          <NavbarDrawer
+            isOpen={open}
+            categories={categories}
+            showDrawer={setOpen}
+          />
+        </Suspense>
+        <Suspense fallback={<Skeleton />}>
+          <ToggleMenu showDrawer={setOpen} isOpen={open} isMobile={isMobile} />
+        </Suspense>
+        <Suspense fallback={<Skeleton />}>
+          <SearchModal isOpen={isOpen} onClose={onClose} />
+        </Suspense>
+        <Suspense>
+          <ShoppingCart />
+        </Suspense>
       </div>
     </header>
   );

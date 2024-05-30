@@ -51,7 +51,13 @@ const Slider = ({ productsRef }) => {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((img, i) => (
-          <img src={img} alt={i} key={i} />
+          <img
+            loading="eager"
+            src={img}
+            alt={i}
+            key={i}
+            className="slider__container--img"
+          />
         ))}
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>

@@ -4,16 +4,19 @@ import {
   ModalBody,
   ModalContent,
   ModalOverlay,
+  Skeleton,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import SearchInput from "@/uilib/SearchInput";
-import SearchResults from "./SearchResults";
+import { Suspense, lazy, useState } from "react";
+
 import useFetch from "@/hooks/useFetch";
+
+const SearchInput = lazy(() => import("@/uilib/SearchInput"));
+const SearchResults = lazy(() => import("./SearchResults"));
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [value, setValue] = useState();
   const { data: products } = useFetch(
-    `/products?&[filters][title][$contains]=${value}&populate=*`
+    `/products?&[filters][title][$containsi]=${value}&populate=*`
   );
 
   return (
@@ -22,9 +25,13 @@ const SearchModal = ({ isOpen, onClose }) => {
         <ModalOverlay />
         <ModalContent w={["94%", "90%", "600px"]} minH={["60%", "90%", "68px"]}>
           <ModalBody display="flex" flexDir="column" justifyContent="center">
-            <SearchInput onChange={setValue} />
+            <Suspense fallback={<Skeleton />}>
+              <SearchInput onChange={setValue} />
+            </Suspense>
             <Divider />
-            <SearchResults results={products} onClose={onClose} />
+            <Suspense fallback={<Skeleton />}>
+              <SearchResults results={products} onClose={onClose} />
+            </Suspense>
           </ModalBody>
         </ModalContent>
       </Modal>

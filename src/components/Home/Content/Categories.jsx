@@ -1,7 +1,23 @@
 import useFetch from "@/hooks/useFetch";
 import CategoryCard from "./CategoryCard";
+import { useMediaQuery } from "@chakra-ui/react";
+import Slider from "react-slick";
+
+const settings = {
+  dots: false,
+  infinite: true,
+  lazyLoad: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  pauseOnHover: true,
+};
 
 const Categories = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   const { data } = useFetch("/categories?populate=*");
   return (
     <div className="home-categories">
@@ -12,13 +28,25 @@ const Categories = () => {
         omnis et dignissimos neque delectus odit, quo laboriosam vitae facilis?
       </p>
       <div className="home-categories__images">
-        {data
-          ?.filter(
-            (item) => item?.attributes?.title !== "Collections et Tendances"
-          )
-          .map((item) => {
-            return <CategoryCard item={item} id={item?.id} key={item?.id} />;
-          })}
+        {!isMobile ? (
+          data
+            ?.filter(
+              (item) => item?.attributes?.title !== "Collections et Tendances"
+            )
+            .map((item) => {
+              return <CategoryCard item={item} id={item?.id} key={item?.id} />;
+            })
+        ) : (
+          <div className="slider-container">
+            <Slider {...settings}>
+              {data?.map((item) => {
+                return (
+                  <CategoryCard item={item} id={item?.id} key={item?.id} />
+                );
+              })}
+            </Slider>
+          </div>
+        )}
       </div>
     </div>
   );
