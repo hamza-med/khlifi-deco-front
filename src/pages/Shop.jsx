@@ -2,7 +2,7 @@ import useFetch from "@/hooks/useFetch";
 import { Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const ShopProducts = lazy(() => import("@/components/Shop/ShopProducts"));
 const ShopBreadCrumbs = lazy(() => import("@/components/Shop/ShopBreadCrumbs"));
@@ -12,7 +12,10 @@ const DescriptionSection = lazy(() =>
 );
 
 const Shop = () => {
-  let { catId, subId } = useParams();
+  let { catId } = useParams();
+  const [searchParams] = useSearchParams();
+  const subId = searchParams.get("sub");
+
   const [display, setDisplay] = useState("grid");
   const { data: category } = useFetch(
     `/categories/${catId}?fields[0]=title&populate[sub_categories][fields][0]=title`

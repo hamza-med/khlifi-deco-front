@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 
 const PriceFilter = ({
+  setPage,
   filteredPrice,
   setFilteredPrice,
   title = "Filtrer par prix",
@@ -34,7 +35,10 @@ const PriceFilter = ({
           value={[...sliderValue]}
           aria-label={["min", "max"]}
           mt={["0.7em", "1.1em", "1.1em"]}
-          onChange={(val) => setSliderValue(val)}
+          onChange={(val) => {
+            setPage(1);
+            setSliderValue(val);
+          }}
           max={200}
           min={10}
         >

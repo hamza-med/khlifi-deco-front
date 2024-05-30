@@ -20,7 +20,7 @@ const DropDown = ({ list, show, close, catId, showDrawer }) => {
             _hover={{ bgColor: "white", color: "" }}
           >
             <Link
-              to={`shop/${catId}/sub/${item?.id}`}
+              to={`shop/${catId}?sub=${item?.id}`}
               onClick={() => {
                 showDrawer(false);
                 close();

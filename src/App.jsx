@@ -62,16 +62,7 @@ const App = () => {
                 <Shop />
               </Suspense>
             }
-          >
-            <Route
-              path="sub/:subId"
-              element={
-                <Suspense fallback={<Spinner />}>
-                  <Shop />
-                </Suspense>
-              }
-            />
-          </Route>
+          />
           <Route
             path="shop/product/:productId"
             element={
