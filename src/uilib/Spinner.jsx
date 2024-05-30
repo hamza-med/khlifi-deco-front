@@ -10,6 +10,7 @@ const Spinner = () => (
     speed="0.7s"
     top="50%"
     left="50%"
+    transform="translate(-50%, -50%)"
   />
 );
 export default Spinner;
