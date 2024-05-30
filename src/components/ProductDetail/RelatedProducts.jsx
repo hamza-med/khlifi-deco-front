@@ -6,7 +6,7 @@ const RelatedProducts = (props) => {
   const [pageSize, setPageSize] = useState(4);
 
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&[filters][sub_categories][id][$eq]=${props.subCatId}&[filters][id][$ne]=${props.prodId}&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&[filters][sub_categories][id][$eq]=${props.subCatId}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
 
   const handleClick = () => {
