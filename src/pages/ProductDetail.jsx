@@ -10,10 +10,20 @@ const ProductInfo = lazy(() =>
 const RelatedProducts = lazy(() =>
   import("@/components/ProductDetail/RelatedProducts")
 );
+const images = ["img", "img2", "img3"];
+const imgQuery = images
+  .map(
+    (img) => `populate[${img}][fields][0]=name&populate[${img}][fields][1]=url&`
+  )
+  .join("");
 
+const catSubCatQuery =
+  "populate[categories][fields][0]=title&populate[sub_categories][fields][0]=title";
 const ProductDetail = () => {
   const { productId } = useParams();
-  const { data: product } = useFetch(`/products/${productId}?populate=*`);
+  const { data: product } = useFetch(
+    `/products/${productId}?${imgQuery}${catSubCatQuery}`
+  );
 
   return (
     <div>

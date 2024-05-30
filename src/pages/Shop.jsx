@@ -14,7 +14,9 @@ const DescriptionSection = lazy(() =>
 const Shop = () => {
   let { catId, subId } = useParams();
   const [display, setDisplay] = useState("grid");
-  const { data: category } = useFetch(`/categories/${catId}?populate=*`);
+  const { data: category } = useFetch(
+    `/categories/${catId}?fields[0]=title&populate[sub_categories][fields][0]=title`
+  );
   const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();

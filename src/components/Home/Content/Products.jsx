@@ -6,7 +6,7 @@ const Products = forwardRef((props, ref) => {
   const [pageSize, setPageSize] = useState(8);
 
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
 
   const handleClick = () => {

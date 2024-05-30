@@ -16,7 +16,9 @@ const ToggleMenu = lazy(() => import("./ToggleMenu"));
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
-  const { data: categories } = useFetch(`/categories?populate=*`);
+  const { data: categories } = useFetch(
+    `/categories?fields[0]=title&populate[sub_categories][fields][0]=title`
+  );
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   return (
     <header>

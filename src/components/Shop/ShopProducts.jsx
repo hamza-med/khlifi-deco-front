@@ -46,7 +46,7 @@ const ShopProducts = ({
     .join("");
 
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate=*`
+    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   useEffect(() => {
     const indexes = calculateIndexes(
