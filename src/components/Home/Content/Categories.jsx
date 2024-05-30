@@ -18,7 +18,9 @@ const settings = {
 const Categories = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-  const { data } = useFetch("/categories?populate=*");
+  const { data } = useFetch(
+    "/categories?fields[0]=title&fields[1]=description&populate[img][fields][0]=name&populate[img][fields][1]=url"
+  );
   return (
     <div className="home-categories">
       <h1 className="home-categories__title">explorer par catégorie</h1>
