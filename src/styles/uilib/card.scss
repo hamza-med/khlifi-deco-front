@@ -33,6 +33,7 @@
     @include flex(column, center, center);
     &__button {
       @include tablet {
+        display: none;
         color: white;
         padding: 9px 30px;
         font-weight: 600;
@@ -45,6 +46,7 @@
       font-weight: 500;
       transition: background-color 0.2s ease-in-out;
       &:hover {
+        display: block;
         color: white;
         background: $primary-color;
       }

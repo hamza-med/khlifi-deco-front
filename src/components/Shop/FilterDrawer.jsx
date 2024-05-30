@@ -2,9 +2,7 @@ import {
   Drawer,
   DrawerBody,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
-  Divider,
 } from "@chakra-ui/react";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
@@ -59,8 +57,6 @@ const FilterDrawer = ({
             </div>
           </div>
         </DrawerBody>
-        <Divider border="1px solid #D9D9D9" />
-        <DrawerFooter display="flex" justifyContent="center"></DrawerFooter>
       </DrawerContent>
     </Drawer>
   );
