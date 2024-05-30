@@ -18,6 +18,7 @@ const FilterDrawer = ({
   subCategories,
   catName,
   selectedSubCats,
+  setPage
 }) => {
   //const navigate = useNavigate();
 
@@ -50,6 +51,7 @@ const FilterDrawer = ({
                 );
               })}
               <PriceFilter
+                setPage={setPage}
                 filteredPrice={filteredPrice}
                 setFilteredPrice={setFilteredPrice}
                 title="Prix"

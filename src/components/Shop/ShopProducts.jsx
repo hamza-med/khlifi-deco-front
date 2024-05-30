@@ -34,6 +34,7 @@ const ShopProducts = ({
     }
   }, [subId]);
   const handleChange = (e) => {
+    setPage(1);
     const value = e.target.value;
     const isChecked = e.target.checked;
     setSelectedSubCats(
@@ -83,6 +84,7 @@ const ShopProducts = ({
               />
             ))}
             <PriceFilter
+              setPage={setPage}
               filteredPrice={filteredPrice}
               setFilteredPrice={setFilteredPrice}
             />
@@ -90,6 +92,7 @@ const ShopProducts = ({
         </div>
       ) : (
         <FilterDrawer
+          setPage={setPage}
           filteredPrice={filteredPrice}
           selectedSubCats={selectedSubCats}
           isOpen={isOpen}
