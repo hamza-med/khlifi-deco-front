@@ -28,6 +28,7 @@ export default function NavbarItem({ item, id, showDrawer, isDrawerOpen }) {
           style={isDrawerOpen ? { fontSize: "18px" } : null}
           onClick={() => {
             showDrawer(false);
+            onClose();
           }}
         >
           {item?.title}

@@ -21,7 +21,10 @@ const DropDown = ({ list, show, close, catId, showDrawer }) => {
           >
             <Link
               to={`shop/${catId}/sub/${item?.id}`}
-              onClick={() => showDrawer(false)}
+              onClick={() => {
+                showDrawer(false);
+                close();
+              }}
             >
               {item?.attributes?.title}
             </Link>
