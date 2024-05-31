@@ -13,7 +13,7 @@ const Slider = ({ productsRef }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [iconsVisible, onShow, onHide] = useToggle(false);
   const { t } = useTranslation();
-  const btn = t("articleBtn");
+  const { articleBtn } = t("home");
   useEffect(() => {
     function handleScrolling() {
       const scrolled = window.scrollY;
@@ -64,7 +64,7 @@ const Slider = ({ productsRef }) => {
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>
         <p>{/* <span>pure</span> and natural honey */}</p>
-        <button onClick={handleScroll}>{btn}</button>
+        <button onClick={handleScroll}>{articleBtn}</button>
       </div>
 
       <div className={`slider__icons  `}>

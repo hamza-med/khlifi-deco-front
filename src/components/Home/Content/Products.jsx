@@ -1,6 +1,7 @@
 import useFetch from "@/hooks/useFetch";
 import ProductCard from "@/uilib/ProductCard";
 import { forwardRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Products = forwardRef((props, ref) => {
   const [pageSize, setPageSize] = useState(8);
@@ -8,7 +9,8 @@ const Products = forwardRef((props, ref) => {
   const { data: products, meta } = useFetch(
     `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
-
+  const { t } = useTranslation();
+  const { prodTitle, prodBtnPlus, prodBtnLess } = t("home");
   const handleClick = () => {
     setPageSize((prev) => prev + 8);
   };
@@ -17,7 +19,7 @@ const Products = forwardRef((props, ref) => {
   };
   return (
     <div className="home-products" ref={ref}>
-      <h1 className="home-products__title">Nos Produits</h1>
+      <h1 className="home-products__title">{prodTitle}</h1>
       <div className="home-products__products">
         {products?.map((product) => {
           return (
@@ -31,12 +33,12 @@ const Products = forwardRef((props, ref) => {
       </div>
       {pageSize < meta?.pagination.total && (
         <button className="home-products__button" onClick={handleClick}>
-          afficher plus
+          {prodBtnPlus}
         </button>
       )}
       {pageSize > meta?.pagination.total && (
         <button className="home-products__button" onClick={handleClick2}>
-          afficher moins
+          {prodBtnLess}
         </button>
       )}
     </div>
