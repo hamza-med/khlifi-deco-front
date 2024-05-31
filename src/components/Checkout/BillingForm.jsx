@@ -3,6 +3,7 @@ import citiesWithDelegations, { stateOptions } from "@/utils/data";
 import Select from "@/uilib/Select";
 import { useMemo } from "react";
 import { useWatch } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 const BillingForm = ({ control }) => {
   const state = useWatch({
@@ -17,20 +18,32 @@ const BillingForm = ({ control }) => {
       ?.data.map((el) => ({ value: el, label: el }));
   }, [state]);
 
+  const { t } = useTranslation();
+  const {
+    title,
+    lastName,
+    firstName,
+    phone,
+    governorates,
+    delegations,
+    street,
+    postal,
+    company,
+  } = t("checkout");
   return (
     <div className="billingForm__wrapper">
-      <h1 className="billing__title">Détails de facturation</h1>
+      <h1 className="billing__title">{title}</h1>
       <div className="name__section">
         <Input
           required
-          label="Prénom"
+          label={lastName}
           name="lastname"
           placeholder=""
           control={control}
         />
         <Input
           required
-          label="Nom"
+          label={firstName}
           name="firstname"
           placeholder=""
           control={control}
@@ -38,7 +51,7 @@ const BillingForm = ({ control }) => {
       </div>
       <Input
         required
-        label="Téléphone"
+        label={phone}
         name="phone"
         placeholder=""
         control={control}
@@ -46,7 +59,7 @@ const BillingForm = ({ control }) => {
       <Input label="Email" name="email" placeholder="" control={control} />
       <Select
         required
-        label="gouvernorats"
+        label={governorates}
         name="address.state"
         options={stateOptions}
         placeholder=""
@@ -55,14 +68,14 @@ const BillingForm = ({ control }) => {
       <Select
         required
         isDisabled={!state}
-        label="délégations"
+        label={delegations}
         name="address.city"
         options={citiesOptions}
         placeholder=""
         control={control}
       />
       <Input
-        label="Numéro et nom de rue"
+        label={street}
         name="address.street"
         placeholder=""
         control={control}
@@ -76,13 +89,13 @@ const BillingForm = ({ control }) => {
       /> */}
       <Input
         required
-        label="Code postal "
+        label={postal}
         name="address.postal"
         placeholder=""
         control={control}
       />
       <Input
-        label="Nom de l'entreprise (optionnel)"
+        label={company}
         name="enterprise"
         placeholder=""
         control={control}

@@ -1,5 +1,6 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { Button, Divider, HStack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 const ProductItem = ({ item }) => (
   <HStack>
@@ -11,20 +12,21 @@ const ProductItem = ({ item }) => (
 
 const BillingInfo = ({ onOpen, isDisabled, isLoading }) => {
   const { cartItems, subtotal } = useShoppingCart();
+  const { t } = useTranslation();
 
   return (
     <div className="billingInfo__wrapper">
       <div className="billingInfo__content">
         <div className="billingInfo__content--1">
-          <h1>Produit</h1>
+          <h1>{t("cart.product")}</h1>
           {cartItems.map((el) => (
             <ProductItem key={el?.id} item={el} />
           ))}
-          <h2>Sous-total</h2>
+          <h2>{t("cart.subtotal")}</h2>
           <h2>Total</h2>
         </div>
         <div className="billingInfo__content--2">
-          <h1>Sous-total</h1>
+          <h1>{t("cart.subtotal")}</h1>
           {cartItems.map((el) => (
             <p key={el?.id}>{el?.quantity * el?.price} TND</p>
           ))}
@@ -34,15 +36,14 @@ const BillingInfo = ({ onOpen, isDisabled, isLoading }) => {
       </div>
       <Divider borderTop="1px solid #D9D9D9" m="1em auto" mb="2em" />
       <p>
-        La commande ne peut être confirmé qu &rsquo;avec une avance de 40% de la
-        somme globale voir
+        {t("checkout.note")}
         <span style={{ cursor: "pointer", fontWeight: "600" }} onClick={onOpen}>
           {" "}
-          modalités de paiement.
+          {t("checkout.modality")}
         </span>
       </p>
       <Button type="submit" isDisabled={isDisabled} isLoading={isLoading}>
-        Passer commande
+        {t("checkout.btn")}
       </Button>
     </div>
   );
