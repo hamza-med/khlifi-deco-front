@@ -6,19 +6,19 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: "fr",
     debug: true,
     lng: "en",
     resources: {
       en: {
         translation: {
-          hello: "Hello",
+          articleBtn: "see articles",
           world: "World",
         },
       },
       fr: {
         translation: {
-          hello: "Bonjour",
+          articleBtn: "voir articles",
           world: "Monde",
         },
       },

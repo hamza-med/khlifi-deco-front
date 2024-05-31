@@ -2,6 +2,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
+import { useTranslation } from "react-i18next";
 const data = [
   "assets/wedding1.jpg",
   "assets/wedding2.jpg",
@@ -11,7 +12,8 @@ const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [buttonVisible, setButtonVisible] = useState(true);
   const [iconsVisible, onShow, onHide] = useToggle(false);
-
+  const { t } = useTranslation();
+  const btn = t("articleBtn");
   useEffect(() => {
     function handleScrolling() {
       const scrolled = window.scrollY;
@@ -62,7 +64,7 @@ const Slider = ({ productsRef }) => {
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>
         <p>{/* <span>pure</span> and natural honey */}</p>
-        <button onClick={handleScroll}>voir articles</button>
+        <button onClick={handleScroll}>{btn}</button>
       </div>
 
       <div className={`slider__icons  `}>
