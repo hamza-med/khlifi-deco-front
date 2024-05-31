@@ -5,6 +5,7 @@
   }
   padding: 30px 45px;
   @include flex(row, space-between, start);
+  gap: 8%;
   &__left {
     @include tablet {
       width: auto;

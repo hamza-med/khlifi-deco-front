@@ -3,6 +3,7 @@ import NumberInput from "@/uilib/NumberInput";
 import { Button, Select, useMediaQuery } from "@chakra-ui/react";
 
 import { useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { BsGridFill, BsViewList } from "react-icons/bs";
 
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
@@ -17,7 +18,8 @@ const FilterBar = ({
   const [inputValue, setInputValue] = useState();
   useDebounce(inputValue, setPageSize, 1000);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const { t } = useTranslation();
+  const { eltNumber, show, sort, priceDesc, priceAsc, filterBtn } = t("shop");
   return (
     <div className="filter-bar__container">
       <div className="filter-bar__container__content">
@@ -26,7 +28,16 @@ const FilterBar = ({
           <BsViewList onClick={() => setDisplay("list")} />
         </div>
         <span className="filter-bar__container__content--divider" />
-        <p>{`Montrer ${itemsIndex?.firstIndex}- ${itemsIndex?.lastIndex} de ${itemsIndex?.totalItems} éléments`}</p>
+
+        <p>
+          <Trans
+            i18nKey={eltNumber}
+            values={{
+              index: `${itemsIndex?.firstIndex}-${itemsIndex?.lastIndex}`,
+              total: `${itemsIndex?.totalItems}`,
+            }}
+          />
+        </p>
       </div>
 
       <div className=" filter-bar__container__inputs">
@@ -48,11 +59,11 @@ const FilterBar = ({
             }
             onClick={onOpen}
           >
-            Filter
+            {filterBtn}
           </Button>
         ) : null}
         <div className="show_input">
-          <label htmlFor="number-input">Montrer</label>
+          <label htmlFor="number-input">{show}</label>
           <NumberInput
             fontWeight="500"
             onChange={(v) => setInputValue(v)}
@@ -63,7 +74,7 @@ const FilterBar = ({
           />
         </div>
         <div className="filter_input">
-          <label htmlFor="standard-select">Trier par</label>
+          <label htmlFor="standard-select">{sort}</label>
           <Select
             h="45px"
             ml="2px"
@@ -76,8 +87,8 @@ const FilterBar = ({
             htmlFor="standard-select"
             onChange={(e) => setSortItem(e.target.value)}
           >
-            <option value="desc">Prix décroissant</option>
-            <option value="asc">Prix croissant</option>
+            <option value="desc">{priceDesc}</option>
+            <option value="asc">{priceAsc}</option>
           </Select>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
+import { useTranslation } from "react-i18next";
 
 //import { useNavigate } from "react-router-dom";
 
@@ -18,10 +19,11 @@ const FilterDrawer = ({
   subCategories,
   catName,
   selectedSubCats,
-  setPage
+  setPage,
 }) => {
   //const navigate = useNavigate();
-
+  const { t } = useTranslation();
+  const { price } = t("shop");
   return (
     <Drawer
       isOpen={isOpen}
@@ -54,7 +56,7 @@ const FilterDrawer = ({
                 setPage={setPage}
                 filteredPrice={filteredPrice}
                 setFilteredPrice={setFilteredPrice}
-                title="Prix"
+                title={price}
               />
             </div>
           </div>

@@ -8,6 +8,7 @@ import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
 import { useMediaQuery } from "@chakra-ui/react";
 import FilterDrawer from "./FilterDrawer";
+import { useTranslation } from "react-i18next";
 
 const ShopProducts = ({
   isOpen,
@@ -25,7 +26,8 @@ const ShopProducts = ({
   const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   const [searchParams] = useSearchParams();
   const subId = searchParams.get("sub");
-
+  const { t } = useTranslation();
+  const { category, priceFilterTitle } = t("shop");
   useEffect(() => {
     if (subId !== null) {
       setSelectedSubCats([subId]);
@@ -72,7 +74,9 @@ const ShopProducts = ({
     <div className={`shopProducts_container ${display}`}>
       {!isMobile ? (
         <div className="shopProducts_container__left">
-          <p className="title">Categories de {categoryName}</p>
+          <p className="title">
+            {category} {categoryName}
+          </p>
           <div className="content">
             {subCategories?.map((item) => (
               <SubCategory
@@ -84,6 +88,7 @@ const ShopProducts = ({
               />
             ))}
             <PriceFilter
+              title={priceFilterTitle}
               setPage={setPage}
               filteredPrice={filteredPrice}
               setFilteredPrice={setFilteredPrice}

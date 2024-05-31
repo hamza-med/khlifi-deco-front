@@ -1,8 +1,14 @@
 import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
+  const { t } = useTranslation();
+
+  const { breadCrumbTitle1, breadCrumbTitle2, breadCrumbTitle3, home } =
+    t("shop");
+
   return (
     <div className="shop_header">
       <img
@@ -13,11 +19,11 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
       <div className="shop_header__text">
         <div className="shop_header__text--content">
           {type === "panier" ? (
-            <h1>Panier</h1>
+            <h1>{breadCrumbTitle1}</h1>
           ) : type === "checkout" ? (
-            <h1>Checkout</h1>
+            <h1>{breadCrumbTitle2}</h1>
           ) : (
-            <h1>Magasin</h1>
+            <h1>{breadCrumbTitle3}</h1>
           )}
           <Breadcrumb
             spacing="2px"
@@ -25,7 +31,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
           >
             <BreadcrumbItem fontWeight="600">
               <Link to="/">
-                <p>Accueil</p>
+                <p>{home}</p>
               </Link>
             </BreadcrumbItem>
             {catTitle ? (
