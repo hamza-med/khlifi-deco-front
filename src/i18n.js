@@ -51,7 +51,16 @@ i18n
               desc4: "Support dédié",
             },
           },
-          
+          productDetail: {
+            day: "Jour",
+            height: "Hauteur",
+            width: "Largeur",
+            reservation: "Choisissez vos dates de resevation",
+            addBtn: "Ajouter au panier",
+            errorMsg:
+              "Merci de séléctionner la date de fin, cliquez deux fois si les deux dates sont les mêmes",
+            relatedProd: "Produits apparentés",
+          },
         },
       },
       en: {
@@ -93,7 +102,16 @@ i18n
               desc4: "Dedicated Support",
             },
           },
-         
+          productDetail: {
+            day: "Day",
+            height: "Height",
+            width: "Width",
+            reservation: "Choose your resevation dates",
+            addBtn: "Add to cart",
+            errorMsg:
+              "Please select the end date, click twice if both dates are the same",
+            relatedProd: "Related products",
+          },
         },
       },
     },

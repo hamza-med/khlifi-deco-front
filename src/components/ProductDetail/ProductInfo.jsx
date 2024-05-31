@@ -9,6 +9,7 @@ import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
 import { useMediaQuery } from "@chakra-ui/react";
 import ProductModal from "./ProductModal";
+import { useTranslation } from "react-i18next";
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 const ProductInfo = ({ prodData, prodId }) => {
@@ -17,7 +18,9 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
   const [error, setError] = useState(false);
-
+  const { t } = useTranslation();
+  const { day, width, height, reservation, addBtn, errorMsg } =
+    t("productDetail");
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
@@ -121,24 +124,26 @@ const ProductInfo = ({ prodData, prodId }) => {
         <h1 className="prodInfo__wrapper--right--title">{prodData?.title}</h1>
         <div className="prodInfo__wrapper--right--description">
           {prodData?.showPrice != false && (
-            <h2>{prodData?.price}00 TND HT / Jour</h2>
+            <h2>
+              {prodData?.price}00 TND HT / {day}
+            </h2>
           )}
           <p>{prodData?.description}</p>
         </div>
         <div className="prodInfo__wrapper--right--fiche">
           <div className="size-1">
             <RxHeight fontSize="1.7rem" />
-            <p>Hauteur</p>
+            <p>{height}</p>
             <span>{prodData?.hauteur}</span>
           </div>
           <div className="size-2">
             <RxWidth fontSize="1.7rem" />
-            <p>Largeur</p>
+            <p>{width}</p>
             <span>{prodData?.largeur}</span>
           </div>
         </div>
         <div className="prodInfo__wrapper--right--reservation">
-          <h2>Choisissez vos dates de resevation</h2>
+          <h2>{reservation}</h2>
           <DatePicker setDates={setDates} prodId={prodId} />
           {error && (
             <p
@@ -152,8 +157,7 @@ const ProductInfo = ({ prodData, prodId }) => {
                 color: "#a94442",
               }}
             >
-              Merci de séléctionner la date de fin, cliquez deux fois si les
-              deux dates sont les mêmes
+              {errorMsg}
             </p>
           )}
         </div>
@@ -176,7 +180,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             </span>
           </div>
           <button disabled={error} onClick={handleAddToCart}>
-            Ajouter au panier
+            {addBtn}
           </button>
         </div>
       </div>

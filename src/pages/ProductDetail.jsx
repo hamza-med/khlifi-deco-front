@@ -19,6 +19,7 @@ const imgQuery = images
 
 const catSubCatQuery =
   "populate[categories][fields][0]=title&populate[sub_categories][fields][0]=title";
+
 const ProductDetail = () => {
   const { productId } = useParams();
   const { data: product } = useFetch(
