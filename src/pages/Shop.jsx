@@ -2,6 +2,7 @@ import useFetch from "@/hooks/useFetch";
 import { Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams, useSearchParams } from "react-router-dom";
 
 const ShopProducts = lazy(() => import("@/components/Shop/ShopProducts"));
@@ -25,6 +26,11 @@ const Shop = () => {
   const [sortItem, setSortItem] = useState();
   const [subCat, setSubCat] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { t } = useTranslation();
+
+  const { type } = t("shop");
+
   useEffect(() => {
     let subCat = category?.attributes?.sub_categories?.data.find((item) => {
       return item?.id == subId;
@@ -36,6 +42,7 @@ const Shop = () => {
     <>
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs
+          type={type}
           catId={category?.id}
           catTitle={category?.attributes?.title}
           subTitle={subCat?.attributes?.title}

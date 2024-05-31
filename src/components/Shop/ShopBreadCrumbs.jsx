@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   const { t } = useTranslation();
 
-  const { breadCrumbTitle1, breadCrumbTitle2, breadCrumbTitle3, home } =
-    t("shop");
+  const { home } = t("shop");
 
   return (
     <div className="shop_header">
@@ -18,13 +17,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
       />
       <div className="shop_header__text">
         <div className="shop_header__text--content">
-          {type === "panier" ? (
-            <h1>{breadCrumbTitle1}</h1>
-          ) : type === "checkout" ? (
-            <h1>{breadCrumbTitle2}</h1>
-          ) : (
-            <h1>{breadCrumbTitle3}</h1>
-          )}
+          <h1>{type}</h1>
           <Breadcrumb
             spacing="2px"
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
