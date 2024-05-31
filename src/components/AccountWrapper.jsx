@@ -1,4 +1,5 @@
 import { Button, HStack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const AccountWrapper = ({
@@ -9,9 +10,11 @@ const AccountWrapper = ({
   handleSubmit,
   isDirty,
   errors,
-  onSubmit
+  onSubmit,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { btn, noAcc, createAcc, register, haveAcc, connect } = t("login");
   return (
     <div className="login__wrapper">
       <h1 className="login__title">{title}</h1>
@@ -29,10 +32,10 @@ const AccountWrapper = ({
               }}
               color="white"
             >
-              Connecter{" "}
+              {btn}
             </Button>
             <HStack fontSize="0.9rem" align="end">
-              <p>Pas de compte? </p>
+              <p>{noAcc} </p>
               <span
                 style={{
                   fontWeight: "600",
@@ -40,7 +43,7 @@ const AccountWrapper = ({
                 }}
                 onClick={() => navigate("/register")}
               >
-                Créez-en un
+                {createAcc}
               </span>
             </HStack>
           </div>
@@ -56,15 +59,15 @@ const AccountWrapper = ({
               }}
               color="white"
             >
-              Enregistrer{" "}
+              {register}
             </Button>
             <HStack fontSize="0.9rem" align="end">
-              <p>Vous avez un compte ? </p>
+              <p>{haveAcc} </p>
               <span
                 style={{ fontWeight: "600", cursor: "pointer" }}
                 onClick={() => navigate("/login")}
               >
-                Connectez-vous !
+                {connect}
               </span>
             </HStack>
           </div>

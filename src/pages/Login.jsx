@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const defaultValues = {
   identifier: "",
@@ -19,7 +20,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
-
+  const { t } = useTranslation();
+  const { title, username, mdp } = t("login");
   const {
     control,
     handleSubmit,
@@ -54,12 +56,12 @@ const Login = () => {
       isDirty={isDirty}
       loading={isLoading}
       errors={errors}
-      title="Connectez vous à votre compte"
+      title={title}
       onSubmit={onSubmit}
     >
       <Input
         required
-        label="Email ou Nom d'utilisateur"
+        label={username}
         name="identifier"
         placeholder=""
         control={control}
@@ -67,7 +69,7 @@ const Login = () => {
       />
       <Input
         required
-        label="Mot de passe"
+        label={mdp}
         name="password"
         placeholder=""
         control={control}
