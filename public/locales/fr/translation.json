@@ -1,0 +1,89 @@
+{
+  "home": {
+    "articleBtn": "voir articles",
+    "catTitle": "explorer par catégorie",
+    "catDescription": "Jetez un coup d'œil à nos catégories",
+    "prodTitle": "Nos Produits",
+    "prodBtnPlus": "afficher plus",
+    "prodBtnLess": "afficher moins",
+    "explorePar1": "<1>Accessoires indispensables</1> pour décorer votre stand",
+    "explorePar2": "disponible en location"
+  },
+  "shop": {
+    "type": "Magasin",
+    "home": "Accueil",
+    "eltNumber": "Montrer {{index}} de {{total}} éléments",
+    "show": "Montrer",
+    "sort": "Trier par",
+    "priceDesc": "Prix décroissant",
+    "priceAsc": "Prix croissant",
+    "filterBtn": "Filtre",
+    "category": "Categories de",
+    "priceFilterTitle": "Filtrer par prix",
+    "price": "Prix",
+    "paginateNext": "Suivant",
+    "paginatePrev": "Précédent",
+    "descriptionSec": {
+      "title1": "Haute qualité",
+      "desc1": "Matériaux de qualité",
+      "title2": "Protection de la garantie",
+      "desc2": "Plus de 2 ans",
+      "title3": "Show room",
+      "desc3": "Ouvert de 9h00 à 17h00",
+      "title4": "24 / 7 Support",
+      "desc4": "Support dédié"
+    }
+  },
+  "productDetail": {
+    "day": "Jour",
+    "height": "Hauteur",
+    "width": "Largeur",
+    "reservation": "Choisissez vos dates de resevation",
+    "addBtn": "Ajouter au panier",
+    "errorMsg": "Merci de séléctionner la date de fin, cliquez deux fois si les deux dates sont les mêmes",
+    "relatedProd": "Produits apparentés"
+  },
+  "login": {
+    "title": "Connectez vous à votre compte",
+    "username": "Email ou Nom d'utilisateur",
+    "mdp": "Mot de passe",
+    "btn": "Connecter",
+    "noAcc": "Pas de compte?",
+    "createAcc": "Créez-en un",
+    "register": "Enregistrer",
+    "haveAcc": "Vous avez un compte ?",
+    "connect": "Connectez-vous !"
+  },
+  "register": {
+    "title": "Créer un compte",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "mdp": "Mot de passe"
+  },
+  "cart": {
+    "type": "Panier",
+    "product": "Produit",
+    "price": "Prix",
+    "reservation": "Réservation",
+    "quantity": "Quantité",
+    "subtotal": "Sous-total",
+    "cartTotals": "Total du panier",
+    "mobQuant": "Qté",
+    "btn": "Confirmer Reservation"
+  },
+  "checkout": {
+    "type": "Caisse",
+    "title": "Détails de facturation",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "phone": "Téléphone",
+    "governorates": "Gouvernorats",
+    "delegations": "Délégations",
+    "street": "Numéro et nom de rue",
+    "postal": "Code postal",
+    "company": "Nom de l'entreprise (optionnel)",
+    "note": "La commande ne peut être confirmé qu &rsquo;avec une avance de 40% de la somme globale voir",
+    "modality": "modalités de paiement.",
+    "btn": "Passer la commande"
+  }
+}
