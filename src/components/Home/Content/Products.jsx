@@ -5,9 +5,11 @@ import { useTranslation } from "react-i18next";
 
 const Products = forwardRef((props, ref) => {
   const [pageSize, setPageSize] = useState(8);
-
+  const {
+    i18n: { language },
+  } = useTranslation();
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&populate[img][fields][0]=name&populate[img][fields][1]=url`
+    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=1&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   const { t } = useTranslation();
   const { prodTitle, prodBtnPlus, prodBtnLess } = t("home");

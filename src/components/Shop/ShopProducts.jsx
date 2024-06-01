@@ -26,7 +26,7 @@ const ShopProducts = ({
   const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   const [searchParams] = useSearchParams();
   const subId = searchParams.get("sub");
-  const { t } = useTranslation();
+  const { t,i18n:{language} } = useTranslation();
   const { category, priceFilterTitle } = t("shop");
   useEffect(() => {
     if (subId !== null) {
@@ -51,7 +51,7 @@ const ShopProducts = ({
     .join("");
 
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate[img][fields][0]=name&populate[img][fields][1]=url`
+    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   useEffect(() => {
     const indexes = calculateIndexes(

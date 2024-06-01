@@ -15,13 +15,17 @@ const settings = {
   slidesToScroll: 1,
   pauseOnHover: true,
 };
-
+const excluded = ["Collections et Tendances", "Collection and Trends"];
 const Categories = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-  const { t } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const { catTitle, catDescription } = t("home");
+
   const { data } = useFetch(
-    "/categories?fields[0]=title&fields[1]=description&populate[img][fields][0]=name&populate[img][fields][1]=url"
+    `/categories?locale=${language}&fields[0]=title&fields[1]=description&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   return (
     <div className="home-categories">
@@ -30,9 +34,7 @@ const Categories = () => {
       <div className="home-categories__images">
         {!isMobile ? (
           data
-            ?.filter(
-              (item) => item?.attributes?.title !== "Collections et Tendances"
-            )
+            ?.filter((item) => !excluded.includes(item?.attributes?.title))
             .map((item) => {
               return <CategoryCard item={item} id={item?.id} key={item?.id} />;
             })

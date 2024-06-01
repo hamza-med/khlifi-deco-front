@@ -16,7 +16,7 @@ const Shop = () => {
   let { catId } = useParams();
   const [searchParams] = useSearchParams();
   const subId = searchParams.get("sub");
-
+  
   const [display, setDisplay] = useState("grid");
   const { data: category } = useFetch(
     `/categories/${catId}?fields[0]=title&populate[sub_categories][fields][0]=title`
