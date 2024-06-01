@@ -1,9 +1,11 @@
 import ProductModal from "@/components/ProductDetail/ProductModal";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, display, id }) => {
+  const { t } = useTranslation();
   var date = new Date();
   date.setDate(date.getDate() + 1);
   const { increaseCartQuantity } = useShoppingCart();
@@ -44,7 +46,7 @@ const ProductCard = ({ product, display, id }) => {
             className="card_container__overlay__button"
             onClick={handleClick}
           >
-            Ajouter au panier
+            {t("productDetail.addBtn")}
           </button>
         </div>
 

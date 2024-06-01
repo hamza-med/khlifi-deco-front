@@ -6,6 +6,7 @@ import { Button } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 const defaultValues = {
   firstname: "",
@@ -17,7 +18,17 @@ const defaultValues = {
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  const { t } = useTranslation();
+  const {
+    email,
+    subject,
+    btn,
+    nameDesc,
+    lastNameDesc,
+    emailDesc,
+    subjectDesc,
+    messageDesc,
+  } = t("contact.form");
   const {
     control,
     reset,
@@ -53,38 +64,38 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="contact_form_name">
           <Input
-            label="Nom"
+            label={t("checkout.firstName")}
             name="firstname"
-            placeholder="votre nom"
+            placeholder={nameDesc}
             control={control}
             className="contact_input"
           />
           <Input
-            label="Prénom"
+            label={t("checkout.lastName")}
             name="lastname"
-            placeholder="votre prénom"
+            placeholder={lastNameDesc}
             control={control}
             className="contact_input"
           />
         </div>
         <Input
-          label="Sujet"
+          label={subject}
           name="subject"
-          placeholder="service client"
+          placeholder={subjectDesc}
           control={control}
           className="contact_input"
         />
         <Input
-          label="Adresse email"
+          label={email}
           name="email"
-          placeholder="votre@email.com"
+          placeholder={emailDesc}
           control={control}
           className="contact_input"
         />
         <Textarea
           label="Message"
           name="message"
-          placeholder="Comment pouvons-nous aider ?"
+          placeholder={messageDesc}
           control={control}
           className="contact_input"
         />
@@ -98,7 +109,7 @@ const ContactForm = () => {
           }}
           color="white"
         >
-          Envoyer
+          {btn}
         </Button>
       </form>
     </div>

@@ -85,5 +85,37 @@
     "note": "La commande ne peut être confirmé qu &rsquo;avec une avance de 40% de la somme globale voir",
     "modality": "modalités de paiement.",
     "btn": "Passer la commande"
-  }
+  },
+  "shoppingCart": {
+    "cart": "Panier",
+    "shoppingCart": "Panier d'achat"
+  },
+  "footer": {
+    "address": "Addresse",
+    "links": "Liens",
+    "shop": "Boutique",
+    "about": "À propos de nous",
+    "website": "Site web",
+    "copyright": "Droits d'auteur 2024. Tous droits réservés"
+  },
+  "contact": {
+    "title": "Contactez Nous",
+    "desc": "Pour plus d’informations sur nos produits et services. N'hésitez pas à nous envoyer un e-mail. Notre personnel est toujours là pour vous aider. N&apos;hésitez pas!",
+    "phone": "Téléphone",
+    "time": "Horaire de travail",
+    "date1": "Lundi-Vendredi:",
+    "date2": "Samedi-Dimanche:",
+    "mobile": "Portable",
+    "form": {
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "btn": "Envoyer",
+      "nameDesc": "votre nom",
+      "lastNameDesc": "votre prénom",
+      "emailDesc": "votre@email.com",
+      "subjectDesc": "service client",
+      "messageDesc": "Comment pouvons-nous aider ?"
+    }
+  },
+  "miniHeader": "Meilleur organisateur d'événements en Tunisie"
 }

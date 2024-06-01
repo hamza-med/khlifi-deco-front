@@ -1,27 +1,29 @@
 import { HStack, VStack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { FaClock, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
-const infoData = [
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Adresse",
-    text: "16 rue toborsok , bardo",
-  },
-  {
-    icon: <FaPhoneAlt />,
-    title: "Téléphone",
-    text: "Mobile: 57 755 433",
-  },
-
-  {
-    icon: <FaClock />,
-    title: "Horaire de travail",
-    text: "Lundi-Vendredi: 9:00 - 19:00",
-    text1: "Samedi-Dimanche: 9:00 - 19:00",
-  },
-];
-
 const ContactCard = () => {
+  const { t } = useTranslation();
+  const { phone, time, mobile, date1, date2 } = t("contact");
+  const infoData = [
+    {
+      icon: <FaMapMarkerAlt />,
+      title: t("footer.address"),
+      text: "16 rue toborsok , bardo",
+    },
+    {
+      icon: <FaPhoneAlt />,
+      title: phone,
+      text: `${mobile}: 57 755 433`,
+    },
+
+    {
+      icon: <FaClock />,
+      title: time,
+      text: `${date1} 9:00 - 19:00`,
+      text1: `${date2} 9:00 - 19:00`,
+    },
+  ];
   return (
     <div className="contact_card_wrapper">
       <div className="contact_card_info">
@@ -33,7 +35,7 @@ const ContactCard = () => {
               align="start"
               gap="1.5em"
             >
-              <div className="icon" >{info.icon}</div>
+              <div className="icon">{info.icon}</div>
               <VStack align="start">
                 <h2>{info?.title}</h2>
                 <span>{info.text}</span>
