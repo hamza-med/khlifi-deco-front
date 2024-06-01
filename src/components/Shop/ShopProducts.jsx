@@ -3,14 +3,16 @@ import Paginator from "@/uilib/Paginator";
 import ProductCard from "@/uilib/ProductCard";
 import { calculateIndexes } from "@/utils/calculateIndex";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
 import { useMediaQuery } from "@chakra-ui/react";
 import FilterDrawer from "./FilterDrawer";
 import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
 
 const ShopProducts = ({
+  catId,
+  subId,
   isOpen,
   onClose,
   sortItem = "asc",
@@ -25,16 +27,20 @@ const ShopProducts = ({
   const [selectedSubCats, setSelectedSubCats] = useState([]);
   const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   const [searchParams] = useSearchParams();
-  const subId = searchParams.get("sub");
-  const { t,i18n:{language} } = useTranslation();
+  const subParam = searchParams.get("sub");
+
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const { category, priceFilterTitle } = t("shop");
   useEffect(() => {
-    if (subId !== null) {
+    if (subId && subParam) {
       setSelectedSubCats([subId]);
     } else {
       setSelectedSubCats([]);
     }
-  }, [subId]);
+  }, [subId, subParam]);
   const handleChange = (e) => {
     setPage(1);
     const value = e.target.value;
@@ -45,6 +51,10 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
+
+  const { data: subCats } = useFetch(
+    `/sub-categories?locale=${language}&fields[0]=title&filters[categories][id][$eq]=${catId}`
+  );
 
   const subCategoriesQuery = selectedSubCats
     .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
@@ -78,7 +88,7 @@ const ShopProducts = ({
             {category} {categoryName}
           </p>
           <div className="content">
-            {subCategories?.map((item) => (
+            {subCats?.map((item) => (
               <SubCategory
                 isChecked={selectedSubCats.includes(item?.id.toString())}
                 handleChange={handleChange}

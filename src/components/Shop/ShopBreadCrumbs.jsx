@@ -1,11 +1,12 @@
 import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { MdChevronRight } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   const { t } = useTranslation();
-
+  const [searchParams] = useSearchParams();
+  const subId = searchParams.get("sub");
   const { home } = t("shop");
 
   return (
@@ -38,7 +39,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
                 <p>{type}</p>
               </BreadcrumbItem>
             )}
-            {subTitle && (
+            {subTitle && subId && (
               <BreadcrumbItem>
                 <p>{subTitle}</p>
               </BreadcrumbItem>

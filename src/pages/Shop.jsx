@@ -1,6 +1,6 @@
 import useFetch from "@/hooks/useFetch";
 import { Skeleton, useDisclosure } from "@chakra-ui/react";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -16,36 +16,47 @@ const Shop = () => {
   let { catId } = useParams();
   const [searchParams] = useSearchParams();
   const subId = searchParams.get("sub");
-  
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
+
   const [display, setDisplay] = useState("grid");
   const { data: category } = useFetch(
-    `/categories/${catId}?fields[0]=title&populate[sub_categories][fields][0]=title`
+    `/categories/${catId}?fields[0]=title&fields[1]=locale&populate[localizations][fields][0]=title`
   );
+  const { data: subCat } = useFetch(
+    `/sub-categories/${subId}?fields[0]=title&fields[1]=locale&populate[localizations][fields][0]=title`
+  );
+
   const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
-  const [subCat, setSubCat] = useState();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { t } = useTranslation();
-
   const { type } = t("shop");
-
-  useEffect(() => {
-    let subCat = category?.attributes?.sub_categories?.data.find((item) => {
-      return item?.id == subId;
-    });
-    setSubCat(subCat);
-  }, [category?.attributes?.sub_categories?.data, subId]);
 
   return (
     <>
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs
           type={type}
-          catId={category?.id}
-          catTitle={category?.attributes?.title}
-          subTitle={subCat?.attributes?.title}
+          catId={
+            category?.attributes.locale === language
+              ? catId
+              : `${category?.attributes.localizations.data[0].id}`
+          }
+          catTitle={
+            category?.attributes.locale === language
+              ? category?.attributes?.title
+              : category?.attributes.localizations.data[0].attributes.title
+          }
+          subTitle={
+            subCat?.attributes.locale === language
+              ? subCat?.attributes?.title
+              : subCat?.attributes.localizations.data[0].attributes.title
+          }
         />
       </Suspense>
       <Suspense fallback={<Skeleton />}>
@@ -59,13 +70,26 @@ const Shop = () => {
       </Suspense>
       <Suspense fallback={<Skeleton />}>
         <ShopProducts
+          subId={
+            subCat?.attributes.locale === language
+              ? subId
+              : `${subCat?.attributes.localizations.data[0].id}`
+          }
           isOpen={isOpen}
           onClose={onClose}
           sortItem={sortItem}
           pageSize={pageSize}
           display={display}
-          categoryName={category?.attributes?.title}
-          subCategories={category?.attributes?.sub_categories?.data}
+          categoryName={
+            category?.attributes.locale === language
+              ? category?.attributes?.title
+              : category?.attributes.localizations.data[0].attributes.title
+          }
+          catId={
+            category?.attributes.locale === language
+              ? catId
+              : `${category?.attributes.localizations.data[0].id}`
+          }
           setItemIndex={setItemIndex}
         />
       </Suspense>
