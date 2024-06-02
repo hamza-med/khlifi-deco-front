@@ -1,10 +1,11 @@
 import { Breadcrumb, BreadcrumbItem, useMediaQuery } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { MdChevronRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const LinksBar = ({ prodName, catData, subData }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const { t } = useTranslation();
   return (
     <div className="linksBar__wrapper">
       <Breadcrumb
@@ -14,7 +15,7 @@ const LinksBar = ({ prodName, catData, subData }) => {
         {!isMobile && (
           <BreadcrumbItem>
             <Link to="/">
-              <p className="linksBar__wrapper--link">Accueil</p>
+              <p className="linksBar__wrapper--link">{t("shop.home")}</p>
             </Link>
           </BreadcrumbItem>
         )}
