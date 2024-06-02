@@ -39,12 +39,6 @@
         font-weight: 600;
         font-size: 0.9rem;
         background: $primary-color;
-        &:hover,
-        &:active {
-          display: block;
-          color: white;
-          background: $primary-color;
-        }
       }
       background: white;
       color: $primary-color;
@@ -53,6 +47,7 @@
       transition: background-color 0.2s ease-in-out;
       &:hover,
       &:active {
+        z-index: 999;
         display: block;
         color: white;
         background: $primary-color;
