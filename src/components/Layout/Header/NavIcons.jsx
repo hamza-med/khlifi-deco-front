@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import Language from "./Language";
 
 const NavIcons = ({ onOpen }) => {
   const { openCart, cartItems, isOpen, closeCart } = useShoppingCart();
@@ -18,6 +19,7 @@ const NavIcons = ({ onOpen }) => {
   
   return (
     <div className="nav_icons">
+      <Language/>
       {user ? (
         <Menu placement="bottom-end">
           <MenuButton>

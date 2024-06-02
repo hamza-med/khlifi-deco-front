@@ -3,7 +3,7 @@
   width: 100%;
   border-top: 2px solid $primary-color-10;
   height: calc(100vh - $header-height);
-  z-index: 999;
+  z-index: 3;
   position: fixed;
   @include flex(column, space-between, center);
   left: 0;

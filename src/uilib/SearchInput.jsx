@@ -1,12 +1,13 @@
 import { useDebounce } from "@/hooks/useDebounce";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const SearchInput = ({ onChange }) => {
   const [input, setInput] = useState("");
   const [value, setValue] = useState();
-
+  const { t } = useTranslation();
   useDebounce(input, setValue, 1000);
   useEffect(() => {
     onChange(value);
@@ -16,7 +17,7 @@ const SearchInput = ({ onChange }) => {
       <AiOutlineSearch id="search-icon" />
       <input
         className="search-input"
-        placeholder="Rechercher un produit"
+        placeholder={t("searchProduct")}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />

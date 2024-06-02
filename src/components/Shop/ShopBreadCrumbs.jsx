@@ -1,8 +1,14 @@
 import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { MdChevronRight } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
+  const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const subId = searchParams.get("sub");
+  const { home } = t("shop");
+
   return (
     <div className="shop_header">
       <img
@@ -12,20 +18,14 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
       />
       <div className="shop_header__text">
         <div className="shop_header__text--content">
-          {type === "panier" ? (
-            <h1>Panier</h1>
-          ) : type === "checkout" ? (
-            <h1>Checkout</h1>
-          ) : (
-            <h1>Magasin</h1>
-          )}
+          <h1>{type}</h1>
           <Breadcrumb
             spacing="2px"
             separator={<MdChevronRight style={{ fontSize: "20px" }} />}
           >
             <BreadcrumbItem fontWeight="600">
               <Link to="/">
-                <p>Accueil</p>
+                <p>{home}</p>
               </Link>
             </BreadcrumbItem>
             {catTitle ? (
@@ -39,7 +39,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
                 <p>{type}</p>
               </BreadcrumbItem>
             )}
-            {subTitle && (
+            {subTitle && subId && (
               <BreadcrumbItem>
                 <p>{subTitle}</p>
               </BreadcrumbItem>

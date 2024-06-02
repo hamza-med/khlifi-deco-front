@@ -1,4 +1,15 @@
-const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount ,...props}) => {
+import { useTranslation } from "react-i18next";
+
+const Paginator = ({
+  pages,
+  page = 1,
+  setPage,
+  isPreviousData,
+  pageCount,
+  ...props
+}) => {
+  const { t } = useTranslation();
+  const { paginateNext, paginatePrev } = t("shop");
   return (
     <div className="paginator__wrapper" {...props}>
       <button
@@ -6,7 +17,7 @@ const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount ,...pro
         onClick={() => setPage((prev) => prev - 1)}
         disabled={page == 1}
       >
-        Previous
+        {paginatePrev}
       </button>
       {pages?.map((pg, key) => {
         return (
@@ -25,7 +36,7 @@ const Paginator = ({ pages, page = 1, setPage, isPreviousData, pageCount ,...pro
         disabled={page === pageCount}
         onClick={() => setPage((prev) => prev + 1)}
       >
-        Next
+        {paginateNext}
       </button>
     </div>
   );

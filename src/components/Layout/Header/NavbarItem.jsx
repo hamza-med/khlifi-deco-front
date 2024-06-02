@@ -10,7 +10,10 @@ export default function NavbarItem({ item, id, showDrawer, isDrawerOpen }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    setIsSpecial(item?.title === "Collections et Tendances");
+    setIsSpecial(
+      item?.title === "Collections et Tendances" ||
+        item?.title === "Collection and Trends"
+    );
   }, [item.title]);
 
   return (

@@ -1,10 +1,12 @@
 import { HStack, useMediaQuery } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { GrFacebook, GrInstagram, GrYoutube } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const { t } = useTranslation();
+  const { address, links, shop, about, website, copyright } = t("footer");
   return (
     <div className="footer">
       <div className="footer__top">
@@ -26,24 +28,24 @@ const Footer = () => {
             </Link>
           </div>
           <span>
-            <span className="contact-info">Addresse: </span>16 rue toborsok ,
+            <span className="contact-info">{address}: </span>16 rue toborsok ,
             bardo
           </span>
         </div>
         <div className="footer__top--item">
-          <h1>Liens</h1>
+          <h1>{links}</h1>
           <Link to="home">
-            <span>Accueil</span>
+            <span>{t("shop.home")}</span>
           </Link>
           <Link>
-            <span>Boutique</span>
+            <span>{shop}</span>
           </Link>
           <Link to="contact">
             <span>Contact</span>
           </Link>
         </div>
         <div className="footer__top--item">
-          <h1>&#192; propos de nous</h1>
+          <h1>{about}</h1>
           <span>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque,
             illo hic quo vitae quae numquam autem laborum voluptate nulla enim
@@ -61,7 +63,7 @@ const Footer = () => {
             </li>
             <li>
               <HStack>
-                <span className="contact-info">Website:</span>
+                <span className="contact-info">{website}:</span>
                 <span>www.khlifi-deco.com</span>
               </HStack>
             </li>
@@ -77,7 +79,7 @@ const Footer = () => {
       <div className="footer__bottom">
         <span className="footer__bottom--logo">Khlifi deco</span>
         <span className="footer__bottom--copyright">
-          &copy; Copyright 2023. All rights reserved
+          &copy; {copyright}
         </span>
       </div>
     </div>

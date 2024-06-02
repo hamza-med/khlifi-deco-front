@@ -1,0 +1,122 @@
+{
+  "home": {
+    "articleBtn": "see articles",
+    "catTitle": "browse the categories",
+    "catDescription": "Take a look at our categories",
+    "prodTitle": "Our products",
+    "prodBtnPlus": "show more",
+    "prodBtnLess": "show less",
+    "explorePar1": "<1>Essential accessories</1> to decorate your stand",
+    "explorePar2": "available for rent"
+  },
+  "shop": {
+    "type": "Store",
+    "home": "Home",
+    "eltNumber": "Showing {{index}} from {{total}} results",
+    "show": "Show",
+    "sort": "Sort by",
+    "priceDesc": "Descending price",
+    "priceAsc": "Ascending price",
+    "filterBtn": "Filter",
+    "category": "Categories of",
+    "priceFilterTitle": "Filter by price",
+    "price": "Price",
+    "paginateNext": "Next",
+    "paginatePrev": "Previous",
+    "descriptionSec": {
+      "title1": "High quality",
+      "desc1": "Quality materials",
+      "title2": "Warranty protection",
+      "desc2": "Over 2 years",
+      "title3": "Show room",
+      "desc3": "Open from 9:00 am to 5:00 pm",
+      "title4": "24 / 7 Support",
+      "desc4": "Dedicated Support"
+    }
+  },
+  "productDetail": {
+    "day": "Day",
+    "height": "Height",
+    "width": "Width",
+    "reservation": "Choose your reservation dates",
+    "addBtn": "Add to cart",
+    "errorMsg": "Please select the end date, click twice if both dates are the same",
+    "relatedProd": "Related products"
+  },
+  "login": {
+    "title": "Login to your account",
+    "username": "Email or username",
+    "mdp": "Password",
+    "btn": "Login",
+    "noAcc": "No account?",
+    "createAcc": "Create one",
+    "register": "Register",
+    "haveAcc": "Got an account?",
+    "connect": "Get connected !"
+  },
+  "register": {
+    "title": "Create your account",
+    "username": "Username",
+    "email": "Email",
+    "mdp": "Password"
+  },
+  "cart": {
+    "type": "Cart",
+    "product": "Product",
+    "price": "Price",
+    "reservation": "Reservation",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "cartTotals": "Cart totals",
+    "mobQuant": "Qty",
+    "btn": "Confirm Reservation"
+  },
+  "checkout": {
+    "type": "Checkout",
+    "title": "Billing details",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "phone": "Phone",
+    "governorates": "Governorates",
+    "delegations": "Delegations",
+    "street": "Street Number and Name",
+    "postal": "Postal Code",
+    "company": "Company Name (optional)",
+    "note": "Orders can only be confirmed with a down payment of 40% of the total amount see",
+    "modality": "terms of payment.",
+    "btn": "Place Order"
+  },
+  "shoppingCart": {
+    "cart": "Cart",
+    "shoppingCart": "Shopping Cart"
+  },
+  "footer": {
+    "address": "Address",
+    "links": "Links",
+    "shop": "Shop",
+    "about": "About us",
+    "website": "Website",
+    "copyright": "Copyright 2024. All rights reserved"
+  },
+  "contact": {
+    "title": "Get In Touch With Us",
+    "desc": "For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!",
+    "phone": "Phone",
+    "time": "Working Time",
+    "date1": "Monday-Friday:",
+    "date2": "Saturday-Sunday:",
+    "mobile": "Mobile",
+    "form": {
+      "email": "Email address",
+      "subject": "Subject",
+      "btn": "Send",
+      "nameDesc": "your name",
+      "lastNameDesc": "your lastname",
+      "emailDesc": "your@email.com",
+      "subjectDesc": "customer service",
+      "messageDesc": "How can we help ?"
+    }
+  },
+  "miniHeader": "Best event organizer in Tunisia",
+  "searchProduct": "Search for a product"
+}

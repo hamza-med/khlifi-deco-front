@@ -4,6 +4,7 @@ import { Skeleton, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
 
 import Logo from "./Logo";
+import { useTranslation } from "react-i18next";
 
 const MiniHeader = lazy(() => import("../../MiniHeader"));
 const NavbarDrawer = lazy(() => import("../../NavbarDrawer"));
@@ -16,8 +17,11 @@ const ToggleMenu = lazy(() => import("./ToggleMenu"));
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
+  const {
+    i18n: { language },
+  } = useTranslation();
   const { data: categories } = useFetch(
-    `/categories?fields[0]=title&populate[sub_categories][fields][0]=title`
+    `/categories?locale=${language}&fields[0]=title&populate[sub_categories][fields][0]=title`
   );
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   return (

@@ -9,6 +9,7 @@ import { Global } from "@emotion/react";
 import GlobalStyles from "./theme/globalStyles.js";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
+import "@/i18n.js";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useState } from "react";
 import { setLocalStorageItem } from "@/utils/localStorage";
+import { useTranslation } from "react-i18next";
 const defaultValues = {
   email: "",
   password: "",
@@ -19,7 +20,8 @@ const Register = () => {
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
-
+  const { t } = useTranslation();
+  const { title, username, email, mdp } = t("register");
   const {
     control,
     handleSubmit,
@@ -54,14 +56,14 @@ const Register = () => {
       handleSubmit={handleSubmit}
       isDirty={isDirty}
       errors={errors}
-      title="Créer un compte"
+      title={title}
       type="register"
       loading={isLoading}
       onSubmit={onSubmit}
     >
       <Input
         required
-        label="Nom d'utilisateur"
+        label={username}
         name="username"
         placeholder=""
         control={control}
@@ -69,7 +71,7 @@ const Register = () => {
       />
       <Input
         required
-        label="Email"
+        label={email}
         name="email"
         placeholder=""
         control={control}
@@ -77,7 +79,7 @@ const Register = () => {
       />
       <Input
         required
-        label="Mot de passe"
+        label={mdp}
         name="password"
         placeholder=""
         control={control}

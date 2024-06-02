@@ -15,6 +15,7 @@ import { AiFillDelete } from "react-icons/ai";
 import PickerInput from "@/uilib/DatePicker/PickerInput";
 import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Reservation = ({ start, end, id }) => {
   const { defineReservation } = useShoppingCart();
@@ -138,7 +139,9 @@ const TableItem = ({ item }) => {
 const Table = () => {
   const { cartItems } = useShoppingCart();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-
+  const { t } = useTranslation();
+  const { mobQuant, product, price, reservation, quantity, subtotal } =
+    t("cart");
   return (
     <div>
       <TableContainer>
@@ -148,11 +151,11 @@ const Table = () => {
               <>
                 <Tr>
                   <Th></Th>
-                  <Th className="tb__header">Produit</Th>
-                  <Th className="tb__header">Prix</Th>
-                  <Th className="tb__header">Réservation</Th>
-                  <Th className="tb__header">Quantité</Th>
-                  <Th className="tb__header">Sous-total</Th>
+                  <Th className="tb__header">{product}</Th>
+                  <Th className="tb__header">{price}</Th>
+                  <Th className="tb__header">{reservation}</Th>
+                  <Th className="tb__header">{quantity}</Th>
+                  <Th className="tb__header">{subtotal}</Th>
                   <Th className="tb__header"></Th>
                 </Tr>
               </>
@@ -160,8 +163,8 @@ const Table = () => {
               <>
                 <Tr>
                   <Th></Th>
-                  <Th className="tb__header">Produit</Th>
-                  <Th className="tb__header">Qté</Th>
+                  <Th className="tb__header">{product}</Th>
+                  <Th className="tb__header">{mobQuant}</Th>
                   {/* <Th className="tb__header"></Th> */}
                 </Tr>
               </>

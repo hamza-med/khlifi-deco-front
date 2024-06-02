@@ -9,14 +9,18 @@ import {
 import { Suspense, lazy, useState } from "react";
 
 import useFetch from "@/hooks/useFetch";
+import { useTranslation } from "react-i18next";
 
 const SearchInput = lazy(() => import("@/uilib/SearchInput"));
 const SearchResults = lazy(() => import("./SearchResults"));
 
 const SearchModal = ({ isOpen, onClose }) => {
+  const {
+    i18n: { language },
+  } = useTranslation();
   const [value, setValue] = useState();
   const { data: products } = useFetch(
-    `/products?fields[0]=title&[filters][title][$containsi]=${value}`
+    `/products?locale=${language}&fields[0]=title&[filters][title][$containsi]=${value}`
   );
 
   return (

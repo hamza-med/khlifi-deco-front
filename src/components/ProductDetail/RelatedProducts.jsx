@@ -1,14 +1,18 @@
 import useFetch from "@/hooks/useFetch";
 import ProductCard from "@/uilib/ProductCard";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const RelatedProducts = (props) => {
   const [pageSize, setPageSize] = useState(4);
-
+  const {
+    i18n: { language },
+  } = useTranslation();
   const { data: products, meta } = useFetch(
-    `/products?pagination[pageSize]=${pageSize}&pagination[page]=1&[filters][sub_categories][id][$eq]=${props.subCatId}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
+    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=1&[filters][sub_categories][id][$eq]=${props.subCatId}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
-
+  const { t } = useTranslation();
+  const { relatedProd } = t("productDetail");
   const handleClick = () => {
     setPageSize((prev) => prev + 4);
   };
@@ -18,7 +22,7 @@ const RelatedProducts = (props) => {
   return (
     <div className="home-products product-detail">
       <h1 className="home-products__title product-detail-title">
-        Produits apparentés
+        {relatedProd}
       </h1>
       <div className="home-products__products">
         {products?.map((product) => {

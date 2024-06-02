@@ -1,6 +1,7 @@
 import useFetch from "@/hooks/useFetch";
 import { Skeleton } from "@chakra-ui/react";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 const LinksBar = lazy(() => import("@/components/ProductDetail/LinksBar"));
@@ -18,13 +19,29 @@ const imgQuery = images
   .join("");
 
 const catSubCatQuery =
-  "populate[categories][fields][0]=title&populate[sub_categories][fields][0]=title";
+  "populate[categories][fields][0]=title&populate[sub_categories][fields][0]=title&populate=localizations";
+
 const ProductDetail = () => {
   const { productId } = useParams();
+  const [prodId, setProdId] = useState(productId);
+  const {
+    i18n: { language },
+  } = useTranslation();
   const { data: product } = useFetch(
-    `/products/${productId}?${imgQuery}${catSubCatQuery}`
+    `/products/${prodId}?populate[localizations][fields][0]=title&${imgQuery}${catSubCatQuery}`
   );
-
+  useEffect(() => {
+    setProdId(productId);
+  }, [productId]);
+  useEffect(() => {
+    if (language !== product?.attributes.locale) {
+      setProdId(product?.attributes.localizations.data[0].id);
+    }
+  }, [
+    language,
+    product?.attributes.locale,
+    product?.attributes.localizations.data,
+  ]);
   return (
     <div>
       <Suspense fallback={<Skeleton />}>

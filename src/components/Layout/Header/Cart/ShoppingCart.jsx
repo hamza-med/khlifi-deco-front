@@ -14,11 +14,13 @@ import {
 import { BsCartX } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import CartContent from "./CartContent";
+import { useTranslation } from "react-i18next";
 
 const ShoppingCart = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const { cartItems } = useShoppingCart();
-
+  const { t } = useTranslation();
+  const { cart, shoppingCart } = t("shoppingCart");
   return (
     <Drawer
       isOpen={isOpen}
@@ -38,7 +40,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
               fontSize="1.3rem"
               fontFamily="'Poppins', sans-serif;"
             >
-              Shopping Cart
+              {shoppingCart}
             </Text>
             <BsCartX
               fontSize="1.6rem"
@@ -67,7 +69,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
                 onClose();
               }}
             >
-              Panier
+              {cart}
             </Button>
             <Button
               isDisabled={cartItems?.length === 0}
@@ -80,7 +82,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
                 onClose();
               }}
             >
-              Confirmer reservation
+              {t("cart.btn")}
             </Button>
           </HStack>
         </DrawerFooter>
