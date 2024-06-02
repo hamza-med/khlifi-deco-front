@@ -39,6 +39,12 @@
         font-weight: 600;
         font-size: 0.9rem;
         background: $primary-color;
+        &:hover,
+        &:active {
+          display: block;
+          color: white;
+          background: $primary-color;
+        }
       }
       background: white;
       color: $primary-color;
