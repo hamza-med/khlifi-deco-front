@@ -18,7 +18,6 @@ const ShopProducts = ({
   sortItem = "asc",
   display,
   categoryName,
-  subCategories,
   pageSize = 12,
   setItemIndex,
 }) => {
@@ -112,7 +111,7 @@ const ShopProducts = ({
           selectedSubCats={selectedSubCats}
           isOpen={isOpen}
           onClose={onClose}
-          subCategories={subCategories}
+          subCategories={subCats}
           catName={categoryName}
           setFilteredPrice={setFilteredPrice}
           handleChange={handleChange}
