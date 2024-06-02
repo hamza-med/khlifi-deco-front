@@ -6,7 +6,8 @@ const RouteProtector = () => {
   let user = getLocalStorageItem("user");
   return !user?.id ? (
     <Navigate to="/login" state={{ from: location }} replace />
-  ) : user?.email !== "utilisation13@gmail.com" ? (
+  ) : user?.email !== "utilisation13@gmail.com" ||
+    user?.email !== "youssefkhlifi18@gmail.com" ? (
     <Navigate to="/" state={{ from: location }} replace />
   ) : (
     <Outlet />
