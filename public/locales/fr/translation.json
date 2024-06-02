@@ -82,7 +82,7 @@
     "street": "Numéro et nom de rue",
     "postal": "Code postal",
     "company": "Nom de l'entreprise (optionnel)",
-    "note": "La commande ne peut être confirmé qu &rsquo;avec une avance de 40% de la somme globale voir",
+    "note": "La commande ne peut être confirmé qu' avec une avance de 40% de la somme globale voir",
     "modality": "modalités de paiement.",
     "btn": "Passer la commande"
   },
@@ -118,5 +118,6 @@
     }
   },
   "miniHeader": "Meilleur organisateur d'événements en Tunisie",
-  "searchProduct":"Rechercher un produit"
+  "searchProduct": "Rechercher un produit",
+  "new": "New"
 }

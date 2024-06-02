@@ -125,7 +125,7 @@ const ProductInfo = ({ prodData, prodId }) => {
         <div className="prodInfo__wrapper--right--description">
           {prodData?.showPrice != false && (
             <h2>
-              {prodData?.price}00 TND HT / {day}
+              {prodData?.price} TND HT / {day}
             </h2>
           )}
           <p>{prodData?.description}</p>

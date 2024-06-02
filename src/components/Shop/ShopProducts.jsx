@@ -50,11 +50,14 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
-
   const { data: subCats } = useFetch(
-    `/sub-categories?locale=${language}&fields[0]=title&filters[categories][id][$eq]=${catId}`
+    `/sub-categories?locale=${language}&fields[0]=title&fields[1]=locale&filters[categories][id][$eq]=${catId}`
   );
-
+  useEffect(() => {
+    if (subCats != null && language !== subCats[0].attributes.locale) {
+      setSelectedSubCats([]);
+    }
+  }, [language, subCats]);
   const subCategoriesQuery = selectedSubCats
     .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
     .join("");
@@ -78,6 +81,9 @@ const ShopProducts = ({
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
     .map((_, index) => index + 1);
+  // console.log("selected sub cats", selectedSubCats);
+  //console.log("catId", catId);
+  //console.log("subId", subId);
 
   return (
     <div className={`shopProducts_container ${display}`}>
