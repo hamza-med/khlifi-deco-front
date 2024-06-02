@@ -54,16 +54,20 @@ const ShopProducts = ({
     `/sub-categories?locale=${language}&fields[0]=title&fields[1]=locale&filters[categories][id][$eq]=${catId}`
   );
   useEffect(() => {
-    if (subCats != null && language !== subCats[0].attributes.locale) {
+    if (
+      !subId &&
+      subCats != null &&
+      language !== subCats[0].attributes.locale
+    ) {
       setSelectedSubCats([]);
     }
-  }, [language, subCats]);
+  }, [language, subCats, subId]);
   const subCategoriesQuery = selectedSubCats
     .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
     .join("");
 
   const { data: products, meta } = useFetch(
-    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][title][$eq]=${categoryName}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate[img][fields][0]=name&populate[img][fields][1]=url`
+    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[categories][id][$eq]=${catId}${subCategoriesQuery}&[filters][price][$lte]=${filteredPrice[1]}&[filters][price][$gte]=${filteredPrice[0]}&sort=price:${sortItem}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   useEffect(() => {
     const indexes = calculateIndexes(
@@ -81,9 +85,9 @@ const ShopProducts = ({
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
     .map((_, index) => index + 1);
-  // console.log("selected sub cats", selectedSubCats);
-  //console.log("catId", catId);
-  //console.log("subId", subId);
+  console.log("selected sub cats", selectedSubCats);
+  console.log("catId", catId);
+  console.log("subId", subId);
 
   return (
     <div className={`shopProducts_container ${display}`}>
