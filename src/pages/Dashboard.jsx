@@ -7,7 +7,7 @@ const Header = lazy(() => import("@/components/Dashboard/Header"));
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
   const [pageSize, setPageSize] = useState();
-  const [max, setMax] = useState();
+  const [max, setMax] = useState(8);
   const [disabled, setDisabled] = useState();
 
   return (

@@ -16,7 +16,7 @@ const defaultValues = {
   email: "",
   enterprise: "",
   address: {
-    state: "",
+    state: "Ariana",
     city: "",
     street: "",
     postal: "",
