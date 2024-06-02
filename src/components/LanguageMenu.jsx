@@ -13,6 +13,7 @@ const LanguageMenu = () => {
   };
   return (
     <MenuList
+      zIndex="4"
       borderColor="white"
       borderRadius="none"
       fontSize={["0.98rem", "1rem", "1rem"]}
