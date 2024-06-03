@@ -1,6 +1,7 @@
 import ProductModal from "@/components/ProductDetail/ProductModal";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +10,7 @@ const ProductCard = ({ product, display, id }) => {
   var date = new Date();
   date.setDate(date.getDate() + 1);
   const { increaseCartQuantity } = useShoppingCart();
+  const [touched, setTouched] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,11 +27,21 @@ const ProductCard = ({ product, display, id }) => {
       date?.toLocaleDateString("fr-FR")
     );
   };
-
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (touched) {
+        setTouched(false);
+      }
+    }, 2000);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [touched]);
   return (
     <div
       className={`card_container ${display} `}
       onClick={() => navigate(`/shop/product/${id}`)}
+      onTouchStart={() => setTouched(true)}
     >
       <img
         loading="lazy"
@@ -43,7 +55,12 @@ const ProductCard = ({ product, display, id }) => {
       <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
         <div className="card_container__overlay">
           <button
-            className="card_container__overlay__button"
+            style={touched ? { display: "block" } : null}
+            className={
+              !touched
+                ? `card_container__overlay__button`
+                : "card_container__overlay__button show_btn"
+            }
             onClick={handleClick}
           >
             {t("productDetail.addBtn")}
