@@ -28,13 +28,10 @@ const Shop = () => {
   const { data: subCat } = useFetch(
     `/sub-categories/${subId}?fields[0]=title&fields[1]=locale&populate[localizations][fields][0]=title`
   );
-
   const [pageSize, setPageSize] = useState(12);
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const { type } = t("shop");
 
   return (

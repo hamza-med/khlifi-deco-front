@@ -27,19 +27,29 @@ const ShopProducts = ({
   const [filteredPrice, setFilteredPrice] = useState([10, 200]);
   const [searchParams] = useSearchParams();
   const subParam = searchParams.get("sub");
-
   const {
     t,
     i18n: { language },
   } = useTranslation();
   const { category, priceFilterTitle } = t("shop");
+
+  const { data: subCats } = useFetch(
+    `/sub-categories?locale=${language}&fields[0]=title&fields[1]=locale&filters[categories][id][$eq]=${catId}`
+  );
+
   useEffect(() => {
-    if (subId && subParam) {
+    if (
+      subCats !== null &&
+      subId &&
+      subParam &&
+      language == subCats[0]?.attributes.locale
+    ) {
       setSelectedSubCats([subId]);
     } else {
       setSelectedSubCats([]);
     }
-  }, [subId, subParam]);
+  }, [language, subCats, subId, subParam]);
+
   const handleChange = (e) => {
     setPage(1);
     const value = e.target.value;
@@ -50,18 +60,7 @@ const ShopProducts = ({
         : selectedSubCats.filter((item) => item != value)
     );
   };
-  const { data: subCats } = useFetch(
-    `/sub-categories?locale=${language}&fields[0]=title&fields[1]=locale&filters[categories][id][$eq]=${catId}`
-  );
-  useEffect(() => {
-    if (
-      !subId &&
-      subCats != null &&
-      language !== subCats[0].attributes.locale
-    ) {
-      setSelectedSubCats([]);
-    }
-  }, [language, subCats, subId]);
+
   const subCategoriesQuery = selectedSubCats
     .map((item) => `&filters[sub_categories][id][$eq]=${item}`)
     .join("");
@@ -87,7 +86,7 @@ const ShopProducts = ({
     .map((_, index) => index + 1);
   console.log("selected sub cats", selectedSubCats);
   console.log("catId", catId);
-  console.log("subId", subId);
+  console.log("subId", !subId);
 
   return (
     <div className={`shopProducts_container ${display}`}>
