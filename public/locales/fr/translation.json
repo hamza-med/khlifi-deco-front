@@ -84,6 +84,9 @@
     "company": "Nom de l'entreprise (optionnel)",
     "note": "La commande ne peut être confirmé qu' avec une avance de 40% de la somme globale voir",
     "modality": "modalités de paiement.",
+    "modalityTitle": "Conditions et modalités de paiement",
+    "modalityDesc": "Les paiements s'effectuent conformément à l'option suivante: 1569.05 DT Un mois d'avance à la date d'événement et le reste à payer par chèque ou espèce le jour de la livraison",
+    "modalityAccepted": "J'ai lu et j'accepte les conditions générales",
     "btn": "Passer la commande"
   },
   "shoppingCart": {

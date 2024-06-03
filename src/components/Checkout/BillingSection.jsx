@@ -27,6 +27,7 @@ const BillingSection = () => {
   const { cartItems, subtotal, removeAll } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [modalityAccepted, setModalityAccepted] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     control,
@@ -39,7 +40,9 @@ const BillingSection = () => {
     resolver: yupResolver(checkoutSchema),
     mode: "onBlur",
   });
-
+  const handleChange = (value) => {
+    setModalityAccepted(value);
+  };
   const onSubmit = async (values) => {
     var today = new Date();
     var tzOffset = new Date().getTimezoneOffset() * 60000; //offset in milliseconds
@@ -76,6 +79,7 @@ const BillingSection = () => {
         <BillingInfo
           onOpen={onOpen}
           isDisabled={
+            !modalityAccepted ||
             !isDirty ||
             Object.entries(errors).length !== 0 ||
             error ||
@@ -84,7 +88,12 @@ const BillingSection = () => {
           isLoading={loading}
         />
       </form>
-      <CheckoutModal isOpen={isOpen} onClose={onClose} />
+      <CheckoutModal
+        checked={modalityAccepted}
+        handleChange={handleChange}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </FormProvider>
   );
 };
