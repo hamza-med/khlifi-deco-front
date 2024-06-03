@@ -83,9 +83,11 @@ const ProductCard = ({ product, display, id }) => {
                 {product?.price - (product?.price * product?.discount) / 100}{" "}
                 TND
               </p>
-              <p className="card_container__content__prices--2">
-                {product?.price} TND
-              </p>
+              {product?.discount && (
+                <p className="card_container__content__prices--2">
+                  {product?.price} TND
+                </p>
+              )}
             </div>
           )}
         </div>
