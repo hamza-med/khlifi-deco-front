@@ -5,7 +5,7 @@ import backend from "i18next-http-backend";
 
 i18n.use(LanguageDetector).use(backend).use(initReactI18next).init({
   fallbackLng: "fr",
-
+  lng: "fr",
   debug: true,
   returnObjects: true,
 });
