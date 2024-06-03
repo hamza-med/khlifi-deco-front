@@ -18,7 +18,7 @@ const CheckoutModal = ({ checked, isOpen, onClose, handleChange }) => {
       <ModalOverlay />
       <ModalContent borderRadius="0px" minW={["100%", "100%", "fit-content"]}>
         <ModalHeader
-          fontSize={["18px", "22px"]}
+          fontSize={["18px", "20px"]}
           color="rgba(0,0,0,0.9)"
           fontWeight="600"
         >
@@ -28,7 +28,7 @@ const CheckoutModal = ({ checked, isOpen, onClose, handleChange }) => {
         <ModalBody
           textAlign="justify"
           maxW={["100%", "800px"]}
-          fontSize={["16px", "20px"]}
+          fontSize={["16px", "18px"]}
           color="rgba(0,0,0,0.8)"
         >
           <p>{t("checkout.modalityDesc")}</p>
