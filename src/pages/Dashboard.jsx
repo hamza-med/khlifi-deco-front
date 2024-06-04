@@ -7,6 +7,7 @@ const Header = lazy(() => import("@/components/Dashboard/Header"));
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
   const [pageSize, setPageSize] = useState();
+  const [user, setUser] = useState();
   const [max, setMax] = useState(8);
   const [disabled, setDisabled] = useState();
 
@@ -14,6 +15,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <Suspense fallback={<Skeleton />}>
         <Header
+          setUser={setUser}
           startDate={date}
           setStartDate={setDate}
           setPageSize={setPageSize}
@@ -23,6 +25,7 @@ const Dashboard = () => {
       </Suspense>
       <Suspense fallback={<Skeleton />}>
         <PDFFile
+          user={user}
           date={date}
           pageSize={pageSize}
           setMax={setMax}

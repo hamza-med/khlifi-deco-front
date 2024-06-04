@@ -1,4 +1,5 @@
 import { useDebounce } from "@/hooks/useDebounce";
+import { usePrivateFetch } from "@/hooks/useFetch";
 import customToast from "@/utils/toast";
 import {
   Button,
@@ -8,36 +9,71 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Select,
 } from "@chakra-ui/react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { LuCalendarDays, LuDownload } from "react-icons/lu";
 
 const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
   <>
     <Button
-      {...props}
       _hover={{ bgColor: "black", color: "white" }}
       p="1.5em 2em"
       disabled={props.loading}
       bgColor="white"
       onClick={onClick}
       ref={ref}
+      fontSize="1.1rem"
       gap="10px"
       color="black"
       leftIcon={<LuCalendarDays fontSize="1.5rem" />}
+      {...props}
     >
       {value !== null ? value : "Date"}
     </Button>
   </>
 ));
 
-const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
+const userData = ["email", "firstname", "lastname", "phone", "address"];
+
+const Header = ({
+  setUser,
+  setPageSize,
+  startDate,
+  setStartDate,
+  max,
+  disabled,
+}) => {
+  const [users, setUsers] = useState();
   const [loading, setLoading] = useState();
   const [size, setSize] = useState(max);
   useDebounce(size, setPageSize, 1000);
+  const userQuery = userData
+    .map((user, i) => {
+      return `fields[${i}]=${user}&`;
+    })
+    .join("");
+  const { data: userInfo } = usePrivateFetch(
+    `orders?${userQuery}&filters[creationDate][$eq]=${startDate
+      .toISOString()
+      .slice(0, -1)
+      .replace("T", " ")}`
+  );
+  useEffect(() => {
+    setUsers(userInfo?.map((userInfo) => userInfo.attributes));
+  }, [userInfo]);
+  const userOptions = useMemo(() => {
+    const emails = users?.map((user) => user.email);
+    return [...new Set(emails)];
+  }, [users]);
+
+  const handleChange = (e) => {
+    setUser(e.target.value);
+  };
+  /**PDF DOWNLOAD */
   const handleExportToPDF = async () => {
     setLoading(true);
     const input = document.getElementById("file-to-export");
@@ -92,8 +128,8 @@ const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
 
         <Button
           _hover={{ bgColor: "black", color: "white" }}
-          p="1.5em 2em"
-          gap="10px"
+          p="1.5em 3em"
+          gap="8px"
           isLoading={loading}
           onClick={handleExportToPDF}
           isDisabled={loading || disabled}
@@ -103,6 +139,25 @@ const Header = ({ setPageSize, startDate, setStartDate, max, disabled }) => {
         >
           Export
         </Button>
+        <Select
+          _hover={{ borderColor: "blackAlpha.200", cursor: "pointer" }}
+          onChange={handleChange}
+          minW="200px"
+          size="lg"
+          borderColor="white"
+          bgColor="white"
+          fontWeight="600"
+          disabled={loading || disabled}
+          placeholder="Choisissez un client"
+        >
+          {userOptions?.map((user, i) => {
+            return (
+              <option key={i} value={user}>
+                {user}
+              </option>
+            );
+          })}
+        </Select>
         <ReactDatePicker
           dateFormat="dd/MM/yyyy"
           maxDate={new Date()}

@@ -1,6 +1,4 @@
 import {
-  HStack,
-  Heading,
   Table,
   TableContainer,
   Tbody,
@@ -8,175 +6,174 @@ import {
   Th,
   Thead,
   Tr,
-  VStack,
 } from "@chakra-ui/react";
 
-const Product = ({ products }) => {
+const TableHeader = ({ title, ...props }) => {
+  return (
+    <Th
+      borderColor="rgb(224, 224, 224);"
+      padding="18px 0"
+      fontFamily="inherit"
+      fontSize="1.3rem"
+      textTransform="capitalize"
+      fontWeight="600"
+      color="white"
+      letterSpacing="0"
+      {...props}
+    >
+      {title}
+    </Th>
+  );
+};
+
+const TableFooter = ({ total }) => {
   return (
     <>
-      {products.map((product) => (
-        <VStack
-          key={product.id}
-          gap="20px"
-          minH="40px"
-          align="start"
-          justify="center"
-          fontWeight="500"
+      <Tr borderColor="red">
+        <Td borderColor="white"></Td>
+        <Td borderColor="white"></Td>
+        <Td borderColor="white"></Td>
+        <Td
+          paddingLeft=""
+          fontWeight="600"
+          fontSize="1.2rem"
+          borderColor="rgb(224, 224, 224);"
+          borderLeft="1px solid rgb(224, 224, 224);"
+          //bgColor="gray.200"
         >
-          <HStack>
-            <p>{product.title}</p>
-            <p>&times; </p>
-            <p>{product.quantity}</p>
-          </HStack>
-        </VStack>
-      ))}
+          Total HT
+        </Td>
+        <Td
+          borderColor="rgb(224, 224, 224);"
+          paddingRight="0"
+          color="black"
+          fontWeight="500"
+          fontSize="1.3rem"
+        >
+          {total}
+        </Td>
+      </Tr>
+      <Tr>
+        <Td borderColor="white"></Td>
+        <Td borderColor="white"></Td>
+        <Td borderColor="white"></Td>
+        <Td
+          paddingLeft=""
+          fontWeight="600"
+          fontSize="1.2rem"
+          borderLeft="1px solid rgb(224, 224, 224);"
+          //bgColor="gray.200"
+        >
+          TVA (19%)
+        </Td>
+        <Td paddingRight="0" color="black" fontWeight="500" fontSize="1.3rem">
+          {(total * 19) / 100}
+        </Td>
+      </Tr>
+      <Tr>
+        <Td></Td>
+        <Td></Td>
+        <Td></Td>
+        <Td
+          paddingLeft=""
+          fontWeight="600"
+          fontSize="1.2rem"
+          bgColor="black"
+          color="white"
+          borderLeft="1px solid rgb(224, 224, 224);"
+        >
+          Total TTC
+        </Td>
+        <Td
+          color="white"
+          paddingRight="0"
+          fontWeight="600"
+          fontSize="1.5rem"
+          bgColor="black"
+        >
+          {(total * 119) / 100}
+        </Td>
+      </Tr>
     </>
   );
 };
 
-const Order = ({ order, setName }) => (
-  <>
-    <Tr borderColor="rgb(224, 224, 224);">
-      <Td
-        paddingLeft="15px"
-        borderColor="rgb(224, 224, 224);"
-        fontWeight="500"
-        fontSize="1.2rem"
-        cursor="pointer"
-        onClick={() => setName([order.firstname, order.lastname])}
-      >
-        {order.firstname} {order.lastname}
-      </Td>
-      <Td
-        paddingLeft="0"
-        borderColor="rgb(224, 224, 224);"
-        fontWeight="500"
-        fontSize="1.2rem"
-      >
-        {order.phone}
-      </Td>
-      <Td
-        paddingLeft="0"
-        borderColor="rgb(224, 224, 224);"
-        fontWeight="500"
-        fontSize="1.2rem"
-      >
-        {order.address.state}, {order.address.city} {order.address.postal}
-      </Td>
-      <Td
-        paddingLeft="0"
-        borderColor="rgb(224, 224, 224);"
-        fontWeight="500"
-        fontSize="1.2rem"
-      >
-        <Product products={order.products} />
-      </Td>
-      <Td
-        paddingRight="0"
-        borderColor="rgb(224, 224, 224);"
-        color="#755a00"
-        fontWeight="500"
-        fontSize="1.5rem"
-      >
-        {order.total}
-      </Td>
-    </Tr>
-  </>
-);
-const OrdersTable = ({ orders, setName }) => {
-  const total = orders?.reduce(
-    (total, item) => total + item.attributes.total,
+const Product = ({ product }) => {
+  return (
+    <>
+      <Tr borderColor="rgb(224, 224, 224);">
+        <Td
+          paddingLeft="30px"
+          borderColor="rgb(224, 224, 224);"
+          fontWeight="500"
+          fontSize="1.2rem"
+          cursor="pointer"
+        >
+          {product.quantity}
+        </Td>
+        <Td
+          paddingLeft="30px"
+          borderColor="rgb(224, 224, 224);"
+          fontWeight="500"
+          fontSize="1.2rem"
+        >
+          {product.days}
+        </Td>
+        <Td
+          paddingLeft="0"
+          borderColor="rgb(224, 224, 224);"
+          fontWeight="500"
+          fontSize="1.2rem"
+        >
+          {product.title}
+        </Td>
+        <Td
+          paddingLeft="30px"
+          borderColor="rgb(224, 224, 224);"
+          fontWeight="500"
+          fontSize="1.2rem"
+        >
+          {product.price}
+        </Td>
+        <Td
+          paddingRight="0"
+          borderColor="rgb(224, 224, 224);"
+          color="black"
+          fontWeight="500"
+          fontSize="1.3rem"
+        >
+          {product.price * product.quantity * product.days}
+        </Td>
+      </Tr>
+    </>
+  );
+};
+const OrdersTable = ({ products }) => {
+  const total = products?.reduce(
+    (total, item) => total + item.price * item.quantity * item.days,
     0
   );
   return (
     <div>
       <TableContainer border="1px solid rgb(224, 224, 224);">
         <Table>
-          <Thead>
+          <Thead bgColor="black">
             <Tr>
-              <Th
-                borderColor="rgb(224, 224, 224);"
-                padding="18px 0"
-                paddingLeft="15px"
-                fontFamily="inherit"
-                fontSize="1.3rem"
-                textTransform="capitalize"
-                fontWeight="500"
-                color="black"
-                letterSpacing="0"
-              >
-                Client
-              </Th>
-              <Th
-                borderColor="rgb(224, 224, 224);"
-                padding="18px 0"
-                fontFamily="inherit"
-                fontSize="1.3rem"
-                textTransform="capitalize"
-                fontWeight="500"
-                color="black"
-                letterSpacing="0"
-              >
-                Numéro
-              </Th>
-              <Th
-                borderColor="rgb(224, 224, 224);"
-                padding="18px 0"
-                fontFamily="inherit"
-                fontSize="1.3rem"
-                textTransform="capitalize"
-                fontWeight="500"
-                color="black"
-                letterSpacing="0"
-              >
-                Addresse
-              </Th>
-              <Th
-                borderColor="rgb(224, 224, 224);"
-                padding="18px 0"
-                fontFamily="inherit"
-                fontSize="1.3rem"
-                textTransform="capitalize"
-                fontWeight="500"
-                color="black"
-                letterSpacing="0"
-              >
-                Désignations
-              </Th>
-              <Th
-                borderColor="rgb(224, 224, 224);"
-                padding="18px 0"
-                fontFamily="inherit"
-                fontSize="1.3rem"
-                textTransform="capitalize"
-                fontWeight="500"
-                color="black"
-                letterSpacing="0"
-              >
-                Montant H.T
-              </Th>
+              <TableHeader title="Quantité" paddingLeft="15px" />
+              <TableHeader title="Nbr jours" />
+              <TableHeader title="Désignation" />
+              <TableHeader title="prix unit HT" />
+              <TableHeader title="Montant HT" />
             </Tr>
           </Thead>
           <Tbody>
-            {orders?.map((order, i) => {
-              return (
-                <Order key={i} order={order?.attributes} setName={setName} />
-              );
+            {products?.map((product, i) => {
+              return <Product key={i} product={product} />;
             })}
           </Tbody>
+          <TableFooter total={total} />
         </Table>
       </TableContainer>
-      <HStack>
-        <Heading
-          ml="auto"
-          mr="10px"
-          mt="10px"
-          fontSize="1.9rem"
-          width="fit-content"
-        >
-          Total H.T : <span style={{ color: "#755a00" }}>{total}</span>
-        </Heading>
-      </HStack>
     </div>
   );
 };
