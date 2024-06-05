@@ -1,19 +1,23 @@
 import { HStack, Text, VStack } from "@chakra-ui/react";
 
 const PDFHeader = ({ selectedUser }) => {
- 
   return (
     <VStack align="start" mb="80px">
-      <HStack justify="space-between" w="80%">
-        <Text>LOGO</Text>
+      <HStack justify="space-between" w="80%" m="50px 0px 80px 20px">
+        <img
+          src="/assets/blue_logo_bg.png"
+          alt="blue_logo"
+          width="200px"
+          height="200px"
+        />
         <Text fontSize="2.8rem" fontWeight="bold">
           Devis
         </Text>
       </HStack>
-      <HStack justify="space-between" w="82%">
+      <HStack justify="space-between" w="82%" fontSize="1.1rem">
         <VStack align="start">
           <HStack>
-            <Text fontWeight="bold">Facturé à:</Text>
+            <Text fontWeight="bold">Facturé à </Text>
             <Text>
               {selectedUser &&
                 `${selectedUser?.firstname} ${selectedUser?.lastname}`}
@@ -29,10 +33,9 @@ const PDFHeader = ({ selectedUser }) => {
         </VStack>
         <VStack align="start">
           <HStack>
-            <Text fontWeight="600">Envoyé à: </Text>
+            <Text fontWeight="600">Envoyé à </Text>
             <Text>{selectedUser?.email}</Text>
           </HStack>
-        
         </VStack>
       </HStack>
     </VStack>

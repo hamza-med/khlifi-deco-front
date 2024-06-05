@@ -25,7 +25,7 @@ const PDFFooter = ({ total }) => {
           </Text>
           <Text>
             Les paiements s&apos;effectuent conformément à l&apos;option
-            suivante: {(total * 40) / 100} DT Un mois d&apos;avance à la date
+            suivante: <b>{(total * 40) / 100} DT</b> Un mois d&apos;avance à la date
             d&apos;événement et le reste à payer par chèque ou espèce le jour de
             la livraison.
           </Text>
