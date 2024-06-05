@@ -1,6 +1,6 @@
 import { usePrivateFetch } from "@/hooks/useFetch";
 import OrdersTable from "./OrdersTable";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Paginator from "@/uilib/Paginator";
 import PDFHeader from "./PDFHeader";
 import PDFFooter from "./PDFFooter";
@@ -23,21 +23,31 @@ const PDFFile = ({
       .slice(0, -1)
       .replace("T", " ")}`
   );
+
+  const calculateDaysDifference = useCallback((start, end) => {
+    const startDate = new Date(start.split("/").reverse().join("-"));
+    const endDate = new Date(end.split("/").reverse().join("-"));
+    const differenceInTime = endDate - startDate;
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    return differenceInDays + 1;
+  }, []);
+
   useEffect(() => {
     const allProducts = [];
     productsData?.forEach((item) => {
       const withDays = item.attributes.products.map((product) => {
-        const startDate = new Date(product.start);
-        const endDate = new Date(product.end);
-        const timeDifference = endDate.getTime() - startDate.getTime();
-        const daysDifference = timeDifference / (1000 * 3600 * 24) || 1;
+        const daysDifference = calculateDaysDifference(
+          product?.start,
+          product?.end
+        );
+
         return { ...product, days: daysDifference };
       });
       allProducts.push(...withDays);
     });
     setProducts(allProducts);
-  }, [productsData]);
-
+  }, [calculateDaysDifference, productsData]);
+  console.log("products", products);
   const { data: orders, meta } = usePrivateFetch(
     `orders?pagination[page]=${page}&${
       pageSize && `pagination[pageSize]=${pageSize}`

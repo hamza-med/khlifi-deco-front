@@ -6,7 +6,7 @@ const Header = lazy(() => import("@/components/Dashboard/Header"));
 
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
-  const [pageSize, setPageSize] = useState();
+  const [, setPageSize] = useState();
   const [user, setUser] = useState();
   const [selectedUser, setSelectedUser] = useState([]);
   const lastUser = selectedUser[selectedUser?.length - 1];
@@ -31,7 +31,7 @@ const Dashboard = () => {
           selectedUser={lastUser}
           user={user}
           date={date}
-          pageSize={pageSize}
+          pageSize={14}
           setMax={setMax}
           setDisabled={setDisabled}
         />
