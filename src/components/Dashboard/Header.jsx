@@ -1,16 +1,7 @@
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePrivateFetch } from "@/hooks/useFetch";
 import customToast from "@/utils/toast";
-import {
-  Button,
-  HStack,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Select,
-} from "@chakra-ui/react";
+import { Button, HStack, Select } from "@chakra-ui/react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { forwardRef, useEffect, useMemo, useState } from "react";
@@ -21,7 +12,7 @@ const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
   <>
     <Button
       _hover={{ bgColor: "black", color: "white" }}
-      p="1.5em 2em"
+      p="1.5em 2.5em"
       disabled={props.loading}
       bgColor="white"
       onClick={onClick}
@@ -40,6 +31,7 @@ const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
 const userData = ["email", "firstname", "lastname", "phone", "address"];
 
 const Header = ({
+  setSelectedUser,
   setUser,
   setPageSize,
   startDate,
@@ -49,7 +41,7 @@ const Header = ({
 }) => {
   const [users, setUsers] = useState();
   const [loading, setLoading] = useState();
-  const [size, setSize] = useState(max);
+  const [size] = useState(max);
   useDebounce(size, setPageSize, 1000);
   const userQuery = userData
     .map((user, i) => {
@@ -65,6 +57,7 @@ const Header = ({
   useEffect(() => {
     setUsers(userInfo?.map((userInfo) => userInfo.attributes));
   }, [userInfo]);
+
   const userOptions = useMemo(() => {
     const emails = users?.map((user) => user.email);
     return [...new Set(emails)];
@@ -72,6 +65,7 @@ const Header = ({
 
   const handleChange = (e) => {
     setUser(e.target.value);
+    setSelectedUser(users.filter((user) => user.email === e.target.value));
   };
   /**PDF DOWNLOAD */
   const handleExportToPDF = async () => {
@@ -104,7 +98,7 @@ const Header = ({
         Aperçu des ventes
       </h1>
       <HStack>
-        <NumberInput
+        {/* <NumberInput
           isDisabled={loading || disabled}
           value={size}
           min={1}
@@ -124,31 +118,27 @@ const Header = ({
             <NumberIncrementStepper borderColor="white" color="black" />
             <NumberDecrementStepper borderColor="white" color="black" />
           </NumberInputStepper>
-        </NumberInput>
-
-        <Button
-          _hover={{ bgColor: "black", color: "white" }}
-          p="1.5em 3em"
-          gap="8px"
-          isLoading={loading}
-          onClick={handleExportToPDF}
-          isDisabled={loading || disabled}
-          bgColor="white"
-          color="black"
-          leftIcon={<LuDownload fontSize="1.5rem" />}
-        >
-          Export
-        </Button>
+        </NumberInput> */}
+        <ReactDatePicker
+          dateFormat="dd/MM/yyyy"
+          maxDate={new Date()}
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          showPopperArrow={false}
+          customInput={<PickerInput loading={loading} />}
+        />
         <Select
           _hover={{ borderColor: "blackAlpha.200", cursor: "pointer" }}
           onChange={handleChange}
           minW="200px"
           size="lg"
+          height="52.8px"
+          fontSize="1.1rem"
           borderColor="white"
           bgColor="white"
           fontWeight="600"
           disabled={loading || disabled}
-          placeholder="Choisissez un client"
+          placeholder="your@email.com"
         >
           {userOptions?.map((user, i) => {
             return (
@@ -158,14 +148,20 @@ const Header = ({
             );
           })}
         </Select>
-        <ReactDatePicker
-          dateFormat="dd/MM/yyyy"
-          maxDate={new Date()}
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          showPopperArrow={false}
-          customInput={<PickerInput loading={loading} />}
-        />
+        <Button
+          _hover={{ bgColor: "black", color: "white" }}
+          p="1.5em 2.5em"
+          gap="6px"
+          fontSize="1.1rem"
+          isLoading={loading}
+          onClick={handleExportToPDF}
+          isDisabled={loading || disabled}
+          bgColor="white"
+          color="black"
+          leftIcon={<LuDownload fontSize="1.4rem" />}
+        >
+          Export
+        </Button>
       </HStack>
     </HStack>
   );

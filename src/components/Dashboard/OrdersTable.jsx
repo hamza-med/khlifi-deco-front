@@ -148,11 +148,7 @@ const Product = ({ product }) => {
     </>
   );
 };
-const OrdersTable = ({ products }) => {
-  const total = products?.reduce(
-    (total, item) => total + item.price * item.quantity * item.days,
-    0
-  );
+const OrdersTable = ({ products, total }) => {
   return (
     <div>
       <TableContainer border="1px solid rgb(224, 224, 224);">

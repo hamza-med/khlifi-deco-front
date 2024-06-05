@@ -8,13 +8,16 @@ const Dashboard = () => {
   const [date, setDate] = useState(new Date());
   const [pageSize, setPageSize] = useState();
   const [user, setUser] = useState();
-  const [max, setMax] = useState(8);
+  const [selectedUser, setSelectedUser] = useState([]);
+  const lastUser = selectedUser[selectedUser?.length - 1];
+  const [max, setMax] = useState(3);
   const [disabled, setDisabled] = useState();
 
   return (
     <div className="dashboard-container">
       <Suspense fallback={<Skeleton />}>
         <Header
+          setSelectedUser={setSelectedUser}
           setUser={setUser}
           startDate={date}
           setStartDate={setDate}
@@ -25,6 +28,7 @@ const Dashboard = () => {
       </Suspense>
       <Suspense fallback={<Skeleton />}>
         <PDFFile
+          selectedUser={lastUser}
           user={user}
           date={date}
           pageSize={pageSize}

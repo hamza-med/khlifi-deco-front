@@ -1,11 +1,18 @@
 import { usePrivateFetch } from "@/hooks/useFetch";
 import OrdersTable from "./OrdersTable";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Paginator from "@/uilib/Paginator";
 import PDFHeader from "./PDFHeader";
 import PDFFooter from "./PDFFooter";
 
-const PDFFile = ({ user, date, pageSize, setMax, setDisabled }) => {
+const PDFFile = ({
+  selectedUser,
+  user,
+  date,
+  pageSize,
+  setMax,
+  setDisabled,
+}) => {
   const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
   const { data: productsData } = usePrivateFetch(
@@ -41,7 +48,14 @@ const PDFFile = ({ user, date, pageSize, setMax, setDisabled }) => {
   );
 
   useEffect(() => setDisabled(orders?.length === 0), [orders, setDisabled]);
-
+  const total = useMemo(
+    () =>
+      products?.reduce(
+        (total, item) => total + item.price * item.quantity * item.days,
+        0
+      ),
+    [products]
+  );
   setMax(meta?.pagination?.total);
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
@@ -49,9 +63,11 @@ const PDFFile = ({ user, date, pageSize, setMax, setDisabled }) => {
   return (
     <>
       <div id="file-to-export" className="pdfFile__wrapper">
-        <PDFHeader />
-        {products?.length !== 0 && <OrdersTable products={products} />}
-        <PDFFooter />
+        <PDFHeader selectedUser={selectedUser} />
+        {products?.length !== 0 && (
+          <OrdersTable total={total} products={products} />
+        )}
+        <PDFFooter total={total} />
       </div>
       {pagesArray?.length > 1 && (
         <Paginator
