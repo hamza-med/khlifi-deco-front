@@ -9,25 +9,32 @@ import {
   Tr,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { AiFillDelete } from "react-icons/ai";
 import PickerInput from "@/uilib/DatePicker/PickerInput";
 import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import dayjs from "@/utils/dayjs";
 
 export const Reservation = ({ start, end, id }) => {
   const { defineReservation } = useShoppingCart();
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
 
-  useEffect(() => {
-    const [day, month, year] = start.split("/");
-    const [dayEnd, monthEnd, yearEnd] = end.split("/");
-    setStartDate(new Date(year, month - 1, day));
-    setEndDate(new Date(yearEnd, monthEnd - 1, dayEnd));
+  const parseDate = useCallback((dateStr) => {
+    const parsedDate = dayjs(dateStr, "DD/MM/YYYY", true);
+    if (parsedDate.isValid()) {
+      return parsedDate.toDate();
+    } else {
+      console.error(`Invalid date string: ${dateStr}`);
+      return null;
+    }
   }, []);
+
+  const initialStartDate = parseDate(start);
+  const initialEndDate = parseDate(end);
+  const [startDate, setStartDate] = useState(initialStartDate);
+  const [endDate, setEndDate] = useState(initialEndDate);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -35,8 +42,8 @@ export const Reservation = ({ start, end, id }) => {
     setEndDate(end);
     defineReservation(
       id,
-      start?.toLocaleDateString("fr-FR"),
-      end?.toLocaleDateString("fr-FR")
+      dayjs(start).format("DD/MM/YYYY"),
+      dayjs(end).format("DD/MM/YYYY")
     );
   };
   return (

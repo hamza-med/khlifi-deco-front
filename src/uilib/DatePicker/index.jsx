@@ -2,34 +2,28 @@ import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import PickerInput from "./PickerInput";
+import dayjs from "@/utils/dayjs";
 
 const DatePicker = ({ setDates, prodId }) => {
-  var date = new Date();
-  date.setDate(date.getDate() + 1);
-  const [startDate, setStartDate] = useState(date);
-  const [endDate, setEndDate] = useState(date);
-  const { cartItems } = useShoppingCart();
+  const currentDate = dayjs();
+  const nextDay = currentDate.add(1, "day");
 
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
+  const [startDate, setStartDate] = useState(nextDay.toDate());
+  const [endDate, setEndDate] = useState(nextDay.toDate());
+  const { cartItems } = useShoppingCart();
 
   useEffect(() => {
     const item = cartItems.find((item) => item?.id === prodId);
     if (item) {
-      const [day, month, year] = item.start.split("/");
-      const [dayEnd, monthEnd, yearEnd] = item.end.split("/");
-      setStartDate(new Date(year, month - 1, day));
-      setEndDate(new Date(yearEnd, monthEnd - 1, dayEnd));
+      setStartDate(dayjs(item.start, "DD/MM/YYYY", true).toDate());
+      setEndDate(dayjs(item.end, "DD/MM/YYYY", true).toDate());
     }
   }, [cartItems, prodId]);
 
   useEffect(() => {
     setDates([
-      startDate?.toLocaleDateString("fr-FR"),
-      endDate?.toLocaleDateString("fr-FR"),
+      dayjs(startDate).format("DD/MM/YYYY"),
+      dayjs(endDate).format("DD/MM/YYYY"),
     ]);
   }, [endDate, setDates, startDate]);
 
@@ -37,14 +31,24 @@ const DatePicker = ({ setDates, prodId }) => {
     <>
       <ReactDatePicker
         dateFormat="dd/MM/yyyy"
-        minDate={new Date()}
         selected={startDate}
-        onChange={onChange}
+        onChange={(date) => setStartDate(date)}
         startDate={startDate}
         endDate={endDate}
-        selectsRange
+        selectsStart
         showPopperArrow={false}
         customInput={<PickerInput />}
+      />
+      <ReactDatePicker
+        dateFormat="dd/MM/yyyy"
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+        selectsEnd
+        startDate={startDate}
+        endDate={endDate}
+        minDate={startDate}
+        showPopperArrow={false}
+        customInput={<PickerInput ml="15px" />}
       />
     </>
   );

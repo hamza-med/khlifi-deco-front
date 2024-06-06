@@ -3,9 +3,8 @@ import { forwardRef } from "react";
 import { VscCalendar } from "react-icons/vsc";
 const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => {
   return (
-    <div>
+    <>
       <Button
-        {...props}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -14,17 +13,18 @@ const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => {
         onClick={onClick}
         ref={ref}
         _hover={{ bgColor: "white" }}
-        fontSize="1.1rem"
+        fontSize={["1.1rem", "1.2rem"]}
         fontWeight="normal"
         border="1px solid lightgrey"
         color="#ac8f69"
         borderRadius="3px"
         variant="outline"
         padding="1.3em 1.3em"
+        {...props}
       >
         {value}
       </Button>
-    </div>
+    </>
   );
 });
 

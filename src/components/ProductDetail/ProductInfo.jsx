@@ -37,7 +37,7 @@ const ProductInfo = ({ prodData, prodId }) => {
     item === undefined
       ? setProductQuantity(1)
       : setProductQuantity(item?.quantity);
-  }, [prodId]);
+  }, [cartItems, prodId]);
 
   useEffect(() => {
     prodData &&

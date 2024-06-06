@@ -64,17 +64,17 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               <p className="left--description--price">{item?.price} TND</p>
               <p className="left--description--reservation">
                 <span className="title-bold ">Réservation </span>
-                {item?.start !== item?.end ? (
+                {/* {item?.start !== item?.end ? (
                   <span>
                     du {item?.start} jusqu&rsquo; au {item?.end}
                   </span>
                 ) : (
-                  <span>le {item?.start}</span>
-                )} 
+                  <span>Le {item?.start}</span>
+                )} */}
               </p>
               <p className="left--description--quantity">
                 <span className="title-bold ">Quantité</span>
-                <HStack border="1px solid rgba(0,0,0,0.1)">
+                <HStack border="1px solid rgba(0,0,0,0.05)" fontSize={["1rem","1.1rem"]}>
                   <Text
                     cursor="pointer"
                     onClick={() =>
@@ -84,7 +84,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
                     }
                     p="5px 10px"
                     as="span"
-                    borderRight="1px solid rgba(0,0,0,0.1)"
+                    borderRight="1px solid rgba(0,0,0,0.05)"
                   >
                     &minus;
                   </Text>
@@ -93,7 +93,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
                   </Text>
                   <Text
                     cursor="pointer"
-                    borderLeft="1px solid rgba(0,0,0,0.1)"
+                    borderLeft="1px solid rgba(0,0,0,0.05)"
                     p="5px 10px"
                     as="span"
                     onClick={() => setProductQuantity((prev) => prev + 1)}
