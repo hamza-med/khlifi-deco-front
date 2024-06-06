@@ -13,6 +13,7 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Reservation } from "../Cart/Table";
 
 const ProductModal = ({ isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
 
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
-  console.log(item);
+  
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
     [cartItems, prodId]
@@ -34,7 +35,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
   useEffect(() => {
     setProductQuantity(item?.quantity);
   }, [item?.quantity]);
-  console.log("item", item);
+  
   return (
     <Modal isOpen={isOpen} onClose={handleClose} isCentered>
       <ModalOverlay />
@@ -63,18 +64,20 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               <h1>{item?.title}</h1>
               <p className="left--description--price">{item?.price} TND</p>
               <p className="left--description--reservation">
-                <span className="title-bold ">Réservation </span>
-                {/* {item?.start !== item?.end ? (
-                  <span>
-                    du {item?.start} jusqu&rsquo; au {item?.end}
-                  </span>
-                ) : (
-                  <span>Le {item?.start}</span>
-                )} */}
+                <Reservation
+                  start={item?.start}
+                  end={item?.end}
+                  id={prodId}
+                  borderColor="white"
+                  pl="0"
+                />
               </p>
               <p className="left--description--quantity">
                 <span className="title-bold ">Quantité</span>
-                <HStack border="1px solid rgba(0,0,0,0.05)" fontSize={["1rem","1.1rem"]}>
+                <HStack
+                  border="1px solid rgba(0,0,0,0.05)"
+                  fontSize={["1rem", "1rem"]}
+                >
                   <Text
                     cursor="pointer"
                     onClick={() =>

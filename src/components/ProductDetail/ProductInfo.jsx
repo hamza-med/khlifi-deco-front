@@ -171,7 +171,7 @@ const ProductInfo = ({ prodData, prodId }) => {
             >
               &minus;
             </span>
-            <span>{productQuantity}</span>
+            <span style={{ fontSize: "1.1rem" }}>{productQuantity}</span>
             <span
               style={{ cursor: "pointer" }}
               onClick={() => setProductQuantity((prev) => prev + 1)}

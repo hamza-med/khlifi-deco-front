@@ -18,18 +18,22 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import dayjs from "@/utils/dayjs";
 
-export const Reservation = ({ start, end, id }) => {
+export const Reservation = ({ start, end, id, ...props }) => {
   const { defineReservation } = useShoppingCart();
-
-  const parseDate = useCallback((dateStr) => {
-    const parsedDate = dayjs(dateStr, "DD/MM/YYYY", true);
-    if (parsedDate.isValid()) {
-      return parsedDate.toDate();
-    } else {
-      console.error(`Invalid date string: ${dateStr}`);
-      return null;
-    }
-  }, []);
+  const currentDate = dayjs();
+  const nextDay = currentDate.add(1, "day");
+  const parseDate = useCallback(
+    (dateStr) => {
+      const parsedDate = dayjs(dateStr, "DD/MM/YYYY", true);
+      if (parsedDate.isValid()) {
+        return parsedDate.toDate();
+      } else {
+        console.error(`Invalid date string: ${dateStr}`);
+        return nextDay.toDate();
+      }
+    },
+    [nextDay]
+  );
 
   const initialStartDate = parseDate(start);
   const initialEndDate = parseDate(end);
@@ -46,6 +50,7 @@ export const Reservation = ({ start, end, id }) => {
       dayjs(end).format("DD/MM/YYYY")
     );
   };
+
   return (
     <>
       <ReactDatePicker
@@ -57,7 +62,7 @@ export const Reservation = ({ start, end, id }) => {
         endDate={endDate}
         selectsRange
         showPopperArrow={false}
-        customInput={<PickerInput className="td__reservation" />}
+        customInput={<PickerInput fontSize="1rem" {...props} />}
       />
     </>
   );
