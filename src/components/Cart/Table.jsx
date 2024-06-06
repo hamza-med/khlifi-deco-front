@@ -17,7 +17,7 @@ import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Reservation = ({ start, end, id }) => {
+export const Reservation = ({ start, end, id }) => {
   const { defineReservation } = useShoppingCart();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
