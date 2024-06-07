@@ -29,7 +29,7 @@ const DatePicker = ({ setDates, prodId }) => {
   }, [endDate, setDates, startDate]);
 
   return (
-    <HStack gap="0px">
+    <HStack gap="10px">
       <ReactDatePicker
         dateFormat="dd/MM/yyyy"
         selected={startDate}
@@ -50,7 +50,7 @@ const DatePicker = ({ setDates, prodId }) => {
         endDate={endDate}
         minDate={startDate}
         showPopperArrow={false}
-        customInput={<PickerInput ml="15px" />}
+        customInput={<PickerInput />}
       />
     </HStack>
   );
