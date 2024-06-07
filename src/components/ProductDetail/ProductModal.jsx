@@ -15,14 +15,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Reservation } from "../Cart/Table";
 
-const ProductModal = ({ isOpen, onClose, prodId }) => {
+const ProductModal = ({ dates, isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { defineQuantity, cartItems, subtotal } = useShoppingCart();
 
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
-  
+
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
     [cartItems, prodId]
@@ -35,7 +35,7 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
   useEffect(() => {
     setProductQuantity(item?.quantity);
   }, [item?.quantity]);
-  
+
   return (
     <Modal isOpen={isOpen} onClose={handleClose} isCentered>
       <ModalOverlay />
@@ -65,8 +65,8 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               <p className="left--description--price">{item?.price} TND</p>
               <p className="left--description--reservation">
                 <Reservation
-                  start={item?.start}
-                  end={item?.end}
+                  start={dates ? dates[0] : item?.start}
+                  end={dates ? dates[1] : item?.end}
                   id={prodId}
                   borderColor="white"
                   pl="0"
@@ -118,14 +118,14 @@ const ProductModal = ({ isOpen, onClose, prodId }) => {
               <span>{subtotal} TND</span>
             </span>
 
-            <button className="continue-button" onClick={() => onClose()}>
+            <button className="continue-button" onClick={handleClose}>
               Continuer mes réservations
             </button>
             <button
               className="confirm-button"
               onClick={() => {
                 navigate("/checkout");
-                onClose();
+                handleClose();
               }}
             >
               Confirmer ma réservation

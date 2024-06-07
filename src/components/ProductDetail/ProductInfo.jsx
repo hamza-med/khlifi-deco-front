@@ -18,8 +18,7 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
   const { t } = useTranslation();
-  const { day, width, height, reservation, addBtn, errorMsg } =
-    t("productDetail");
+  const { day, width, height, reservation, addBtn } = t("productDetail");
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
@@ -158,12 +157,15 @@ const ProductInfo = ({ prodData, prodId }) => {
               &#43;
             </span>
           </div>
-          <button onClick={handleAddToCart}>
-            {addBtn}
-          </button>
+          <button onClick={handleAddToCart}>{addBtn}</button>
         </div>
       </div>
-      <ProductModal isOpen={openModal} onClose={onCloseModal} prodId={prodId} />
+      <ProductModal
+        isOpen={openModal}
+        dates={dates}
+        onClose={onCloseModal}
+        prodId={prodId}
+      />
     </div>
   );
 };
