@@ -15,7 +15,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Reservation } from "../Cart/Table";
 
-const ProductModal = ({ dates, isOpen, onClose, prodId }) => {
+const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { defineQuantity, cartItems, subtotal } = useShoppingCart();
@@ -65,8 +65,8 @@ const ProductModal = ({ dates, isOpen, onClose, prodId }) => {
               <p className="left--description--price">{item?.price} TND</p>
               <p className="left--description--reservation">
                 <Reservation
-                  start={dates ? dates[0] : item?.start}
-                  end={dates ? dates[1] : item?.end}
+                  start={dates.length !== 0 ? dates[0] : item?.start}
+                  end={dates.length !== 0 ? dates[1] : item?.end}
                   id={prodId}
                   borderColor="white"
                   pl="0"
