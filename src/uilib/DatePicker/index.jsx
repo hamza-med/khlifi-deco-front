@@ -37,6 +37,8 @@ const DatePicker = ({ setDates, prodId }) => {
         endDate={endDate}
         selectsStart
         showPopperArrow={false}
+        popperPlacement="bottom-end"
+        
         customInput={<PickerInput />}
       />
       <ReactDatePicker
