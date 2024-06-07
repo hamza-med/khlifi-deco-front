@@ -2,10 +2,18 @@ import NavbarItem from "./Layout/Header/NavbarItem";
 import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";
+import { useRef } from "react";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
+  const wrapperRef = useRef(null);
+
+  useClickOutside(wrapperRef, () => showDrawer(false));
   return (
-    <div className={isOpen ? `nav-drawer active` : `nav-drawer`}>
+    <div
+      className={isOpen ? `nav-drawer active` : `nav-drawer`}
+      ref={wrapperRef}
+    >
       <div className="nav-drawer-content">
         {categories?.map((item) => {
           return (
