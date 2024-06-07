@@ -1,35 +1,44 @@
-import { HStack, useMediaQuery } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { GrFacebook, GrInstagram, GrYoutube } from "react-icons/gr";
+import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { t } = useTranslation();
-  const { address, links, shop, about, website, copyright } = t("footer");
+  const {
+    address,
+    links,
+    shop,
+    about,
+    website,
+    copyright,
+    aboutDesc,
+    serviceTitle,
+    service1,
+    service2,
+    service3,
+    service4,
+    service5,
+  } = t("footer");
   return (
     <div className="footer">
       <div className="footer__top">
         <div className="footer__top--item">
-          <img
-            src="/assets/logo1.png"
-            alt="footer-logo"
-            style={isMobile ? { width: "180px", height: "170px" } : null}
-          />
+          <img src="/assets/logo_mobile_black.png" alt="footer-logo" />
           <div className="footer__top--logo">
-            <Link>
+            <Link to="https://www.facebook.com/profile.php?id=61559900512195&mibextid=LQQJ4d">
               <GrFacebook className="footer__top--logo--1" />
             </Link>
-            <Link>
+            <Link to="https://www.instagram.com/khelifi_conseils">
               <GrInstagram className="footer__top--logo--2" />
             </Link>
-            <Link>
-              <GrYoutube className="footer__top--logo--3" />
+            <Link to="www.linkedin.com/in/khelifi-conseils-et-services">
+              <GrLinkedin className="footer__top--logo--3" />
             </Link>
           </div>
           <span>
-            <span className="contact-info">{address}: </span>16 rue toborsok ,
-            bardo
+            <span className="contact-info">{address}: </span>16, Lot el
+            banafsaj, Jardins d’El Menzah 2, Tunis
           </span>
         </div>
         <div className="footer__top--item">
@@ -45,12 +54,16 @@ const Footer = () => {
           </Link>
         </div>
         <div className="footer__top--item">
+          <h1>{serviceTitle}</h1>
+          <span>{service1}</span>
+          <span>{service2}</span>
+          <span>{service3}</span>
+          <span>{service4}</span>
+          <span>{service5}</span>
+        </div>
+        <div className="footer__top--item">
           <h1>{about}</h1>
-          <span>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque,
-            illo hic quo vitae quae numquam autem laborum voluptate nulla enim
-            placeat alias atque
-          </span>
+          <span>{aboutDesc}</span>
         </div>
         <div className="footer__top--item">
           <h1>Contact</h1>
@@ -58,29 +71,29 @@ const Footer = () => {
             <li>
               <HStack>
                 <span className="contact-info">Whatsapp:</span>
-                <span>(+216) 50 577 433</span>
+                <span>(+216) 21 453 379</span>
               </HStack>
             </li>
             <li>
               <HStack>
                 <span className="contact-info">{website}:</span>
-                <span>www.khlifi-deco.com</span>
+                <span>www.khelificonseilsetservices.tn</span>
               </HStack>
             </li>
             <li>
               <HStack>
                 <span className="contact-info">Email: </span>
-                <span>Contact@khlifi-deco.com</span>
+                <span>youssefkhlifi18@gmail.com</span>
               </HStack>
             </li>
           </ul>
         </div>
       </div>
       <div className="footer__bottom">
-        <span className="footer__bottom--logo">Khlifi deco</span>
-        <span className="footer__bottom--copyright">
-          &copy; {copyright}
+        <span className="footer__bottom--logo">
+          Khelifi conseils & services
         </span>
+        <span className="footer__bottom--copyright">&copy; {copyright}</span>
       </div>
     </div>
   );

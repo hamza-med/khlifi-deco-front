@@ -1,5 +1,5 @@
 .footer {
-  height: 400px;
+  height: 470px;
   background-color: $primary-color-light-50;
   border-top: 2px solid $primary-color-light-40;
   padding: 4em;
@@ -10,17 +10,17 @@
     padding: 0px 1em;
   }
   &__top {
+    @include tablet {
+      margin-top: 10px;
+    }
     &--logo {
       width: 160px;
-      margin-left: 5px;
       @include tablet {
-        margin-top: -35px;
         width: 220px;
         margin-inline: auto;
-        gap: 30px;
       }
       @include flex(row, center, center);
-      gap: 22px;
+      gap: 20px;
       color: $primary-color-30;
       &--1 {
         font-size: 28px;
@@ -29,7 +29,7 @@
         font-size: 30px;
       }
       &--3 {
-        font-size: 37px;
+        font-size: 30px;
       }
     }
     @include flex(row, space-between, start);
@@ -49,15 +49,12 @@
       font-size: 1rem;
       & > img {
         @include tablet {
-          width: 220px;
-          height: 200px;
-          margin-bottom: -90px;
+          width: 160px;
+          height: 150px;
           margin: 0 auto;
         }
-        margin-top: -30px;
-        margin-bottom: -30px;
-        width: 170px;
-        height: 155px;
+        width: 160px;
+        height: 140px;
       }
       li {
         margin-bottom: 12px;
@@ -87,7 +84,7 @@
     @include tablet {
       gap: 1px;
       width: 100%;
-      font-size: 1rem;
+      font-size: 0.9rem;
       margin: 20px auto;
     }
     @include flex(null, null, center);

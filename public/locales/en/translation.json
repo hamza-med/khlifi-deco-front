@@ -28,7 +28,7 @@
       "desc1": "Quality materials",
       "title2": "Warranty protection",
       "desc2": "Over 2 years",
-      "title3": "Show room",
+      "title3": "Showroom",
       "desc3": "Open from 9:00 am to 5:00 pm",
       "title4": "24 / 7 Support",
       "desc4": "Dedicated Support"
@@ -98,6 +98,13 @@
     "links": "Links",
     "shop": "Shop",
     "about": "About us",
+    "aboutDesc": "At Khelifi Conseils, we are passionate about creating unforgettable moments. Specializing in event equipment rentals, we offer a wide range of high-quality gear for all your needs, from weddings and birthdays to conferences and festivals",
+    "serviceTitle": "Our Services",
+    "service1": "Tent and canopy rentals",
+    "service2": "Sound and lighting equipment",
+    "service3": "Furniture and decorations",
+    "service4": "Kitchen and buffet equipment",
+    "service5": "Audiovisual solutions",
     "website": "Website",
     "copyright": "Copyright 2024. All rights reserved"
   },
@@ -108,6 +115,7 @@
     "time": "Working Time",
     "date1": "Monday-Friday:",
     "date2": "Saturday-Sunday:",
+    "closed": "Closed",
     "mobile": "Mobile",
     "form": {
       "email": "Email address",

@@ -24,7 +24,7 @@ const ShopProducts = ({
   const [page, setPage] = useState(1);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState([10, 200]);
+  const [filteredPrice, setFilteredPrice] = useState([0, 1000]);
   const [searchParams] = useSearchParams();
   const subParam = searchParams.get("sub");
   const {
@@ -84,9 +84,7 @@ const ShopProducts = ({
   const pagesArray = Array(meta?.pagination?.pageCount)
     .fill()
     .map((_, index) => index + 1);
-  console.log("selected sub cats", selectedSubCats);
-  console.log("catId", catId);
-  console.log("subId", !subId);
+
 
   return (
     <div className={`shopProducts_container ${display}`}>

@@ -28,7 +28,7 @@
       "desc1": "Matériaux de qualité",
       "title2": "Protection de la garantie",
       "desc2": "Plus de 2 ans",
-      "title3": "Show room",
+      "title3": "Showroom",
       "desc3": "Ouvert de 9h00 à 17h00",
       "title4": "24 / 7 Support",
       "desc4": "Support dédié"
@@ -98,6 +98,13 @@
     "links": "Liens",
     "shop": "Boutique",
     "about": "À propos de nous",
+    "aboutDesc": "Chez Khelifi Conseils, nous sommes passionnés par la création de moments inoubliables. Spécialisés dans la location de matériel événementiel, nous proposons une vaste gamme d'équipements de haute qualité pour tous vos besoins, des mariages et anniversaires, aux conférences et festivals",
+    "serviceTitle": "Nos Services",
+    "service1": "Location de tentes et chapiteaux",
+    "service2": "Sonorisation et éclairage",
+    "service3": "Mobilier et décoration",
+    "service4": "Équipements de cuisine et de buffet",
+    "service5": "Solutions audiovisuelles",
     "website": "Site web",
     "copyright": "Droits d'auteur 2024. Tous droits réservés"
   },
@@ -108,6 +115,7 @@
     "time": "Horaire de travail",
     "date1": "Lundi-Vendredi:",
     "date2": "Samedi-Dimanche:",
+    "closed": "Fermé",
     "mobile": "Portable",
     "form": {
       "email": "Adresse email",

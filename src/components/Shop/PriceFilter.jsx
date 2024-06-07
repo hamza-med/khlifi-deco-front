@@ -15,7 +15,7 @@ const PriceFilter = ({
   setFilteredPrice,
   title = "Filtrer par prix",
 }) => {
-  const [sliderValue, setSliderValue] = useState([10, 200]);
+  const [sliderValue, setSliderValue] = useState([0, 1000]);
 
   useEffect(() => {
     setSliderValue(filteredPrice);
@@ -39,11 +39,11 @@ const PriceFilter = ({
             setPage(1);
             setSliderValue(val);
           }}
-          max={200}
-          min={10}
+          max={1000}
+          min={0}
         >
-          <RangeSliderMark value={10} {...labelStyles}>
-            10
+          <RangeSliderMark value={0} {...labelStyles}>
+            0
           </RangeSliderMark>
           {sliderValue?.map((val, i) => {
             return (
@@ -61,8 +61,8 @@ const PriceFilter = ({
             );
           })}
 
-          <RangeSliderMark value={200} {...labelStyles}>
-            200
+          <RangeSliderMark value={1000} {...labelStyles}>
+            1000
           </RangeSliderMark>
 
           <RangeSliderTrack>

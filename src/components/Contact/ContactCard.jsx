@@ -4,24 +4,24 @@ import { FaClock, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const ContactCard = () => {
   const { t } = useTranslation();
-  const { phone, time, mobile, date1, date2 } = t("contact");
+  const { phone, time, mobile, date1, date2, closed } = t("contact");
   const infoData = [
     {
       icon: <FaMapMarkerAlt />,
       title: t("footer.address"),
-      text: "16 rue toborsok , bardo",
+      text: "116, Lot el banafsaj, Jardins d’El Menzah 2, Tunis",
     },
     {
       icon: <FaPhoneAlt />,
       title: phone,
-      text: `${mobile}: 57 755 433`,
+      text: `${mobile}: 21 453 379 `,
     },
 
     {
       icon: <FaClock />,
       title: time,
       text: `${date1} 9:00 - 19:00`,
-      text1: `${date2} 9:00 - 19:00`,
+      text1: `${date2} ${closed}`,
     },
   ];
   return (

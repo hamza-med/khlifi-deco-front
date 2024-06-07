@@ -17,7 +17,6 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
-  const [error, setError] = useState(false);
   const { t } = useTranslation();
   const { day, width, height, reservation, addBtn, errorMsg } =
     t("productDetail");
@@ -47,11 +46,6 @@ const ProductInfo = ({ prodData, prodId }) => {
         IMG_URL + prodData?.img3?.data?.attributes?.url,
       ]);
   }, [prodData]);
-
-  /**Adding error with useEffect */
-  useEffect(() => {
-    setError(dates[1] === null || dates[1] === undefined);
-  }, [dates]);
 
   useClickOutside(wrapperRef, onClose);
 
@@ -145,21 +139,6 @@ const ProductInfo = ({ prodData, prodId }) => {
         <div className="prodInfo__wrapper--right--reservation">
           <h2>{reservation}</h2>
           <DatePicker setDates={setDates} prodId={prodId} />
-          {error && (
-            <p
-              style={{
-                padding: "12px 10px",
-                width: "100%",
-                border: "1px solid #a94442",
-                backgroundColor: "#f2dede",
-                margin: "3px 0px 10px 0px",
-                fontSize: "14px",
-                color: "#a94442",
-              }}
-            >
-              {errorMsg}
-            </p>
-          )}
         </div>
         <div className="prodInfo__wrapper--right--buttons">
           <div className="button-group">
@@ -179,7 +158,7 @@ const ProductInfo = ({ prodData, prodId }) => {
               &#43;
             </span>
           </div>
-          <button disabled={error} onClick={handleAddToCart}>
+          <button onClick={handleAddToCart}>
             {addBtn}
           </button>
         </div>
