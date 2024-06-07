@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import PickerInput from "./PickerInput";
 import dayjs from "@/utils/dayjs";
+import { HStack } from "@chakra-ui/react";
 
 const DatePicker = ({ setDates, prodId }) => {
   const currentDate = dayjs();
@@ -28,7 +29,7 @@ const DatePicker = ({ setDates, prodId }) => {
   }, [endDate, setDates, startDate]);
 
   return (
-    <>
+    <HStack gap="0px">
       <ReactDatePicker
         dateFormat="dd/MM/yyyy"
         selected={startDate}
@@ -38,7 +39,6 @@ const DatePicker = ({ setDates, prodId }) => {
         selectsStart
         showPopperArrow={false}
         popperPlacement="bottom-end"
-        
         customInput={<PickerInput />}
       />
       <ReactDatePicker
@@ -52,7 +52,7 @@ const DatePicker = ({ setDates, prodId }) => {
         showPopperArrow={false}
         customInput={<PickerInput ml="15px" />}
       />
-    </>
+    </HStack>
   );
 };
 
