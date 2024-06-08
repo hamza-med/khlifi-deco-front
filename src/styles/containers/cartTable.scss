@@ -21,9 +21,11 @@ $input-size: 40px;
   padding: 1.1em !important;
 }
 .td__title {
-  &:hover {
-    color: black;
-    cursor: pointer;
+  @include desktop {
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
   }
 }
 .td__img {
