@@ -10,9 +10,9 @@ $input-size: 40px;
 }
 .tb__header {
   @include tablet {
-    padding-left: 0 !important;
+    display: none;
   }
-  color: black !important;
+  color: lighten(black, 10) !important;
   text-transform: capitalize !important;
   font-size: 1rem !important;
   font-family: $font-family-base !important;
@@ -28,8 +28,8 @@ $input-size: 40px;
 }
 .td__img {
   @include tablet {
-    width: 45px;
-    height: 45px;
+    width: 75px;
+    height: 75px;
   }
   width: 90px;
   height: 90px;
@@ -55,6 +55,10 @@ $input-size: 40px;
   }
 }
 .td__input {
+  @include tablet {
+    width: 35px;
+    height: 35px;
+  }
   width: $input-size;
   height: $input-size;
   border: 1px solid #9f9f9f;

@@ -8,6 +8,9 @@ import {
   Thead,
   Tr,
   useMediaQuery,
+  VStack,
+  Text,
+  HStack,
 } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
 import ReactDatePicker from "react-datepicker";
@@ -18,7 +21,13 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import dayjs from "@/utils/dayjs";
 
-export const Reservation = ({ start, end, id, ...props }) => {
+export const Reservation = ({
+  iconSize = "1.8rem",
+  start,
+  end,
+  id,
+  ...props
+}) => {
   const { defineReservation } = useShoppingCart();
   const currentDate = dayjs();
   const nextDay = currentDate.add(1, "day");
@@ -62,13 +71,19 @@ export const Reservation = ({ start, end, id, ...props }) => {
         endDate={endDate}
         selectsRange
         showPopperArrow={false}
-        customInput={<PickerInput fontSize="1rem" {...props} />}
+        customInput={
+          <PickerInput iconSize={iconSize} fontSize="1rem" {...props} />
+        }
       />
     </>
   );
 };
 
 const TableItem = ({ item }) => {
+  const { t } = useTranslation();
+
+  const { mobQuant, product, price, reservation, quantity, subtotal } =
+    t("cart");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const { defineQuantity, removeFromCart } = useShoppingCart();
@@ -119,28 +134,60 @@ const TableItem = ({ item }) => {
   ) : (
     <>
       <Tr>
-        <Td padding="10px 7px 10px 5px">
+        <Td padding="10px 0px 10px 5px">
           <div className="td__img">
             <img src={item?.src} alt="" />
           </div>
         </Td>
-        <Td
-          padding="0"
-          color="#9F9F9F"
-          className="td__title"
-          onClick={() => navigate(`/shop/product/${item?.id}`)}
-        >
-          {item?.title}
+        <Td padding="3" color="#9F9F9F" className="td__title">
+          <VStack gap="1px" justify="center">
+            <Text
+              fontWeight="500"
+              fontSize="17px"
+              color="rgba(0,0,0,0.9)"
+              cursor="pointer"
+              onClick={() => navigate(`/shop/product/${item?.id}`)}
+            >
+              {item?.title}
+            </Text>
+            <Reservation
+              start={item?.start}
+              end={item?.end}
+              id={item?.id}
+              fontSize="1rem"
+              iconSize="1.4rem"
+              borderColor="white"
+              p="0"
+            />
+          </VStack>
+          <VStack align="center" gap="1em">
+            <VStack>
+              <Text color="rgba(0,0,0,0.6)" fontWeight="600">
+                {price}
+              </Text>
+              <Text>{item.price} TND</Text>
+            </VStack>
+            <VStack>
+              <Text color="rgba(0,0,0,0.7)" fontWeight="600">
+                {subtotal}
+              </Text>
+              <Text color="rgba(0,0,0,1)" fontWeight="600">
+                {item.price * item.quantity} TND
+              </Text>
+            </VStack>
+          </VStack>
         </Td>
-        <Td padding="0">
+        <Td padding="0" pr="3">
           <input
+            max="30"
+            min="1"
             className="td__input"
             type="number"
             defaultValue={item?.quantity}
             onChange={handleChange}
           />
         </Td>
-        <Td className="td__icon" padding="0em">
+        <Td className="td__icon" padding="0">
           <AiFillDelete onClick={handleRemove} />
         </Td>
       </Tr>
@@ -152,8 +199,7 @@ const Table = () => {
   const { cartItems } = useShoppingCart();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const { t } = useTranslation();
-  const { mobQuant, product, price, reservation, quantity, subtotal } =
-    t("cart");
+  const { product, price, reservation, quantity, subtotal } = t("cart");
   return (
     <div>
       <TableContainer>
@@ -174,9 +220,9 @@ const Table = () => {
             ) : (
               <>
                 <Tr>
-                  <Th></Th>
-                  <Th className="tb__header">{product}</Th>
-                  <Th className="tb__header">{mobQuant}</Th>
+                  <Th className="tb__header"></Th>
+                  <Th className="tb__header"></Th>
+                  <Th className="tb__header"></Th>
                   {/* <Th className="tb__header"></Th> */}
                 </Tr>
               </>

@@ -29,7 +29,7 @@ const DatePicker = ({ setDates, prodId }) => {
   }, [endDate, setDates, startDate]);
 
   return (
-    <HStack gap="10px">
+    <HStack gap={["5px","15px"]}>
       <ReactDatePicker
         dateFormat="dd/MM/yyyy"
         selected={startDate}
