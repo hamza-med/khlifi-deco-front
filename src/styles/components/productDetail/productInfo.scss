@@ -40,11 +40,17 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     &--images {
       @include flex(column, center, start);
       @include tablet {
-        @include flex(row, start, center);
+        @include flex(row, center, center);
         gap: 10px;
       }
       gap: $img-gap;
       .mini-img {
+        &.active {
+          @include tablet {
+            border: 3px solid $primary-color-30;
+            transition: 0.2s ease-in-out all;
+          }
+        }
         @include tablet {
           width: $mini-img-size;
           height: $mini-img-size;
@@ -62,7 +68,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     &--main {
       @include tablet {
         max-width: 100%;
-        max-height: 350px;
+        max-height: 410px;
         margin-bottom: 0.5em;
       }
       position: relative;
@@ -193,7 +199,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       .button-group {
         @include tablet {
           gap: 15px;
-          margin-top: 1em;         
+          margin-top: 1em;
           padding: 1.33em;
           font-size: 1.1rem;
         }

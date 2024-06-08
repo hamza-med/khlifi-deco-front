@@ -2,7 +2,7 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import useToggle from "@/hooks/useToggle";
 import DatePicker from "@/uilib/DatePicker";
-import { useDisclosure } from "@chakra-ui/react";
+import { HStack, useDisclosure } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
@@ -10,6 +10,10 @@ import { RxWidth, RxHeight } from "react-icons/rx";
 import { useMediaQuery } from "@chakra-ui/react";
 import ProductModal from "./ProductModal";
 import { useTranslation } from "react-i18next";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 const ProductInfo = ({ prodData, prodId }) => {
@@ -38,12 +42,13 @@ const ProductInfo = ({ prodData, prodId }) => {
   }, [cartItems, prodId]);
 
   useEffect(() => {
+    const imagesData = [
+      IMG_URL + prodData?.img?.data?.attributes?.url,
+      IMG_URL + prodData?.img2?.data?.attributes?.url,
+      IMG_URL + prodData?.img3?.data?.attributes?.url,
+    ];
     prodData &&
-      setImages([
-        IMG_URL + prodData?.img?.data?.attributes?.url,
-        IMG_URL + prodData?.img2?.data?.attributes?.url,
-        IMG_URL + prodData?.img3?.data?.attributes?.url,
-      ]);
+      setImages(imagesData.filter((el) => el !== IMG_URL + "undefined"));
   }, [prodData]);
 
   useClickOutside(wrapperRef, onClose);
@@ -68,14 +73,11 @@ const ProductInfo = ({ prodData, prodId }) => {
           <>
             {" "}
             <div className="prodInfo__wrapper--left--images">
-              {images.map(
-                (el, index) =>
-                  el !== IMG_URL + "undefined" && (
-                    <div key={index} className="mini-img">
-                      <img src={el} onClick={() => setImgIndex(index)} />
-                    </div>
-                  )
-              )}
+              {images.map((el, index) => (
+                <div key={index} className="mini-img">
+                  <img src={el} onClick={() => setImgIndex(index)} />
+                </div>
+              ))}
             </div>
             <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
               <img src={images[imgIndex]} />
@@ -96,16 +98,39 @@ const ProductInfo = ({ prodData, prodId }) => {
                 </div>
               </div>
             </div>
-            <div className="prodInfo__wrapper--left--images">
-              {images.map(
-                (el, index) =>
-                  el !== IMG_URL + "undefined" && (
-                    <div key={index} className="mini-img">
-                      <img src={el} onClick={() => setImgIndex(index)} />
-                    </div>
+            <HStack justify="space-between">
+              <IoIosArrowDropleftCircle
+                onClick={() =>
+                  setImgIndex((prev) => (prev != 0 ? prev - 1 : prev))
+                }
+                color="#4f402b"
+                fontSize="1.6rem"
+              />
+              <div className="prodInfo__wrapper--left--images">
+                {images.map(
+                  (el, index) =>
+                    el !== IMG_URL + "undefined" && (
+                      <div
+                        key={index}
+                        className={
+                          index == imgIndex ? "mini-img active" : "mini-img "
+                        }
+                      >
+                        <img src={el} onClick={() => setImgIndex(index)} />
+                      </div>
+                    )
+                )}
+              </div>
+              <IoIosArrowDroprightCircle
+                onClick={() =>
+                  setImgIndex((prev) =>
+                    prev <= images.length - 2 ? prev + 1 : prev
                   )
-              )}
-            </div>
+                }
+                color="#4f402b"
+                fontSize="1.6rem"
+              />
+            </HStack>
           </>
         )}
         <div className={isOpen ? "popup-image open" : "popup-image"}>
