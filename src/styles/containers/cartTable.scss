@@ -28,8 +28,8 @@ $input-size: 40px;
 }
 .td__img {
   @include tablet {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
   }
   width: 90px;
   height: 90px;
@@ -103,4 +103,10 @@ $input-size: 40px;
     margin-top: 1.5em;
     font-weight: 500;
   }
+}
+.title{
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
 }

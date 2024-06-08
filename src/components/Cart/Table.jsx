@@ -82,8 +82,7 @@ export const Reservation = ({
 const TableItem = ({ item }) => {
   const { t } = useTranslation();
 
-  const { mobQuant, product, price, reservation, quantity, subtotal } =
-    t("cart");
+  const { price, subtotal } = t("cart");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const { defineQuantity, removeFromCart } = useShoppingCart();
@@ -134,22 +133,29 @@ const TableItem = ({ item }) => {
   ) : (
     <>
       <Tr>
-        <Td padding="10px 0px 10px 5px">
+        <Td padding="10px 0px 10px 3px">
           <div className="td__img">
             <img src={item?.src} alt="" />
           </div>
         </Td>
-        <Td padding="3" color="#9F9F9F" className="td__title">
+        <Td padding="10px 2px 10px 0px" color="#9F9F9F" className="td__title">
           <VStack gap="1px" justify="center">
-            <Text
-              fontWeight="500"
-              fontSize="17px"
-              color="rgba(0,0,0,0.9)"
-              cursor="pointer"
-              onClick={() => navigate(`/shop/product/${item?.id}`)}
-            >
-              {item?.title}
-            </Text>
+            <HStack>
+              <Text
+                className="title"
+                fontWeight="500"
+                fontSize="17px"
+                color="rgba(0,0,0,0.9)"
+                cursor="pointer"
+                onClick={() => navigate(`/shop/product/${item?.id}`)}
+              >
+                {item?.title}
+              </Text>
+              <Text className="td__icon">
+                <AiFillDelete onClick={handleRemove} />
+              </Text>
+            </HStack>
+
             <Reservation
               start={item?.start}
               end={item?.end}
@@ -177,7 +183,7 @@ const TableItem = ({ item }) => {
             </VStack>
           </VStack>
         </Td>
-        <Td padding="0" pr="3">
+        <Td padding="0" pr="2">
           <input
             max="30"
             min="1"
@@ -186,9 +192,6 @@ const TableItem = ({ item }) => {
             defaultValue={item?.quantity}
             onChange={handleChange}
           />
-        </Td>
-        <Td className="td__icon" padding="0">
-          <AiFillDelete onClick={handleRemove} />
         </Td>
       </Tr>
     </>
