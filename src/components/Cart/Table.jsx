@@ -142,7 +142,7 @@ const TableItem = ({ item }) => {
           <VStack gap="1px" justify="center">
             <HStack>
               <Text
-                className="title"
+                className="mobile_title"
                 fontWeight="500"
                 fontSize="17px"
                 color="rgba(0,0,0,0.9)"

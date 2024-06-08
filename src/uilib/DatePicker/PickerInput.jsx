@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { VscCalendar } from "react-icons/vsc";
 const PickerInput = forwardRef(
-  ({ iconSize, value, onClick, ...props }, ref) => {
+  ({ iconSize = "1.5rem", value, onClick, ...props }, ref) => {
     return (
       <>
         <Button
