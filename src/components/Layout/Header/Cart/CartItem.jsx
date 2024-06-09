@@ -1,7 +1,9 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import toast from "@/utils/toast";
+import { useTranslation } from "react-i18next";
 import { IoCloseCircleSharp } from "react-icons/io5";
 const CartItem = ({ item }) => {
+  const { t } = useTranslation();
   const { removeFromCart } = useShoppingCart();
   return (
     <div className="cart__wrapper">
@@ -17,7 +19,10 @@ const CartItem = ({ item }) => {
       <div className="icon">
         <IoCloseCircleSharp
           color="grey"
-          onClick={() => {removeFromCart(item?.id);toast("Produit retiré")}}
+          onClick={() => {
+            removeFromCart(item?.id);
+            toast(t("productRemove"), t("productRemoveDesc"));
+          }}
         />
       </div>
     </div>

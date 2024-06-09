@@ -18,7 +18,7 @@ const TableItem = ({ item }) => {
   };
   const handleRemove = () => {
     removeFromCart(item?.id);
-    toast("Produit retiré");
+    toast(t("productRemove"), t("productRemoveDesc"));
   };
 
   return !isMobile ? (

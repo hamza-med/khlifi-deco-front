@@ -41,12 +41,12 @@ const Login = () => {
       } else {
         setLocalStorageItem("token", data?.jwt);
         setUser(data?.user);
-        toast("Vous êtes connecté", "Connecté avec succès");
+        toast(t("connected"), t("successFullyConnect"));
         navigate("/", { replace: true });
       }
     } catch (e) {
       console.error(e);
-      toast("Erreur", e?.response?.data?.error?.message, "error");
+      toast(t("error"), e?.response?.data?.error?.message, "error");
     } finally {
       setIsLoading(false);
     }

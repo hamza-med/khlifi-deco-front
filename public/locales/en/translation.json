@@ -153,6 +153,11 @@
     "shortPass": "The password is too short - it should be at least 6 characters long",
     "passMatches": "The password can only contain Latin letters"
   },
+  "productRemove": "Product removed",
+  "productRemoveDesc": "Product removed successfully",
+  "connected": "Successfully connected",
+  "successFullyConnect": "Successfully connected",
+  "error":"Error",
   "miniHeader": "Best event organizer in Tunisia",
   "searchProduct": "Search for a product",
   "new": "New"
