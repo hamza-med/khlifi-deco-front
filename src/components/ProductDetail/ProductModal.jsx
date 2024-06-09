@@ -1,4 +1,5 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import Reservation from "@/uilib/DatePicker/Reservation";
 import {
   HStack,
   Modal,
@@ -13,7 +14,7 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Reservation } from "../Cart/Table";
+
 
 const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const navigate = useNavigate();

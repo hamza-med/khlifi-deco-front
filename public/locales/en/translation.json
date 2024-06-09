@@ -40,7 +40,8 @@
     "width": "Width",
     "reservation": "Choose your reservation dates",
     "addBtn": "Add to cart",
-    "errorMsg": "Please select the end date, click twice if both dates are the same",
+    "errorMsgTitle": "End date not selected",
+    "errorMsg": "Click twice if both dates are the same",
     "relatedProd": "Related products"
   },
   "login": {

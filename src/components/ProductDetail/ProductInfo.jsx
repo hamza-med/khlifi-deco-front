@@ -3,17 +3,17 @@ import { useShoppingCart } from "@/hooks/useShoppingCart";
 import useToggle from "@/hooks/useToggle";
 import DatePicker from "@/uilib/DatePicker";
 import { HStack, useDisclosure } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { Suspense, lazy, useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
 import { useMediaQuery } from "@chakra-ui/react";
-import ProductModal from "./ProductModal";
 import { useTranslation } from "react-i18next";
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
+const ProductModal = lazy(() => import("./ProductModal"));
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 const ProductInfo = ({ prodData, prodId }) => {
@@ -185,12 +185,14 @@ const ProductInfo = ({ prodData, prodId }) => {
           <button onClick={handleAddToCart}>{addBtn}</button>
         </div>
       </div>
-      <ProductModal
-        isOpen={openModal}
-        dates={dates}
-        onClose={onCloseModal}
-        prodId={prodId}
-      />
+      <Suspense>
+        <ProductModal
+          isOpen={openModal}
+          dates={dates}
+          onClose={onCloseModal}
+          prodId={prodId}
+        />
+      </Suspense>
     </div>
   );
 };

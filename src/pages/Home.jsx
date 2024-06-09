@@ -12,7 +12,13 @@ const Home = () => {
       <Suspense fallback={<Skeleton />}>
         <Slider productsRef={productsRef} />
       </Suspense>
-      <Suspense fallback={<Skeleton />}>
+      <Suspense
+        fallback={
+          <Skeleton>
+            <Content />
+          </Skeleton>
+        }
+      >
         <Content productsRef={productsRef} />
       </Suspense>
     </>

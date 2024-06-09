@@ -40,7 +40,8 @@
     "width": "Largeur",
     "reservation": "Choisissez vos dates de resevation",
     "addBtn": "Ajouter au panier",
-    "errorMsg": "Merci de séléctionner la date de fin, cliquez deux fois si les deux dates sont les mêmes",
+    "errorMsgTitle":"Date de fin non sélectionnée",
+    "errorMsg": "Cliquez deux fois si les deux dates sont les mêmes",
     "relatedProd": "Produits apparentés"
   },
   "login": {

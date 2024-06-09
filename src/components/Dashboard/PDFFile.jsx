@@ -1,9 +1,18 @@
 import { usePrivateFetch } from "@/hooks/useFetch";
-import OrdersTable from "./OrdersTable";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import Paginator from "@/uilib/Paginator";
-import PDFHeader from "./PDFHeader";
-import PDFFooter from "./PDFFooter";
+import { Skeleton } from "@chakra-ui/react";
+
+const PDFHeader = lazy(() => import("./PDFHeader"));
+const PDFFooter = lazy(() => import("./PDFFooter"));
+const OrdersTable = lazy(() => import("./OrdersTable"));
 
 const PDFFile = ({
   selectedUser,
@@ -47,7 +56,7 @@ const PDFFile = ({
     });
     setProducts(allProducts);
   }, [calculateDaysDifference, productsData]);
-  console.log("products", products);
+  
   const { data: orders, meta } = usePrivateFetch(
     `orders?pagination[page]=${page}&${
       pageSize && `pagination[pageSize]=${pageSize}`
@@ -73,11 +82,17 @@ const PDFFile = ({
   return (
     <>
       <div id="file-to-export" className="pdfFile__wrapper">
-        <PDFHeader selectedUser={selectedUser} />
+        <Suspense>
+          <PDFHeader selectedUser={selectedUser} />
+        </Suspense>
         {products?.length !== 0 && (
-          <OrdersTable total={total} products={products} />
+          <Suspense fallback={<Skeleton />}>
+            <OrdersTable total={total} products={products} />
+          </Suspense>
         )}
-        <PDFFooter total={total} />
+        <Suspense>
+          <PDFFooter total={total} />
+        </Suspense>
       </div>
       {pagesArray?.length > 1 && (
         <Paginator
