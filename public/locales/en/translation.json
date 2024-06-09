@@ -42,7 +42,15 @@
     "addBtn": "Add to cart",
     "errorMsgTitle": "End date not selected",
     "errorMsg": "Click twice if both dates are the same",
-    "relatedProd": "Related products"
+    "relatedProd": "Related products",
+    "productModal": {
+      "title": "Product successfully added to the cart",
+      "total": "Total products",
+      "articles": "There are {{number}} items in your cart",
+      "article": "There is one item in your cart",
+      "continuer": "Continue my reservations",
+      "confirm": "Confirm my reservation"
+    }
   },
   "login": {
     "title": "Login to your account",
@@ -128,6 +136,22 @@
       "subjectDesc": "customer service",
       "messageDesc": "How can we help ?"
     }
+  },
+  "errorMessages": {
+    "name": "Please enter your name",
+    "lastName": "Please enter your last name",
+    "phone": "Please enter your phone number",
+    "email": "Please enter your email address",
+    "username": "Please enter your username",
+    "subject": "Please enter the subject",
+    "message": "No message provided",
+    "subjectMax": "Maximum 50 letters",
+    "requiredField": "This field is required",
+    "phoneMatches": "The phone number is not valid",
+    "emailValid": "The email must be a valid email",
+    "noPass": "No password provided",
+    "shortPass": "The password is too short - it should be at least 6 characters long",
+    "passMatches": "The password can only contain Latin letters"
   },
   "miniHeader": "Best event organizer in Tunisia",
   "searchProduct": "Search for a product",

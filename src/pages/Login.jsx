@@ -3,13 +3,13 @@ import AccountWrapper from "@/components/AccountWrapper";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import Input from "@/uilib/Input";
 import { setLocalStorageItem } from "@/utils/localStorage";
-import { loginSchema } from "@/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useYupSchema from "@/hooks/useYupSchema";
 
 const defaultValues = {
   identifier: "",
@@ -17,6 +17,7 @@ const defaultValues = {
 };
 
 const Login = () => {
+  const { loginSchema } = useYupSchema();
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);

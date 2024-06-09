@@ -40,9 +40,17 @@
     "width": "Largeur",
     "reservation": "Choisissez vos dates de resevation",
     "addBtn": "Ajouter au panier",
-    "errorMsgTitle":"Date de fin non sélectionnée",
+    "errorMsgTitle": "Date de fin non sélectionnée",
     "errorMsg": "Cliquez deux fois si les deux dates sont les mêmes",
-    "relatedProd": "Produits apparentés"
+    "relatedProd": "Produits apparentés",
+    "productModal": {
+      "title": "Produit ajouté au panier avec succès",
+      "total": "Total produits",
+      "articles": "Il y a {{number}} articles dans votre panier",
+      "article": "Il y a un article dans votre panier",
+      "continuer": "Continuer mes réservations",
+      "confirm": "Confirmer ma réservation"
+    }
   },
   "login": {
     "title": "Connectez vous à votre compte",
@@ -128,6 +136,22 @@
       "subjectDesc": "service client",
       "messageDesc": "Comment pouvons-nous aider ?"
     }
+  },
+  "errorMessages": {
+    "name": "Veuillez saisir votre nom",
+    "lastName": "Veuillez saisir votre prénom",
+    "phone": "Veuillez saisir votre numéro",
+    "email": "Veuillez saisir votre adresse e-mail",
+    "username":"Veuillez saisir votre nom d'utilisateur",
+    "subject":"Veuillez saisir le sujet",
+    "message":"Aucun message n'est fourni",
+    "subjectMax":"50 lettres maximum",
+    "requiredField": "Ce champ est obligatoire",
+    "phoneMatches": "Le numéro de téléphone n'est pas valide",
+    "emailValid": "L'email doit être un email valide",
+    "noPass": "Aucun mot de passe n'est fourni",
+    "shortPass": "Le mot de passe est trop court - il devrait être composé de 6 caractères au minimum",
+    "passMatches": "Le mot de passe ne peut contenir que des lettres latines"
   },
   "miniHeader": "Meilleur organisateur d'événements en Tunisie",
   "searchProduct": "Rechercher un produit",

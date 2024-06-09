@@ -33,20 +33,21 @@ export const Reservation = ({
   const initialEndDate = parseDate(end);
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(initialEndDate);
-
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    const reservationStart = dayjs(start).format("DD/MM/YYYY");
-    !end &&
+  const onCalendarClose = () => {
+    !endDate &&
       customToast(
         `${t("productDetail.errorMsgTitle")}`,
         `${t("productDetail.errorMsg")}`,
         "info",
         "top",
-        5000
+        4000
       );
+  };
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    const reservationStart = dayjs(start).format("DD/MM/YYYY");
     defineReservation(
       id,
       reservationStart,
@@ -57,6 +58,7 @@ export const Reservation = ({
   return (
     <>
       <ReactDatePicker
+        onCalendarClose={onCalendarClose}
         dateFormat="dd/MM/yyyy"
         minDate={new Date()}
         selected={startDate}

@@ -13,8 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 
 const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
@@ -23,6 +23,13 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
 
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
+  const { t } = useTranslation();
+  const { continuer, title, total, article, confirm } = t(
+    "productDetail.productModal"
+  );
+  const articles = t("productDetail.productModal.articles", {
+    number: cartItems?.length,
+  });
 
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
@@ -53,7 +60,7 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
           fontSize={["1rem", "1rem", "1.2rem"]}
           fontWeight="500"
         >
-          Produit ajouté au panier avec succès
+          {title}
         </ModalHeader>
         <ModalCloseButton color="rgba(0,0,0,0.4)" />
         <ModalBody className="product-modal__wrapper">
@@ -69,12 +76,13 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                   start={dates.length !== 0 ? dates[0] : item?.start}
                   end={dates.length !== 0 ? dates[1] : item?.end}
                   id={prodId}
-                  borderColor="white"
-                  pl="0"
+                  //borderColor="white"
+                  fontSize="1.1rem"
+                  //pl="0"
                 />
               </p>
               <p className="left--description--quantity">
-                <span className="title-bold ">Quantité</span>
+                <span className="title-bold ">{t("cart.quantity")}</span>
                 <HStack
                   border="1px solid rgba(0,0,0,0.05)"
                   fontSize={["1rem", "1rem"]}
@@ -109,18 +117,14 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
             </div>
           </div>
           <div className="right">
-            <h1>
-              {cartItems.length > 1
-                ? `Il y a ${cartItems?.length} articles dans votre panier`
-                : `Il y a un article dans votre panier`}
-            </h1>
+            <h1>{cartItems.length > 1 ? articles : article}</h1>
             <span className="right--total">
-              <span className="title-bold ">Total produits : </span>{" "}
+              <span className="title-bold ">{total} </span>
               <span>{subtotal} TND</span>
             </span>
 
             <button className="continue-button" onClick={handleClose}>
-              Continuer mes réservations
+              {continuer}
             </button>
             <button
               className="confirm-button"
@@ -129,7 +133,7 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                 handleClose();
               }}
             >
-              Confirmer ma réservation
+              {confirm}
             </button>
           </div>
         </ModalBody>

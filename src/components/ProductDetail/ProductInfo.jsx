@@ -74,7 +74,12 @@ const ProductInfo = ({ prodData, prodId }) => {
             {" "}
             <div className="prodInfo__wrapper--left--images">
               {images.map((el, index) => (
-                <div key={index} className="mini-img">
+                <div
+                  key={index}
+                  className={
+                    index == imgIndex ? "mini-img active" : "mini-img "
+                  }
+                >
                   <img src={el} onClick={() => setImgIndex(index)} />
                 </div>
               ))}

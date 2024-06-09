@@ -1,6 +1,5 @@
 import AccountWrapper from "@/components/AccountWrapper";
 import Input from "@/uilib/Input";
-import { registerSchema } from "@/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { register } from "@/api/makeRequest";
@@ -11,12 +10,14 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 import { useState } from "react";
 import { setLocalStorageItem } from "@/utils/localStorage";
 import { useTranslation } from "react-i18next";
+import useYupSchema from "@/hooks/useYupSchema";
 const defaultValues = {
   email: "",
   password: "",
 };
 
 const Register = () => {
+  const { registerSchema } = useYupSchema();
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);

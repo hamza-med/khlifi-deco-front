@@ -6,9 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { createOrder } from "@/api/makeRequest";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { checkoutSchema } from "@/utils/schemas";
 import { useDisclosure } from "@chakra-ui/react";
 import CheckoutModal from "./CheckoutModal";
+import useYupSchema from "@/hooks/useYupSchema";
 const defaultValues = {
   firstname: "",
   lastname: "",
@@ -24,6 +24,7 @@ const defaultValues = {
 };
 
 const BillingSection = () => {
+  const { checkoutSchema } = useYupSchema();
   const { cartItems, subtotal, removeAll } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
