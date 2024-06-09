@@ -96,7 +96,9 @@
     "modalityTitle": "Modalités de paiement",
     "modalityDesc": "Les paiements s'effectuent conformément à l'option suivante: 40 % Un mois d'avance à la date d'événement et le reste à payer par chèque ou espèce le jour de la livraison",
     "modalityAccepted": "J'ai lu et j'accepte les conditions générales",
-    "btn": "Passer la commande"
+    "btn": "Passer la commande",
+    "orderPlaced": "Commande passée",
+    "orderPlacedDsc": "Votre commande a été passée avec succès!"
   },
   "shoppingCart": {
     "cart": "Panier",

@@ -96,7 +96,9 @@
     "modalityTitle": "Payment terms and conditions",
     "modalityDesc": "Payments are made in accordance with the following option: 40 % One month in advance on the event date and the remainder to be paid by cheque or cash on the day of delivery.",
     "modalityAccepted": "I have read and accept terms & conditions",
-    "btn": "Place Order"
+    "btn": "Place Order",
+    "orderPlaced": "Order placed",
+    "orderPlacedDsc": "Your order has been placed successfully!"
   },
   "shoppingCart": {
     "cart": "Cart",
@@ -157,7 +159,7 @@
   "productRemoveDesc": "Product removed successfully",
   "connected": "Successfully connected",
   "successFullyConnect": "Successfully connected",
-  "error":"Error",
+  "error": "Error",
   "miniHeader": "Best event organizer in Tunisia",
   "searchProduct": "Search for a product",
   "new": "New"
