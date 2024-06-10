@@ -1,15 +1,18 @@
 import { HStack, Text, VStack } from "@chakra-ui/react";
+import { lazy } from "react";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const PDFHeader = ({ selectedUser }) => {
   return (
     <VStack align="start" mb="80px">
       <HStack justify="space-between" w="80%" m="50px 0px 80px 20px">
-        <img
-          src="/assets/blue_logo_bg.png"
-          alt="blue_logo"
-          width="200px"
-          height="200px"
-        />
+        <div>
+          <Image
+            src="/assets/blue_logo_bg.png"
+            alt="blue_logo"
+            className="pdf_image"
+          />
+        </div>
         <Text fontSize="2.8rem" fontWeight="bold">
           Devis
         </Text>

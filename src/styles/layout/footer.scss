@@ -47,14 +47,14 @@
       @include flex(column, center, start);
       gap: 10px;
       font-size: 1rem;
-      & > img {
+      &--img {
         @include tablet {
-          width: 160px;
-          height: 150px;
+          width: 130px;
+          height: 120px;
           margin: 0 auto;
         }
         width: 160px;
-        height: 140px;
+        height: 150px;
       }
       li {
         margin-bottom: 12px;

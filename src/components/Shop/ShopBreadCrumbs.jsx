@@ -1,7 +1,9 @@
 import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
+import { lazy } from "react";
 import { useTranslation } from "react-i18next";
 import { MdChevronRight } from "react-icons/md";
 import { Link, useSearchParams } from "react-router-dom";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   const { t } = useTranslation();
@@ -11,7 +13,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
 
   return (
     <div className="shop_header">
-      <img
+      <Image
         src="/assets/living-room.jpg"
         alt="shop-bg"
         className="shop_header__image"

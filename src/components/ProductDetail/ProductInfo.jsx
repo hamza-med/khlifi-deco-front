@@ -3,7 +3,7 @@ import { useShoppingCart } from "@/hooks/useShoppingCart";
 import useToggle from "@/hooks/useToggle";
 import DatePicker from "@/uilib/DatePicker";
 import { HStack, useDisclosure } from "@chakra-ui/react";
-import { Suspense, lazy, useEffect, useRef } from "react";
+import { lazy, useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
@@ -13,7 +13,9 @@ import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
+
 const ProductModal = lazy(() => import("./ProductModal"));
+const Image = lazy(() => import("@/uilib/Image"));
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
 const ProductInfo = ({ prodData, prodId }) => {
@@ -74,18 +76,22 @@ const ProductInfo = ({ prodData, prodId }) => {
             {" "}
             <div className="prodInfo__wrapper--left--images">
               {images.map((el, index) => (
-                <div
+                <Image
+                  src={el}
                   key={index}
                   className={
                     index == imgIndex ? "mini-img active" : "mini-img "
                   }
-                >
-                  <img src={el} onClick={() => setImgIndex(index)} />
-                </div>
+                  onClick={() => setImgIndex(index)}
+                />
               ))}
             </div>
             <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
-              <img src={images[imgIndex]} />
+              <Image
+                src={images[imgIndex]}
+                alt="main image"
+                className="prodInfo__wrapper--left--main--img"
+              />
               <div className="overlay">
                 <div className="overlay--svg">
                   <MdOutlineZoomIn />
@@ -96,7 +102,11 @@ const ProductInfo = ({ prodData, prodId }) => {
         ) : (
           <>
             <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
-              <img src={images[imgIndex]} />
+              <Image
+                src={images[imgIndex]}
+                alt="main image"
+                className="prodInfo__wrapper--left--main--img"
+              />
               <div className="overlay">
                 <div className="overlay--svg">
                   <MdOutlineZoomIn />
@@ -115,14 +125,14 @@ const ProductInfo = ({ prodData, prodId }) => {
                 {images.map(
                   (el, index) =>
                     el !== IMG_URL + "undefined" && (
-                      <div
+                      <Image
+                        onClick={() => setImgIndex(index)}
+                        src={el}
                         key={index}
                         className={
                           index == imgIndex ? "mini-img active" : "mini-img "
                         }
-                      >
-                        <img src={el} onClick={() => setImgIndex(index)} />
-                      </div>
+                      />
                     )
                 )}
               </div>
@@ -140,7 +150,7 @@ const ProductInfo = ({ prodData, prodId }) => {
         )}
         <div className={isOpen ? "popup-image open" : "popup-image"}>
           <span onClick={onClose}>&times;</span>
-          <img src={images[imgIndex]} ref={wrapperRef} />
+          <Image src={images[imgIndex]} ref={wrapperRef} alt="popup-image" />
         </div>
       </div>
       <div className="prodInfo__wrapper--right">
@@ -190,14 +200,13 @@ const ProductInfo = ({ prodData, prodId }) => {
           <button onClick={handleAddToCart}>{addBtn}</button>
         </div>
       </div>
-      <Suspense>
-        <ProductModal
-          isOpen={openModal}
-          dates={dates}
-          onClose={onCloseModal}
-          prodId={prodId}
-        />
-      </Suspense>
+
+      <ProductModal
+        isOpen={openModal}
+        dates={dates}
+        onClose={onCloseModal}
+        prodId={prodId}
+      />
     </div>
   );
 };

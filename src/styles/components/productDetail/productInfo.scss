@@ -4,8 +4,6 @@ $mini-img-size-lg: 110px;
 $main-img-size: $mini-img-size * 6 + $img-gap * 2;
 $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
 %img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   cursor: pointer;
 }
@@ -58,9 +56,6 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
         overflow: hidden;
         border-radius: 5px;
         cursor: pointer;
-        img {
-          @extend %img;
-        }
       }
     }
     &--main {
@@ -74,8 +69,9 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       overflow: hidden;
       width: $main-img-size;
       height: $main-img-size;
-      img {
-        @extend %img;
+      &--img {
+        width: 100%;
+        height: 100%;
       }
       .overlay {
         @include overlay(0.4, 0, white);

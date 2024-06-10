@@ -13,12 +13,8 @@
     @include tablet {
       height: 60%;
     }
-    display: block;
-    aspect-ratio: 1/1;
     width: 100%;
     height: 65%;
-    object-fit: cover;
-    object-position: center;
   }
   &__overlay {
     @include tablet {

@@ -1,13 +1,20 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import toast from "@/utils/toast";
+import { lazy } from "react";
 import { useTranslation } from "react-i18next";
 import { IoCloseCircleSharp } from "react-icons/io5";
+const Image = lazy(() => import("@/uilib/Image"));
+
 const CartItem = ({ item }) => {
   const { t } = useTranslation();
   const { removeFromCart } = useShoppingCart();
   return (
     <div className="cart__wrapper">
-      <img className="cart__wrapper--image" src={item?.src} alt="" />
+      <Image
+        className="cart__wrapper--image"
+        src={item?.src}
+        alt={item?.title}
+      />
       <div className="cart__wrapper--details">
         <h3 className="cart__wrapper--details--title">{item?.title}</h3>
         <div className="cart__wrapper--details--price">

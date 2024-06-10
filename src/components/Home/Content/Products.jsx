@@ -1,7 +1,8 @@
 import useFetch from "@/hooks/useFetch";
-import ProductCard from "@/uilib/ProductCard";
+import { lazy } from "react";
 import { forwardRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+const ProductCard = lazy(() => import("@/uilib/ProductCard"));
 
 const Products = forwardRef((props, ref) => {
   const [pageSize, setPageSize] = useState(8);

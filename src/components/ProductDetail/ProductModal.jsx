@@ -1,5 +1,6 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import Reservation from "@/uilib/DatePicker/Reservation";
+
 import {
   HStack,
   Modal,
@@ -8,13 +9,16 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Skeleton,
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Suspense } from "react";
+import { lazy, useEffect } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
@@ -65,9 +69,9 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
         <ModalCloseButton color="rgba(0,0,0,0.4)" />
         <ModalBody className="product-modal__wrapper">
           <div className="left">
-            <div className="left--img">
-              <img src={item?.src} alt="" />
-            </div>
+            <Suspense fallback={<Skeleton height="40%" />}>
+              <Image className="left--img" src={item?.src} alt="" />
+            </Suspense>
             <div className="left--description">
               <h1>{item?.title}</h1>
               <p className="left--description--price">{item?.price} TND</p>

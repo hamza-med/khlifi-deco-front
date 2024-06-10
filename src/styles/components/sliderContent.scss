@@ -1,19 +1,20 @@
 .slider-content {
   @include flex(row, center, center);
   &__left {
+    @include tablet {
+      height: 450px;
+      //width: 100%;
+    }
+    height: 500px;
+    width: 450px;
     margin-right: 40px;
     @include tablet {
       margin-right: 0px;
     }
     position: relative;
-    img {
-      object-fit: cover;
-      height: 500px;
-      width: 450px;
-      @include tablet {
-        height: 450px;
-        // width: 600px;
-      }
+    &--img {
+      height: 100%;
+      width: 100%;
     }
     &--layer {
       @include overlay(0.1, 1);
@@ -35,15 +36,15 @@
     }
   }
   &__right {
+    @include flex(column, space-between, center);
     height: 500px;
     @include tablet {
       display: none;
     }
-    & > img {
-      margin-bottom: 20px;
-    }
-    img {
-      object-fit: cover;
+    &--img {
+      @include tablet {
+        display: none;
+      }
       height: 240px;
       width: 250px;
       @include tablet {

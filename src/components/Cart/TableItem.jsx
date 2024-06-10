@@ -5,6 +5,8 @@ import toast from "@/utils/toast";
 import Reservation from "@/uilib/DatePicker/Reservation";
 import { AiFillDelete } from "react-icons/ai";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import { lazy } from "react";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const TableItem = ({ item }) => {
   const { t } = useTranslation();
@@ -25,9 +27,7 @@ const TableItem = ({ item }) => {
     <>
       <Tr>
         <Td paddingLeft={0}>
-          <div className="td__img">
-            <img src={item?.src} alt="" />
-          </div>
+          <Image src={item?.src} alt={item?.title} className="td__img" />
         </Td>
         <Td
           paddingLeft="1em"
@@ -61,9 +61,7 @@ const TableItem = ({ item }) => {
     <>
       <Tr>
         <Td padding="10px 0px 10px 3px">
-          <div className="td__img">
-            <img src={item?.src} alt="" />
-          </div>
+          <Image src={item?.src} alt={item?.title} className="td__img" />
         </Td>
         <Td padding="10px 2px 10px 0px" color="#9F9F9F" className="td__title">
           <VStack gap="1px" justify="center">

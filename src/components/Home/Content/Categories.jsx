@@ -1,8 +1,8 @@
 import useFetch from "@/hooks/useFetch";
-import CategoryCard from "./CategoryCard";
 import { useMediaQuery } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
+import { lazy } from "react";
 
 const settings = {
   dots: false,
@@ -15,6 +15,8 @@ const settings = {
   slidesToScroll: 1,
   pauseOnHover: true,
 };
+const CategoryCard = lazy(() => import("./CategoryCard"));
+
 const excluded = ["Collections et Tendances", "Collection and Trends"];
 const Categories = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
