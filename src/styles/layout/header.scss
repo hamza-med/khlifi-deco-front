@@ -23,14 +23,14 @@
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
   .logo {
-    width: 250px;
-    height: 60px;
+    width: 180x;
+    height: 50px;
     @include tablet {
       width: 100px;
       height: 90px;
     }
     &--mobile {
-      height: 90px;
+      height: 85px;
     }
   }
   .hamburger {
