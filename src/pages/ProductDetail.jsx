@@ -1,4 +1,5 @@
 import useFetch from "@/hooks/useFetch";
+import SEO from "@/uilib/SEO";
 import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -25,8 +26,11 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const [prodId, setProdId] = useState(productId);
   const {
+    t,
     i18n: { language },
   } = useTranslation();
+  const { metaTitle, metaDesc } = t("productDetail");
+
   const { data: product } = useFetch(
     `/products/${prodId}?populate[localizations][fields][0]=title&${imgQuery}${catSubCatQuery}`
   );
@@ -44,6 +48,12 @@ const ProductDetail = () => {
   ]);
   return (
     <div>
+      <SEO
+        title={metaTitle}
+        description={metaDesc}
+        url={`/shop/product/${productId} `}
+      />
+
       <Suspense fallback={<Skeleton />}>
         <LinksBar
           prodName={product?.attributes?.title}

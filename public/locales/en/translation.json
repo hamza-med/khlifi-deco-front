@@ -1,5 +1,7 @@
 {
   "home": {
+    "metaTitle": "Home - Khelifi Conseils",
+    "metaDesc": "At Khelifi Conseils, we are passionate about creating unforgettable moments. Specializing in event equipment rentals, we offer a wide range of high-quality gear for all your needs, from weddings and birthdays to conferences and festivals.",
     "articleBtn": "see articles",
     "catTitle": "browse the categories",
     "catDescription": "Take a look at our categories",
@@ -10,6 +12,8 @@
     "explorePar2": "available for rent"
   },
   "shop": {
+    "metaTitle": "Shop - Khelifi Conseils",
+    "metaDesc": "Browse our extensive range of event equipment rentals at Khelifi Conseils. From tents to sound systems, find everything you need for your next event.",
     "type": "Store",
     "home": "Home",
     "eltNumber": "Showing {{index}} from {{total}} results",
@@ -35,6 +39,8 @@
     }
   },
   "productDetail": {
+    "metaTitle": "Product Details - Khelifi Conseils",
+    "metaDesc": "Get detailed information about our event equipment rentals at Khelifi Conseils. Find specifications, pricing, and availability.",
     "day": "Day",
     "height": "Height",
     "width": "Width",
@@ -53,6 +59,8 @@
     }
   },
   "login": {
+    "metaTitle": "Login - Khelifi Conseils",
+    "metaDesc": "Log in to your Khelifi Conseils account to manage your event equipment rentals and bookings.",
     "title": "Login to your account",
     "username": "Email or username",
     "mdp": "Password",
@@ -64,12 +72,16 @@
     "connect": "Get connected !"
   },
   "register": {
+    "metaTitle": "Register - Khelifi Conseils",
+    "metaDesc": "Create a new account at Khelifi Conseils to start renting event equipment and manage your bookings.",
     "title": "Create your account",
     "username": "Username",
     "email": "Email",
     "mdp": "Password"
   },
   "cart": {
+    "metaTitle": "Cart - Khelifi Conseils",
+    "metaDesc": "Review the items in your cart before completing your event equipment rental purchase at Khelifi Conseils.",
     "type": "Cart",
     "product": "Product",
     "price": "Price",
@@ -81,6 +93,8 @@
     "btn": "Confirm Reservation"
   },
   "checkout": {
+    "metaTitle": "Checkout - Khelifi Conseils",
+    "metaDesc": "Place your order for event equipment rentals and reservations at Khelifi Conseils quickly and securely.",
     "type": "Checkout",
     "title": "Billing details",
     "lastName": "Last Name",
@@ -120,6 +134,8 @@
     "copyright": "Copyright 2024. All rights reserved"
   },
   "contact": {
+    "metaTitle": "Contact Us - Khelifi Conseils",
+    "metaDesc": "Get in touch with Khelifi Conseils for any inquiries about our event equipment rental services.",
     "title": "Get In Touch With Us",
     "desc": "For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!",
     "phone": "Phone",

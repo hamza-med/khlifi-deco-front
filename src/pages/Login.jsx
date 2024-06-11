@@ -10,6 +10,7 @@ import toast from "@/utils/toast";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useYupSchema from "@/hooks/useYupSchema";
+import SEO from "@/uilib/SEO";
 
 const defaultValues = {
   identifier: "",
@@ -22,7 +23,7 @@ const Login = () => {
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
-  const { title, username, mdp } = t("login");
+  const { title, username, mdp, metaTitle, metaDesc } = t("login");
   const {
     control,
     handleSubmit,
@@ -52,31 +53,34 @@ const Login = () => {
     }
   };
   return (
-    <AccountWrapper
-      handleSubmit={handleSubmit}
-      isDirty={isDirty}
-      loading={isLoading}
-      errors={errors}
-      title={title}
-      onSubmit={onSubmit}
-    >
-      <Input
-        required
-        label={username}
-        name="identifier"
-        placeholder=""
-        control={control}
-        className="login__input"
-      />
-      <Input
-        required
-        label={mdp}
-        name="password"
-        placeholder=""
-        control={control}
-        className="login__input"
-      />
-    </AccountWrapper>
+    <>
+      <SEO title={metaTitle} description={metaDesc} url="/login" />
+      <AccountWrapper
+        handleSubmit={handleSubmit}
+        isDirty={isDirty}
+        loading={isLoading}
+        errors={errors}
+        title={title}
+        onSubmit={onSubmit}
+      >
+        <Input
+          required
+          label={username}
+          name="identifier"
+          placeholder=""
+          control={control}
+          className="login__input"
+        />
+        <Input
+          required
+          label={mdp}
+          name="password"
+          placeholder=""
+          control={control}
+          className="login__input"
+        />
+      </AccountWrapper>
+    </>
   );
 };
 export default Login;
