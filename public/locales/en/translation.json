@@ -1,6 +1,6 @@
 {
   "home": {
-    "metaTitle": "Home - Khelifi Conseils",
+    "metaTitle": "Home - Khelifi Conseils | Event Equipment Rentals",
     "metaDesc": "At Khelifi Conseils, we are passionate about creating unforgettable moments. Specializing in event equipment rentals, we offer a wide range of high-quality gear for all your needs, from weddings and birthdays to conferences and festivals.",
     "articleBtn": "see articles",
     "catTitle": "browse the categories",
@@ -12,7 +12,7 @@
     "explorePar2": "available for rent"
   },
   "shop": {
-    "metaTitle": "Shop - Khelifi Conseils",
+    "metaTitle": "Shop - Khelifi Conseils | Event Equipment Rentals",
     "metaDesc": "Browse our extensive range of event equipment rentals at Khelifi Conseils. From tents to sound systems, find everything you need for your next event.",
     "type": "Store",
     "home": "Home",
@@ -39,7 +39,7 @@
     }
   },
   "productDetail": {
-    "metaTitle": "Product Details - Khelifi Conseils",
+    "metaTitle": "Product Details - Khelifi Conseils | Event Rentals",
     "metaDesc": "Get detailed information about our event equipment rentals at Khelifi Conseils. Find specifications, pricing, and availability.",
     "day": "Day",
     "height": "Height",
@@ -80,7 +80,7 @@
     "mdp": "Password"
   },
   "cart": {
-    "metaTitle": "Cart - Khelifi Conseils",
+    "metaTitle": "Cart - Khelifi Conseils | Event Equipment Rentals",
     "metaDesc": "Review the items in your cart before completing your event equipment rental purchase at Khelifi Conseils.",
     "type": "Cart",
     "product": "Product",
@@ -93,7 +93,7 @@
     "btn": "Confirm Reservation"
   },
   "checkout": {
-    "metaTitle": "Checkout - Khelifi Conseils",
+    "metaTitle": "Checkout - Khelifi Conseils | Event Rentals",
     "metaDesc": "Place your order for event equipment rentals and reservations at Khelifi Conseils quickly and securely.",
     "type": "Checkout",
     "title": "Billing details",

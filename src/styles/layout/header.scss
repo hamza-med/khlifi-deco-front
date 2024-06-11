@@ -30,12 +30,8 @@
   .logo {
     width: 200px;
     height: 60%;
-    @include tablet {
-      width: 100px;
-      height: 90px;
-    }
     &--mobile {
-      height: 82%;
+      height: 85px;
     }
   }
   .hamburger {

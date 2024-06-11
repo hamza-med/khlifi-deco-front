@@ -1,7 +1,7 @@
 {
   "home": {
-    "metaTitle": "Accueil - Khelifi Conseils",
-    "metaDesc": "Chez Khelifi Conseils, nous sommes passionnés par la création de moments inoubliables. Spécialisés dans la location de matériel événementiel, nous offrons une large gamme d'équipements de haute qualité pour tous vos besoins, des mariages et anniversaires aux conférences et festivals.",
+    "metaTitle": "Accueil - Khelifi Conseils | Location de Matériel Événementiel",
+    "metaDesc": "Chez Khelifi Conseils, nous créons des moments inoubliables avec la location de matériel événementiel de haute qualité.",
     "articleBtn": "voir articles",
     "catTitle": "explorer par catégorie",
     "catDescription": "Jetez un coup d'œil à nos catégories",
@@ -12,7 +12,7 @@
     "explorePar2": "disponible en location"
   },
   "shop": {
-    "metaTitle": "Boutique - Khelifi Conseils",
+    "metaTitle": "Boutique - Khelifi Conseils | Location de Matériel",
     "metaDesc": "Découvrez notre large gamme de locations de matériel événementiel chez Khelifi Conseils. Des tentes aux systèmes de sonorisation, trouvez tout ce dont vous avez besoin pour votre prochain événement.",
     "type": "Magasin",
     "home": "Accueil",
@@ -39,7 +39,7 @@
     }
   },
   "productDetail": {
-    "metaTitle": "Détails du Produit - Khelifi Conseils",
+    "metaTitle": "Détails du Produit - Khelifi Conseils | Location",
     "metaDesc": "Obtenez des informations détaillées sur nos locations de matériel événementiel chez Khelifi Conseils. Trouvez des spécifications, des prix et des disponibilités.",
     "day": "Jour",
     "height": "Hauteur",
@@ -80,7 +80,7 @@
     "mdp": "Mot de passe"
   },
   "cart": {
-    "metaTitle": "Panier - Khelifi Conseils",
+    "metaTitle": "Panier - Khelifi Conseils | Matériel Événementiel",
     "metaDesc": "Vérifiez les articles dans votre panier avant de finaliser votre achat de location de matériel événementiel chez Khelifi Conseils.",
     "type": "Panier",
     "product": "Produit",
@@ -93,7 +93,7 @@
     "btn": "Confirmer Reservation"
   },
   "checkout": {
-    "metaTitle": "Commande - Khelifi Conseils",
+    "metaTitle": "Commande - Khelifi Conseils | Matériel Événementiel",
     "metaDesc": "Passez votre commande de location de matériel événementiel et de réservations chez Khelifi Conseils rapidement et en toute sécurité.",
     "type": "Caisse",
     "title": "Détails de facturation",

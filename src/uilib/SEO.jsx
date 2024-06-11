@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+let baseUrl = window.location.protocol + "//" + window.location.host;
+
 export default function SEO({
   title,
   description,
@@ -12,7 +14,7 @@ export default function SEO({
       {/* Standard metadata tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={baseUrl + url} />
       {/* End standard metadata tags */}
       {/* Facebook tags */}
       <meta property="og:type" content={type} />
