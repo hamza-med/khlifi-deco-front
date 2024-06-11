@@ -5,17 +5,17 @@ const Image = lazy(() => import("@/uilib/Image"));
 const Logo = ({ isMobile }) => {
   return (
     <>
-      <Link to="/">
+      <Link className="logo-container" to="/">
         {isMobile ? (
           <Image
             src="/assets/logo_mobile_black.png"
-            alt="desktop-logo"
+            alt="mobile-logo"
             className="logo--mobile"
           />
         ) : (
           <Image
             src="/assets/logo_desktop_black.png"
-            alt="mobile-logo"
+            alt="desktop-logo"
             className="logo"
           />
         )}

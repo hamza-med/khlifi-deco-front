@@ -22,15 +22,20 @@
   height: $main-header-height;
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
+  .logo-container {
+    @include flex(row, center, center);
+    height: 100%;
+    padding: 3px;
+  }
   .logo {
-    width: 180x;
-    height: 50px;
+    width: 200px;
+    height: 60%;
     @include tablet {
       width: 100px;
       height: 90px;
     }
     &--mobile {
-      height: 85px;
+      height: 90%;
     }
   }
   .hamburger {
