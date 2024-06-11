@@ -15,9 +15,9 @@
     }
     &--logo {
       width: 160px;
+      margin-inline: auto;
       @include tablet {
         width: 220px;
-        margin-inline: auto;
       }
       @include flex(row, center, center);
       gap: 20px;
