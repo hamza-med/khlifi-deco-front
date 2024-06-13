@@ -15,11 +15,12 @@ const SearchModal = lazy(() => import("./SearchModal/SearchModal"));
 const ToggleMenu = lazy(() => import("./ToggleMenu"));
 
 const Header = () => {
+  const { t } = useTranslation();
   const navList = [
-    { id: 1, title: "Home", to: "/", isMenu: false },
-    { id: 2, title: "Shop", to: "shop", isMenu: true },
+    { id: 1, title: t("shop.home"), to: "/", isMenu: false },
+    { id: 2, title: t("shop.type"), to: "shop", isMenu: true },
     { id: 3, title: "Contact", to: "contact", isMenu: false },
-    { id: 4, title: "Cart", to: "cart", isMenu: false },
+    { id: 4, title: t("cart.type"), to: "cart", isMenu: false },
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);

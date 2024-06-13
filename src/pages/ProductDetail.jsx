@@ -47,10 +47,10 @@ const ProductDetail = () => {
     product?.attributes.localizations.data,
   ]);
   return (
-    <div>
+    <>
       <SEO
-        title={metaTitle}
-        description={metaDesc}
+        title={product?.attributes?.title}
+        description={product?.attributes?.description}
         url={`/shop/product/${productId} `}
       />
 
@@ -70,7 +70,7 @@ const ProductDetail = () => {
           subCatId={product?.attributes?.sub_categories?.data[0]?.id}
         />
       </Suspense>
-    </div>
+    </>
   );
 };
 

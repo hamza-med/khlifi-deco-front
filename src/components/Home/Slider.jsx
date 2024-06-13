@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 const Image = lazy(() => import("@/uilib/Image"));
 
 const data = [
-  "assets/wedding1.jpg",
-  "assets/wedding2.jpg",
-  "assets/wedding3.jpg",
+  "assets/wedding1.webp",
+  "assets/wedding2.webp",
+  "assets/wedding3.webp",
 ];
 const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
