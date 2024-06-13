@@ -1,5 +1,4 @@
 .nav-drawer {
-  padding-top: 30px;
   width: 100%;
   border-top: 2px solid $primary-color-10;
   height: calc(100vh - $header-height);
@@ -15,9 +14,12 @@
     transform: translateX(0);
   }
   &-content {
-    @include flex(column, center, center);
-    margin: auto 3px;
-    gap:1.1em;
+    @include flex(column, start, start);
+    width: 100%;
+    height: 100%;
+    gap: 1.1em;
+    padding: 1rem;
+    overflow:scroll;
   }
   &-footer {
     padding-inline: 1rem;

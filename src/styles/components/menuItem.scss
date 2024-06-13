@@ -9,6 +9,9 @@
 }
 
 .menu-item {
+  @include tablet {
+    height: fit-content;
+  }
   height: 100%;
   @include flex(row, center, center);
   font-weight: $fw-semi-bold;

@@ -21,15 +21,9 @@ export default function NavbarItem({
         <span style={isDrawerOpen ? { fontSize: "18px" } : null}>{title}</span>
         {isMenu ? (
           !isOpen ? (
-            <RiArrowDropDownLine
-              size={isDrawerOpen ? "40px" : "28px"}
-              onClick={onOpen}
-            />
+            <RiArrowDropDownLine size="28px" onClick={onOpen} />
           ) : (
-            <RiArrowDropUpLine
-              size={isDrawerOpen ? "40px" : "28px"}
-              onClick={onClose}
-            />
+            <RiArrowDropUpLine size="28px" onClick={onClose} />
           )
         ) : null}
       </Link>

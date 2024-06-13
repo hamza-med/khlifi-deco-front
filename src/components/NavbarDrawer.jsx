@@ -1,9 +1,9 @@
-import NavbarItem from "./Layout/Header/NavbarItem";
 import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";
 import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import MobileNavItem from "./Layout/Header/MobileNavItem";
 
 const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
   const wrapperRef = useRef(null);
@@ -17,7 +17,8 @@ const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
       <div className="nav-drawer-content">
         {navList?.map((item) => {
           return (
-            <NavbarItem
+            <MobileNavItem
+              showDrawer={showDrawer}
               isMenu={item.isMenu}
               categories={categories}
               to={item?.to}
