@@ -10,11 +10,10 @@ const SubCatDropDown = ({ closeDrop, list, show, close, catId }) => {
         position="absolute"
         top="100%"
         max-width="300px"
-        left="290px"
+        left="285px"
         borderColor="white"
-        boxShadow="sm"
         border="1px solid #fafafa"
-        borderRadius="2px"
+        borderRadius="0"
       >
         {list?.map((item, index) => (
           <MenuItem

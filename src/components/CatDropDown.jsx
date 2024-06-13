@@ -10,8 +10,8 @@ const CatDropDown = ({ list, showDrop, closeDrop }) => {
         position="absolute"
         top="100px"
         borderColor="white"
+        borderRadius="0"
         border="1px solid #fafafa"
-        borderRadius="2px"
       >
         {list?.map((item) => {
           return <MenuItem item={item} key={item.id} closeDrop={closeDrop} />;
