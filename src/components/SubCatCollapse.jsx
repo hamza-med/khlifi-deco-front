@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SubCatCollapse = ({ showDrawer, catId, list }) => {
   return (
     <AccordionPanel p="15px 10px" className="nav-panel-1">
-      <VStack align="start" gap="10px">
+      <VStack align="start" gap="1em">
         {list?.map((subCategory) => (
           <Text
             fontSize="18px"
