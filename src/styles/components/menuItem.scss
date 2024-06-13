@@ -11,6 +11,7 @@
 .menu-item {
   @include tablet {
     height: fit-content;
+    font-size: 18px;
   }
   height: 100%;
   @include flex(row, center, center);

@@ -13,11 +13,11 @@ import SubCatCollapse from "./SubCatCollapse";
 
 const CatCollapse = ({ showDrawer, list }) => {
   return (
-    <AccordionPanel p="15px">
+    <AccordionPanel p="15px 10px" className="nav-panel">
       <VStack align="start" gap="10px">
         {list?.map((category) => {
           return category?.attributes.sub_categories?.data.length == 0 ? (
-            <Text fontWeight="500" key={category.id}>
+            <Text fontSize="18px" fontWeight="500" key={category.id}>
               <Link
                 to={`shop/${category?.id}`}
                 onClick={() => showDrawer(false)}
@@ -37,7 +37,13 @@ const CatCollapse = ({ showDrawer, list }) => {
                         fontWeight="medium"
                         background="transparent !important"
                       >
-                        <Box as="span" textAlign="left" mr="10px">
+                        <Box
+                          fontSize="18px"
+                          textTransform="capitalize"
+                          as="span"
+                          textAlign="left"
+                          mr="10px"
+                        >
                           <Link
                             onClick={() => showDrawer(false)}
                             to={`shop/${category?.id}`}

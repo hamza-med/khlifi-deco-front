@@ -1,3 +1,7 @@
+.nav-panel {
+  background-color: $primary-color-light-41;
+}
+
 .nav-drawer {
   width: 100%;
   border-top: 2px solid $primary-color-10;
@@ -19,7 +23,7 @@
     height: 100%;
     gap: 1.1em;
     padding: 1rem;
-    overflow:scroll;
+    overflow: scroll;
   }
   &-footer {
     padding-inline: 1rem;
