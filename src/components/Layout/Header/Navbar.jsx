@@ -1,17 +1,24 @@
-import NavbarItem from "@/components/Layout/Header/NavbarItem";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { lazy } from "react";
 import { useNavigate } from "react-router-dom";
+const NavbarItem = lazy(() => import("@/components/Layout/Header/NavbarItem"));
 
-const Navbar = ({ categories }) => {
+const Navbar = ({ categories, navList }) => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
   return (
     <nav className="navbar">
       <ul className="menu" role="list">
-        {categories?.map((item) => {
+        {navList?.map((item) => {
           return (
-            <NavbarItem item={item?.attributes} id={item?.id} key={item?.id} />
+            <NavbarItem
+              isMenu={item.isMenu}
+              categories={categories}
+              to={item?.to}
+              title={item?.title}
+              key={item?.id}
+            />
           );
         })}
         {user?.email === "utilisation13@gmail.com" && (

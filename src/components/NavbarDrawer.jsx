@@ -5,7 +5,7 @@ import { GrFacebook, GrInstagram } from "react-icons/gr";
 import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
-const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
+const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
   const wrapperRef = useRef(null);
 
   useClickOutside(wrapperRef, () => showDrawer(false));
@@ -15,14 +15,14 @@ const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
       ref={wrapperRef}
     >
       <div className="nav-drawer-content">
-        {categories?.map((item) => {
+        {navList?.map((item) => {
           return (
             <NavbarItem
-              item={item?.attributes}
+              isMenu={item.isMenu}
+              categories={categories}
+              to={item?.to}
+              title={item?.title}
               key={item?.id}
-              id={item?.id}
-              showDrawer={showDrawer}
-              isDrawerOpen={isOpen}
             />
           );
         })}

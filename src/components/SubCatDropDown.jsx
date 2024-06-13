@@ -1,12 +1,16 @@
 import { MenuList, MenuItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const DropDown = ({ list, show, close, catId, showDrawer }) => {
+const SubCatDropDown = ({ closeDrop, list, show, close, catId }) => {
   return (
-    <div onMouseEnter={show} onMouseLeave={close}>
+    <>
       <MenuList
+        onMouseEnter={show}
+        onMouseLeave={close}
         position="absolute"
-        top="50px"
+        top="100%"
+        max-width="300px"
+        left="291px"
         borderColor="white"
         boxShadow="sm"
         border="1px solid #fafafa"
@@ -19,20 +23,22 @@ const DropDown = ({ list, show, close, catId, showDrawer }) => {
             fontWeight="500"
             _hover={{ bgColor: "white", color: "" }}
           >
-            <Link
-              to={`shop/${catId}?sub=${item?.id}`}
+            <li
+              className="menu-item-drop"
               onClick={() => {
-                showDrawer(false);
                 close();
+                closeDrop();
               }}
             >
-              {item?.attributes?.title}
-            </Link>
+              <Link to={`shop/${catId}?sub=${item?.id}`}>
+                {item?.attributes?.title}
+              </Link>
+            </li>
           </MenuItem>
         ))}
       </MenuList>
-    </div>
+    </>
   );
 };
 
-export default DropDown;
+export default SubCatDropDown;

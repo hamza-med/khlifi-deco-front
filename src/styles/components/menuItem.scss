@@ -1,5 +1,11 @@
+.menu-item-drop {
+  position: relative;
+  @include flex(row, space-between, space-between);
+  height: 40px;
+}
+
 .menu-item {
-  height: 50px;
+  height: 100%;
   @include flex(row, center, center);
   font-weight: $fw-semi-bold;
   position: relative;
