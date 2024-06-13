@@ -1,7 +1,11 @@
 .menu-item-drop {
+  text-transform: capitalize;
   position: relative;
   @include flex(row, space-between, space-between);
   height: 40px;
+  &:hover {
+    color: $primary-color;
+  }
 }
 
 .menu-item {
