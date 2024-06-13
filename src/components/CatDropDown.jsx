@@ -8,9 +8,8 @@ const CatDropDown = ({ list, showDrop, closeDrop }) => {
         onMouseLeave={closeDrop}
         minW="300px"
         position="absolute"
-        top="101px"
+        top="100px"
         borderColor="white"
-        boxShadow="sm"
         border="1px solid #fafafa"
         borderRadius="2px"
       >

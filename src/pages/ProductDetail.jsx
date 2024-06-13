@@ -26,10 +26,8 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const [prodId, setProdId] = useState(productId);
   const {
-    t,
     i18n: { language },
   } = useTranslation();
-  const { metaTitle, metaDesc } = t("productDetail");
 
   const { data: product } = useFetch(
     `/products/${prodId}?populate[localizations][fields][0]=title&${imgQuery}${catSubCatQuery}`

@@ -10,7 +10,7 @@ const SubCatDropDown = ({ closeDrop, list, show, close, catId }) => {
         position="absolute"
         top="100%"
         max-width="300px"
-        left="291px"
+        left="290px"
         borderColor="white"
         boxShadow="sm"
         border="1px solid #fafafa"
