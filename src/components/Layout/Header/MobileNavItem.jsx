@@ -16,7 +16,7 @@ const MobileNavItem = ({ showDrawer, categories, isMenu, title, to }) => {
       </Link>
     </li>
   ) : (
-    <Accordion allowToggle border="transparent">
+    <Accordion allowToggle border="transparent" width="100%">
       <AccordionItem>
         {({ isExpanded }) => (
           <>

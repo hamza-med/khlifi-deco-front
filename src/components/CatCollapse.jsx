@@ -13,7 +13,7 @@ import SubCatCollapse from "./SubCatCollapse";
 
 const CatCollapse = ({ showDrawer, list }) => {
   return (
-    <AccordionPanel p="15px 10px" className="nav-panel">
+    <AccordionPanel p="15px 10px" className="nav-panel-1">
       <VStack align="start" gap="10px">
         {list?.map((category) => {
           return category?.attributes.sub_categories?.data.length == 0 ? (
@@ -26,7 +26,7 @@ const CatCollapse = ({ showDrawer, list }) => {
               </Link>
             </Text>
           ) : (
-            <Accordion allowToggle border="transparent">
+            <Accordion allowToggle border="transparent" width="100%">
               <AccordionItem>
                 {({ isExpanded }) => (
                   <>
