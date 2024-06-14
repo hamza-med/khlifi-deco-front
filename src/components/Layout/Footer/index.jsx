@@ -38,7 +38,7 @@ const Footer = () => {
             <Link to="https://www.instagram.com/khelifi_conseils">
               <GrInstagram className="footer__top--logo--2" />
             </Link>
-            <Link to="www.linkedin.com/in/khelifi-conseils-et-services">
+            <Link to="https://www.linkedin.com/in/khelifi-conseils-et-services">
               <GrLinkedin className="footer__top--logo--3" />
             </Link>
           </div>
