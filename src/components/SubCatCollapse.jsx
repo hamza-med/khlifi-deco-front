@@ -7,7 +7,7 @@ const SubCatCollapse = ({ showDrawer, catId, list }) => {
       <VStack align="start" gap="1em">
         {list?.map((subCategory) => (
           <Text
-            fontSize="18px"
+            fontSize="1rem"
             textTransform="capitalize"
             fontWeight="500"
             key={subCategory.id}
