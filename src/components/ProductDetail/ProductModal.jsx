@@ -28,12 +28,10 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
   const { t } = useTranslation();
-  const { continuer, title, total, article, confirm } = t(
+  const { continuer, title, total,  confirm } = t(
     "productDetail.productModal"
   );
-  const articles = t("productDetail.productModal.articles", {
-    number: cartItems?.length,
-  });
+  
 
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
@@ -53,12 +51,13 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
       <ModalOverlay />
       <ModalContent
         borderRadius="0px"
-        minW={["100%", "100%", "fit-content"]}
-        minH={["60%", "68px", "68px"]}
+        minW={["90%", "fit-content"]}
+        maxW={["90%", "50%"]}
       >
         <ModalHeader
           textAlign={isMobile ? "left" : "center"}
           p="0.8em"
+          pl="0.4em"
           bgColor="#ac8f67"
           color="white"
           fontSize={["1rem", "1rem", "1.2rem"]}
@@ -66,7 +65,7 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
         >
           {title}
         </ModalHeader>
-        <ModalCloseButton color="rgba(0,0,0,0.4)" />
+        <ModalCloseButton color="rgba(0,0,0,0.4)" right="0" />
         <ModalBody className="product-modal__wrapper">
           <div className="left">
             <Suspense fallback={<Skeleton height="40%" />}>
@@ -80,9 +79,10 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                   start={dates.length !== 0 ? dates[0] : item?.start}
                   end={dates.length !== 0 ? dates[1] : item?.end}
                   id={prodId}
-                  //borderColor="white"
-                  fontSize="1.1rem"
-                  //pl="0"
+                  borderColor="white"
+                  iconSize="23px"
+                  fontSize={["1rem", "1.1rem"]}
+                  p="0"
                 />
               </p>
               <p className="left--description--quantity">
@@ -118,13 +118,22 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                   </Text>
                 </HStack>
               </p>
+              {/* <Text
+                mb={["18px", "0px"]}
+                mt={["0px", "30px"]}
+                fontSize={["1rem", "1.1rem"]}
+                color="rgb(78, 78, 78)"
+              >
+                {cartItems.length > 1 ? articles : article}
+              </Text> */}
             </div>
           </div>
           <div className="right">
-            <h1>{cartItems.length > 1 ? articles : article}</h1>
             <span className="right--total">
               <span className="title-bold ">{total} </span>
-              <span>{subtotal} TND</span>
+              <Text as="span" fontWeight="400">
+                {subtotal} TND
+              </Text>
             </span>
 
             <button className="continue-button" onClick={handleClose}>

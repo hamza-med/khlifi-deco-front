@@ -5,11 +5,12 @@
 .product-modal__wrapper {
   @include tablet {
     display: block;
-    padding: 10px 10px !important;
+    padding: 1em !important;
   }
   @include flex(row, space-between, start);
-  gap: 2em;
-  padding: 1em !important;
+  gap: 2rem;
+  padding: 1.2em !important;
+  height: 100%;
   .left {
     @include tablet {
       display: block;
@@ -18,46 +19,38 @@
     background: white;
     height: 100%;
     @include flex(row, space-between, start);
-    gap: 0.6em;
+    gap: 1rem;
     &--img {
+      border-radius: 4px;
       @include tablet {
         margin: 0 auto;
         width: 100%;
-        height: 35.4vh;
+        height: 200px;
         margin-bottom: 0.5em;
       }
-      width: 200px;
-      height: 200px;
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
+      width: 150px;
+      height: 150px;
     }
     &--description {
       @include tablet {
         display: block;
         height: fit-content;
       }
-      @include flex(column, start, start);
-      gap: 0.6em;
-      height: 200px;
+      @include flex(column, null, null);
+      // gap: 10px;
+      height: 150px;
       h1 {
         @include tablet {
-          font-size: 1.4rem;
-          margin-bottom: 0.3em;
         }
         font-size: 1.2rem;
         font-weight: 500;
         text-transform: capitalize;
-        margin-bottom: 0.4em;
       }
       &--price {
         @include tablet {
-          font-size: 1.2rem;
-          margin-bottom: 12px;
+          margin-bottom: 14px;
         }
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 0.7em;
         font-weight: 500;
         color: lighten(rgb(34, 30, 30), 20);
@@ -69,27 +62,38 @@
         font-size: 1.1rem;
       }
       &--quantity {
-        @include flex(null,start,end);
-        gap:10px;
+        @include flex(null, start, end);
+        gap: 10px;
         margin-top: auto;
         @include tablet {
           margin-bottom: 12px;
+          font-size: 1rem;
         }
         font-size: 1.1rem;
       }
     }
   }
   .right {
-    @include flex(column, start, space-between);
+    @include flex(column, null, null);
     gap: 10px;
+    height: 150px;
     h1 {
+      color: rgb(78, 78, 78);
       @include tablet {
         margin-bottom: 0px;
+        font-size: 1rem;
       }
       font-size: 1.1rem;
       margin-bottom: 10px;
     }
     &--total {
+      margin-bottom: auto;
+      @include tablet {
+        margin-bottom: 0px;
+        margin-top: auto;
+
+        font-size: 1rem;
+      }
       font-size: 1.1rem;
     }
     .continue-button {
