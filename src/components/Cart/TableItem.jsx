@@ -80,7 +80,6 @@ const TableItem = ({ item }) => {
                 <AiFillDelete onClick={handleRemove} />
               </Text>
             </HStack>
-
             <Reservation
               start={item?.start}
               end={item?.end}

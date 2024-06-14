@@ -8,10 +8,11 @@ import {
   Tr,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { Suspense, lazy } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import TableItem from "./TableItem";
+const TableItem = lazy(() => import("./TableItem"));
 
 const Table = () => {
   const { cartItems } = useShoppingCart();
@@ -47,7 +48,9 @@ const Table = () => {
           </Thead>
           <Tbody>
             {cartItems.map((el) => (
-              <TableItem key={el?.id} item={el} />
+              <Suspense key={el?.id}>
+                <TableItem item={el} />
+              </Suspense>
             ))}
           </Tbody>
         </Tb>

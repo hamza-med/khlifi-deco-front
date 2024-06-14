@@ -1,7 +1,9 @@
 import Slider from "react-slick";
-import SliderContent from "./SliderContent";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { lazy } from "react";
+import { Skeleton } from "@chakra-ui/react";
+const SliderContent = lazy(() => import("./SliderContent"));
 
 const settings = {
   dots: true,
@@ -72,13 +74,15 @@ const ExploreSlider = () => {
       <Slider {...settings}>
         {sliderData.map((el) => (
           <div key={el.id}>
-            <SliderContent
-              title={el.desc1}
-              desc={el.desc2}
-              mainImage={el.mainImg}
-              firstImage={el.miniImg1}
-              secondImage={el.miniImg2}
-            />
+            <Suspense fallback={<Skeleton width="500px" height="500px" />}>
+              <SliderContent
+                title={el.desc1}
+                desc={el.desc2}
+                mainImage={el.mainImg}
+                firstImage={el.miniImg1}
+                secondImage={el.miniImg2}
+              />
+            </Suspense>
           </div>
         ))}
       </Slider>
