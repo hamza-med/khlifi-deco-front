@@ -14,7 +14,7 @@ const ShopBreadCrumbs = ({ catTitle, subTitle, catId, type }) => {
   return (
     <div className="shop_header">
       <Image
-        src="/assets/living-room.jpg"
+        src="/assets/breadcrumb/living-room.jpg"
         alt="shop-bg"
         className="shop_header__image"
       />

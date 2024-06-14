@@ -27,7 +27,7 @@ const Footer = () => {
       <div className="footer__top">
         <div className="footer__top--item">
           <Image
-            src="/assets/logo_mobile_black.png"
+            src="/assets/logo/logo_mobile_black.png"
             alt="footer-logo"
             className="footer__top--item--img"
           />

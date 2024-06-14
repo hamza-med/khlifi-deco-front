@@ -8,13 +8,13 @@ const Logo = ({ isMobile }) => {
       <Link className="logo-container" to="/">
         {isMobile ? (
           <Image
-            src="/assets/logo_mobile_black.png"
+            src="/assets/logo/logo_mobile_black.png"
             alt="mobile-logo"
             className="logo--mobile"
           />
         ) : (
           <Image
-            src="/assets/logo_desktop_black.png"
+            src="/assets/logo/logo_desktop_black.png"
             alt="desktop-logo"
             className="logo"
           />

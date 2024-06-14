@@ -8,7 +8,10 @@
     "prodTitle": "Our products",
     "prodBtnPlus": "show more",
     "prodBtnLess": "show less",
-    "explorePar1": "<1>Essential accessories</1> to decorate your stand",
+    "exploreAccess": "<1>Essential accessories</1> to decorate your stand",
+    "exploreFurniture": "<1>Impress your guests</1> with refined furniture",
+    "exploreDecoration": "<1>Enchant your guests</1> with elegant decor",
+    "exploreBuffet": "<1>Optimize your space</1>  with modern buffet equipment",
     "explorePar2": "available for rent"
   },
   "shop": {

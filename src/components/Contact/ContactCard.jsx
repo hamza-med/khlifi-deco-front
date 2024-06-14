@@ -1,29 +1,33 @@
 import { HStack, VStack } from "@chakra-ui/react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { FaClock, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const ContactCard = () => {
   const { t } = useTranslation();
   const { phone, time, mobile, date1, date2, closed } = t("contact");
-  const infoData = [
-    {
-      icon: <FaMapMarkerAlt />,
-      title: t("footer.address"),
-      text: "116, Lot el banafsaj, Jardins d’El Menzah 2, Tunis",
-    },
-    {
-      icon: <FaPhoneAlt />,
-      title: phone,
-      text: `${mobile}: 21 453 379 `,
-    },
+  const infoData = useMemo(
+    () => [
+      {
+        icon: <FaMapMarkerAlt />,
+        title: t("footer.address"),
+        text: "116, Lot el banafsaj, Jardins d’El Menzah 2, Tunis",
+      },
+      {
+        icon: <FaPhoneAlt />,
+        title: phone,
+        text: `${mobile}: 21 453 379 `,
+      },
 
-    {
-      icon: <FaClock />,
-      title: time,
-      text: `${date1} 9:00 - 19:00`,
-      text1: `${date2} ${closed}`,
-    },
-  ];
+      {
+        icon: <FaClock />,
+        title: time,
+        text: `${date1} 9:00 - 19:00`,
+        text1: `${date2} ${closed}`,
+      },
+    ],
+    [closed, date1, date2, mobile, phone, t, time]
+  );
   return (
     <div className="contact_card_wrapper">
       <div className="contact_card_info">

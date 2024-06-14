@@ -8,7 +8,7 @@ const PDFHeader = ({ selectedUser }) => {
       <HStack justify="space-between" w="80%" m="50px 0px 80px 20px">
         <div>
           <Image
-            src="/assets/blue_logo_bg.png"
+            src="/assets/logo/blue_logo_bg.png"
             alt="blue_logo"
             className="pdf_image"
           />
