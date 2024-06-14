@@ -17,7 +17,7 @@ const CatCollapse = ({ showDrawer, list }) => {
       <VStack align="start" gap="1em">
         {list?.map((category) => {
           return category?.attributes.sub_categories?.data.length == 0 ? (
-            <Text fontSize="1rem" fontWeight="500" key={category.id}>
+            <Text fontSize="18px" fontWeight="500" key={category.id}>
               <Link
                 to={`shop/${category?.id}`}
                 onClick={() => showDrawer(false)}
@@ -38,7 +38,7 @@ const CatCollapse = ({ showDrawer, list }) => {
                         background="transparent !important"
                       >
                         <Box
-                          fontSize="1rem"
+                          fontSize="18px"
                           textTransform="capitalize"
                           as="span"
                           textAlign="left"
