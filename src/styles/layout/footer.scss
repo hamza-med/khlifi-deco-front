@@ -2,7 +2,7 @@
   height: 470px;
   background-color: $primary-color-light-50;
   border-top: 2px solid $primary-color-light-40;
-  padding: 4em;
+  padding: 2.5em;
   @include flex(column, space-between, center);
   @include tablet {
     height: 100%;
@@ -38,6 +38,9 @@
     }
     gap: 5%;
     &--item {
+      &.item-1 {
+        text-align: left;
+      }
       @include tablet {
         margin-bottom: 20px;
         font-size: 1.3rem;

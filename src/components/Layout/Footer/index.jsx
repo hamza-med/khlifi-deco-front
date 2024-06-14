@@ -59,7 +59,7 @@ const Footer = () => {
             <span>Contact</span>
           </Link>
         </div>
-        <div className="footer__top--item">
+        <div className="footer__top--item item-1">
           <h1>{serviceTitle}</h1>
           <span>{service1}</span>
           <span>{service2}</span>

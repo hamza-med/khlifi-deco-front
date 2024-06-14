@@ -28,10 +28,7 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
   const { t } = useTranslation();
-  const { continuer, title, total,  confirm } = t(
-    "productDetail.productModal"
-  );
-  
+  const { continuer, title, total, confirm } = t("productDetail.productModal");
 
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
