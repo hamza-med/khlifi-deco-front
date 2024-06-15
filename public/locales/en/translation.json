@@ -108,7 +108,7 @@
     "street": "Street Number and Name",
     "postal": "Postal Code",
     "company": "Company Name (optional)",
-    "note": "Orders can only be confirmed with a down payment of 40% of the total amount. To place order please check and accept the ",
+    "note": "Orders can only be confirmed with a down payment of 40% of the total amount. To place order please read and accept the ",
     "modality": "terms of payment",
     "modalityTitle": "Payment terms and conditions",
     "modalityDesc": "Payments are made in accordance with the following option: 40 % One month in advance on the event date and the remainder to be paid by cheque or cash on the day of delivery.",
