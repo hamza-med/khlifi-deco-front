@@ -1,15 +1,18 @@
-import BillingForm from "./BillingForm";
-import BillingInfo from "./BillingInfo";
 import toast from "@/utils/toast";
+import dayjs from "@/utils/dayjs";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { createOrder } from "@/api/makeRequest";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { useDisclosure } from "@chakra-ui/react";
+import { Skeleton, useDisclosure } from "@chakra-ui/react";
 import CheckoutModal from "./CheckoutModal";
 import useYupSchema from "@/hooks/useYupSchema";
 import { useTranslation } from "react-i18next";
+
+const BillingForm = lazy(() => import("./BillingForm"));
+const BillingInfo = lazy(() => import("./BillingInfo"));
+
 const defaultValues = {
   firstname: "",
   lastname: "",
@@ -47,20 +50,13 @@ const BillingSection = () => {
     setModalityAccepted(value);
   };
   const onSubmit = async (values) => {
-    var today = new Date();
-    var tzOffset = new Date().getTimezoneOffset() * 60000; //offset in milliseconds
-    var localISOTime = new Date(today - tzOffset)
-      .toISOString()
-      .slice(0, -1)
-      .replace("T", " ");
-
     try {
       setLoading(true);
       await createOrder({
         data: {
           total: subtotal,
           products: cartItems,
-          creationDate: localISOTime,
+          creationDate: dayjs(),
           ...values,
         },
       });
@@ -80,18 +76,22 @@ const BillingSection = () => {
   return (
     <FormProvider {...methods}>
       <form className="billing__wrapper" onSubmit={handleSubmit(onSubmit)}>
-        <BillingForm errors={errors} control={control} />
-        <BillingInfo
-          onOpen={onOpen}
-          isDisabled={
-            !modalityAccepted ||
-            !isDirty ||
-            Object.entries(errors).length !== 0 ||
-            error ||
-            cartItems.length === 0
-          }
-          isLoading={loading}
-        />
+        <Suspense fallback={<Skeleton />}>
+          <BillingForm errors={errors} control={control} />
+        </Suspense>
+        <Suspense fallback={<Skeleton />}>
+          <BillingInfo
+            onOpen={onOpen}
+            isDisabled={
+              !modalityAccepted ||
+              !isDirty ||
+              Object.entries(errors).length !== 0 ||
+              error ||
+              cartItems.length === 0
+            }
+            isLoading={loading}
+          />
+        </Suspense>
       </form>
       <CheckoutModal
         checked={modalityAccepted}

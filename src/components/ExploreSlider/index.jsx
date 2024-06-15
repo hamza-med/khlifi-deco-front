@@ -36,15 +36,15 @@ const ExploreSlider = () => {
         desc2: explorePar2,
       },
       {
-        id: 2,
-        mainImg: "/assets/explore-slider/buffet-main.webp",
-        miniImg1: "/assets/explore-slider/buffet-mini-2.webp",
+        id: 4,
+        mainImg: "/assets/explore-slider/buffet-mini-2.webp",
+        miniImg1: "/assets/explore-slider/buffet-main.webp",
         miniImg2: "/assets/explore-slider/buffet-mini-1.webp",
         desc1: exploreBuffet,
         desc2: explorePar2,
       },
       {
-        id: 3,
+        id: 2,
         mainImg: "/assets/explore-slider/accessories-main.webp",
         miniImg1: "/assets/explore-slider/accessories-mini-1.webp",
         miniImg2: "/assets/explore-slider/accessories-mini-2.webp",
@@ -52,7 +52,7 @@ const ExploreSlider = () => {
         desc2: explorePar2,
       },
       {
-        id: 4,
+        id: 3,
         mainImg: "/assets/explore-slider/decoration-main.webp",
         miniImg1: "/assets/explore-slider/decoration-mini-1.webp",
         miniImg2: "/assets/explore-slider/decoration-mini-2.webp",
@@ -72,19 +72,21 @@ const ExploreSlider = () => {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {sliderData.map((el) => (
-          <div key={el.id}>
-            <Suspense fallback={<Skeleton width="500px" height="500px" />}>
-              <SliderContent
-                title={el.desc1}
-                desc={el.desc2}
-                mainImage={el.mainImg}
-                firstImage={el.miniImg1}
-                secondImage={el.miniImg2}
-              />
-            </Suspense>
-          </div>
-        ))}
+        {sliderData
+          .sort((a, b) => a.id - b.id)
+          .map((el) => (
+            <div key={el.id}>
+              <Suspense fallback={<Skeleton width="500px" height="500px" />}>
+                <SliderContent
+                  title={el.desc1}
+                  desc={el.desc2}
+                  mainImage={el.mainImg}
+                  firstImage={el.miniImg1}
+                  secondImage={el.miniImg2}
+                />
+              </Suspense>
+            </div>
+          ))}
       </Slider>
     </div>
   );

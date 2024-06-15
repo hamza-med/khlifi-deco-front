@@ -7,6 +7,7 @@ import jsPDF from "jspdf";
 import { forwardRef, useEffect, useMemo, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { LuCalendarDays, LuDownload } from "react-icons/lu";
+import dayjs from "@/utils/dayjs";
 
 const PickerInput = forwardRef(({ value, onClick, ...props }, ref) => (
   <>
@@ -49,10 +50,9 @@ const Header = ({
     })
     .join("");
   const { data: userInfo } = usePrivateFetch(
-    `orders?${userQuery}&filters[creationDate][$eq]=${startDate
-      .toISOString()
-      .slice(0, -1)
-      .replace("T", " ")}`
+    `orders?${userQuery}&filters[creationDate][$eq]=${dayjs(startDate).format(
+      "YYYY-MM-DD HH:mm:ss"
+    )}`
   );
   useEffect(() => {
     setUsers(userInfo?.map((userInfo) => userInfo.attributes));

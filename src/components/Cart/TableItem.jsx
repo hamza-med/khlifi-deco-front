@@ -5,17 +5,19 @@ import toast from "@/utils/toast";
 import Reservation from "@/uilib/DatePicker/Reservation";
 import { AiFillDelete } from "react-icons/ai";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
-import { lazy } from "react";
+import { lazy, useState } from "react";
 const Image = lazy(() => import("@/uilib/Image"));
 
 const TableItem = ({ item }) => {
   const { t } = useTranslation();
-
+  const [quantity, setQuantity] = useState(item?.quantity);
   const { price, subtotal } = t("cart");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const { defineQuantity, removeFromCart } = useShoppingCart();
+
   const handleChange = (e) => {
+    setQuantity(e.target.value);
     defineQuantity(item?.id, +e.target.value);
   };
   const handleRemove = () => {
@@ -46,8 +48,9 @@ const TableItem = ({ item }) => {
         <Td>
           <input
             className="td__input"
-            type="number"
-            defaultValue={item?.quantity}
+            type="text"
+            maxLength="2"
+            value={quantity}
             onChange={handleChange}
           />
         </Td>
@@ -109,11 +112,10 @@ const TableItem = ({ item }) => {
         </Td>
         <Td padding="0" pr="2">
           <input
-            max="30"
-            min="1"
+            maxLength="2"
             className="td__input"
-            type="number"
-            defaultValue={item?.quantity}
+            type="text"
+            value={quantity}
             onChange={handleChange}
           />
         </Td>
