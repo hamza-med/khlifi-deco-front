@@ -108,7 +108,7 @@
     "street": "Numéro et nom de rue",
     "postal": "Code postal",
     "company": "Nom de l'entreprise (optionnel)",
-    "note": "La commande ne peut être confirmé qu' avec une avance de 40% de la somme globale voir",
+    "note": "La commande ne peut être confirmé qu' avec une avance de 40% de la somme globale. Pour passer la commande, veuillez voir et accepter les ",
     "modality": "modalités de paiement.",
     "modalityTitle": "Modalités de paiement",
     "modalityDesc": "Les paiements s'effectuent conformément à l'option suivante: 40 % Un mois d'avance à la date d'événement et le reste à payer par chèque ou espèce le jour de la livraison",
