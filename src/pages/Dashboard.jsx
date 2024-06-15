@@ -1,11 +1,11 @@
 import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
-
+import dayjs from "@/utils/dayjs";
 const PDFFile = lazy(() => import("@/components/Dashboard/PDFFile"));
 const Header = lazy(() => import("@/components/Dashboard/Header"));
 
 const Dashboard = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(dayjs().toDate());
   const [, setPageSize] = useState();
   const [user, setUser] = useState();
   const [selectedUser, setSelectedUser] = useState([]);
