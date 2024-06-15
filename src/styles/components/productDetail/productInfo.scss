@@ -130,8 +130,8 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     &--title {
       @include tablet {
         font-size: 1.6rem;
-        margin-top: 0.5em;
-        margin-bottom: 0.2em;
+        margin-top: 2rem;
+        line-height: 24px;
       }
       text-transform: capitalize;
       font-size: 2rem;
