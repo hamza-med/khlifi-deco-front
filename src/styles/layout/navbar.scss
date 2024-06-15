@@ -1,6 +1,10 @@
 .navbar {
   width: 90%;
+  height: 100%;
+  @include flex();
   .menu {
+    height: 100%;
+
     width: 100%;
     @include flex(row, space-between, center);
   }

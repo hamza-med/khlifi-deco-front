@@ -50,7 +50,7 @@ const ShoppingCart = ({ isOpen, onClose }) => {
             />
           </HStack>
         </DrawerHeader>
-        <Divider border="1px solid #D9D9D9" width="80%" margin="10px auto" />
+        <Divider border="1px solid #D9D9D9" width="90%" margin="5px auto" />
         <DrawerBody>
           <CartContent />
         </DrawerBody>

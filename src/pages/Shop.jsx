@@ -1,4 +1,5 @@
 import useFetch from "@/hooks/useFetch";
+import SEO from "@/uilib/SEO";
 import { Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
 import { useState } from "react";
@@ -32,10 +33,11 @@ const Shop = () => {
   const [itemsIndex, setItemIndex] = useState();
   const [sortItem, setSortItem] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { type } = t("shop");
+  const { type, metaTitle, metaDesc } = t("shop");
 
   return (
     <>
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs
           type={type}

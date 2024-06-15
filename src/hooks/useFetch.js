@@ -44,7 +44,7 @@ const useFetch = (url) => {
       }
       setLoading(false);
     };
-    fetchData();
+    !(url.includes("null") || url.includes("undefined")) && fetchData();
     return () => controller.abort();
   }, [url]);
 

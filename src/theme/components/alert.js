@@ -11,7 +11,14 @@ const Alert = {
       container: {
         bg: "#c90407",
         color: "white",
-        borderLeft: "4px solid ",
+        borderLeft: "4px solid white",
+      },
+    },
+    info: {
+      container: {
+        bg: "#2B6CB0",
+        color: "white",
+        borderLeft: "4px solid white",
       },
     },
   },

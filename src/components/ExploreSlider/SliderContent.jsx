@@ -1,34 +1,37 @@
-import { Trans, useTranslation } from "react-i18next";
+import { lazy } from "react";
+import { Trans, } from "react-i18next";
+const Image = lazy(() => import("@/uilib/Image"));
 
-const SliderContent = () => {
-  const { t } = useTranslation();
-  const { explorePar1, explorePar2 } = t("home");
+const SliderContent = ({ title, desc, mainImage, firstImage, secondImage }) => {
   return (
     <div className="slider-content">
       <div className="slider-content__left">
-        <img
-          src="https://images.pexels.com/photos/17966795/pexels-photo-17966795/free-photo-of-wooden-rustic-furniture-in-restaurant-interior.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
+        <Image
+          className="slider-content__left--img"
+          src={mainImage}
+          alt="left-image"
         />
         <div className="slider-content__left--layer">
           <div className="slider-content__left--layer--content">
             <p>
-              <Trans i18nKey={explorePar1} components={{ 1: <span /> }} />
+              <Trans i18nKey={title} components={{ 1: <span /> }} />
             </p>
             <p>
-              <span>{explorePar2}</span>
+              <span>{desc}</span>
             </p>
           </div>
         </div>
       </div>
       <div className="slider-content__right">
-        <img
-          src="https://images.pexels.com/photos/17947890/pexels-photo-17947890/free-photo-of-cozy-living-room-furniture-under-stairs.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
+        <Image
+          className="slider-content__right--img"
+          src={firstImage}
+          alt="mini-img-1"
         />
-        <img
-          src="https://images.pexels.com/photos/17948130/pexels-photo-17948130/free-photo-of-furniture-in-living-room.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt=""
+        <Image
+          className="slider-content__right--img"
+          src={secondImage}
+          alt="mini-img-2"
         />
       </div>
     </div>

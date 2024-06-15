@@ -1,12 +1,14 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
 import { useTranslation } from "react-i18next";
+const Image = lazy(() => import("@/uilib/Image"));
+
 const data = [
-  "assets/wedding1.jpg",
-  "assets/wedding2.jpg",
-  "assets/wedding3.jpg",
+  "/assets/hero-slider/wedding1.webp",
+  "/assets/hero-slider/wedding2.webp",
+  "/assets/hero-slider/wedding3.webp",
 ];
 const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,13 +55,9 @@ const Slider = ({ productsRef }) => {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((img, i) => (
-          <img
-            loading="eager"
-            src={img}
-            alt={i}
-            key={i}
-            className="slider__container--img"
-          />
+          <Suspense key={i}>
+            <Image src={img} alt={i} className="slider__container--img" />
+          </Suspense>
         ))}
       </div>
       <div className={`slider__text ${buttonVisible ? "visible" : ""}`}>

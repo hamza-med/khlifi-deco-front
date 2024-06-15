@@ -1,15 +1,22 @@
 {
   "home": {
+    "metaTitle": "Home - Khelifi Conseils | Event Equipment Rentals",
+    "metaDesc": "At Khelifi Conseils, we create unforgettable moments with high-quality event equipment rentals for weddings, birthdays, conferences, and festivals.",
     "articleBtn": "see articles",
     "catTitle": "browse the categories",
     "catDescription": "Take a look at our categories",
     "prodTitle": "Our products",
     "prodBtnPlus": "show more",
     "prodBtnLess": "show less",
-    "explorePar1": "<1>Essential accessories</1> to decorate your stand",
+    "exploreAccess": "<1>Essential accessories</1> to decorate your stand",
+    "exploreFurniture": "<1>Impress your guests</1> with refined furniture",
+    "exploreDecoration": "<1>Enchant your guests</1> with elegant decor",
+    "exploreBuffet": "<1>Optimize your space</1>  with modern buffet equipment",
     "explorePar2": "available for rent"
   },
   "shop": {
+    "metaTitle": "Shop - Khelifi Conseils | Event Equipment Rentals",
+    "metaDesc": "Browse our extensive range of event equipment rentals at Khelifi Conseils. From tents to sound systems, find everything you need for your next event.",
     "type": "Store",
     "home": "Home",
     "eltNumber": "Showing {{index}} from {{total}} results",
@@ -35,15 +42,28 @@
     }
   },
   "productDetail": {
+    "metaTitle": " | Product - Khelifi Conseils",
+    "metaDesc": "Get detailed information about our event equipment rentals at Khelifi Conseils. Find specifications, pricing, and availability.",
     "day": "Day",
     "height": "Height",
     "width": "Width",
     "reservation": "Choose your reservation dates",
     "addBtn": "Add to cart",
-    "errorMsg": "Please select the end date, click twice if both dates are the same",
-    "relatedProd": "Related products"
+    "errorMsgTitle": "End date not selected",
+    "errorMsg": "Click twice if both dates are the same",
+    "relatedProd": "Related products",
+    "productModal": {
+      "title": "Product successfully added to the cart",
+      "total": "Total products",
+      "articles": "There are {{number}} items in your cart",
+      "article": "There is one item in your cart",
+      "continuer": "Continue my reservations",
+      "confirm": "Confirm my reservation"
+    }
   },
   "login": {
+    "metaTitle": "Login - Khelifi Conseils | Access Your Account",
+    "metaDesc": "Log in to your Khelifi Conseils account to manage your event equipment rentals and bookings.",
     "title": "Login to your account",
     "username": "Email or username",
     "mdp": "Password",
@@ -55,12 +75,16 @@
     "connect": "Get connected !"
   },
   "register": {
+    "metaTitle": "Register - Khelifi Conseils | Create an Account",
+    "metaDesc": "Create a new account at Khelifi Conseils to start renting event equipment and manage your bookings.",
     "title": "Create your account",
     "username": "Username",
     "email": "Email",
     "mdp": "Password"
   },
   "cart": {
+    "metaTitle": "Cart - Khelifi Conseils | Event Equipment Rentals",
+    "metaDesc": "Review the items in your cart before completing your event equipment rental purchase at Khelifi Conseils.",
     "type": "Cart",
     "product": "Product",
     "price": "Price",
@@ -72,6 +96,8 @@
     "btn": "Confirm Reservation"
   },
   "checkout": {
+    "metaTitle": "Checkout - Khelifi Conseils | Event Rentals",
+    "metaDesc": "Place your order for event equipment rentals and reservations at Khelifi Conseils quickly and securely.",
     "type": "Checkout",
     "title": "Billing details",
     "lastName": "Last Name",
@@ -87,7 +113,9 @@
     "modalityTitle": "Payment terms and conditions",
     "modalityDesc": "Payments are made in accordance with the following option: 40 % One month in advance on the event date and the remainder to be paid by cheque or cash on the day of delivery.",
     "modalityAccepted": "I have read and accept terms & conditions",
-    "btn": "Place Order"
+    "btn": "Place Order",
+    "orderPlaced": "Order placed",
+    "orderPlacedDsc": "Your order has been placed successfully!"
   },
   "shoppingCart": {
     "cart": "Cart",
@@ -109,6 +137,8 @@
     "copyright": "Copyright 2024. All rights reserved"
   },
   "contact": {
+    "metaTitle": "Contact Us - Khelifi Conseils | Get in Touch",
+    "metaDesc": "Get in touch with Khelifi Conseils for any inquiries about our event equipment rental services.",
     "title": "Get In Touch With Us",
     "desc": "For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!",
     "phone": "Phone",
@@ -128,6 +158,27 @@
       "messageDesc": "How can we help ?"
     }
   },
+  "errorMessages": {
+    "name": "Please enter your name",
+    "lastName": "Please enter your last name",
+    "phone": "Please enter your phone number",
+    "email": "Please enter your email address",
+    "username": "Please enter your username",
+    "subject": "Please enter the subject",
+    "message": "No message provided",
+    "subjectMax": "Maximum 50 letters",
+    "requiredField": "This field is required",
+    "phoneMatches": "The phone number is not valid",
+    "emailValid": "The email must be a valid email",
+    "noPass": "No password provided",
+    "shortPass": "The password is too short - it should be at least 6 characters long",
+    "passMatches": "The password can only contain Latin letters"
+  },
+  "productRemove": "Product removed",
+  "productRemoveDesc": "Product removed successfully",
+  "connected": "Successfully connected",
+  "successFullyConnect": "Successfully connected",
+  "error": "Error",
   "miniHeader": "Best event organizer in Tunisia",
   "searchProduct": "Search for a product",
   "new": "New"

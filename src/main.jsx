@@ -9,14 +9,18 @@ import { Global } from "@emotion/react";
 import GlobalStyles from "./theme/globalStyles.js";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
+import { HelmetProvider } from "react-helmet-async";
 import "@/i18n.js";
+const helmetContext = {};
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <Global styles={GlobalStyles} />
       <ShoppingCartProvider>
         <AuthContextProvider>
-          <App />
+          <HelmetProvider context={helmetContext}>
+            <App />
+          </HelmetProvider>
         </AuthContextProvider>
       </ShoppingCartProvider>
     </ChakraProvider>

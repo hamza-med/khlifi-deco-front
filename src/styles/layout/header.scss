@@ -22,12 +22,16 @@
   height: $main-header-height;
   background-color: white;
   border-bottom: 1px solid #fcfcfc;
+  .logo-container {
+    @include flex(row, center, center);
+    height: 90px;
+  }
   .logo {
-    width: 360px;
-    height: 60px;
-    @include tablet {
-      width: 100px;
+    width: 200px;
+    height: 60%;
+    &--mobile {
       height: 90px;
+      width: 80px;
     }
   }
   .hamburger {

@@ -1,5 +1,19 @@
+.menu-item-drop {
+  text-transform: capitalize;
+  position: relative;
+  @include flex(row, space-between, space-between);
+  height: 40px;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
 .menu-item {
-  height: 50px;
+  @include tablet {
+    height: fit-content;
+    font-size: 18px;
+  }
+  height: 100%;
   @include flex(row, center, center);
   font-weight: $fw-semi-bold;
   position: relative;

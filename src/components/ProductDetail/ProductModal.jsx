@@ -1,4 +1,6 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import Reservation from "@/uilib/DatePicker/Reservation";
+
 import {
   HStack,
   Modal,
@@ -7,13 +9,16 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Skeleton,
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Suspense } from "react";
+import { lazy, useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { Reservation } from "../Cart/Table";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
   const navigate = useNavigate();
@@ -22,6 +27,8 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
 
   const [productQuantity, setProductQuantity] = useState(1);
   const [item, setItem] = useState();
+  const { t } = useTranslation();
+  const { continuer, title, total, confirm } = t("productDetail.productModal");
 
   useEffect(
     () => setItem(cartItems.find((item) => item?.id === prodId)),
@@ -41,25 +48,26 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
       <ModalOverlay />
       <ModalContent
         borderRadius="0px"
-        minW={["100%", "100%", "fit-content"]}
-        minH={["60%", "68px", "68px"]}
+        minW={["90%", "fit-content"]}
+        maxW={["90%", "50%"]}
       >
         <ModalHeader
           textAlign={isMobile ? "left" : "center"}
           p="0.8em"
+          pl="0.4em"
           bgColor="#ac8f67"
           color="white"
           fontSize={["1rem", "1rem", "1.2rem"]}
           fontWeight="500"
         >
-          Produit ajouté au panier avec succès
+          {title}
         </ModalHeader>
-        <ModalCloseButton color="rgba(0,0,0,0.4)" />
+        <ModalCloseButton color="rgba(0,0,0,0.4)" right="0" />
         <ModalBody className="product-modal__wrapper">
           <div className="left">
-            <div className="left--img">
-              <img src={item?.src} alt="" />
-            </div>
+            <Suspense fallback={<Skeleton height="40%" />}>
+              <Image className="left--img" src={item?.src} alt="" />
+            </Suspense>
             <div className="left--description">
               <h1>{item?.title}</h1>
               <p className="left--description--price">{item?.price} TND</p>
@@ -69,11 +77,13 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                   end={dates.length !== 0 ? dates[1] : item?.end}
                   id={prodId}
                   borderColor="white"
-                  pl="0"
+                  iconSize="23px"
+                  fontSize={["1rem", "1.1rem"]}
+                  p="0"
                 />
               </p>
               <p className="left--description--quantity">
-                <span className="title-bold ">Quantité</span>
+                <span className="title-bold ">{t("cart.quantity")}</span>
                 <HStack
                   border="1px solid rgba(0,0,0,0.05)"
                   fontSize={["1rem", "1rem"]}
@@ -105,21 +115,26 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                   </Text>
                 </HStack>
               </p>
+              {/* <Text
+                mb={["18px", "0px"]}
+                mt={["0px", "30px"]}
+                fontSize={["1rem", "1.1rem"]}
+                color="rgb(78, 78, 78)"
+              >
+                {cartItems.length > 1 ? articles : article}
+              </Text> */}
             </div>
           </div>
           <div className="right">
-            <h1>
-              {cartItems.length > 1
-                ? `Il y a ${cartItems?.length} articles dans votre panier`
-                : `Il y a un article dans votre panier`}
-            </h1>
             <span className="right--total">
-              <span className="title-bold ">Total produits : </span>{" "}
-              <span>{subtotal} TND</span>
+              <span className="title-bold ">{total} </span>
+              <Text as="span" fontWeight="400">
+                {subtotal} TND
+              </Text>
             </span>
 
             <button className="continue-button" onClick={handleClose}>
-              Continuer mes réservations
+              {continuer}
             </button>
             <button
               className="confirm-button"
@@ -128,7 +143,7 @@ const ProductModal = ({ dates = [], isOpen, onClose, prodId }) => {
                 handleClose();
               }}
             >
-              Confirmer ma réservation
+              {confirm}
             </button>
           </div>
         </ModalBody>

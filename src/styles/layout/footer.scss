@@ -2,7 +2,7 @@
   height: 470px;
   background-color: $primary-color-light-50;
   border-top: 2px solid $primary-color-light-40;
-  padding: 4em;
+  padding: 2.5em;
   @include flex(column, space-between, center);
   @include tablet {
     height: 100%;
@@ -15,9 +15,9 @@
     }
     &--logo {
       width: 160px;
+      margin-inline: auto;
       @include tablet {
         width: 220px;
-        margin-inline: auto;
       }
       @include flex(row, center, center);
       gap: 20px;
@@ -38,6 +38,9 @@
     }
     gap: 5%;
     &--item {
+      &.item-1 {
+        text-align: left;
+      }
       @include tablet {
         margin-bottom: 20px;
         font-size: 1.3rem;
@@ -47,14 +50,14 @@
       @include flex(column, center, start);
       gap: 10px;
       font-size: 1rem;
-      & > img {
+      &--img {
         @include tablet {
-          width: 160px;
-          height: 150px;
+          width: 130px;
+          height: 120px;
           margin: 0 auto;
         }
         width: 160px;
-        height: 140px;
+        height: 150px;
       }
       li {
         margin-bottom: 12px;

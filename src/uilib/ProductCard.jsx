@@ -1,9 +1,13 @@
-import ProductModal from "@/components/ProductDetail/ProductModal";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
+const Image = lazy(() => import("./Image"));
+const ProductModal = lazy(() =>
+  import("@/components/ProductDetail/ProductModal")
+);
 
 const ProductCard = ({ product, display, id }) => {
   const { t } = useTranslation();
@@ -43,14 +47,13 @@ const ProductCard = ({ product, display, id }) => {
       onClick={() => navigate(`/shop/product/${id}`)}
       onTouchStart={() => setTouched(true)}
     >
-      <img
-        loading="lazy"
+      <Image
         className="card_container__img"
         src={
           import.meta.env.VITE_APP_UPLOAD_URL +
           product?.img?.data?.attributes?.url
         }
-        alt=""
+        alt={product.title}
       />
       <div style={!isMobile ? { padding: "0px 13px" } : { padding: "0px 5px" }}>
         <div className="card_container__overlay">
@@ -92,7 +95,9 @@ const ProductCard = ({ product, display, id }) => {
           )}
         </div>
       </div>
-      <ProductModal isOpen={isOpen} onClose={onClose} prodId={id} />
+      <Suspense>
+        <ProductModal isOpen={isOpen} onClose={onClose} prodId={id} />
+      </Suspense>
     </div>
   );
 };

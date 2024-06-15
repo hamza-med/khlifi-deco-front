@@ -1,7 +1,7 @@
 import { sendEmail } from "@/api/makeRequest";
+import useYupSchema from "@/hooks/useYupSchema";
 import Input from "@/uilib/Input";
 import Textarea from "@/uilib/Textarea";
-import { contactSchema } from "@/utils/schemas";
 import { Button } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
@@ -16,6 +16,8 @@ const defaultValues = {
   message: "",
 };
 const ContactForm = () => {
+  const { contactSchema } = useYupSchema();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const { t } = useTranslation();

@@ -26,7 +26,7 @@ const LanguageMenu = () => {
             _hover={{ bgColor: "rgba(0,0,0,0.02)" }}
             _focus={{ bgColor: "rgba(0,0,0,0.02)" }}
           >
-            <Text>{lng.lang}</Text>
+            <Text fontWeight="500">{lng.lang}</Text>
           </MenuItem>
         );
       })}

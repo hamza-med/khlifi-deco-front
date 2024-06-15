@@ -5,17 +5,19 @@ const customToast = (
   title = "Product added successfully",
   description = "Product retiré avec succées",
   status = "success",
-  position = "top"
+  position = "top",
+  duration = 3000
 ) => {
-  const variant = status === "success" ? "primary" : "secondary";
+  const variant =
+    status === "success" ? "primary" : status === "info" ? "info" : "secondary";
   toast({
-    title: title,
-    description: description,
-    status: status,
-    position: position,
+    title,
+    description,
+    status,
+    position,
     isClosable: true,
-    variant: variant,
-    duration: 3000,
+    variant,
+    duration,
   });
 };
 export default customToast;

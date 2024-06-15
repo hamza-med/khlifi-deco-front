@@ -1,15 +1,22 @@
 {
   "home": {
+    "metaTitle": "Accueil - Khelifi Conseils | Location de Matériel Événementiel",
+    "metaDesc": "Chez Khelifi Conseils, nous créons des moments inoubliables avec la location de matériel événementiel de haute qualité pour mariages et conférences.",
     "articleBtn": "voir articles",
     "catTitle": "explorer par catégorie",
     "catDescription": "Jetez un coup d'œil à nos catégories",
     "prodTitle": "Nos Produits",
     "prodBtnPlus": "afficher plus",
     "prodBtnLess": "afficher moins",
-    "explorePar1": "<1>Accessoires indispensables</1> pour décorer votre stand",
+    "exploreAccess": "<1>Accessoires indispensables</1> pour décorer votre stand",
+    "exploreFurniture": "<1>Éblouissez vos invités</1> avec un mobilier raffiné",
+    "exploreDecoration": "<1>Émerveillez vos invités</1> avec une décoration élégante",
+    "exploreBuffet": "<1>Optimisez votre espace</1> avec de buffet modernes",
     "explorePar2": "disponible en location"
   },
   "shop": {
+    "metaTitle": "Boutique - Khelifi Conseils | Location de Matériel",
+    "metaDesc": "Découvrez notre matériel événementiel à louer, y compris des tentes, systèmes de son, mobilier, équipements de cuisine et solutions audiovisuelles.",
     "type": "Magasin",
     "home": "Accueil",
     "eltNumber": "Montrer {{index}} de {{total}} éléments",
@@ -35,15 +42,28 @@
     }
   },
   "productDetail": {
+    "metaTitle": " | Produit - Khelifi Conseils",
+    "metaDesc": "Obtenez des informations détaillées sur nos locations de matériel événementiel chez Khelifi Conseils. Trouvez des spécifications, des prix et des disponibilités.",
     "day": "Jour",
     "height": "Hauteur",
     "width": "Largeur",
     "reservation": "Choisissez vos dates de resevation",
     "addBtn": "Ajouter au panier",
-    "errorMsg": "Merci de séléctionner la date de fin, cliquez deux fois si les deux dates sont les mêmes",
-    "relatedProd": "Produits apparentés"
+    "errorMsgTitle": "Date de fin non sélectionnée",
+    "errorMsg": "Cliquez deux fois si les deux dates sont les mêmes",
+    "relatedProd": "Produits apparentés",
+    "productModal": {
+      "title": "Produit ajouté au panier avec succès",
+      "total": "Total produits",
+      "articles": "Il y a {{number}} articles dans votre panier",
+      "article": "Il y a un article dans votre panier",
+      "continuer": "Continuer mes réservations",
+      "confirm": "Confirmer ma réservation"
+    }
   },
   "login": {
+    "metaTitle": "Connexion - Khelifi Conseils | Accédez à Votre Compte",
+    "metaDesc": "Connectez-vous à votre compte Khelifi Conseils pour gérer vos locations de matériel événementiel et vos réservations.",
     "title": "Connectez vous à votre compte",
     "username": "Email ou Nom d'utilisateur",
     "mdp": "Mot de passe",
@@ -55,12 +75,16 @@
     "connect": "Connectez-vous !"
   },
   "register": {
+    "metaTitle": "Inscription - Khelifi Conseils | Créez un Compte",
+    "metaDesc": "Créez un nouveau compte chez Khelifi Conseils pour commencer à louer du matériel événementiel et gérer vos réservations.",
     "title": "Créer un compte",
     "username": "Nom d'utilisateur",
     "email": "Email",
     "mdp": "Mot de passe"
   },
   "cart": {
+    "metaTitle": "Panier - Khelifi Conseils | Matériel Événementiel",
+    "metaDesc": "Vérifiez les articles dans votre panier avant de finaliser votre achat de location de matériel événementiel chez Khelifi Conseils.",
     "type": "Panier",
     "product": "Produit",
     "price": "Prix",
@@ -72,6 +96,8 @@
     "btn": "Confirmer Reservation"
   },
   "checkout": {
+    "metaTitle": "Commande - Khelifi Conseils | Matériel Événementiel",
+    "metaDesc": "Passez votre commande de location de matériel événementiel et de réservations chez Khelifi Conseils rapidement et en toute sécurité.",
     "type": "Caisse",
     "title": "Détails de facturation",
     "lastName": "Nom",
@@ -87,7 +113,9 @@
     "modalityTitle": "Modalités de paiement",
     "modalityDesc": "Les paiements s'effectuent conformément à l'option suivante: 40 % Un mois d'avance à la date d'événement et le reste à payer par chèque ou espèce le jour de la livraison",
     "modalityAccepted": "J'ai lu et j'accepte les conditions générales",
-    "btn": "Passer la commande"
+    "btn": "Passer la commande",
+    "orderPlaced": "Commande passée",
+    "orderPlacedDsc": "Votre commande a été passée avec succès!"
   },
   "shoppingCart": {
     "cart": "Panier",
@@ -109,6 +137,8 @@
     "copyright": "Droits d'auteur 2024. Tous droits réservés"
   },
   "contact": {
+    "metaTitle": "Contactez-Nous - Khelifi Conseils | Prenez Contact",
+    "metaDesc": "Contactez Khelifi Conseils pour toute question concernant nos services de location de matériel événementiel.",
     "title": "Contactez Nous",
     "desc": "Pour plus d’informations sur nos produits et services. N'hésitez pas à nous envoyer un e-mail. Notre personnel est toujours là pour vous aider. N&apos;hésitez pas!",
     "phone": "Téléphone",
@@ -128,6 +158,27 @@
       "messageDesc": "Comment pouvons-nous aider ?"
     }
   },
+  "errorMessages": {
+    "name": "Veuillez saisir votre nom",
+    "lastName": "Veuillez saisir votre prénom",
+    "phone": "Veuillez saisir votre numéro",
+    "email": "Veuillez saisir votre adresse e-mail",
+    "username": "Veuillez saisir votre nom d'utilisateur",
+    "subject": "Veuillez saisir le sujet",
+    "message": "Aucun message n'est fourni",
+    "subjectMax": "50 lettres maximum",
+    "requiredField": "Ce champ est obligatoire",
+    "phoneMatches": "Le numéro de téléphone n'est pas valide",
+    "emailValid": "L'email doit être un email valide",
+    "noPass": "Aucun mot de passe n'est fourni",
+    "shortPass": "Le mot de passe est trop court - il devrait être composé de 6 caractères au minimum",
+    "passMatches": "Le mot de passe ne peut contenir que des lettres latines"
+  },
+  "productRemove": "Produuit retiré",
+  "productRemoveDesc": "le produit a été retiré avec succès",
+  "connected": "Vous êtes connecté",
+  "successFullyConnect": "Connecté avec succès",
+  "error": "Erreur",
   "miniHeader": "Meilleur organisateur d'événements en Tunisie",
   "searchProduct": "Rechercher un produit",
   "new": "New"

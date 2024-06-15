@@ -1,11 +1,11 @@
-import NavbarItem from "./Layout/Header/NavbarItem";
 import { BiPhoneCall } from "react-icons/bi";
 
 import { GrFacebook, GrInstagram } from "react-icons/gr";
 import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import MobileNavItem from "./Layout/Header/MobileNavItem";
 
-const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
+const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
   const wrapperRef = useRef(null);
 
   useClickOutside(wrapperRef, () => showDrawer(false));
@@ -15,14 +15,15 @@ const NavbarDrawer = ({ isOpen, categories, showDrawer }) => {
       ref={wrapperRef}
     >
       <div className="nav-drawer-content">
-        {categories?.map((item) => {
+        {navList?.map((item) => {
           return (
-            <NavbarItem
-              item={item?.attributes}
-              key={item?.id}
-              id={item?.id}
+            <MobileNavItem
               showDrawer={showDrawer}
-              isDrawerOpen={isOpen}
+              isMenu={item.isMenu}
+              categories={categories}
+              to={item?.to}
+              title={item?.title}
+              key={item?.id}
             />
           );
         })}

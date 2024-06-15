@@ -1,6 +1,5 @@
 import AccountWrapper from "@/components/AccountWrapper";
 import Input from "@/uilib/Input";
-import { registerSchema } from "@/utils/schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { register } from "@/api/makeRequest";
@@ -11,12 +10,15 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 import { useState } from "react";
 import { setLocalStorageItem } from "@/utils/localStorage";
 import { useTranslation } from "react-i18next";
+import useYupSchema from "@/hooks/useYupSchema";
+import SEO from "@/uilib/SEO";
 const defaultValues = {
   email: "",
   password: "",
 };
 
 const Register = () => {
+  const { registerSchema } = useYupSchema();
   const navigate = useNavigate();
   const { setUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -44,48 +46,51 @@ const Register = () => {
         navigate("/", { replace: true });
       }
     } catch (e) {
-      console.error(e);
       toast("Erreur", e?.response?.data?.error?.message, "error");
     } finally {
       setIsLoading(false);
     }
   };
+  const { metaTitle, metaDesc } = t("register");
 
   return (
-    <AccountWrapper
-      handleSubmit={handleSubmit}
-      isDirty={isDirty}
-      errors={errors}
-      title={title}
-      type="register"
-      loading={isLoading}
-      onSubmit={onSubmit}
-    >
-      <Input
-        required
-        label={username}
-        name="username"
-        placeholder=""
-        control={control}
-        className="login__input"
-      />
-      <Input
-        required
-        label={email}
-        name="email"
-        placeholder=""
-        control={control}
-        className="login__input"
-      />
-      <Input
-        required
-        label={mdp}
-        name="password"
-        placeholder=""
-        control={control}
-        className="login__input"
-      />
-    </AccountWrapper>
+    <>
+      <SEO title={metaTitle} description={metaDesc} url="/register" />
+      <AccountWrapper
+        handleSubmit={handleSubmit}
+        isDirty={isDirty}
+        errors={errors}
+        title={title}
+        type="register"
+        loading={isLoading}
+        onSubmit={onSubmit}
+      >
+        <Input
+          required
+          label={username}
+          name="username"
+          placeholder=""
+          control={control}
+          className="login__input"
+        />
+        <Input
+          required
+          label={email}
+          name="email"
+          placeholder=""
+          control={control}
+          className="login__input"
+        />
+        <Input
+          required
+          label={mdp}
+          name="password"
+          placeholder=""
+          control={control}
+          className="login__input"
+        />
+      </AccountWrapper>
+    </>
   );
 };
 export default Register;

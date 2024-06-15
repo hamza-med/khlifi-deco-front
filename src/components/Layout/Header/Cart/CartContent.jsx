@@ -12,7 +12,7 @@ const CartContent = () => {
       {cartItems.map((item) => (
         <CartItem item={item} key={item?.id} />
       ))}
-      <HStack mt="auto" justify="space-between" width="90%" textAlign="center">
+      <HStack mt="auto" justify="space-between" width="100%" textAlign="center">
         <Text>{t("cart.subtotal")}</Text>
         <Text color="#ac8f67">{subtotal} TND</Text>
       </HStack>

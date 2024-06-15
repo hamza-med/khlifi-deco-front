@@ -1,7 +1,9 @@
 import { HStack } from "@chakra-ui/react";
+import { lazy } from "react";
 import { useTranslation } from "react-i18next";
 import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";
 import { Link } from "react-router-dom";
+const Image = lazy(() => import("@/uilib/Image"));
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -24,7 +26,11 @@ const Footer = () => {
     <div className="footer">
       <div className="footer__top">
         <div className="footer__top--item">
-          <img src="/assets/logo_mobile_black.png" alt="footer-logo" />
+          <Image
+            src="/assets/logo/logo_mobile_black.png"
+            alt="footer-logo"
+            className="footer__top--item--img"
+          />
           <div className="footer__top--logo">
             <Link to="https://www.facebook.com/profile.php?id=61559900512195&mibextid=LQQJ4d">
               <GrFacebook className="footer__top--logo--1" />
@@ -32,7 +38,7 @@ const Footer = () => {
             <Link to="https://www.instagram.com/khelifi_conseils">
               <GrInstagram className="footer__top--logo--2" />
             </Link>
-            <Link to="www.linkedin.com/in/khelifi-conseils-et-services">
+            <Link to="https://www.linkedin.com/in/khelifi-conseils-et-services">
               <GrLinkedin className="footer__top--logo--3" />
             </Link>
           </div>
@@ -53,7 +59,7 @@ const Footer = () => {
             <span>Contact</span>
           </Link>
         </div>
-        <div className="footer__top--item">
+        <div className="footer__top--item item-1">
           <h1>{serviceTitle}</h1>
           <span>{service1}</span>
           <span>{service2}</span>

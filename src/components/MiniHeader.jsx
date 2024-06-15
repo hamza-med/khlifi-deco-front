@@ -10,7 +10,7 @@ const MiniHeader = () => {
     <div className="mini-navbar">
       <div className="contact">
         <BiPhoneCall />
-        <p>+216 50 577 433</p>
+        <p>+216 21 453 379</p>
       </div>
       <p className="content">{t("miniHeader")}</p>
       <Link to="contact">

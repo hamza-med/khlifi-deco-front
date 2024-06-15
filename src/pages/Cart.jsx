@@ -1,3 +1,4 @@
+import SEO from "@/uilib/SEO";
 import { Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,9 +11,10 @@ const ShopBreadCrumbs = lazy(() => import("@/components/Shop/ShopBreadCrumbs"));
 
 const Cart = () => {
   const { t } = useTranslation();
-  const { type } = t("cart");
+  const { type, metaTitle, metaDesc } = t("cart");
   return (
     <>
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs type={type} />
       </Suspense>

@@ -15,6 +15,13 @@ const SearchModal = lazy(() => import("./SearchModal/SearchModal"));
 const ToggleMenu = lazy(() => import("./ToggleMenu"));
 
 const Header = () => {
+  const { t } = useTranslation();
+  const navList = [
+    { id: 1, title: t("shop.home"), to: "/", isMenu: false },
+    { id: 2, title: t("shop.type"), to: "shop", isMenu: true },
+    { id: 3, title: "Contact", to: "contact", isMenu: false },
+    { id: 4, title: t("cart.type"), to: "cart", isMenu: false },
+  ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
   const {
@@ -30,13 +37,14 @@ const Header = () => {
       <div className="header">
         <Logo isMobile={isMobile} />
         <Suspense>
-          <Navbar categories={categories} />
+          <Navbar navList={navList} categories={categories} />
         </Suspense>
         <Suspense>
           <NavIcons onOpen={onOpen} />
         </Suspense>
         <Suspense>
           <NavbarDrawer
+            navList={navList}
             isOpen={open}
             categories={categories}
             showDrawer={setOpen}

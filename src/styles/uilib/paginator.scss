@@ -20,7 +20,7 @@
   .next_button {
     @extend %button-style;
     height: 40px;
-    min-width: 80px;
+    min-width: 92px;
     &:disabled {
       background-color: #e3e3e3;
       color: #7a7a7a;

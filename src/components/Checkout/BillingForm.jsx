@@ -56,7 +56,13 @@ const BillingForm = ({ control }) => {
         placeholder=""
         control={control}
       />
-      <Input label="Email" name="email" placeholder="" control={control} />
+      <Input
+        required
+        label="Email"
+        name="email"
+        placeholder=""
+        control={control}
+      />
       <Select
         required
         label={governorates}
