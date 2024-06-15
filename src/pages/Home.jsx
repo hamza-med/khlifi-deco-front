@@ -6,14 +6,13 @@ import { useTranslation } from "react-i18next";
 const Content = lazy(() => import("@/components/Home/Content"));
 const Slider = lazy(() => import("@/components/Home/Slider"));
 
-
 const Home = () => {
   const productsRef = useRef(null);
   const { t } = useTranslation();
   const { metaTitle, metaDesc } = t("home");
   return (
     <>
-      <SEO title={metaTitle} description={metaDesc} url="/" />
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <Slider productsRef={productsRef} />
       </Suspense>

@@ -1,7 +1,7 @@
 {
   "home": {
     "metaTitle": "Home - Khelifi Conseils | Event Equipment Rentals",
-    "metaDesc": "At Khelifi Conseils, we are passionate about creating unforgettable moments. Specializing in event equipment rentals, we offer a wide range of high-quality gear for all your needs, from weddings and birthdays to conferences and festivals.",
+    "metaDesc": "At Khelifi Conseils, we create unforgettable moments with high-quality event equipment rentals for weddings, birthdays, conferences, and festivals.",
     "articleBtn": "see articles",
     "catTitle": "browse the categories",
     "catDescription": "Take a look at our categories",
@@ -42,7 +42,7 @@
     }
   },
   "productDetail": {
-    "metaTitle": "Product Details - Khelifi Conseils | Event Rentals",
+    "metaTitle": " | Product - Khelifi Conseils",
     "metaDesc": "Get detailed information about our event equipment rentals at Khelifi Conseils. Find specifications, pricing, and availability.",
     "day": "Day",
     "height": "Height",
@@ -62,7 +62,7 @@
     }
   },
   "login": {
-    "metaTitle": "Login - Khelifi Conseils",
+    "metaTitle": "Login - Khelifi Conseils | Access Your Account",
     "metaDesc": "Log in to your Khelifi Conseils account to manage your event equipment rentals and bookings.",
     "title": "Login to your account",
     "username": "Email or username",
@@ -75,7 +75,7 @@
     "connect": "Get connected !"
   },
   "register": {
-    "metaTitle": "Register - Khelifi Conseils",
+    "metaTitle": "Register - Khelifi Conseils | Create an Account",
     "metaDesc": "Create a new account at Khelifi Conseils to start renting event equipment and manage your bookings.",
     "title": "Create your account",
     "username": "Username",
@@ -137,7 +137,7 @@
     "copyright": "Copyright 2024. All rights reserved"
   },
   "contact": {
-    "metaTitle": "Contact Us - Khelifi Conseils",
+    "metaTitle": "Contact Us - Khelifi Conseils | Get in Touch",
     "metaDesc": "Get in touch with Khelifi Conseils for any inquiries about our event equipment rental services.",
     "title": "Get In Touch With Us",
     "desc": "For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!",

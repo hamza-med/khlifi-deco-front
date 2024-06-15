@@ -26,6 +26,7 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const [prodId, setProdId] = useState(productId);
   const {
+    t,
     i18n: { language },
   } = useTranslation();
 
@@ -47,11 +48,9 @@ const ProductDetail = () => {
   return (
     <>
       <SEO
-        title={product?.attributes?.title}
-        description={product?.attributes?.description}
-        url={`/shop/product/${productId} `}
+        title={`${product?.attributes?.title}${t("productDetail.metaTitle")}`}
+        description={`${product?.attributes?.description.substring(0, 150)}...`}
       />
-
       <Suspense fallback={<Skeleton />}>
         <LinksBar
           prodName={product?.attributes?.title}

@@ -37,7 +37,7 @@ const Shop = () => {
 
   return (
     <>
-      <SEO title={metaTitle} description={metaDesc} url={`/shop/${catId} `} />
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs
           type={type}

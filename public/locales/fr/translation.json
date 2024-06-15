@@ -1,7 +1,7 @@
 {
   "home": {
     "metaTitle": "Accueil - Khelifi Conseils | Location de Matériel Événementiel",
-    "metaDesc": "Chez Khelifi Conseils, nous créons des moments inoubliables avec la location de matériel événementiel de haute qualité.",
+    "metaDesc": "Chez Khelifi Conseils, nous créons des moments inoubliables avec la location de matériel événementiel de haute qualité pour mariages et conférences.",
     "articleBtn": "voir articles",
     "catTitle": "explorer par catégorie",
     "catDescription": "Jetez un coup d'œil à nos catégories",
@@ -16,7 +16,7 @@
   },
   "shop": {
     "metaTitle": "Boutique - Khelifi Conseils | Location de Matériel",
-    "metaDesc": "Découvrez notre large gamme de locations de matériel événementiel chez Khelifi Conseils. Des tentes aux systèmes de sonorisation, trouvez tout ce dont vous avez besoin pour votre prochain événement.",
+    "metaDesc": "Découvrez notre matériel événementiel à louer, y compris des tentes, systèmes de son, mobilier, équipements de cuisine et solutions audiovisuelles.",
     "type": "Magasin",
     "home": "Accueil",
     "eltNumber": "Montrer {{index}} de {{total}} éléments",
@@ -42,7 +42,7 @@
     }
   },
   "productDetail": {
-    "metaTitle": "Détails du Produit - Khelifi Conseils | Location",
+    "metaTitle": " | Produit - Khelifi Conseils",
     "metaDesc": "Obtenez des informations détaillées sur nos locations de matériel événementiel chez Khelifi Conseils. Trouvez des spécifications, des prix et des disponibilités.",
     "day": "Jour",
     "height": "Hauteur",
@@ -62,7 +62,7 @@
     }
   },
   "login": {
-    "metaTitle": "Connexion - Khelifi Conseils",
+    "metaTitle": "Connexion - Khelifi Conseils | Accédez à Votre Compte",
     "metaDesc": "Connectez-vous à votre compte Khelifi Conseils pour gérer vos locations de matériel événementiel et vos réservations.",
     "title": "Connectez vous à votre compte",
     "username": "Email ou Nom d'utilisateur",
@@ -75,7 +75,7 @@
     "connect": "Connectez-vous !"
   },
   "register": {
-    "metaTitle": "Inscription - Khelifi Conseils",
+    "metaTitle": "Inscription - Khelifi Conseils | Créez un Compte",
     "metaDesc": "Créez un nouveau compte chez Khelifi Conseils pour commencer à louer du matériel événementiel et gérer vos réservations.",
     "title": "Créer un compte",
     "username": "Nom d'utilisateur",
@@ -137,7 +137,7 @@
     "copyright": "Droits d'auteur 2024. Tous droits réservés"
   },
   "contact": {
-    "metaTitle": "Contactez-Nous - Khelifi Conseils",
+    "metaTitle": "Contactez-Nous - Khelifi Conseils | Prenez Contact",
     "metaDesc": "Contactez Khelifi Conseils pour toute question concernant nos services de location de matériel événementiel.",
     "title": "Contactez Nous",
     "desc": "Pour plus d’informations sur nos produits et services. N'hésitez pas à nous envoyer un e-mail. Notre personnel est toujours là pour vous aider. N&apos;hésitez pas!",

@@ -14,7 +14,7 @@ const Cart = () => {
   const { type, metaTitle, metaDesc } = t("cart");
   return (
     <>
-      <SEO title={metaTitle} description={metaDesc} url="/cart" />
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs type={type} />
       </Suspense>

@@ -13,7 +13,7 @@ const Checkout = () => {
 
   return (
     <>
-      <SEO title={metaTitle} description={metaDesc} url="/checkout" />
+      <SEO title={metaTitle} description={metaDesc} />
       <Suspense fallback={<Skeleton />}>
         <ShopBreadCrumbs type={type} />
       </Suspense>

@@ -10,11 +10,7 @@ const Contact = () => {
   const { t } = useTranslation();
   return (
     <>
-      <SEO
-        title={t("contact.metaTitle")}
-        description={t("contact.metaDesc")}
-        url="/contact"
-      />
+      <SEO title={t("contact.metaTitle")} description={t("contact.metaDesc")} />
       <div className="contact_wrapper">
         <div className="contact_title">
           <h1>{t("contact.title")}</h1>
