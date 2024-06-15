@@ -24,7 +24,7 @@ const ProductInfo = ({ prodData, prodId }) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dates, setDates] = useState([]);
   const { t } = useTranslation();
-  const { day, width, height, reservation, addBtn } = t("productDetail");
+  const { day, width, height, reservation, addBtn, sheet } = t("productDetail");
   const {
     isOpen: openModal,
     onOpen: onOpenModal,
@@ -164,6 +164,7 @@ const ProductInfo = ({ prodData, prodId }) => {
           <p>{prodData?.description}</p>
         </div>
         <div className="prodInfo__wrapper--right--fiche">
+          <h2>{sheet}</h2>
           <div className="size-1">
             <RxHeight fontSize="1.7rem" />
             <p>{height}</p>

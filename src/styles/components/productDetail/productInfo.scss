@@ -136,7 +136,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       text-transform: capitalize;
       font-size: 2rem;
       font-weight: 500;
-      margin-bottom: 0.5em;
+      margin-bottom: 5px;
     }
     &--description {
       h2 {
@@ -152,24 +152,33 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       }
       p {
         @include tablet {
-          font-size: 1.1rem;
-          margin-bottom: 0.5em;
+          font-size: 1rem;
         }
-        color: lighten($black-color, 15);
-        margin-bottom: 1.6em;
+        font-size: 1.1rem;
+        color: lighten(black, 15);
+        margin-bottom: 1em;
       }
     }
     &--fiche {
+      h2 {
+        @include tablet {
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+        font-size: 1.125rem;
+        margin-bottom: 0.5em;
+        color: lighten(black, 30);
+      }
       margin-bottom: 1em;
       .size-1 {
         @extend %size;
-        background-color: rgb(253, 253, 253);
-        color: lighten(black, 30);
+        background-color: rgb(250, 250, 250);
+        color: lighten(black, 15);
       }
       .size-2 {
         @extend %size;
-        background-color: rgb(250, 250, 250);
-        color: lighten(black, 30);
+        background-color: rgb(253, 253, 253);
+        color: lighten(black, 15);
       }
     }
     &--reservation {
@@ -181,8 +190,8 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
           font-size: 1.1rem;
           font-weight: 500;
         }
-        font-size: 1.3rem;
-        margin-bottom: 0.8em;
+        font-size: 1.125rem;
+        margin-bottom: 0.5em;
         color: lighten(black, 30);
       }
     }
