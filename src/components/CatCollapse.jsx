@@ -26,7 +26,7 @@ const CatCollapse = ({ showDrawer, list }) => {
               </Link>
             </Text>
           ) : (
-            <Accordion allowToggle border="transparent" width="100%">
+            <Accordion allowToggle border="transparent" width="100%" key={category.id}>
               <AccordionItem>
                 {({ isExpanded }) => (
                   <>
