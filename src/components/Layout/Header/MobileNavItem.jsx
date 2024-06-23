@@ -27,7 +27,7 @@ const MobileNavItem = ({ showDrawer, categories, isMenu, title, to }) => {
                 fontWeight="medium"
                 background="transparent !important"
               >
-                <Box as="span" textAlign="center" fontSize="18px" mr="10px">
+                <Box as="span" textAlign="center" fontSize="18px" mr="auto">
                   <Link onClick={() => showDrawer(false)} to={to}>
                     {title}
                   </Link>

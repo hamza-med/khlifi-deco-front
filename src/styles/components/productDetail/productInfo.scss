@@ -130,6 +130,7 @@ $button-radius: 8px;
       height: fit-content;
     }
     @include flex(column, null, null);
+    width: 100%;
     min-height: $main-img-size;
     &--title {
       @include tablet {
@@ -200,16 +201,19 @@ $button-radius: 8px;
       }
     }
     &--buttons {
+      @include tablet {
+        margin-top: 10px;
+      }
       @include flex(row, start, center);
       gap: 25px;
-      margin-top: 8px;
+      margin-top: auto;
       .button-group {
         @include tablet {
           font-size: $button-font-md;
           gap: 15px;
         }
         font-size: $button-font-lg;
-        color: lighten(black, 30);
+        color: lighten(black, 10);
         @include flex(row, space-between, center);
         gap: 20px;
         border-radius: $button-radius;
@@ -222,14 +226,12 @@ $button-radius: 8px;
           font-size: $button-font-md;
         }
         border-radius: $button-radius;
-        gap: 15px;
         font-weight: 500;
         padding: 0.8em 1em;
         min-width: fit-content;
         color: $primary-color;
         border: 1px solid $primary-color;
         background-color: white;
-        font-weight: 600;
         font-size: $button-font-lg;
         text-transform: capitalize;
         &:disabled {
