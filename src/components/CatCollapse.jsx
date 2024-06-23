@@ -13,7 +13,7 @@ import SubCatCollapse from "./SubCatCollapse";
 
 const CatCollapse = ({ showDrawer, list }) => {
   return (
-    <AccordionPanel p="15px 10px" className="nav-panel-1">
+    <AccordionPanel p="15px 0px 15px 10px" className="nav-panel-1">
       <VStack align="start" gap="1em">
         {list?.map((category) => {
           return category?.attributes.sub_categories?.data.length == 0 ? (
