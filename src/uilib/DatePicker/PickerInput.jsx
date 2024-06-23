@@ -14,14 +14,14 @@ const PickerInput = forwardRef(
           onClick={onClick}
           ref={ref}
           _hover={{ bgColor: "white" }}
-          fontSize={["1rem", "1.2rem"]}
+          fontSize={["1rem", "1.125rem"]}
           fontWeight="normal"
           border="1px solid lightgrey"
           color="#ac8f69"
           borderRadius="3px"
           variant="outline"
           position="relative"
-          padding="1.5em 1.5em"
+          padding="1.5em 1.3em"
           {...props}
         >
           {value}

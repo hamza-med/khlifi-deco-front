@@ -3,6 +3,10 @@ $mini-img-size: 80px;
 $mini-img-size-lg: 110px;
 $main-img-size: $mini-img-size * 6 + $img-gap * 2;
 $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
+$button-font-lg: 1.1rem;
+$button-font-md: 1rem;
+$button-radius: 8px;
+
 %img {
   object-fit: cover;
   cursor: pointer;
@@ -126,7 +130,7 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
       height: fit-content;
     }
     @include flex(column, null, null);
-    height: $main-img-size;
+    min-height: $main-img-size;
     &--title {
       @include tablet {
         font-size: 1.6rem;
@@ -198,45 +202,35 @@ $main-img-size-lg: $mini-img-size-lg * 5 + $img-gap * 2;
     &--buttons {
       @include flex(row, start, center);
       gap: 25px;
-      margin-top: auto;
+      margin-top: 8px;
       .button-group {
         @include tablet {
+          font-size: $button-font-md;
           gap: 15px;
-          margin-top: 1em;
-          padding: 1.33em;
-          font-size: 1.1rem;
         }
-        font-size: 1.2rem;
+        font-size: $button-font-lg;
         color: lighten(black, 30);
         @include flex(row, space-between, center);
         gap: 20px;
-        border-radius: 10px;
+        border-radius: $button-radius;
         border: 1px solid $black-color-25;
-        padding: 25px 30px;
+        padding: 0.8em 1.3em;
         min-width: fit-content;
-        height: 20px;
-        padding: 30px;
       }
       button {
         @include tablet {
-          width: 20%;
-          font-size: 1rem;
-          padding: 1.5em;
-          margin-top: 1em;
+          font-size: $button-font-md;
         }
-        border-radius: 10px;
-        @include flex();
+        border-radius: $button-radius;
         gap: 15px;
         font-weight: 500;
-        padding: 30px 30px;
+        padding: 0.8em 1em;
         min-width: fit-content;
-        width: 200px;
-        height: 20px;
         color: $primary-color;
-        border: 2px solid $primary-color;
+        border: 1px solid $primary-color;
         background-color: white;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: $button-font-lg;
         text-transform: capitalize;
         &:disabled {
           background-color: #e3e3e3;
