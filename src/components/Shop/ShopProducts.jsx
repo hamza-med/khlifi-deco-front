@@ -85,14 +85,15 @@ const ShopProducts = ({
     .fill()
     .map((_, index) => index + 1);
 
-
   return (
     <div className={`shopProducts_container ${display}`}>
       {!isMobile ? (
         <div className="shopProducts_container__left">
-          <p className="title">
-            {category} {categoryName}
-          </p>
+          {subCats?.length != 0 && (
+            <p className="title">
+              {category} {categoryName}
+            </p>
+          )}
           <div className="content">
             {subCats?.map((item) => (
               <SubCategory
