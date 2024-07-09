@@ -49,7 +49,7 @@ const ProductDetail = () => {
     <>
       <SEO
         title={`${product?.attributes?.title}${t("productDetail.metaTitle")}`}
-        description={`${product?.attributes?.description.substring(0, 150)}...`}
+        description={`${product?.attributes?.description?.substring(0, 150)}...`}
       />
       <Suspense fallback={<Skeleton />}>
         <LinksBar

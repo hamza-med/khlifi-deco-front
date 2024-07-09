@@ -27,13 +27,15 @@ const LinksBar = ({ prodName, catData, subData }) => {
           </Link>
         </BreadcrumbItem>
 
-        <BreadcrumbItem>
-          <Link to={`/shop/${catData?.id}?sub=${subData?.id}`}>
-            <p className="linksBar__wrapper--link">
-              {subData?.attributes?.title}
-            </p>
-          </Link>
-        </BreadcrumbItem>
+        {subData?.attributes?.title && (
+          <BreadcrumbItem>
+            <Link to={`/shop/${catData?.id}?sub=${subData?.id}`}>
+              <p className="linksBar__wrapper--link">
+                {subData?.attributes?.title}
+              </p>
+            </Link>
+          </BreadcrumbItem>
+        )}
 
         <div className="divider" />
         <p className="prodName">{prodName}</p>

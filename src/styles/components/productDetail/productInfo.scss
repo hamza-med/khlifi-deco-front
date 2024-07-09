@@ -184,6 +184,7 @@ $button-radius: 8px;
       }
     }
     &--reservation {
+      margin-bottom: 16px;
       @include tablet {
         margin: 0 auto;
       }

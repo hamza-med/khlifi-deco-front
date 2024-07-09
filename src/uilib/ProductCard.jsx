@@ -78,7 +78,7 @@ const ProductCard = ({ product, display, id }) => {
         <div className="card_container__content">
           <h1 className="card_container__content__title">{product?.title}</h1>
           <h3 className="card_container__content__description">
-            {product?.description.substring(0, 35)}...
+            {product?.description?.substring(0, 35)}...
           </h3>
           {product?.showPrice != false && (
             <div className="card_container__content__prices">

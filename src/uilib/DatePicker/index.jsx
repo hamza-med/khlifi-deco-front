@@ -36,6 +36,7 @@ const DatePicker = ({ setDates, prodId }) => {
         onChange={(date) => setStartDate(date)}
         startDate={startDate}
         endDate={endDate}
+        minDate={nextDay.toDate()}
         selectsStart
         showPopperArrow={false}
         popperPlacement="bottom-end"
