@@ -39,7 +39,6 @@ const DatePicker = ({ setDates, prodId }) => {
         minDate={nextDay.toDate()}
         selectsStart
         showPopperArrow={false}
-        popperPlacement="bottom-end"
         customInput={<PickerInput borderRadius="8px" />}
       />
       <ReactDatePicker

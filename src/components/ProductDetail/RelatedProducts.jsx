@@ -8,8 +8,12 @@ const RelatedProducts = (props) => {
   const {
     i18n: { language },
   } = useTranslation();
+
+  const filterCatQuery = props.subCatId
+    ? `[filters][sub_categories][id][$eq]=${props.subCatId}`
+    : `[filters][categories][id][$eq]=${props.catId}`;
   const { data: products, meta } = useFetch(
-    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=1&[filters][sub_categories][id][$eq]=${props.subCatId}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
+    `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=1&${filterCatQuery}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
   const { t } = useTranslation();
   const { relatedProd } = t("productDetail");

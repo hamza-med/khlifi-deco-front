@@ -64,6 +64,7 @@ const ProductDetail = () => {
       <Suspense fallback={<Skeleton />}>
         <RelatedProducts
           prodId={product?.id}
+          catId={product?.attributes?.categories?.data[0]?.id}
           subCatId={product?.attributes?.sub_categories?.data[0]?.id}
         />
       </Suspense>
