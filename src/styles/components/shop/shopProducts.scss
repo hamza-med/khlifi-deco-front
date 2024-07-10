@@ -11,6 +11,7 @@
       width: auto;
     }
     flex: 1;
+    max-width: 22%;
     .title {
       @include tablet {
         font-weight: 500;
