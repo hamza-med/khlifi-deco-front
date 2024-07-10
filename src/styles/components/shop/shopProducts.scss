@@ -3,14 +3,14 @@
     display: block;
     padding: 5px 1px;
   }
-  padding: 30px 45px;
+  padding: 30px;
   @include flex(row, space-between, start);
-  gap: 8%;
+  gap: 5%;
   &__left {
     @include tablet {
       width: auto;
     }
-    width: 25%;
+    flex: 1;
     .title {
       @include tablet {
         font-weight: 500;
@@ -48,12 +48,13 @@
   }
   &__right {
     @include flex(column, space-between, center);
+    flex: 1;
     gap: 20px;
     &--products {
       &.grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1.9em;
+        gap: 1.6em;
         @include tablet {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
