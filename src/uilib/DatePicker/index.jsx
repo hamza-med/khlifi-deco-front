@@ -28,12 +28,19 @@ const DatePicker = ({ setDates, prodId }) => {
     ]);
   }, [endDate, setDates, startDate]);
 
+  const handleStartDate = (date) => {
+    setStartDate(date);
+    if (dayjs(endDate).isBefore(date)) {
+      setEndDate(date);
+    }
+  };
+  
   return (
     <HStack gap={["5px", "15px"]}>
       <ReactDatePicker
         dateFormat="dd/MM/yyyy"
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={handleStartDate}
         startDate={startDate}
         endDate={endDate}
         minDate={nextDay.toDate()}
