@@ -201,6 +201,7 @@ $button-radius: 8px;
     &--buttons {
       @include tablet {
         margin-top: 10px;
+        gap: 15px;
       }
       @include flex(row, start, center);
       gap: 25px;
