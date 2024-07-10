@@ -8,8 +8,8 @@
     height: 500px;
     width: 500px;
     margin-right: 36px;
-    @include tablet {
-      margin-right: 0px;
+    @include tablet {    
+      margin-inline: 5px;
     }
     position: relative;
     &--img {
