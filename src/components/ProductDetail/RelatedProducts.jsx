@@ -6,8 +6,10 @@ import { useTranslation } from "react-i18next";
 const RelatedProducts = (props) => {
   const [pageSize, setPageSize] = useState(4);
   const {
+    t,
     i18n: { language },
   } = useTranslation();
+  const { prodBtnPlus, prodBtnLess } = t("home");
 
   const filterCatQuery = props.subCatId
     ? `[filters][sub_categories][id][$eq]=${props.subCatId}`
@@ -15,7 +17,6 @@ const RelatedProducts = (props) => {
   const { data: products, meta } = useFetch(
     `/products?locale=${language}&pagination[pageSize]=${pageSize}&pagination[page]=1&${filterCatQuery}&[filters][id][$ne]=${props.prodId}&populate[img][fields][0]=name&populate[img][fields][1]=url`
   );
-  const { t } = useTranslation();
   const { relatedProd } = t("productDetail");
   const handleClick = () => {
     setPageSize((prev) => prev + 4);
@@ -41,12 +42,12 @@ const RelatedProducts = (props) => {
       </div>
       {pageSize < meta?.pagination.total && (
         <button className="home-products__button" onClick={handleClick}>
-          afficher plus
+          {prodBtnPlus}
         </button>
       )}
       {pageSize > meta?.pagination.total > 4 && (
         <button className="home-products__button" onClick={handleClick2}>
-          afficher moins
+          {prodBtnLess}
         </button>
       )}
     </div>
