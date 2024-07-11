@@ -43,7 +43,7 @@
         overflow: hidden;
         border-radius: 8px;
         width: 300px;
-        height: 460px;
+        height: 400px;
         img {
           height: 100%;
           width: 100%;
@@ -63,7 +63,7 @@
         color: #333333;
         text-transform: capitalize;
         text-align: center;
-        font-weight: $fw-semi-bold;
+        font-weight: $fw-bold;
         margin-top: 20px;
         @include tablet {
           margin-top: 8px;
