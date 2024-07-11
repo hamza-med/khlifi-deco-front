@@ -32,14 +32,13 @@
         display: none;
         color: white;
         padding: 9px 30px;
-        font-weight: 600;
         font-size: 0.9rem;
         background: $primary-color;
       }
       background: white;
       color: $primary-color;
       padding: 9px 30px;
-      font-weight: 500;
+      font-weight: 600;
       transition: background-color 0.2s ease-in-out;
       &:hover,
       &:active {
