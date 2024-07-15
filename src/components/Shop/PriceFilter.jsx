@@ -23,7 +23,7 @@ const PriceFilter = ({
 
   useDebounce(sliderValue, setFilteredPrice, 1000);
   const labelStyles = {
-    mt: "2.5",
+    mt: "3.5",
     ml: "-2.5",
     fontSize: "md",
   };
@@ -54,7 +54,7 @@ const PriceFilter = ({
                 color="white"
                 mt="-10"
                 ml={i == 1 ? "-4" : "-1"}
-                p="1px"
+                p="1px 5px"
               >
                 {val}
               </RangeSliderMark>

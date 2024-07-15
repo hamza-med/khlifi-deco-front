@@ -9,6 +9,7 @@
   &__left {
     @include tablet {
       width: auto;
+      max-width: 95%;
     }
     flex: 1;
     max-width: 22%;
