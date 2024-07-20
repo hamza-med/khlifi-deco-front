@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Skeleton } from "@chakra-ui/react";
 import { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 const Image = lazy(() => import("@/uilib/Image"));
@@ -8,7 +8,7 @@ const CategoryCard = ({ item, id }) => {
     <Box p="5px">
       <Link to={`shop/${id}`}>
         <div className="home-categories__images--container">
-          <Suspense>
+          <Suspense fallback={<Skeleton height={["350px","400px"]} width={["100%","300px"]} />}>
             <Image
               className="home-categories__images--container--item"
               src={

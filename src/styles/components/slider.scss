@@ -27,14 +27,14 @@
   border-bottom: 1px solid $primary-color;
   position: relative;
   overflow: hidden;
-  background-color: black;
+  //background-color: black;
   &__container {
     width: 300vw;
     display: flex;
     height: 100%;
     transition: all 1s ease;
     &--img {
-      opacity: 85%;
+     // opacity: 85%;
       width: 100vw;
       height: 100%;
     }

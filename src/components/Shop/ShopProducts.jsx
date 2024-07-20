@@ -1,14 +1,15 @@
 import useFetch from "@/hooks/useFetch";
 import Paginator from "@/uilib/Paginator";
-import ProductCard from "@/uilib/ProductCard";
 import { calculateIndexes } from "@/utils/calculateIndex";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import PriceFilter from "./PriceFilter";
 import SubCategory from "./SubCategory";
-import { useMediaQuery } from "@chakra-ui/react";
+import { Skeleton, useMediaQuery } from "@chakra-ui/react";
 import FilterDrawer from "./FilterDrawer";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
+
+const ProductCard = lazy(() => import("@/uilib/ProductCard"));
 
 const ShopProducts = ({
   catId,
@@ -129,12 +130,14 @@ const ShopProducts = ({
         <div className={`shopProducts_container__right--products ${display}`}>
           {products?.map((product) => {
             return (
-              <ProductCard
-                display={display}
-                product={product?.attributes}
+              <Suspense
                 key={product?.id}
-                id={product?.id}
-              />
+                fallback={
+                  <Skeleton height={["350px", "400px"]} width={["250px"]} />
+                }
+              >
+                <ProductCard product={product?.attributes} id={product?.id} />
+              </Suspense>
             );
           })}
         </div>

@@ -13,16 +13,10 @@ const Home = () => {
   return (
     <>
       <SEO title={metaTitle} description={metaDesc} />
-      <Suspense fallback={<Skeleton />}>
+      <Suspense fallback={<Skeleton height="90vh" />}>
         <Slider productsRef={productsRef} />
       </Suspense>
-      <Suspense
-        fallback={
-          <Skeleton>
-            <Content />
-          </Skeleton>
-        }
-      >
+      <Suspense>
         <Content productsRef={productsRef} />
       </Suspense>
     </>

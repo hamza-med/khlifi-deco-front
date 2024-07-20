@@ -30,7 +30,7 @@ const ProductDetail = () => {
     i18n: { language },
   } = useTranslation();
 
-  const { data: product } = useFetch(
+  const { data: product,loading } = useFetch(
     `/products/${prodId}?populate[localizations][fields][0]=title&${imgQuery}${catSubCatQuery}`
   );
   useEffect(() => {
@@ -49,7 +49,10 @@ const ProductDetail = () => {
     <>
       <SEO
         title={`${product?.attributes?.title}${t("productDetail.metaTitle")}`}
-        description={`${product?.attributes?.description?.substring(0, 150)}...`}
+        description={`${product?.attributes?.description?.substring(
+          0,
+          150
+        )}...`}
       />
       <Suspense fallback={<Skeleton />}>
         <LinksBar
@@ -58,10 +61,10 @@ const ProductDetail = () => {
           subData={product?.attributes?.sub_categories?.data[0]}
         />
       </Suspense>
-      <Suspense fallback={<Skeleton />}>
-        <ProductInfo prodData={product?.attributes} prodId={product?.id} />
+      <Suspense>
+        <ProductInfo loading={loading} prodData={product?.attributes} prodId={product?.id} />
       </Suspense>
-      <Suspense fallback={<Skeleton />}>
+      <Suspense>
         <RelatedProducts
           prodId={product?.id}
           catId={product?.attributes?.categories?.data[0]?.id}

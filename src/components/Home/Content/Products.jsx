@@ -1,5 +1,6 @@
 import useFetch from "@/hooks/useFetch";
-import { lazy } from "react";
+import { Skeleton } from "@chakra-ui/react";
+import { lazy, Suspense } from "react";
 import { forwardRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 const ProductCard = lazy(() => import("@/uilib/ProductCard"));
@@ -26,11 +27,14 @@ const Products = forwardRef((props, ref) => {
       <div className="home-products__products">
         {products?.map((product) => {
           return (
-            <ProductCard
-              product={product?.attributes}
+            <Suspense
               key={product?.id}
-              id={product?.id}
-            />
+              fallback={
+                <Skeleton height={["350px", "400px"]} width={["250px"]} />
+              }
+            >
+              <ProductCard product={product?.attributes} id={product?.id} />
+            </Suspense>
           );
         })}
       </div>

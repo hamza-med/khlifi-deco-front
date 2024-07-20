@@ -3,6 +3,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
 import { useTranslation } from "react-i18next";
+import { Skeleton } from "@chakra-ui/react";
 const Image = lazy(() => import("@/uilib/Image"));
 
 const data = [
@@ -35,16 +36,16 @@ const Slider = ({ productsRef }) => {
   const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (currentSlide === 0 ? 2 : prev - 1));
   }, [currentSlide]);
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (currentSlide === 2 ? 0 : prev + 1));
-  };
+  },[currentSlide]);
 
   useEffect(() => {
-    let timer1 = setTimeout(() => prevSlide(), 3000);
+    let timer1 = setTimeout(() => nextSlide(), 6000);
     return () => {
       clearTimeout(timer1);
     };
-  }, [prevSlide]);
+  }, [nextSlide]);
 
   return (
     <div className="slider">
@@ -55,7 +56,7 @@ const Slider = ({ productsRef }) => {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((img, i) => (
-          <Suspense key={i}>
+          <Suspense key={i} fallback={<Skeleton height="90vh"/>}>
             <Image src={img} alt={i} className="slider__container--img" />
           </Suspense>
         ))}

@@ -1,8 +1,8 @@
 import useFetch from "@/hooks/useFetch";
-import { useMediaQuery } from "@chakra-ui/react";
+import { Skeleton, useMediaQuery } from "@chakra-ui/react";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 
 const settings = {
   dots: false,
@@ -39,14 +39,28 @@ const Categories = () => {
           data
             ?.filter((item) => !excluded.includes(item?.attributes?.title))
             .map((item) => {
-              return <CategoryCard item={item} id={item?.id} key={item?.id} />;
+              return (
+                <Suspense
+                  key={item?.id}
+                  fallback={
+                    <Skeleton height={["350px", "400px"]} width={["300px"]} />
+                  }
+                >
+                  <CategoryCard item={item} id={item?.id} />
+                </Suspense>
+              );
             })
         ) : (
           <div className="slider-container">
             <Slider {...settings}>
               {data?.map((item) => {
                 return (
-                  <CategoryCard item={item} id={item?.id} key={item?.id} />
+                  <Suspense
+                    key={item?.id}
+                    fallback={<Skeleton height={["350px", "400px"]} />}
+                  >
+                    <CategoryCard item={item} id={item?.id} />
+                  </Suspense>
                 );
               })}
             </Slider>

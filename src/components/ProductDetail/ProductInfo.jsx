@@ -2,8 +2,8 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
 import useToggle from "@/hooks/useToggle";
 import DatePicker from "@/uilib/DatePicker";
-import { HStack, useDisclosure } from "@chakra-ui/react";
-import { lazy, useEffect, useRef } from "react";
+import { HStack, Skeleton, useDisclosure } from "@chakra-ui/react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { useState } from "react";
 import { MdOutlineZoomIn } from "react-icons/md";
 import { RxWidth, RxHeight } from "react-icons/rx";
@@ -18,7 +18,7 @@ const ProductModal = lazy(() => import("./ProductModal"));
 const Image = lazy(() => import("@/uilib/Image"));
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
-const ProductInfo = ({ prodData, prodId }) => {
+const ProductInfo = ({ prodData, prodId,loading }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
@@ -76,22 +76,28 @@ const ProductInfo = ({ prodData, prodId }) => {
             {" "}
             <div className="prodInfo__wrapper--left--images">
               {images.map((el, index) => (
-                <Image
-                  src={el}
+                <Suspense
                   key={index}
-                  className={
-                    index == imgIndex ? "mini-img active" : "mini-img "
-                  }
-                  onClick={() => setImgIndex(index)}
-                />
+                  fallback={<Skeleton width="110px" height="110px" />}
+                >
+                  <Image
+                    src={el}
+                    className={
+                      index == imgIndex ? "mini-img active" : "mini-img "
+                    }
+                    onClick={() => setImgIndex(index)}
+                  />
+                </Suspense>
               ))}
             </div>
             <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
-              <Image
-                src={images[imgIndex]}
-                alt="main image"
-                className="prodInfo__wrapper--left--main--img"
-              />
+              <Suspense fallback={<Skeleton width="710px" height="710px" />}>
+                <Image
+                  src={images[imgIndex]}
+                  alt="main image"
+                  className="prodInfo__wrapper--left--main--img"
+                />
+              </Suspense>
               <div className="overlay">
                 <div className="overlay--svg">
                   <MdOutlineZoomIn />
@@ -102,11 +108,13 @@ const ProductInfo = ({ prodData, prodId }) => {
         ) : (
           <>
             <div className="prodInfo__wrapper--left--main" onClick={onOpen}>
-              <Image
-                src={images[imgIndex]}
-                alt="main image"
-                className="prodInfo__wrapper--left--main--img"
-              />
+              <Suspense fallback={<Skeleton width="450px" height="450px" />}>
+                <Image
+                  src={images[imgIndex]}
+                  alt="main image"
+                  className="prodInfo__wrapper--left--main--img"
+                />
+              </Suspense>
               <div className="overlay">
                 <div className="overlay--svg">
                   <MdOutlineZoomIn />
@@ -125,14 +133,18 @@ const ProductInfo = ({ prodData, prodId }) => {
                 {images.map(
                   (el, index) =>
                     el !== IMG_URL + "undefined" && (
-                      <Image
-                        onClick={() => setImgIndex(index)}
-                        src={el}
+                      <Suspense
                         key={index}
-                        className={
-                          index == imgIndex ? "mini-img active" : "mini-img "
-                        }
-                      />
+                        fallback={<Skeleton width="80px" height="80px" />}
+                      >
+                        <Image
+                          onClick={() => setImgIndex(index)}
+                          src={el}
+                          className={
+                            index == imgIndex ? "mini-img active" : "mini-img "
+                          }
+                        />
+                      </Suspense>
                     )
                 )}
               </div>
@@ -153,55 +165,56 @@ const ProductInfo = ({ prodData, prodId }) => {
           <Image src={images[imgIndex]} ref={wrapperRef} alt="popup-image" />
         </div>
       </div>
-      <div className="prodInfo__wrapper--right">
-        <h1 className="prodInfo__wrapper--right--title">{prodData?.title}</h1>
-        <div className="prodInfo__wrapper--right--description">
-          {prodData?.showPrice != false && (
-            <h2>
-              {prodData?.price} TND HT / {day}
-            </h2>
-          )}
-          <p>{prodData?.description}</p>
-        </div>
-        <div className="prodInfo__wrapper--right--fiche">
-          <h2>{sheet}</h2>
-          <div className="size-1">
-            <RxHeight fontSize="1.7rem" />
-            <p>{height}</p>
-            <span>{prodData?.hauteur}</span>
+      <Skeleton isLoaded={!loading}>
+        <div className="prodInfo__wrapper--right">
+          <h1 className="prodInfo__wrapper--right--title">{prodData?.title}</h1>
+          <div className="prodInfo__wrapper--right--description">
+            {prodData?.showPrice != false && (
+              <h2>
+                {prodData?.price} TND HT / {day}
+              </h2>
+            )}
+            <p>{prodData?.description}</p>
           </div>
-          <div className="size-2">
-            <RxWidth fontSize="1.7rem" />
-            <p>{width}</p>
-            <span>{prodData?.largeur}</span>
+          <div className="prodInfo__wrapper--right--fiche">
+            <h2>{sheet}</h2>
+            <div className="size-1">
+              <RxHeight fontSize="1.7rem" />
+              <p>{height}</p>
+              <span>{prodData?.hauteur}</span>
+            </div>
+            <div className="size-2">
+              <RxWidth fontSize="1.7rem" />
+              <p>{width}</p>
+              <span>{prodData?.largeur}</span>
+            </div>
+          </div>
+          <div className="prodInfo__wrapper--right--reservation">
+            <h2>{reservation}</h2>
+            <DatePicker setDates={setDates} prodId={prodId} />
+          </div>
+          <div className="prodInfo__wrapper--right--buttons">
+            <div className="button-group">
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() =>
+                  setProductQuantity((prev) => (prev !== 1 ? prev - 1 : prev))
+                }
+              >
+                &minus;
+              </span>
+              <span>{productQuantity}</span>
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => setProductQuantity((prev) => prev + 1)}
+              >
+                &#43;
+              </span>
+            </div>
+            <button onClick={handleAddToCart}>{addBtn}</button>
           </div>
         </div>
-        <div className="prodInfo__wrapper--right--reservation">
-          <h2>{reservation}</h2>
-          <DatePicker setDates={setDates} prodId={prodId} />
-        </div>
-        <div className="prodInfo__wrapper--right--buttons">
-          <div className="button-group">
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                setProductQuantity((prev) => (prev !== 1 ? prev - 1 : prev))
-              }
-            >
-              &minus;
-            </span>
-            <span>{productQuantity}</span>
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={() => setProductQuantity((prev) => prev + 1)}
-            >
-              &#43;
-            </span>
-          </div>
-          <button onClick={handleAddToCart}>{addBtn}</button>
-        </div>
-      </div>
-
+      </Skeleton>
       <ProductModal
         isOpen={openModal}
         dates={dates}

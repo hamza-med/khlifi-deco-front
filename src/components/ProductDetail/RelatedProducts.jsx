@@ -1,6 +1,7 @@
 import useFetch from "@/hooks/useFetch";
 import ProductCard from "@/uilib/ProductCard";
-import { useState } from "react";
+import { Skeleton } from "@chakra-ui/react";
+import { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const RelatedProducts = (props) => {
@@ -32,11 +33,14 @@ const RelatedProducts = (props) => {
       <div className="home-products__products">
         {products?.map((product) => {
           return (
-            <ProductCard
-              product={product?.attributes}
+            <Suspense
               key={product?.id}
-              id={product?.id}
-            />
+              fallback={
+                <Skeleton height={["350px", "400px"]} width={["250px"]} />
+              }
+            >
+              <ProductCard product={product?.attributes} id={product?.id} />
+            </Suspense>
           );
         })}
       </div>
