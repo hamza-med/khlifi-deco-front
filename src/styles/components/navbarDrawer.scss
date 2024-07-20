@@ -8,7 +8,7 @@
 .nav-drawer {
   width: 100%;
   border-top: 2px solid $primary-color-10;
-  height: calc(100vh - $header-height);
+  height: calc(100dvh - $header-height);
   z-index: 3;
   position: fixed;
   @include flex(column, space-between, center);
