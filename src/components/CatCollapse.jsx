@@ -43,7 +43,7 @@ const CatCollapse = ({ showDrawer, list }) => {
                     <h2>
                       <AccordionButton
                         p="0"
-                        color={isExpanded ? "#ac8f67" : "rgb(40, 39, 37)"}
+                        color={isExpanded ? "#ac8f67" : "rgba(0,0,0,0.8)"}
                         fontWeight="medium"
                         background="transparent !important"
                       >
@@ -53,7 +53,6 @@ const CatCollapse = ({ showDrawer, list }) => {
                           as="span"
                           textAlign="left"
                           mr="auto"
-                          color="blackAlpha.800"
                         >
                           <Link
                             onClick={() => showDrawer(false)}

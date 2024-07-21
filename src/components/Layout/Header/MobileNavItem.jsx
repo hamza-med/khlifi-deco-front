@@ -10,7 +10,11 @@ import { Link } from "react-router-dom";
 
 const MobileNavItem = ({ showDrawer, categories, isMenu, title, to }) => {
   return !isMenu ? (
-    <li className="menu-item" onClick={() => showDrawer(false)}>
+    <li
+      className="menu-item"
+      onClick={() => showDrawer(false)}
+      style={{ color: "rgba(0, 0, 0, 0.9)" }}
+    >
       <Link to={to} className="link">
         <span>{title}</span>
       </Link>
@@ -23,11 +27,11 @@ const MobileNavItem = ({ showDrawer, categories, isMenu, title, to }) => {
             <h2>
               <AccordionButton
                 p="0"
-                color={isExpanded ? "#ac8f67" : "rgb(40, 39, 37)"}
+                color={isExpanded ? "#ac8f67" : "rgba(0, 0, 0, 0.9)"}
                 fontWeight="medium"
                 background="transparent !important"
               >
-                <Box as="span" textAlign="center" fontSize="18px" mr="auto" >
+                <Box as="span" textAlign="center" fontSize="18px" mr="auto">
                   <Link onClick={() => showDrawer(false)} to={to}>
                     {title}
                   </Link>
