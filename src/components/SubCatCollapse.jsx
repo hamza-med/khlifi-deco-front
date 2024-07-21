@@ -11,6 +11,7 @@ const SubCatCollapse = ({ showDrawer, catId, list }) => {
             textTransform="capitalize"
             fontWeight="500"
             key={subCategory.id}
+            color="blackAlpha.700"
           >
             <Link
               to={`shop/${catId}?sub=${subCategory?.id}`}
