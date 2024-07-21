@@ -4,6 +4,7 @@ import { GrFacebook, GrInstagram } from "react-icons/gr";
 import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import MobileNavItem from "./Layout/Header/MobileNavItem";
+import { Link } from "react-router-dom";
 
 const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
   const wrapperRef = useRef(null);
@@ -32,15 +33,15 @@ const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
       <div className="nav-drawer-footer">
         <div className="nav-drawer-contact">
           <BiPhoneCall className="drawer-phoneIcon" />
-          <p>+216 50 577 433</p>
+          <p>+216 21 453 379</p>
         </div>
         <div className="nav-social">
-          <a href="https://google.com">
+          <Link to="https://www.facebook.com/profile.php?id=61559900512195&mibextid=LQQJ4d">
             <GrFacebook />
-          </a>
-          <a>
-            <GrInstagram style={{ fontSize: "1.7rem" }} />
-          </a>
+          </Link>
+          <Link to="https://www.instagram.com/khelifi_conseils">
+            <GrInstagram style={{ fontSize: "1.5rem" }} />
+          </Link>
         </div>
       </div>
     </div>

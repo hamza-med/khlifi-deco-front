@@ -31,18 +31,18 @@
   &-footer {
     padding-inline: 1rem;
     width: 100%;
-    background-color: $black-color-3;
+    background-color: $primary-color-light-50;
     height: 80px;
     @include flex(row, space-between);
     .nav-drawer-contact {
       @include flex();
       gap: 2px;
       .drawer-phoneIcon {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 600;
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 600;
       }
     }
@@ -52,7 +52,7 @@
       }
       @include flex();
       gap: 15px;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
 }
