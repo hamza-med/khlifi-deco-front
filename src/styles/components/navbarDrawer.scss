@@ -38,21 +38,30 @@
       @include flex();
       gap: 2px;
       .drawer-phoneIcon {
-        font-size: 1.4rem;
+        font-size:  1.875rem;
         font-weight: 600;
       }
       p {
-        font-size: 1rem;
+        font-size:  1.1rem;
         font-weight: 600;
       }
     }
     .nav-social {
+      color:rgb(40, 39, 37);
       svg {
         cursor: pointer;
       }
+      &--1 {
+        font-size: 1.75rem;
+      }
+      &--2 {
+        font-size: 1.875rem;
+      }
+      &--3 {
+        font-size: 1.875rem;
+      }
       @include flex();
-      gap: 15px;
-      font-size: 1.4rem;
+      gap: 18px;
     }
   }
 }

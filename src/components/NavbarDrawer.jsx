@@ -1,6 +1,6 @@
 import { BiPhoneCall } from "react-icons/bi";
 
-import { GrFacebook, GrInstagram } from "react-icons/gr";
+import { GrFacebook, GrInstagram, GrLinkedin } from "react-icons/gr";
 import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import MobileNavItem from "./Layout/Header/MobileNavItem";
@@ -37,10 +37,13 @@ const NavbarDrawer = ({ navList, isOpen, categories, showDrawer }) => {
         </div>
         <div className="nav-social">
           <Link to="https://www.facebook.com/profile.php?id=61559900512195&mibextid=LQQJ4d">
-            <GrFacebook />
+            <GrFacebook className="nav-social--1" />
           </Link>
           <Link to="https://www.instagram.com/khelifi_conseils">
-            <GrInstagram style={{ fontSize: "1.5rem" }} />
+            <GrInstagram className="nav-social--2" />
+          </Link>
+          <Link to="https://www.linkedin.com/in/khelifi-conseils-et-services">
+            <GrLinkedin className="nav-social--3" />
           </Link>
         </div>
       </div>
