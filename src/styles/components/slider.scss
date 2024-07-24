@@ -23,7 +23,7 @@
 }
 
 .slider {
-  height: calc(100dvh - $header-height);
+  height: calc(100svh - $header-height);
   border-bottom: 1px solid $primary-color;
   position: relative;
   overflow: hidden;

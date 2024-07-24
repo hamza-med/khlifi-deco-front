@@ -2,4 +2,4 @@ $main-header-height: 100px;
 $mini-header-height: 50px;
 $header-height: $main-header-height + $mini-header-height;
 $footer-height: 400px;
-$content-height: calc(100dvh - $footer-height - $header-height);
+$content-height: calc(100svh - $footer-height - $header-height);
