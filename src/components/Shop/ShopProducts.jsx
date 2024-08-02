@@ -25,7 +25,6 @@ const ShopProducts = ({
   const [page, setPage] = useState(1);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const [filteredPrice, setFilteredPrice] = useState([0, 1000]);
   const [searchParams] = useSearchParams();
   const subParam = searchParams.get("sub");
   const {
@@ -37,6 +36,22 @@ const ShopProducts = ({
   const { data: subCats } = useFetch(
     `/sub-categories?locale=${language}&fields[0]=title&fields[1]=locale&filters[categories][id][$eq]=${catId}`
   );
+
+  const { data: prices } = useFetch(
+    `/products?fields[0]=price&filters[categories][id][$eq]=${catId}`
+  );
+  const [filteredPrice, setFilteredPrice] = useState([0, 1000]);
+  const [maxPrices, setMaxPrices] = useState([0, 1000]);
+
+  useEffect(() => {
+    const pricesArray = prices?.map((ele) => ele.attributes.price);
+    if (pricesArray) {
+      if (pricesArray?.length > 0) {
+        setFilteredPrice([0, Math.max(...pricesArray)]);
+        setMaxPrices([0, Math.max(...pricesArray)]);
+      }
+    }
+  }, [prices]);
 
   useEffect(() => {
     if (
@@ -106,6 +121,7 @@ const ShopProducts = ({
               />
             ))}
             <PriceFilter
+              maxPrices={maxPrices}
               title={priceFilterTitle}
               setPage={setPage}
               filteredPrice={filteredPrice}
@@ -114,7 +130,8 @@ const ShopProducts = ({
           </div>
         </div>
       ) : (
-        <FilterDrawer
+          <FilterDrawer
+          maxPrices={maxPrices}
           setPage={setPage}
           filteredPrice={filteredPrice}
           selectedSubCats={selectedSubCats}

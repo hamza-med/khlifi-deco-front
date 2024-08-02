@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 
 const PriceFilter = ({
+  maxPrices,
   setPage,
   filteredPrice,
   setFilteredPrice,
@@ -39,7 +40,7 @@ const PriceFilter = ({
             setPage(1);
             setSliderValue(val);
           }}
-          max={1000}
+          max={maxPrices[1]}
           min={0}
         >
           <RangeSliderMark value={0} {...labelStyles}>
@@ -61,8 +62,8 @@ const PriceFilter = ({
             );
           })}
 
-          <RangeSliderMark value={1000} {...labelStyles}>
-            1000
+          <RangeSliderMark value={maxPrices[1]} {...labelStyles}>
+            {maxPrices[1]}
           </RangeSliderMark>
 
           <RangeSliderTrack>

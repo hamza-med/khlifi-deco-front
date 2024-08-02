@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 //import { useNavigate } from "react-router-dom";
 
 const FilterDrawer = ({
+  maxPrices,
   isOpen,
   onClose,
   handleChange,
@@ -53,6 +54,7 @@ const FilterDrawer = ({
                 );
               })}
               <PriceFilter
+                maxPrices={maxPrices}
                 setPage={setPage}
                 filteredPrice={filteredPrice}
                 setFilteredPrice={setFilteredPrice}
