@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const languages = [
   { code: "en", lang: "English" },
-  { code: "fr", lang: "French" },
+  { code: "fr", lang: "Français" },
 ];
 
 const LanguageMenu = () => {
