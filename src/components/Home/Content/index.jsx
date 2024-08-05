@@ -1,4 +1,5 @@
 import useFetch from "@/hooks/useFetch";
+import { VStack } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -33,26 +34,28 @@ const Content = ({ productsRef }) => {
           <Categories />
         </Suspense>
         <Suspense>
-          <Products
-            pageSize={pageSize}
-            ref={productsRef}
-            title={prodTitle}
-            products={products}
-            meta={meta}
-            handleClick={handleClick}
-            handleClick2={handleClick2}
-          />
-          {packs?.length > 0 && (
+           <VStack gap={["1.125rem","0rem"]}> 
             <Products
               pageSize={pageSize}
               ref={productsRef}
-              title={packTitle}
-              products={packs}
-              meta={packsMeta}
+              title={prodTitle}
+              products={products}
+              meta={meta}
               handleClick={handleClick}
               handleClick2={handleClick2}
             />
-          )}
+            {packs?.length > 0 && (
+              <Products
+                pageSize={pageSize}
+                ref={productsRef}
+                title={packTitle}
+                products={packs}
+                meta={packsMeta}
+                handleClick={handleClick}
+                handleClick2={handleClick2}
+              />
+            )}
+          </VStack> 
         </Suspense>
       </div>
       <Suspense>

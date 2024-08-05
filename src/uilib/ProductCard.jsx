@@ -83,12 +83,12 @@ const ProductCard = ({ product, display, id }) => {
           {product?.showPrice != false && (
             <div className="card_container__content__prices">
               <p className="card_container__content__prices--1">
-                {product?.price - (product?.price * product?.discount) / 100}{" "}
-                TND
+                {product?.price} TND
               </p>
               {product?.discount && (
                 <p className="card_container__content__prices--2">
-                  {product?.price} TND
+                  {product?.price + (product?.price * product?.discount) / 100}{" "}
+                  TND
                 </p>
               )}
             </div>
