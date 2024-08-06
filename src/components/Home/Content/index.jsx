@@ -34,7 +34,7 @@ const Content = ({ productsRef }) => {
           <Categories />
         </Suspense>
         <Suspense>
-           <VStack gap={["1.125rem","0rem"]}> 
+           <VStack gap={["0.5rem","0rem"]}> 
             <Products
               pageSize={pageSize}
               ref={productsRef}
