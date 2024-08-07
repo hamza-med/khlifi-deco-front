@@ -73,6 +73,8 @@
       @include tablet {
         font-size: 1rem;
       }
+      max-height: 183px;
+      overflow: hidden;
       margin-top: 8px;
       margin-bottom: 7px;
       color: $title-color;
