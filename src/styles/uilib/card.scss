@@ -72,11 +72,12 @@
     &__title {
       @include tablet {
         font-size: 1rem;
+      margin-bottom: 8px;
       }
       max-height: 160px;
       overflow: hidden;
       margin-top: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: $title-color;
       font-size: 1.09rem;
       font-weight: $fw-bold;
