@@ -13,9 +13,20 @@ const settings = {
   autoplaySpeed: 2000,
   speed: 1000,
   slidesToShow: 1,
-
   pauseOnHover: true,
 };
+const settingsWeb = {
+  dots: true,
+  infinite: true,
+  lazyLoad: true,
+  autoplay: false,
+  swipeToSlide: true,
+  autoplaySpeed: 2000,
+  speed: 1000,
+  slidesToShow: 4,
+  pauseOnHover: true,
+};
+
 const CategoryCard = lazy(() => import("./CategoryCard"));
 
 const excluded = ["Collections et Tendances", "Collection and Trends"];
@@ -36,20 +47,37 @@ const Categories = () => {
       <p className="home-categories__description">{catDescription}</p>
       <div className="home-categories__images">
         {!isMobile ? (
-          data
-            ?.filter((item) => !excluded.includes(item?.attributes?.title))
-            .map((item) => {
-              return (
-                <Suspense
-                  key={item?.id}
-                  fallback={
-                    <Skeleton height={["350px", "400px"]} width={["300px"]} />
-                  }
-                >
-                  <CategoryCard item={item} id={item?.id} />
-                </Suspense>
-              );
-            })
+          data?.length <= 4 ? (
+            data
+              ?.filter((item) => !excluded.includes(item?.attributes?.title))
+              .map((item) => {
+                return (
+                  <Suspense
+                    key={item?.id}
+                    fallback={
+                      <Skeleton height={["350px", "400px"]} width={["300px"]} />
+                    }
+                  >
+                    <CategoryCard item={item} id={item?.id} />
+                  </Suspense>
+                );
+              })
+          ) : (
+            <div className="slider-container">
+              <Slider {...settingsWeb}>
+                {data?.map((item) => {
+                  return (
+                    <Suspense
+                      key={item?.id}
+                      fallback={<Skeleton height={["350px", "400px"]} />}
+                    >
+                      <CategoryCard item={item} id={item?.id} />
+                    </Suspense>
+                  );
+                })}
+              </Slider>
+            </div>
+          )
         ) : (
           <div className="slider-container">
             <Slider {...settings}>

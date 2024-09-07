@@ -44,17 +44,17 @@ const Shop = () => {
           catId={
             category?.attributes.locale === language
               ? catId
-              : `${category?.attributes.localizations.data[0].id}`
+              : `${category?.attributes?.localizations?.data[0]?.id}`
           }
           catTitle={
             category?.attributes.locale === language
               ? category?.attributes?.title
-              : category?.attributes.localizations.data[0].attributes.title
+              : category?.attributes?.localizations?.data[0]?.attributes.title
           }
           subTitle={
             subCat?.attributes.locale === language
               ? subCat?.attributes?.title
-              : subCat?.attributes.localizations.data[0].attributes.title
+              : subCat?.attributes?.localizations?.data[0]?.attributes.title
           }
         />
       </Suspense>
