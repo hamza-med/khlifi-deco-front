@@ -1,7 +1,5 @@
 import { useMediaQuery } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { BsArrowRight } from "react-icons/bs";
-import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Paginator = ({
@@ -17,7 +15,7 @@ const Paginator = ({
 
   const { paginateNext, paginatePrev } = t("shop");
   const displayPages =
-    isMobile && pages.length >= 4
+    isMobile && pages.length > 4
       ? [1, 2, 3, "...", pages[pages.length - 1]]
       : pages;
 
