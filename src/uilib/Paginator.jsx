@@ -1,4 +1,8 @@
+import { useMediaQuery } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import { BsArrowRight } from "react-icons/bs";
+import { FaArrowRight } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Paginator = ({
   pages,
@@ -9,7 +13,14 @@ const Paginator = ({
   ...props
 }) => {
   const { t } = useTranslation();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   const { paginateNext, paginatePrev } = t("shop");
+  const displayPages =
+    isMobile && pages.length >= 4
+      ? [1, 2, "...", pages[pages.length - 1]]
+      : pages;
+
   return (
     <div className="paginator__wrapper" {...props}>
       <button
@@ -17,9 +28,9 @@ const Paginator = ({
         onClick={() => setPage((prev) => prev - 1)}
         disabled={page == 1}
       >
-        {paginatePrev}
+        {isMobile?<IoIosArrowBack />:paginatePrev}
       </button>
-      {pages?.map((pg, key) => {
+      {displayPages?.map((pg, key) => {
         return (
           <button
             className={`page_button ${pg === page ? "active" : ""}`}
@@ -36,7 +47,7 @@ const Paginator = ({
         disabled={page === pageCount}
         onClick={() => setPage((prev) => prev + 1)}
       >
-        {paginateNext}
+        {isMobile?<IoIosArrowForward />:paginateNext}
       </button>
     </div>
   );

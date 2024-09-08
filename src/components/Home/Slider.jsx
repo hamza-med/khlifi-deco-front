@@ -1,4 +1,3 @@
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { Suspense, lazy, useEffect, useState } from "react";
 import { useCallback } from "react";
 import useToggle from "@/hooks/useToggle";
@@ -14,7 +13,7 @@ const data = [
 const Slider = ({ productsRef }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [buttonVisible, setButtonVisible] = useState(true);
-  const [iconsVisible, onShow, onHide] = useToggle(false);
+  const [, onShow, onHide] = useToggle(false);
   const { t } = useTranslation();
   const { articleBtn } = t("home");
   useEffect(() => {
@@ -33,15 +32,17 @@ const Slider = ({ productsRef }) => {
   const handleScroll = () => {
     productsRef.current.scrollIntoView({ behavior: "smooth" });
   };
-  const prevSlide = useCallback(() => {
+  {
+    /*const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (currentSlide === 0 ? 2 : prev - 1));
-  }, [currentSlide]);
+  }, [currentSlide]);*/
+  }
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (currentSlide === 2 ? 0 : prev + 1));
-  },[currentSlide]);
+  }, [currentSlide]);
 
   useEffect(() => {
-    let timer1 = setTimeout(() => nextSlide(), 6000);
+    let timer1 = setTimeout(() => nextSlide(), 9000);
     return () => {
       clearTimeout(timer1);
     };
@@ -56,7 +57,7 @@ const Slider = ({ productsRef }) => {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((img, i) => (
-          <Suspense key={i} fallback={<Skeleton height="90vh"/>}>
+          <Suspense key={i} fallback={<Skeleton height="90vh" />}>
             <Image src={img} alt={i} className="slider__container--img" />
           </Suspense>
         ))}
@@ -66,7 +67,7 @@ const Slider = ({ productsRef }) => {
         <button onClick={handleScroll}>{articleBtn}</button>
       </div>
 
-      <div className={`slider__icons  `}>
+      {/* <div className={`slider__icons  `}>
         <div
           className={`icon-left ${iconsVisible ? "iconsVisible" : ""}`}
           onClick={prevSlide}
@@ -83,7 +84,7 @@ const Slider = ({ productsRef }) => {
         >
           <AiOutlineArrowRight className="arrow-right" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -15,12 +15,13 @@
     margin-bottom: 20px;
   }
   display: flex;
-  gap: 1.5em;
+  gap: 1em;
   .previous_button,
   .next_button {
     @extend %button-style;
-    height: 40px;
-    min-width: 92px;
+    //height: 40px;
+    padding: 10px 10px;
+   // min-width: 92px;
     &:disabled {
       background-color: #e3e3e3;
       color: #7a7a7a;
