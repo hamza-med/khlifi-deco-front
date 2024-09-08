@@ -18,7 +18,7 @@ const Paginator = ({
   const { paginateNext, paginatePrev } = t("shop");
   const displayPages =
     isMobile && pages.length >= 4
-      ? [1, 2, "...", pages[pages.length - 1]]
+      ? [1, 2, 3, "...", pages[pages.length - 1]]
       : pages;
 
   return (
@@ -28,7 +28,7 @@ const Paginator = ({
         onClick={() => setPage((prev) => prev - 1)}
         disabled={page == 1}
       >
-        {isMobile?<IoIosArrowBack />:paginatePrev}
+        {isMobile ? <IoIosArrowBack style={{ width: "20px" }} /> : paginatePrev}
       </button>
       {displayPages?.map((pg, key) => {
         return (
@@ -47,7 +47,11 @@ const Paginator = ({
         disabled={page === pageCount}
         onClick={() => setPage((prev) => prev + 1)}
       >
-        {isMobile?<IoIosArrowForward />:paginateNext}
+        {isMobile ? (
+          <IoIosArrowForward style={{ width: "20px" }} />
+        ) : (
+          paginateNext
+        )}
       </button>
     </div>
   );
