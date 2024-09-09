@@ -51,6 +51,9 @@ a {
 .slick-thumb {
   bottom: -53px;
 }
+li.slick-active div img {
+  filter: grayscale(0);
+}
 .slick-thumb li {
   height: 45px;
   width: 60px;
@@ -60,6 +63,7 @@ a {
   width: 100%;
 }
 .slick-thumb li img {
+  filter: grayscale(100%);
   object-fit: cover;
   height: 100%;
   width: 100%;
