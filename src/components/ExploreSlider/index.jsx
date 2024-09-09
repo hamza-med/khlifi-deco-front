@@ -8,6 +8,7 @@ const SliderContent = lazy(() => import("./SliderContent"));
 const settings = {
   dots: true,
   infinite: true,
+  fade:true,
   lazyLoad: true,
   autoplay: true,
   autoplaySpeed: 2000,
