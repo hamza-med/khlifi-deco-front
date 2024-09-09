@@ -47,7 +47,24 @@ a {
     display: none;
   }
 }
-
+/*Add custom thumb see ExploreSlider*/
+.slick-thumb {
+  bottom: -53px;
+}
+.slick-thumb li {
+  height: 45px;
+  width: 60px;
+}
+.slick-thumb li div {
+  height: 100%;
+  width: 100%;
+}
+.slick-thumb li img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 // body::-webkit-scrollbar {
 //   width: 12px;
 //   background-color: #f5f5f5;

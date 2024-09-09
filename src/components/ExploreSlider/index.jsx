@@ -2,19 +2,38 @@ import Slider from "react-slick";
 import { Suspense, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { lazy } from "react";
-import { Skeleton } from "@chakra-ui/react";
+import { Skeleton, useMediaQuery } from "@chakra-ui/react";
 const SliderContent = lazy(() => import("./SliderContent"));
 
-const settings = {
+const paginationImages = [
+  "/assets/explore-slider/furniture-2.webp",
+  "/assets/explore-slider/accessories-main.webp",
+  "/assets/explore-slider/decoration-main.webp",
+  "/assets/explore-slider/buffet-mini-2.webp",
+];
+
+const mobileSettings = {
   dots: true,
   infinite: true,
-  fade:true,
+  fade: true,
   lazyLoad: true,
   autoplay: true,
-  autoplaySpeed: 2000,
-  speed: 3000,
+  autoplaySpeed: 3000,
+  speed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
+};
+
+const allSettings = {
+  ...mobileSettings,
+  customPaging: function (i) {
+    return (
+      <div>
+        <img src={paginationImages[i]} />
+      </div>
+    );
+  },
+  dotsClass: "slick-dots slick-thumb",
 };
 
 const ExploreSlider = () => {
@@ -69,7 +88,11 @@ const ExploreSlider = () => {
       explorePar2,
     ]
   );
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
+  const settings = useMemo(() => {
+    return isMobile ? mobileSettings : allSettings;
+  }, [isMobile]);
   return (
     <div className="slider-container">
       <Slider {...settings}>
