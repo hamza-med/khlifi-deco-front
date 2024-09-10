@@ -27,7 +27,9 @@
   }
   &__images {
     width: 100%;
-    //@include flex(row, center, center);
+    &.flex {
+      @include flex(row, center, center);
+    }
     gap: 10px;
     flex-wrap: wrap;
     @include tablet {

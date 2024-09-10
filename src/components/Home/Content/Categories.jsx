@@ -45,7 +45,13 @@ const Categories = () => {
     <div className="home-categories">
       <h1 className="home-categories__title">{catTitle}</h1>
       <p className="home-categories__description">{catDescription}</p>
-      <div className="home-categories__images">
+      <div
+        className={
+          data?.length <= 4
+            ? "home-categories__images flex"
+            : "home-categories__images"
+        }
+      >
         {!isMobile ? (
           data?.length <= 4 ? (
             data
