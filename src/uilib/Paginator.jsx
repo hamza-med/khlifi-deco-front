@@ -15,7 +15,7 @@ const Paginator = ({
 
   const { paginateNext, paginatePrev } = t("shop");
   const displayPages =
-    isMobile && pages.length > 4
+    isMobile && pages.length > 5
       ? [1, 2, 3, "...", pages[pages.length - 1]]
       : pages;
 
@@ -31,7 +31,9 @@ const Paginator = ({
       {displayPages?.map((pg, key) => {
         return (
           <button
-            className={`page_button ${pg === page ? "active" : ""}`}
+            className={
+              pg !== "..." ? `page_button ${pg === page ? "active" : ""}` : null
+            }
             onClick={() => setPage(pg)}
             key={key}
             disabled={isPreviousData}
