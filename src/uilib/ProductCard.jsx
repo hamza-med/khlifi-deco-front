@@ -1,4 +1,5 @@
 import { useShoppingCart } from "@/hooks/useShoppingCart";
+import roundPrice from "@/utils/priceConverter";
 import { useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { Suspense, lazy, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -87,7 +88,7 @@ const ProductCard = ({ product, display, id }) => {
               </p>
               {product?.discount && (
                 <p className="card_container__content__prices--2">
-                  {(product?.price / (1 - product?.discount / 100)).toFixed(2)}{" "}
+                  {roundPrice((product?.price / (1 - product?.discount / 100)).toFixed(2))}{" "}
                   TND
                 </p>
               )}

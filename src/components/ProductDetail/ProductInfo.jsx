@@ -18,7 +18,7 @@ const ProductModal = lazy(() => import("./ProductModal"));
 const Image = lazy(() => import("@/uilib/Image"));
 
 const IMG_URL = import.meta.env.VITE_APP_UPLOAD_URL;
-const ProductInfo = ({ prodData, prodId,loading }) => {
+const ProductInfo = ({ prodData, prodId, loading }) => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [images, setImages] = useState([]);
   const [imgIndex, setImgIndex] = useState(0);
@@ -35,7 +35,9 @@ const ProductInfo = ({ prodData, prodId,loading }) => {
   const wrapperRef = useRef(null);
   const { increaseCartQuantity, cartItems } = useShoppingCart();
   const [productQuantity, setProductQuantity] = useState(1);
-
+  useEffect(() => {
+    setImgIndex(0);
+  }, [prodId]);
   useEffect(() => {
     const item = cartItems.find((item) => item?.id === prodId);
     item === undefined
