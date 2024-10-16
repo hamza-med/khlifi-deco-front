@@ -38,10 +38,11 @@ const ShopProducts = ({
   );
 
   const { data: prices } = useFetch(
-    `/products?fields[0]=price&filters[categories][id][$eq]=${catId}`
+    `/products?fields[0]=price&filters[categories][id][$eq]=${catId}&pagination[pageSize]=200`
   );
   const [filteredPrice, setFilteredPrice] = useState([0, 1000]);
   const [maxPrices, setMaxPrices] = useState([0, 1000]);
+
 
   useEffect(() => {
     const pricesArray = prices?.map((ele) => ele.attributes.price);
@@ -130,7 +131,7 @@ const ShopProducts = ({
           </div>
         </div>
       ) : (
-          <FilterDrawer
+        <FilterDrawer
           maxPrices={maxPrices}
           setPage={setPage}
           filteredPrice={filteredPrice}
